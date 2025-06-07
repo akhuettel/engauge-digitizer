@@ -272,17 +272,17 @@ MainWindowModel Transformation::modelMainWindow() const
   return m_modelMainWindow;
 }
 
-ostringstream &operator<<(ostringstream &strOuter,
+/*ostringstream &operator<<(ostringstream &strOuter,
                           const Transformation &transformation)
 {
   QString text;
   QTextStream strInner (&text);
   transformation.printStream ("", strInner);
 
-  strOuter << text.toLatin1().data ();
+  strOuter << text.toLatin1().toStdString();
 
   return strOuter;
-}
+}*/
 
 void Transformation::printStream (QString indentation,
                                   QTextStream &str) const

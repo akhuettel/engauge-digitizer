@@ -7,7 +7,6 @@
 #include "EngaugeAssert.h"
 #include "GridLine.h"
 #include "Logger.h"
-#include <qdebug.h>
 #include <QGraphicsItem>
 #include <QGraphicsScene>
 #include <QPen>

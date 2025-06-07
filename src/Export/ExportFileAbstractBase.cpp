@@ -11,7 +11,6 @@
 #include "EngaugeAssert.h"
 #include "ExportFileAbstractBase.h"
 #include "Logger.h"
-#include <qdebug.h>
 #include <qmath.h>
 #include <QTextStream>
 #include "Transformation.h"

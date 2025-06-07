@@ -35,10 +35,6 @@ void TestGraphCoords::initTestCase ()
   const QStringList NO_LOAD_STARTUP_FILES;
   const QStringList NO_COMMAND_LINE;
   
-  initializeLogging ("engauge_test",
-                     "engauge_test.log",
-                     DEBUG_FLAG);
-
   MainWindow w (NO_ERROR_REPORT_LOG_FILE,
                 NO_REGRESSION_OPEN_FILE,
                 NO_DROP_REGRESSION,

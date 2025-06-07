@@ -11,7 +11,6 @@
 #include "EngaugeAssert.h"
 #include "Logger.h"
 #include "Point.h"
-#include <qdebug.h>
 #include <QTextStream>
 #include <QXmlStreamWriter>
 #include "Transformation.h"

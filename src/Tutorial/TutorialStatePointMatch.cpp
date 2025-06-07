@@ -5,7 +5,6 @@
  ******************************************************************************************************/
 
 #include "Logger.h"
-#include <qdebug.h>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
 #include <QGraphicsView>

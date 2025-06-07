@@ -8,7 +8,6 @@
 #include "DocumentSerialize.h"
 #include "EngaugeAssert.h"
 #include "Logger.h"
-#include <qdebug.h>
 #include <QHash>
 #include <QTextStream>
 #include "QtToString.h"

@@ -6,7 +6,6 @@
 
 #include <QApplication>
 #include <QClipboard>
-#include <qdebug.h>
 #include <QDrag>
 #include <QGuiApplication>
 #include <QHeaderView>

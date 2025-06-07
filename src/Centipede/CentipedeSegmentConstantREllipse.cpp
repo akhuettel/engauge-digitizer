@@ -13,7 +13,6 @@
 #include "GraphicsArcItemRelay.h"
 #include "GraphicsScene.h"
 #include "mmsubs.h"
-#include <qdebug.h>
 #include <qmath.h>
 #include <QPen>
 #include "QtToString.h"

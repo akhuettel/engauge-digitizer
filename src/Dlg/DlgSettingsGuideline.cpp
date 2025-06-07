@@ -25,7 +25,6 @@
 #include <QApplication>
 #include <QCheckBox>
 #include <QComboBox>
-#include <qdebug.h>
 #include <QDir>
 #include <QDoubleSpinBox>
 #include <QGraphicsLineItem>

@@ -158,10 +158,6 @@ void TestGuidelines::initTestCase ()
 
   importFile << "../samples/inverse.jpg";
 
-  initializeLogging ("engauge_test",
-                     "engauge_test.log",
-                     DEBUG_FLAG);
-
   m_mainWindow = new MainWindow (NO_ERROR_REPORT_LOG_FILE,
                                  NO_REGRESSION_OPEN_FILE,
                                  NO_DROP_REGRESSION,

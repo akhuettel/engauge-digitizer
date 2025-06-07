@@ -6,7 +6,6 @@
 
 #include "DataKey.h"
 #include "Ghosts.h"
-#include <qdebug.h>
 #include <QGraphicsItem>
 #include <QGraphicsPathItem>
 #include <QGraphicsPolygonItem>

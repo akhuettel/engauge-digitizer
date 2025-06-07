@@ -10,7 +10,6 @@
 #include "EngaugeAssert.h"
 #include "Logger.h"
 #include "MainWindow.h"
-#include <qdebug.h>
 #include <QStringList>
 #include "QtToString.h"
 #include <QXmlStreamReader>

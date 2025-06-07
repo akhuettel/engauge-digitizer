@@ -11,7 +11,6 @@
 #include <iostream>
 #include "Logger.h"
 #include "mmsubs.h"
-#include <qdebug.h>
 #include <QFile>
 #include <QGraphicsScene>
 #include <qmath.h>
@@ -98,103 +97,6 @@ void Segment::dumpToGnuplot (QTextStream &strDump,
                              const SegmentLine *lineNew) const
 {
   // Only show this dump spew when logging is opened up completely
-  if (mainCat->getPriority() == log4cpp::Priority::DEBUG) {
-
-    // Show "before" and "after" line info. Note that the merged line starts with lineOld->line().p1()
-    // and ends with lineNew->line().p2()
-    QString label = QString ("Old: (%1,%2) to (%3,%4), New: (%5,%6) to (%7,%8)")
-                    .arg (lineOld->line().x1())
-                    .arg (lineOld->line().y1())
-                    .arg (lineOld->line().x2())
-                    .arg (lineOld->line().y2())
-                    .arg (lineNew->line().x1())
-                    .arg (lineNew->line().y1())
-                    .arg (lineNew->line().x2())
-                    .arg (lineNew->line().y2());
-
-    strDump << "unset label\n";
-    strDump << "set label \"" << label << "\" at graph 0, graph 0.02\n";
-    strDump << "set grid xtics\n";
-    strDump << "set grid ytics\n";
-
-    // Get the bounds
-    int rows = 0, cols = 0;
-    QList<SegmentLine*>::const_iterator itr;
-    for (itr = m_lines.begin(); itr != m_lines.end(); itr++) {
-
-      SegmentLine *line = *itr;
-      ENGAUGE_CHECK_PTR (line);
-
-      int x1 = qFloor (line->line().x1());
-      int y1 = qFloor (line->line().y1());
-      int x2 = qFloor (line->line().x2());
-      int y2 = qFloor (line->line().y2());
-
-      rows = qMax (rows, y1 + 1);
-      rows = qMax (rows, y2 + 1);
-      cols = qMax (cols, x1 + 1);
-      cols = qMax (cols, x2 + 1);
-    }
-
-    // Horizontal and vertical width is computed so merged line mostly fills the plot window,
-    // and (xInt,yInt) is at the center
-    int halfWidthX = qFloor (1.5 * qMax (qAbs (lineOld->line().dx()),
-                                         qAbs (lineNew->line().dx())));
-    int halfWidthY = qFloor (1.5 * qMax (qAbs (lineOld->line().dy()),
-                                         qAbs (lineNew->line().dy())));
-
-    // Zoom in so changes are easier to see
-    strDump << "set xrange [" << (xInt - halfWidthX - 1) << ":" << (xInt + halfWidthX + 1) << "]\n";
-    strDump << "set yrange [" << (yInt - halfWidthY - 1) << ":" << (yInt + halfWidthY + 1) << "]\n";
-
-    // One small curve shows xInt as horizontal line, and another shows yInt as vertical line.
-    // A small curve shows the replacement line
-    // Then two hhuge piecewise-defined curve show the pre-merge Segment pixels as two alternating colors
-    strDump << "plot \\\n"
-            << "\"-\" title \"\" with lines, \\\n"
-            << "\"-\" title \"\" with lines, \\\n"
-            << "\"-\" title \"Replacement\" with lines, \\\n"
-            << "\"-\" title \"Segment pixels Even\" with linespoints, \\\n"
-            << "\"-\" title \"Segment pixels Odd\"  with linespoints\n"
-            << xInt << " " << (yInt - halfWidthY) << "\n"
-            << xInt << " " << (yInt + halfWidthY) << "\n"
-            << "end\n"
-            << (xInt - halfWidthX) << " " << yInt << "\n"
-            << (xInt + halfWidthY) << " " << yInt << "\n"
-            << "end\n"
-            << lineOld->line().x1() << " " << lineOld->line().y1() << "\n"
-            << lineNew->line().x2() << " " << lineNew->line().y2() << "\n"
-            << "end\n";
-
-    // Fill the array from the list
-    QString even, odd;
-    QTextStream strEven (&even), strOdd (&odd);
-    for (int index = 0; index < m_lines.count(); index++) {
-
-      SegmentLine *line = m_lines.at (index);
-      int x1 = qFloor (line->line().x1());
-      int y1 = qFloor (line->line().y1());
-      int x2 = qFloor (line->line().x2());
-      int y2 = qFloor (line->line().y2());
-
-      if (index % 2 == 0) {
-        strEven << x1 << " " << y1 << "\n";
-        strEven << x2 << " " << y2 << "\n";
-        strEven << "\n";
-      } else {
-        strOdd << x1 << " " << y1 << "\n";
-        strOdd << x2 << " " << y2 << "\n";
-        strOdd << "\n";
-      }
-    }
-
-    strDump << even << "\n";
-    strDump << "end\n";
-    strDump << odd << "\n";
-    strDump << "end\n";
-    strDump << "pause -1 \"Hit Enter to continue\"\n";
-    strDump << Compatibility::flush;
-  }
 }
 
 QList<QPoint> Segment::fillPoints(const DocumentModelSegments &modelSegments)

@@ -7,7 +7,6 @@
 #include "ExportOrdinalsSmooth.h"
 #include "LinearToLog.h"
 #include "Logger.h"
-#include <qdebug.h>
 #include <qmath.h>
 #include <QPointF>
 #include "Spline.h"

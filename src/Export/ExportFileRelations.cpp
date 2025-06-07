@@ -14,7 +14,6 @@
 #include "ExportOrdinalsStraight.h"
 #include "FormatCoordsUnits.h"
 #include "Logger.h"
-#include <qdebug.h>
 #include <qmath.h>
 #include <QTextStream>
 #include <QVector>

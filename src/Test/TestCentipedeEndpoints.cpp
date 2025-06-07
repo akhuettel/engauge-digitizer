@@ -27,10 +27,6 @@ void TestCentipedeEndpoints::initTestCase ()
   
   const bool DEBUG_FLAG = false;
 
-  initializeLogging ("engauge_test",
-                     "engauge_test.log",
-                     DEBUG_FLAG);
-
   initTestCaseCommon ();
   initTestCaseCartesian ();
   initTestCasePolarLog ();

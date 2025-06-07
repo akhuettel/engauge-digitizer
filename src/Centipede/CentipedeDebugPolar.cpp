@@ -9,7 +9,6 @@
 #include "Logger.h"
 #include "mmsubs.h"
 #include <QColor>
-#include <qdebug.h>
 #include <QGraphicsEllipseItem>
 #include <QGraphicsPolygonItem>
 #include <QGraphicsRectItem>

@@ -166,11 +166,6 @@ int main(int argc, char *argv[])
                 loadStartupFiles,
                 commandLineWithoutLoadStartupFiles);
 
-  // Logging
-  initializeLogging ("engauge",
-                     engaugeLogFilename(),
-                     isDebug);
-
   // Upgrade or run normally
   int rtn = 0;
   if (isUpgrade) {

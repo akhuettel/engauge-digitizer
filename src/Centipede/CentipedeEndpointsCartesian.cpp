@@ -6,7 +6,6 @@
 
 #include "CentipedeEndpointsCartesian.h"
 #include "mmsubs.h"
-#include <qdebug.h>
 #include <qmath.h>
 #include <QPointF>
 #include "Transformation.h"

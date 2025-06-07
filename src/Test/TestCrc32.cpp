@@ -22,11 +22,7 @@ void TestCrc32::cleanupTestCase ()
 
 void TestCrc32::initTestCase ()
 {
-  const bool DEBUG_FLAG = false;
 
-  initializeLogging ("engauge_test",
-                     "engauge_test.log",
-                     DEBUG_FLAG);
 }
 
 void TestCrc32::testFileBinary ()

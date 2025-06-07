@@ -9,7 +9,6 @@
 #include "CoordsType.h"
 #include "Logger.h"
 #include "mmsubs.h"
-#include <qdebug.h>
 #include <qmath.h>
 #include <QPointF>
 #include "QtToString.h"

@@ -215,9 +215,6 @@ void Guidelines::createReplacementGuideline (const QString &identifierReplaced,
     createGuidelineY(identifierReplaced,
                      newValue);
     break;
-
-  default:
-
   }
 }
 

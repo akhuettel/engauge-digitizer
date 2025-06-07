@@ -32,9 +32,6 @@ bool TestExportAlign::epsilonTest (double a,
 
 void TestExportAlign::initTestCase ()
 {
-  initializeLogging ("engauge_test",
-                     "engauge_test.log",
-                     DEBUG_FLAG);
 }
 
 void TestExportAlign::testLinearDigits1 ()
