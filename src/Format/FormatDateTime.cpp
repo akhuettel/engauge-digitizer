@@ -30,7 +30,7 @@ bool FormatDateTime::ambiguityBetweenDateAndTime (CoordUnitsDate coordUnitsDate,
       coordUnitsTime != COORD_UNITS_TIME_SKIP) {
 
     // See if there is just a single number
-    QStringList fields = string.trimmed().split(QRegExp ("[/- :]"));
+    QStringList fields = string.trimmed().split(QRegularExpression ("[/- :]"));
 
     if (fields.count() == 1) {
 
@@ -99,8 +99,8 @@ void FormatDateTime::dateTimeLookup (const FormatsDate &formatsDateAll,
           }
         } else {
 
-          QRegExp reg (formatDateTime);
-          if (reg.exactMatch(string)) {
+          QRegularExpression reg (formatDateTime);
+          if (reg.match(string).hasMatch()) {
 
             success = true; // Note that value does not get set in QRegExp case
             iterating = false; // Stop iterating

@@ -10,7 +10,7 @@
 #include "Logger.h"
 #include <QDoubleValidator>
 #include <qmath.h>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QStringList>
 #include <QValidator>
 
@@ -96,7 +96,7 @@ QValidator::State FormatDegreesMinutesSecondsBase::parseInput (const QString &st
   }
 
   // Split on spaces
-  QStringList fields = string.split (QRegExp ("\\s+"),
+  QStringList fields = string.split (QRegularExpression ("\\s+"),
                                      Compatibility::SkipEmptyParts ());
 
   QString field0, field1, field2; // Degrees, minutes and seconds components
@@ -186,9 +186,9 @@ void FormatDegreesMinutesSecondsBase::stripSymbols (QString &field0,
   QString strExpDegrees = QString (".*\\0%1$")
                           .arg (COORD_SYMBOL_DEGREES, FIELD_WIDTH, BASE_8);
 
-  QRegExp regExpDegrees (strExpDegrees);
+  QRegularExpression regExpDegrees (strExpDegrees);
 
-  if (regExpDegrees.exactMatch (field0)) {
+  if (regExpDegrees.match (field0).hasMatch()) {
     field0 = field0.left (field0.count() - 1);
   }
 
@@ -197,9 +197,9 @@ void FormatDegreesMinutesSecondsBase::stripSymbols (QString &field0,
       .arg (COORD_SYMBOL_MINUTES_APOSTROPHE, FIELD_WIDTH, BASE_8)
       .arg (COORD_SYMBOL_MINUTES_PRIME, FIELD_WIDTH, BASE_16);
 
-  QRegExp regExpMinutes (strExpMinutes);
+  QRegularExpression regExpMinutes (strExpMinutes);
 
-  if (regExpMinutes.exactMatch (field1)) {
+  if (regExpMinutes.match (field1).hasMatch()) {
     field1 = field1.left (field1.count() - 1);
   }
 
@@ -211,12 +211,12 @@ void FormatDegreesMinutesSecondsBase::stripSymbols (QString &field0,
       .arg (COORD_SYMBOL_MINUTES_PRIME, FIELD_WIDTH, BASE_8)
       .arg (COORD_SYMBOL_MINUTES_PRIME, FIELD_WIDTH, BASE_8);
 
-  QRegExp regExpSeconds1Char (strExpSeconds1Char), regExpSeconds2Chars (strExpSeconds2Chars);
+  QRegularExpression regExpSeconds1Char (strExpSeconds1Char), regExpSeconds2Chars (strExpSeconds2Chars);
 
-  if (regExpSeconds1Char.exactMatch (field2)) {
+  if (regExpSeconds1Char.match (field2).hasMatch()) {
     field2 = field2.left (field2.count() - 1);
   }
-  if (regExpSeconds2Chars.exactMatch (field2)) {
+  if (regExpSeconds2Chars.match (field2).hasMatch()) {
     field2 = field2.left (field2.count() - 2);
   }
 }

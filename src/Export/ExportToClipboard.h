@@ -7,11 +7,12 @@
 #ifndef EXPORT_TO_CLIPBOARD_H
 #define EXPORT_TO_CLIPBOARD_H
 
+#include <QStringList>
+#include <QTextStream>
+
 class Curve;
 class CurvesGraphs;
 class Document;
-class QStringList;
-class QTextStream;
 class Transformation;
 
 /// Strategy class for exporting to the clipboard. This strategy is external to the Document class so that class is simpler.

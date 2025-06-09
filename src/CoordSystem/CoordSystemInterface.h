@@ -28,7 +28,6 @@ class Curve;
 class CurvesGraphs;
 class QPointF;
 class QString;
-class QStringList;
 class Transformation;
 
 /// Interface common to CoordSystemContext and CoordSystem classes

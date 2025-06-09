@@ -9,6 +9,7 @@
 
 #include "GridIndependentToDependent.h"
 #include <QString>
+#include <QPoint>
 #include <QTextStream>
 
 /// Class that does special logging for GridLog and GridRemoval classes. Output file is appended to

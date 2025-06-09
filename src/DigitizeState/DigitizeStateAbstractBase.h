@@ -18,7 +18,6 @@ class DocumentModelDigitizeCurve;
 class DocumentModelSegments;
 class QSize;
 class QString;
-class QStringList;
 class Transformation;
 
 /// Base class for all digitizing states. This serves as an interface to DigitizeStateContext
