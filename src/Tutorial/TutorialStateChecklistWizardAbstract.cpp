@@ -28,7 +28,6 @@ TutorialStateChecklistWizardAbstract::TutorialStateChecklistWizardAbstract (Tuto
 
 void TutorialStateChecklistWizardAbstract::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateChecklistWizardAbstract::begin ()";
 
   context().tutorialDlg().scene().clear ();
 
@@ -64,7 +63,6 @@ void TutorialStateChecklistWizardAbstract::begin ()
 
 void TutorialStateChecklistWizardAbstract::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateChecklistWizardAbstract::end ()";
 
   // It is not safe to remove and deallocate items here since an active TutorialButton
   // may be on the stack. So we clear the scene as the first step in the next begin()

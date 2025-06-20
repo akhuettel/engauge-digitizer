@@ -23,9 +23,6 @@ GuidelineStateDeployedConstantYUnselectLock::~GuidelineStateDeployedConstantYUns
 
 void GuidelineStateDeployedConstantYUnselectLock::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantYUnselectLock::begin"
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (false,
                true);
 
@@ -39,7 +36,6 @@ bool GuidelineStateDeployedConstantYUnselectLock::doPaint () const
 
 void GuidelineStateDeployedConstantYUnselectLock::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantYUnselectLock::end";
 }
 
 void GuidelineStateDeployedConstantYUnselectLock::handleActiveChange (bool active)

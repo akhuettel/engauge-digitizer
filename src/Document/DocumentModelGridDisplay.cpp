@@ -115,7 +115,6 @@ unsigned int DocumentModelGridDisplay::lineWidth () const
 
 void DocumentModelGridDisplay::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelGridDisplay::loadXml";
 
   bool success = true;
 
@@ -203,7 +202,6 @@ void DocumentModelGridDisplay::printStream(QString indentation,
 
 void DocumentModelGridDisplay::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelGridDisplay::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_GRID_DISPLAY);
   writer.writeAttribute(DOCUMENT_SERIALIZE_GRID_DISPLAY_STABLE, m_stable ?

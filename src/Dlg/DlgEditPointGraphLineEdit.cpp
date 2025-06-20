@@ -12,12 +12,10 @@ DlgEditPointGraphLineEdit::DlgEditPointGraphLineEdit (QWidget *widget) :
   QLineEdit (widget),
   m_hover (false)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgEditPointGraphLineEdit::DlgEditPointGraphLineEdit";
 }
 
 DlgEditPointGraphLineEdit::~DlgEditPointGraphLineEdit()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgEditPointGraphLineEdit::~DlgEditPointGraphLineEdit";
 }
 
 void DlgEditPointGraphLineEdit::enterEvent(QEvent *)

@@ -23,9 +23,6 @@ GuidelineStateDeployedConstantYUnselectHide::~GuidelineStateDeployedConstantYUns
 
 void GuidelineStateDeployedConstantYUnselectHide::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantYUnselectHide::begin"
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (false,
                false);
 
@@ -39,7 +36,6 @@ bool GuidelineStateDeployedConstantYUnselectHide::doPaint () const
 
 void GuidelineStateDeployedConstantYUnselectHide::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantYUnselectHide::end";
 }
 
 void GuidelineStateDeployedConstantYUnselectHide::handleActiveChange (bool /* active */)

@@ -13,7 +13,6 @@ DlgValidatorDegreesMinutesSeconds::DlgValidatorDegreesMinutesSeconds(CoordScale 
   DlgValidatorAbstract(parent),
   m_coordScale (coordScale)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgValidatorDegreesMinutesSeconds::DlgValidatorDegreesMinutesSeconds";
 }
 
 QValidator::State DlgValidatorDegreesMinutesSeconds::validate (QString &input,

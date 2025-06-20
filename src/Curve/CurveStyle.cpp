@@ -30,7 +30,6 @@ LineStyle CurveStyle::lineStyle() const
 
 QString CurveStyle::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CurveStyle::loadXml";
 
   bool success = true;
   QString curveName;
@@ -93,7 +92,6 @@ void CurveStyle::printStream(QString indentation,
 void CurveStyle::saveXml(QXmlStreamWriter &writer,
                          const QString &curveName) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CurveStyle::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_CURVE_STYLE);
   writer.writeAttribute (DOCUMENT_SERIALIZE_CURVE_NAME, curveName);

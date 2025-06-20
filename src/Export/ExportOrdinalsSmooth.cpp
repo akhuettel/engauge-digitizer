@@ -23,7 +23,6 @@ void ExportOrdinalsSmooth::loadSplinePairsWithoutTransformation (const Points &p
                                                                  vector<double> &t,
                                                                  vector<SplinePair> &xy) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportOrdinalsSmooth::loadSplinePairsWithoutTransformation";
 
   Points::const_iterator itrP;
   for (itrP = points.begin(); itrP != points.end(); itrP++) {
@@ -43,7 +42,6 @@ void ExportOrdinalsSmooth::loadSplinePairsWithTransformation (const Points &poin
                                                               vector<double> &t,
                                                               vector<SplinePair> &xy) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportOrdinalsSmooth::loadSplinePairsWithTransformation";
 
   LinearToLog linearToLog;
 
@@ -65,7 +63,6 @@ ExportValuesOrdinal ExportOrdinalsSmooth::ordinalsAtIntervalsGraph (const vector
                                                                     const vector<SplinePair> &xy,
                                                                     double pointsInterval) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportOrdinalsSmooth::ordinalsAtIntervalsGraph";
 
   const double NUM_SMALLER_INTERVALS = 1000;
 

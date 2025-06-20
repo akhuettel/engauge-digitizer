@@ -49,7 +49,6 @@ DlgSettingsSegments::DlgSettingsSegments(MainWindow &mainWindow) :
   m_modelSegmentsAfter (nullptr),
   m_loading (false)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::DlgSettingsSegments";
 
   QWidget *subPanel = createSubPanel ();
   finishPanel (subPanel);
@@ -57,7 +56,6 @@ DlgSettingsSegments::DlgSettingsSegments(MainWindow &mainWindow) :
 
 DlgSettingsSegments::~DlgSettingsSegments()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::~DlgSettingsSegments";
 }
 
 void DlgSettingsSegments::clearPointsOneScene (GraphicsPoints &points)
@@ -74,7 +72,6 @@ void DlgSettingsSegments::clearPointsOneScene (GraphicsPoints &points)
 void DlgSettingsSegments::createControls (QGridLayout *layout,
                                           int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::createControls";
 
   QLabel *labelMinLength = new QLabel(QString ("%1:").arg (tr ("Minimum length (points)")));
   layout->addWidget(labelMinLength, row, 1);
@@ -175,7 +172,6 @@ void DlgSettingsSegments::createOptionalSaveDefault (QHBoxLayout * /* layout */)
 void DlgSettingsSegments::createPreview (QGridLayout *layout,
                                          int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::createPreview";
 
   QLabel *labelPreviewActive = new QLabel (tr ("Hover Preview"));
   layout->addWidget (labelPreviewActive, row, 0, 1, 2);
@@ -210,7 +206,6 @@ void DlgSettingsSegments::createPreview (QGridLayout *layout,
 
 QImage DlgSettingsSegments::createPreviewImage () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::createPreviewImage";
 
   QImage image (IMAGE_WIDTH,
                 IMAGE_HEIGHT,
@@ -268,7 +263,6 @@ QImage DlgSettingsSegments::createPreviewImage () const
 
 QWidget *DlgSettingsSegments::createSubPanel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::createSubPanel";
 
   QWidget *subPanel = new QWidget ();
   QGridLayout *layout = new QGridLayout (subPanel);
@@ -298,7 +292,6 @@ QWidget *DlgSettingsSegments::createSubPanel ()
 
 void DlgSettingsSegments::handleOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::handleOk";
 
   CmdSettingsSegments *cmd = new CmdSettingsSegments (mainWindow (),
                                                       cmdMediator ().document(),
@@ -311,7 +304,6 @@ void DlgSettingsSegments::handleOk ()
 
 void DlgSettingsSegments::load (CmdMediator &cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::load";
 
   // Loading starts here
   m_loading = true;
@@ -364,7 +356,6 @@ void DlgSettingsSegments::setSmallDialogs(bool smallDialogs)
 
 void DlgSettingsSegments::slotFillCorners (int state)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::slotFillCorner";
 
   m_modelSegmentsAfter->setFillCorners(state == Qt::Checked);
   updateControls();
@@ -373,7 +364,6 @@ void DlgSettingsSegments::slotFillCorners (int state)
 
 void DlgSettingsSegments::slotInactiveOpacity (const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::slotInactiveOpacity";
 
   InactiveOpacity inactiveOpacity = static_cast<InactiveOpacity> (m_cmbInactiveOpacity->currentData().toInt());
   m_modelSegmentsAfter->setInactiveOpacity(inactiveOpacity);
@@ -383,7 +373,6 @@ void DlgSettingsSegments::slotInactiveOpacity (const QString &)
 
 void DlgSettingsSegments::slotLineColor (const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::slotLineColor";
 
   m_modelSegmentsAfter->setLineColor(static_cast<ColorPalette> (m_cmbLineColor->currentData().toInt()));
   updateControls();
@@ -392,7 +381,6 @@ void DlgSettingsSegments::slotLineColor (const QString &)
 
 void DlgSettingsSegments::slotLineWidthActive (int lineWidthActive)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::slotLineWidthActive";
 
   m_modelSegmentsAfter->setLineWidthActive(lineWidthActive);
   updateControls();
@@ -401,7 +389,6 @@ void DlgSettingsSegments::slotLineWidthActive (int lineWidthActive)
 
 void DlgSettingsSegments::slotLineWidthInactive (int lineWidthInactive)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::slotLineWidthInactive";
 
   m_modelSegmentsAfter->setLineWidthInactive(lineWidthInactive);
   updateControls();
@@ -410,7 +397,6 @@ void DlgSettingsSegments::slotLineWidthInactive (int lineWidthInactive)
 
 void DlgSettingsSegments::slotMinLength (const QString &minLength)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::slotMinLength";
 
   m_modelSegmentsAfter->setMinLength(minLength.toDouble());
   updateControls();
@@ -419,7 +405,6 @@ void DlgSettingsSegments::slotMinLength (const QString &minLength)
 
 void DlgSettingsSegments::slotPointSeparation (const QString &pointSeparation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::slotPointSeparation";
 
   m_modelSegmentsAfter->setPointSeparation(pointSeparation.toDouble());
   updateControls();
@@ -438,9 +423,6 @@ void DlgSettingsSegments::updateControls()
 
 void DlgSettingsSegments::updatePreview()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsSegments::updatePreview"
-                              << " loading=" << (m_loading ? "true" : "false");
-
   updatePreviewOneScene (m_scenePreviewActive,
                          m_segmentsActive,
                          m_pointsActive,

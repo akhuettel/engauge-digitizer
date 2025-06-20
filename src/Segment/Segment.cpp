@@ -49,12 +49,6 @@ void Segment::appendColumn(int x,
   int xNew = x;
   int yNew = y;
 
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Segment::appendColumn"
-                               << " segment=0x" << std::hex << static_cast<void*> (this) << std::dec
-                               << " adding ("
-                               << xOld << "," << yOld << ") to ("
-                               << xNew << "," << yNew << ")";
-
   SegmentLine* line = new SegmentLine(m_scene,
                                       modelSegments,
                                       this);
@@ -205,7 +199,6 @@ void Segment::dumpToGnuplot (QTextStream &strDump,
 
 QList<QPoint> Segment::fillPoints(const DocumentModelSegments &modelSegments)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Segment::fillPoints";
 
   if (modelSegments.fillCorners()) {
     return fillPointsFillingCorners(modelSegments);
@@ -281,26 +274,17 @@ QList<QPoint> Segment::fillPointsFillingCorners(const DocumentModelSegments &mod
 
 QPointF Segment::firstPoint () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Segment::firstPoint"
-                              << " lineCount=" << m_lines.count();
-
   // There has to be at least one SegmentLine since this only gets called when a SegmentLine is clicked on
   ENGAUGE_ASSERT (m_lines.count () > 0);
 
   SegmentLine *line = m_lines.first();
   QPointF pos = line->line().p1();
 
-  LOG4CPP_INFO_S ((*mainCat)) << "Segment::firstPoint"
-                              << " pos=" << QPointFToString (pos).toLatin1().data();
-
   return pos;
 }
 
 void Segment::forwardMousePress()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Segment::forwardMousePress"
-                              << " segmentLines=" << m_lines.count();
-
   emit signalMouseClickOnSegment (firstPoint ());
 }
 
@@ -431,7 +415,6 @@ bool Segment::pointsAreCloseToLine(double xLeft,
 
 void Segment::removeUnneededLines (int *foldedLines)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Segment::removeUnneededLines";
 
   QFile *fileDump = nullptr;
   QTextStream *strDump = nullptr;
@@ -489,17 +472,6 @@ void Segment::removeUnneededLines (int *foldedLines)
           // Remove intermediate point, by removing older line and stretching new line to first point
           ++(*foldedLines);
 
-          LOG4CPP_DEBUG_S ((*mainCat)) << "Segment::removeUnneededLines"
-                                       << " segment=0x" << std::hex << static_cast<void*> (this) << std::dec
-                                       << " removing ("
-                                       << linePrevious->line().x1() << "," << linePrevious->line().y1() << ") to ("
-                                       << linePrevious->line().x2() << "," << linePrevious->line().y2() << ") "
-                                       << " and modifying ("
-                                       << line->line().x1() << "," << line->line().y1() << ") to ("
-                                       << line->line().x2() << "," << line->line().y2() << ") into ("
-                                       << xLeft << "," << yLeft << ") to ("
-                                       << xRight << "," << yRight << ")";
-
           removedPoints.append(QPoint(qFloor (xInt),
                                       qFloor (yInt)));
           m_lines.erase (itrPrevious);
@@ -538,7 +510,6 @@ void Segment::removeUnneededLines (int *foldedLines)
 
 void Segment::slotHover (bool hover)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Segment::slotHover";
 
   QList<SegmentLine*>::iterator itr, itrPrevious;
   for (itr = m_lines.begin(); itr != m_lines.end(); itr++) {
@@ -550,7 +521,6 @@ void Segment::slotHover (bool hover)
 
 void Segment::updateModelSegment(const DocumentModelSegments &modelSegments)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Segment::updateModelSegment";
 
   QList<SegmentLine*>::iterator itr;
   for (itr = m_lines.begin(); itr != m_lines.end(); itr++) {

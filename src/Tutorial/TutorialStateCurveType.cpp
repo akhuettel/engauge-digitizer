@@ -26,12 +26,10 @@ TutorialStateCurveType::TutorialStateCurveType (TutorialStateContext &context) :
   m_nextLines (nullptr),
   m_nextPoints (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateCurveType::TutorialStateCurveType";
 }
 
 void TutorialStateCurveType::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateCurveType::begin ()";
 
   context().tutorialDlg().scene().clear ();
 
@@ -75,7 +73,6 @@ void TutorialStateCurveType::begin ()
 
 void TutorialStateCurveType::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateCurveType::end ()";
 
   // It is not safe to remove and deallocate items here since an active TutorialButton
   // may be on the stack. So we clear the scene as the first step in the next begin()
@@ -83,21 +80,18 @@ void TutorialStateCurveType::end ()
 
 void TutorialStateCurveType::slotNextCurves ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateCurveType::slotNextCurves";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_SEGMENT_FILL);
 }
 
 void TutorialStateCurveType::slotNextLines ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateCurveType::slotNextLines";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_POINT_MATCH);
 }
 
 void TutorialStateCurveType::slotPrevious ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateCurveType::slotNextCurves";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_CURVE_SELECTION);
 }

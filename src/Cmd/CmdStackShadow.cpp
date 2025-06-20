@@ -21,7 +21,6 @@
 CmdStackShadow::CmdStackShadow() :
   m_mainWindow (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdStackShadow::CmdStackShadow";
 }
 
 bool CmdStackShadow::canRedo() const
@@ -35,7 +34,6 @@ void CmdStackShadow::loadCommands (MainWindow &mainWindow,
                                    Document &document,
                                    QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdStackShadow::loadCommands";
 
   // Save pointer to MainWindow
   m_mainWindow = &mainWindow;
@@ -61,7 +59,6 @@ void CmdStackShadow::loadCommands (MainWindow &mainWindow,
 
 void CmdStackShadow::slotRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdStackShadow::slotRedo";
 
   if (m_cmdList.count() > 0) {
 
@@ -100,7 +97,6 @@ void CmdStackShadow::slotRedo ()
 
 void CmdStackShadow::slotUndo()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdStackShadow::slotUndo";
 
   CmdListInternal::iterator itr;
   for (itr = m_cmdList.begin(); itr != m_cmdList.end(); itr++) {

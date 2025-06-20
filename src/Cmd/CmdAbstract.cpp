@@ -32,7 +32,6 @@ CmdAbstract::CmdAbstract(MainWindow &mainWindow,
   m_isFirstRedo (true),
   m_digitizeState (mainWindow.digitizeState ())
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAbstract::CmdAbstract";
 }
 
 CmdAbstract::~CmdAbstract()
@@ -101,7 +100,6 @@ MainWindow &CmdAbstract::mainWindow ()
 void CmdAbstract::redo ()
 {
   // Note that m_identifierIndexBeforeRedo and m_identifierIndexAfterRedo are not set until below (at which point they are logged)
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAbstract::redo";
 
   if (m_isFirstRedo) {
 
@@ -125,13 +123,10 @@ void CmdAbstract::redo ()
 
   }
 
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAbstract::redo identifierIndex=" << m_identifierIndexBeforeRedo << "->"
-                              << m_identifierIndexAfterRedo;
 }
 
 void CmdAbstract::resetSelection(const PointIdentifiers &pointIdentifiersToSelect)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAbstract::resetSelection";
 
   QList<QGraphicsItem *> items = mainWindow().view().items();
   QList<QGraphicsItem *>::iterator itrS;
@@ -152,14 +147,12 @@ void CmdAbstract::resetSelection(const PointIdentifiers &pointIdentifiersToSelec
 
 void CmdAbstract::restoreState ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAbstract::restoreState";
 
   m_mainWindow.updateDigitizeStateIfSoftwareTriggered (m_digitizeState);
 }
 
 void CmdAbstract::saveOrCheckPostCommandDocumentStateHash (const Document &document)
 {
-  // LOG4CPP_INFO_S is below
 
   DocumentHashGenerator documentHashGenerator;
   DocumentHash documentHash = documentHashGenerator.generate (document);
@@ -176,13 +169,11 @@ void CmdAbstract::saveOrCheckPostCommandDocumentStateHash (const Document &docum
 
   }
 
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAbstract::saveOrCheckPostCommandDocumentStateHash stateHash=" << m_documentHashPost.data ();
 
 }
 
 void CmdAbstract::saveOrCheckPreCommandDocumentStateHash (const Document &document)
 {
-  // LOG4CPP_INFO_S is below
 
   DocumentHashGenerator documentHashGenerator;
   DocumentHash documentHash = documentHashGenerator.generate (document);
@@ -199,7 +190,6 @@ void CmdAbstract::saveOrCheckPreCommandDocumentStateHash (const Document &docume
 
   }
 
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAbstract::saveOrCheckPreCommandDocumentStateHash stateHash=" << m_documentHashPre.data ();
 
 }
 
@@ -225,8 +215,6 @@ void CmdAbstract::selectAddedPointsForMoving (const QStringList &pointsAdded)
 
 void CmdAbstract::undo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAbstract::undo identifierIndex=" << m_identifierIndexAfterRedo << "->"
-                              << m_identifierIndexBeforeRedo;
 
   Point::setIdentifierIndex (m_identifierIndexAfterRedo);
 

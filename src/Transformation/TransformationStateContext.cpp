@@ -37,7 +37,6 @@ bool TransformationStateContext::isGnuplot() const
 
 void TransformationStateContext::resetOnLoad ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TransformationStateContext::resetOnLoad";
 
   m_currentState = NUM_TRANSFORMATION_STATES;
 }
@@ -48,7 +47,6 @@ void TransformationStateContext::triggerStateTransition (bool isGnuplot,
                                                          const Transformation &transformation,
                                                          const QString &selectedGraphCurve)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TransformationStateContext::triggerStateTransition";
 
   // Transition even if we are already at the requested state (transformationState == m_currentState) to
   // allow self-transitions. Those allow clean refreshing of the axis checker
@@ -71,7 +69,6 @@ void TransformationStateContext::triggerStateTransition (bool isGnuplot,
 void TransformationStateContext::updateAxesChecker (CmdMediator &cmdMediator,
                                                     const Transformation &transformation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TransformationStateContext::updateAxesChecker";
 
   // Skip if there is no image so the state has not yet been set yet
   if (m_currentState < NUM_TRANSFORMATION_STATES) {

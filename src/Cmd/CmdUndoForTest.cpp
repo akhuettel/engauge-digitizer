@@ -21,7 +21,6 @@ CmdUndoForTest::CmdUndoForTest(MainWindow &mainWindow,
                document,
                CMD_DESCRIPTION)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdUndoForTest::CmdUndoForTest";
 }
 
 CmdUndoForTest::CmdUndoForTest (MainWindow &mainWindow,
@@ -32,7 +31,6 @@ CmdUndoForTest::CmdUndoForTest (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdUndoForTest::CmdUndoForTest";
 }
 
 CmdUndoForTest::~CmdUndoForTest ()
@@ -41,7 +39,6 @@ CmdUndoForTest::~CmdUndoForTest ()
 
 void CmdUndoForTest::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdUndoForTest::cmdRedo";
 
   // Noop. Real Undo processing is performed externally on the command stack
 
@@ -50,7 +47,6 @@ void CmdUndoForTest::cmdRedo ()
 
 void CmdUndoForTest::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdUndoForTest::cmdUndo";
 
   // Noop. Undo of an undo does not even make sense
 

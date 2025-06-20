@@ -22,11 +22,6 @@ QPointF GuidelineOffset::XT (const QGraphicsView &view,
   QRect scrolledRect = view.viewportTransform ().inverted ().mapRect (viewportRect);
   QRectF sceneRect = view.scene()->sceneRect();
 
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineOffset::bottomTop"
-                               << " viewportRect=" << QRectFToString (viewportRect).toLatin1().data()
-                               << " scrolledRect=" << QRectFToString (scrolledRect).toLatin1().data()
-                               << " sceneRect=" << QRectFToString (sceneRect).toLatin1().data();
-
   // Use center of visible sscene
   QPointF posScene (scrolledRect.center().x(),
                     scrolledRect.center().y()), posGraph;
@@ -44,11 +39,6 @@ QPointF GuidelineOffset::YR (const QGraphicsView &view,
   QRect viewportRect = view.viewport()->rect();
   QRect scrolledRect = view.viewportTransform ().inverted ().mapRect (viewportRect);
   QRectF sceneRect = view.scene()->sceneRect();
-
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineOffset::leftRight"
-                               << " viewportRect=" << QRectFToString (viewportRect).toLatin1().data()
-                               << " scrolledRect=" << QRectFToString (scrolledRect).toLatin1().data()
-                               << " sceneRect=" << QRectFToString (sceneRect).toLatin1().data();
 
   // Use center of visible sscene
   QPointF posScene (scrolledRect.center().x(),

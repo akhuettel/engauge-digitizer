@@ -19,7 +19,6 @@ NetworkClient::NetworkClient (QObject *parent) :
 
 QString NetworkClient::cleanXml (const QString &before)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "NetworkClient::cleanXml";
 
   // Remove characters that are known to break the xml parsing in Document. Bad characters AFTER the
   // CDATA will break the parsing of the CDATA, which is a very hard bug to track down, so this

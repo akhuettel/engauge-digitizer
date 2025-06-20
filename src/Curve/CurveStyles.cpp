@@ -183,7 +183,6 @@ const PointStyle CurveStyles::pointStyle (const QString &curveName) const
 
 void CurveStyles::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CurveStyles::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_CURVE_STYLES);
   CurveStylesInternal::const_iterator itr;

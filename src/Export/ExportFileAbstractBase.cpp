@@ -32,7 +32,6 @@ QStringList ExportFileAbstractBase::curvesToInclude (const DocumentModelExportFo
                                                      CurveConnectAs curveConnectAs1,
                                                      CurveConnectAs curveConnectAs2) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileAbstractBase::curvesToInclude";
 
   QStringList curvesToInclude;
 
@@ -62,7 +61,6 @@ QStringList ExportFileAbstractBase::curvesToInclude (const DocumentModelExportFo
 
 void ExportFileAbstractBase::destroy2DArray (QVector<QVector<QString*> > &array) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileAbstractBase::destroy2DArray";
 
   int colCount = array.count();
   int rowCount = array [0].count();

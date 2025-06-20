@@ -31,10 +31,6 @@ CmdEditPointAxis::CmdEditPointAxis (MainWindow &mainWindow,
   m_posGraphAfter (posGraphAfter),
   m_isXOnly (isXOnly)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdEditPointAxis::CmdEditPointAxis point="
-                              << pointIdentifier.toLatin1 ().data ()
-                              << " posGraphBefore=" << QPointFToString (posGraphBefore).toLatin1 ().data ()
-                              << " posGraphAfter=" << QPointFToString (posGraphAfter).toLatin1 ().data ();
 }
 
 CmdEditPointAxis::CmdEditPointAxis (MainWindow &mainWindow,
@@ -45,7 +41,6 @@ CmdEditPointAxis::CmdEditPointAxis (MainWindow &mainWindow,
                       document,
                       cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdEditPointAxis::CmdEditPointAxis";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -77,7 +72,6 @@ CmdEditPointAxis::~CmdEditPointAxis ()
 
 void CmdEditPointAxis::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdEditPointAxis::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -91,7 +85,6 @@ void CmdEditPointAxis::cmdRedo ()
 
 void CmdEditPointAxis::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdEditPointAxis::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

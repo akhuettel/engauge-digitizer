@@ -175,8 +175,6 @@ void Curve::editPointGraph (bool isX,
                             const QStringList &identifiers,
                             const Transformation &transformation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Curve::editPointGraph"
-                              << " identifiers=" << identifiers.join(" ").toLatin1().data();
 
   if (transformation.transformIsDefined()) {
 
@@ -223,8 +221,6 @@ void Curve::exportToClipboard (const QHash<QString, bool> &selectedHash,
                                QTextStream &strHtml,
                                CurvesGraphs &curvesGraphs) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Curve::exportToClipboard"
-                              << " hashCount=" << selectedHash.count();
 
   // This method assumes Copy is only allowed when Transformation is valid
 
@@ -293,8 +289,6 @@ bool Curve::isXOnly(const QString &pointIdentifier) const
     }
   }
 
-  LOG4CPP_ERROR_S ((*mainCat)) << "Curve::isXOnly encountered unknown indentifier "
-                               << pointIdentifier.toLatin1().data();
   ENGAUGE_ASSERT (false);
 
   return false;
@@ -341,7 +335,6 @@ void Curve::iterateThroughCurveSegments (const Functor2wRet<const Point&, const 
 
 void Curve::loadCurvePoints(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Curve::loadCurvePoints";
 
   bool success = true;
 
@@ -372,7 +365,6 @@ void Curve::loadCurvePoints(QXmlStreamReader &reader)
 
 void Curve::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Curve::loadXml";
 
   bool success = true;
 
@@ -446,8 +438,6 @@ Point *Curve::pointForPointIdentifier (const QString pointIdentifier)
     }
   }
 
-  LOG4CPP_ERROR_S ((*mainCat)) << "Curve::pointForPointIdentifier encountered unknown indentifier "
-                               << pointIdentifier.toLatin1().data();  
   ENGAUGE_ASSERT (false);
   return nullptr;
 }
@@ -526,7 +516,6 @@ void Curve::removePoint (const QString &identifier)
 
 void Curve::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Curve::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_CURVE);
   writer.writeAttribute(DOCUMENT_SERIALIZE_CURVE_NAME, m_curveName);
@@ -573,10 +562,6 @@ void Curve::updatePointOrdinals (const Transformation &transformation)
 {
   CurveConnectAs curveConnectAs = m_curveStyle.lineStyle().curveConnectAs();
 
-  LOG4CPP_INFO_S ((*mainCat)) << "Curve::updatePointOrdinals"
-                              << " curve=" << m_curveName.toLatin1().data()
-                              << " connectAs=" << curveConnectAsToString(curveConnectAs).toLatin1().data();
-
   // Make sure ordinals are properly ordered. Sorting is done afterward
 
   if (curveConnectAs == CONNECT_AS_FUNCTION_SMOOTH ||
@@ -591,7 +576,6 @@ void Curve::updatePointOrdinals (const Transformation &transformation)
 
   } else {
 
-    LOG4CPP_ERROR_S ((*mainCat)) << "Curve::updatePointOrdinals encountered unexpected connection configuration";
     ENGAUGE_ASSERT (false);
 
   }
@@ -604,10 +588,6 @@ void Curve::updatePointOrdinals (const Transformation &transformation)
 void Curve::updatePointOrdinalsFunctions (const Transformation &transformation)
 {
   CurveConnectAs curveConnectAs = m_curveStyle.lineStyle().curveConnectAs();
-
-  LOG4CPP_INFO_S ((*mainCat)) << "Curve::updatePointOrdinalsFunctions"
-                              << " curve=" << m_curveName.toLatin1().data()
-                              << " connectAs=" << curveConnectAsToString(curveConnectAs).toLatin1().data();
 
   // Get a map of x/theta values as keys with point identifiers as the values. This has to be a multimap since
   // some users will have two (or maybe more) points with the same x coordinate, even though true functions should
@@ -667,10 +647,6 @@ void Curve::updatePointOrdinalsFunctions (const Transformation &transformation)
 void Curve::updatePointOrdinalsRelations ()
 {
   CurveConnectAs curveConnectAs = m_curveStyle.lineStyle().curveConnectAs();
-
-  LOG4CPP_INFO_S ((*mainCat)) << "Curve::updatePointOrdinalsRelations"
-                              << " curve=" << m_curveName.toLatin1().data()
-                              << " connectAs=" << curveConnectAsToString(curveConnectAs).toLatin1().data();
 
     // Keep the ordinal numbering, but make sure the ordinals are evenly spaced
     Points::iterator itr;

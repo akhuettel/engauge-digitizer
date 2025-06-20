@@ -46,22 +46,15 @@ void GridHealerAbstractBase::fillTrapezoid (QImage &image,
 {
   // Sanity checks
   if (xBL == 0 || yBL == 0 || xBR == 0 || yBR == 0 || xTR == 0 || yTR == 0 || xTL == 0 || yTL == 0) {
-    LOG4CPP_ERROR_S ((*mainCat)) << "GridHealerAbstractBase::fillTrapezoid received undefined corner coordinate "
-                                 << "xBL=" << xBL << " yBL=" << yBL << " xBR=" << xBR << " yBR=" << yBR
-                                 << "xTR=" << xTR << " yTR=" << yTR << " xTL=" << xTL << " yTL=" << yTL;
   }
 
   if (!Pixels::pixelIsBlack(image, xBL, yBL)) {
-    LOG4CPP_ERROR_S ((*mainCat)) << "GridHealerAbstractBase::fillTrapezoid has bad bottom left point";
   }
   if (!Pixels::pixelIsBlack(image, xBR, yBR)) {
-    LOG4CPP_ERROR_S ((*mainCat)) << "GridHealerAbstractBase::fillTrapezoid has bad bottom right point";
   }
   if (!Pixels::pixelIsBlack(image, xTR, yTR)) {
-    LOG4CPP_ERROR_S ((*mainCat)) << "GridHealerAbstractBase::fillTrapezoid has bad top right point";
   }
   if (!Pixels::pixelIsBlack(image, xTL, yTL)) {
-    LOG4CPP_ERROR_S ((*mainCat)) << "GridHealerAbstractBase::fillTrapezoid has bad top left point";
   }
 
   // Any quadrilateral (including this trapezoid) can be considered the union of two triangles

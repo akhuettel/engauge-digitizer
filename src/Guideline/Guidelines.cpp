@@ -83,10 +83,6 @@ CoordsType Guidelines::coordsType () const
 GuidelineAbstract *Guidelines::createGuideline (const QString &identifier,
                                                 GuidelineState stateInitial)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Guidelines::createGuideline"
-                               << " identifier=" << identifier.toLatin1().data()
-                               << " state=" << guidelineStateAsString (stateInitial).toLatin1().data();
-
   GuidelineAbstract *guideline = m_guidelineFactory->createGuideline (*this,
                                                                       stateInitial,
                                                                       m_mainWindow,
@@ -195,8 +191,6 @@ void Guidelines::createReplacementGuideline (const QString &identifierReplaced,
                                              double newValue,
                                              GuidelineState guidelineStateForReplacement)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Guidelines::createReplacementGuideline";
-
   // Out with the old. Since it is still on the stack we only unregister, versus remove, it
   unregisterGuideline (identifierReplaced);
 
@@ -223,8 +217,6 @@ void Guidelines::createReplacementGuideline (const QString &identifierReplaced,
     break;
 
   default:
-    LOG4CPP_ERROR_S ((*mainCat)) << "Guidelines::createReplacementGuideline encountered unexpected state "
-                                 << guidelineStateAsString (guidelineStateForReplacement).toLatin1().data();
 
   }
 }
@@ -241,8 +233,6 @@ GuidelineContainerPrivate::iterator Guidelines::findIdentifierXT (const QString 
     }
   }
 
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Guidelines::findIdentifierXT could not find " << identifier.toLatin1().data();
-
   return m_guidelineContainerXT.end();
 }
 
@@ -257,8 +247,6 @@ GuidelineContainerPrivate::iterator Guidelines::findIdentifierYR (const QString 
       return itr;
     }
   }
-
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Guidelines::findIdentifierYR could not find " << identifier.toLatin1().data();
 
   return m_guidelineContainerYR.end(); // Return something
 }
@@ -346,14 +334,9 @@ DocumentModelGuideline Guidelines::updateValues (const DocumentModelGuideline &m
 void Guidelines::moveGuidelineXT (const QString &identifier,
                                   double valueAfter)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Guidelines::moveGuidelineXT"
-                               << " identifier=" << identifier.toLatin1().data()
-                               << " value=" << valueAfter;
-
   GuidelineContainerPrivate::iterator itr = findIdentifierXT (identifier);
 
    if (itr== m_guidelineContainerXT.end ()) {
-     LOG4CPP_ERROR_S ((*mainCat)) << "Guidelines::moveGuidelineXT";
    } else {
      // Move it
     GuidelineAbstract *guideline = *itr;
@@ -364,14 +347,9 @@ void Guidelines::moveGuidelineXT (const QString &identifier,
 void Guidelines::moveGuidelineYR (const QString &identifier,
                                   double valueAfter)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Guidelines::moveGuidelineYR"
-                               << " identifier=" << identifier.toLatin1().data()
-                               << " value=" << valueAfter;
-
   GuidelineContainerPrivate::iterator itr = findIdentifierYR (identifier);
 
   if (itr == m_guidelineContainerYR.end ()) {
-    LOG4CPP_ERROR_S ((*mainCat)) << "Guidelines::moveGuidelineYR";
   } else {
     // Move it
     GuidelineAbstract *guideline = *itr;
@@ -391,9 +369,6 @@ void Guidelines::registerGuidelineYR (GuidelineAbstract *guideline)
 
 void Guidelines::removeGuideline (const QString &identifier)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Guidelines::removeGuideline"
-                               << " identifier=" << identifier.toLatin1().data();
-
   GuidelineAbstract *guideline = unregisterGuideline (identifier);
 
   if (guideline != nullptr) {
@@ -487,9 +462,6 @@ Transformation Guidelines::transformation() const
 
 GuidelineAbstract *Guidelines::unregisterGuideline (const QString &identifier)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Guidelines::unregisterGuideline"
-                               << " identifier=" << identifier.toLatin1().data();
-
   // Try to unregister XT entry
   GuidelineContainerPrivate::iterator itrXT = findIdentifierXT (identifier);
   if (itrXT != m_guidelineContainerXT.end ()) {
@@ -506,8 +478,6 @@ GuidelineAbstract *Guidelines::unregisterGuideline (const QString &identifier)
     return *itrYR;
   }
 
-  LOG4CPP_ERROR_S ((*mainCat)) << "Guidelines::unregisterGuideline cannot find "
-                               << identifier.toLatin1().data();
   return nullptr;
 }
 

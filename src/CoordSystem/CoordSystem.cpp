@@ -42,7 +42,6 @@ CoordSystem::CoordSystem () :
                           CurveStyle (LineStyle::defaultAxesCurve(),
                                       PointStyle::defaultAxesCurve ())))
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::CoordSystem";
 
   SettingsForGraph settingsForGraph;
 
@@ -90,11 +89,6 @@ void CoordSystem::addPointAxisWithGeneratedIdentifier (const QPointF &posScreen,
 
   identifier = point.identifier();
 
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::addPointAxisWithGeneratedIdentifier"
-                              << " ordinal=" << ordinal
-                              << " posScreen=" << QPointFToString (posScreen).toLatin1 ().data ()
-                              << " posGraph=" << QPointFToString (posGraph).toLatin1 ().data ()
-                              << " identifier=" << identifier.toLatin1 ().data ();
 }
 
 void CoordSystem::addPointAxisWithSpecifiedIdentifier (const QPointF &posScreen,
@@ -111,11 +105,6 @@ void CoordSystem::addPointAxisWithSpecifiedIdentifier (const QPointF &posScreen,
                isXOnly);
   m_curveAxes->addPoint (point);
 
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::addPointAxisWithSpecifiedIdentifier"
-                              << " ordinal=" << ordinal
-                              << " posScreen=" << QPointFToString (posScreen).toLatin1 ().data ()
-                              << " posGraph=" << QPointFToString (posGraph).toLatin1 ().data ()
-                              << " identifier=" << identifier.toLatin1 ().data ();
 }
 
 void CoordSystem::addPointGraphWithGeneratedIdentifier (const QString &curveName,
@@ -130,10 +119,6 @@ void CoordSystem::addPointGraphWithGeneratedIdentifier (const QString &curveName
 
   identifier = point.identifier();
 
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::addPointGraphWithGeneratedIdentifier"
-                              << " ordinal=" << ordinal
-                              << " posScreen=" << QPointFToString (posScreen).toLatin1 ().data ()
-                              << " identifier=" << identifier.toLatin1 ().data ();
 }
 
 void CoordSystem::addPointGraphWithSpecifiedIdentifier (const QString &curveName,
@@ -147,10 +132,6 @@ void CoordSystem::addPointGraphWithSpecifiedIdentifier (const QString &curveName
                ordinal);
   m_curvesGraphs.addPoint (point);
 
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::addPointGraphWithSpecifiedIdentifier"
-                              << " ordinal=" << ordinal
-                              << " posScreen=" << QPointFToString (posScreen).toLatin1 ().data ()
-                              << " identifier=" << identifier.toLatin1 ().data ();
 }
 
 void CoordSystem::addPointsInCurvesGraphs (CurvesGraphs &curvesGraphs)
@@ -184,9 +165,6 @@ void CoordSystem::checkAddPointAxis (const QPointF &posScreen,
                                      bool isXOnly,
                                      DocumentAxesPointsRequired documentAxesPointsRequired)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::checkAddPointAxis"
-                              << " posScreen=" << QPointFToString (posScreen).toLatin1 ().data ()
-                              << " posGraph=" << QPointFToString (posGraph).toLatin1 ().data ();
 
   CallbackCheckAddPointAxis ftor (m_modelCoords,
                                   posScreen,
@@ -209,8 +187,6 @@ void CoordSystem::checkEditPointAxis (const QString &pointIdentifier,
                                       QString &errorMessage,
                                       DocumentAxesPointsRequired documentAxesPointsRequired)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::checkEditPointAxis"
-                              << " posGraph=" << QPointFToString (posGraph).toLatin1 ().data ();
 
   CallbackCheckEditPointAxis ftor (m_modelCoords,
                                    pointIdentifier,
@@ -277,9 +253,6 @@ int CoordSystem::curvesGraphsNumPoints(const QString &curveName) const
 void CoordSystem::editPointAxis (const QPointF &posGraph,
                                  const QString &identifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::editPointAxis"
-                              << " posGraph=(" << posGraph.x () << ", " << posGraph.y () << ") identifier="
-                              << " identifier=" << identifier.toLatin1 ().data ();
 
   m_curveAxes->editPointAxis (posGraph,
                               identifier);
@@ -292,10 +265,6 @@ void CoordSystem::editPointGraph (bool isX,
                                   const QStringList &identifiers,
                                   const Transformation &transformation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::editPointGraph posGraph=("
-                              << " x=" << (isX ? QString::number (x).toLatin1().data() : "")
-                              << " y=" << (isY ? QString::number (y).toLatin1().data() : "")
-                              << ") identifiers=" << identifiers.join(" ").toLatin1 ().data ();
 
   m_curvesGraphs.editPointGraph (isX,
                                  isY,
@@ -379,7 +348,6 @@ void CoordSystem::iterateThroughCurvesPointsGraphs (const Functor2wRet<const QSt
 
 bool CoordSystem::loadCurvesFile(const QString & /* curvesFile */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::loadCurvesFile";
 
   return true;
 }
@@ -388,7 +356,6 @@ void CoordSystem::loadPreVersion6 (QDataStream &str,
                                    double version,
                                    DocumentAxesPointsRequired &documentAxesPointsRequired)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::loadPreVersion6";
 
   qint32 int32;
   double dbl, radius = 0.0;
@@ -561,7 +528,6 @@ void CoordSystem::loadPreVersion6 (QDataStream &str,
 void CoordSystem::loadVersion6 (QXmlStreamReader &reader,
                                 DocumentAxesPointsRequired &documentAxesPointsRequired)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::loadVersion6";
 
   documentAxesPointsRequired = DOCUMENT_AXES_POINTS_REQUIRED_3;
 
@@ -602,7 +568,6 @@ void CoordSystem::loadVersion6 (QXmlStreamReader &reader,
       } else if (tag == DOCUMENT_SERIALIZE_GUIDELINES) {
         m_modelGuideline.loadXml (reader);
       } else if (tag == DOCUMENT_SERIALIZE_IMAGE) {
-        LOG4CPP_ERROR_S ((*mainCat)) << "CoordSystem::loadVersion6 encountered image out of order";
         ENGAUGE_ASSERT (false); // The image should have been read before this method was called
       } else if (tag == DOCUMENT_SERIALIZE_POINT_MATCH) {
         m_modelPointMatch.loadXml (reader);
@@ -624,7 +589,6 @@ void CoordSystem::loadVersion6 (QXmlStreamReader &reader,
 
 void CoordSystem::loadVersions7AndUp (QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::loadVersions7AndUp";
 
   // Import from xml. Loop to end of data or error condition occurs, whichever is first
   while (!reader.atEnd() &&
@@ -665,7 +629,6 @@ void CoordSystem::loadVersions7AndUp (QXmlStreamReader &reader)
       } else if (tag == DOCUMENT_SERIALIZE_GUIDELINES) {
         m_modelGuideline.loadXml (reader);
       } else if (tag == DOCUMENT_SERIALIZE_IMAGE) {
-        LOG4CPP_ERROR_S ((*mainCat)) << "CoordSystem::loadVersions7AndUp encountered image out of order";        
         ENGAUGE_ASSERT (false); // The image should have been read before this method was called
       } else if (tag == DOCUMENT_SERIALIZE_POINT_MATCH) {
         m_modelPointMatch.loadXml (reader);
@@ -847,14 +810,12 @@ QString CoordSystem::reasonForUnsuccessfulRead () const
 
 void CoordSystem::removePointAxis (const QString &identifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::removePointAxis identifier=" << identifier.toLatin1 ().data ();
 
   m_curveAxes->removePoint (identifier);
 }
 
 void CoordSystem::removePointGraph (const QString &identifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::removePointGraph identifier=" << identifier.toLatin1 ().data ();
 
   m_curvesGraphs.removePoint (identifier);
 }
@@ -907,7 +868,6 @@ QString CoordSystem::selectedCurveName () const
 
 void CoordSystem::setCurveAxes (const Curve &curveAxes)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::setCurveAxes";
 
   delete m_curveAxes;
 
@@ -916,7 +876,6 @@ void CoordSystem::setCurveAxes (const Curve &curveAxes)
 
 void CoordSystem::setCurvesGraphs (const CurvesGraphs &curvesGraphs)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::setCurvesGraphs";
 
   m_curvesGraphs = curvesGraphs;
 
@@ -1016,7 +975,6 @@ bool CoordSystem::successfulRead () const
 
 void CoordSystem::updatePointOrdinals (const Transformation &transformation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CoordSystem::updatePointOrdinals";
 
   // The graph coordinates of all points in m_curvesGraphs must have already been updated at this point. See applyTransformation
   m_curvesGraphs.updatePointOrdinals (transformation);

@@ -16,13 +16,11 @@
 
 DocumentScrub::DocumentScrub ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentScrub::DocumentScrub";
 }
 
 void DocumentScrub::check (MainWindow &mainWindow,
                            const Document &document) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentScrub::check";
 
   CallbackDocumentScrub ftor;
 

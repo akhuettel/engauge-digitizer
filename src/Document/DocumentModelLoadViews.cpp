@@ -60,7 +60,6 @@ bool DocumentModelLoadViews::guidelines () const
 
 void DocumentModelLoadViews::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelLoadViews::loadXml";
 
   bool success = true;
 
@@ -105,7 +104,6 @@ void DocumentModelLoadViews::printStream(QString indentation,
 
 void DocumentModelLoadViews::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelLoadViews::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_LOAD_VIEWS);
   writer.writeAttribute(DOCUMENT_SERIALIZE_LOAD_VIEWS_GRIDLINES, m_gridlines ?

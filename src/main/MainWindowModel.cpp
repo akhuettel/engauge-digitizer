@@ -113,8 +113,6 @@ LoadViews MainWindowModel::loadViews () const
 
 void MainWindowModel::loadXml(QXmlStreamReader & /* reader */)
 {
-  LOG4CPP_ERROR_S ((*mainCat)) << "MainWindowModel::loadXml";
-
   // This class is  never serialized
 }
 
@@ -173,8 +171,6 @@ void MainWindowModel::printStream(QString indentation,
 
 void MainWindowModel::saveXml(QXmlStreamWriter & /* writer */) const
 {
-  LOG4CPP_ERROR_S ((*mainCat)) << "MainWindowModel::saveXml";
-
   // This class is  never serialized
 }
 

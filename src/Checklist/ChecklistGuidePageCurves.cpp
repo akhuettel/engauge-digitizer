@@ -16,7 +16,6 @@
 ChecklistGuidePageCurves::ChecklistGuidePageCurves(const QString &title) :
   ChecklistGuidePage (title)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuidePageCurves::ChecklistGuidePageCurves";
 
   const QString WHATS_THIS_CURVE (tr ("Curve name. Empty if unused."));
   const QString WHATS_THIS_LINES (tr ("Draw lines between points in each curve."));
@@ -70,7 +69,6 @@ QStringList ChecklistGuidePageCurves::curveNames () const
 
 bool ChecklistGuidePageCurves::curveNamesAreAllUnique() const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuidePageCurves::curveNamesAreAllUnique";
 
   QStringList names = curveNames();
 
@@ -81,7 +79,6 @@ bool ChecklistGuidePageCurves::curveNamesAreAllUnique() const
 
 bool ChecklistGuidePageCurves::isComplete () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuidePageCurves::isComplete";
 
   return !curveNames().isEmpty () &&
       curveNamesAreAllUnique ();
@@ -89,7 +86,6 @@ bool ChecklistGuidePageCurves::isComplete () const
 
 void ChecklistGuidePageCurves::slotTableChanged ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuidePageCurves::slotTableChanged";
 
   emit completeChanged();
 }

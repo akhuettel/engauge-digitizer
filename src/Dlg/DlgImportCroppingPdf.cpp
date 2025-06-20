@@ -39,7 +39,6 @@ DlgImportCroppingPdf::DlgImportCroppingPdf(const Poppler::Document &document,
   m_resolution (resolution),
   m_pixmap (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingPdf::DlgImportCroppingPdf";
 
   setWindowTitle (tr ("PDF File Import Cropping"));
   setModal (true);
@@ -65,13 +64,11 @@ DlgImportCroppingPdf::DlgImportCroppingPdf(const Poppler::Document &document,
 
 DlgImportCroppingPdf::~DlgImportCroppingPdf()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingPdf::~DlgImportCroppingPdf";
 }
 
 void DlgImportCroppingPdf::createPageSpinner (QGridLayout *layout,
                                               int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingPdf::createPageSpinner";
 
   const int MIN_WIDTH_SPINNER = 90;
 
@@ -96,7 +93,6 @@ void DlgImportCroppingPdf::createPdfCropping ()
 void DlgImportCroppingPdf::createPreview (QGridLayout *layout,
                                           int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingPdf::createPreview";
 
   QLabel *labelPreview = new QLabel (tr ("Preview"));
   layout->addWidget (labelPreview, row++, 0, 1, 1, Qt::AlignLeft);
@@ -228,7 +224,6 @@ void DlgImportCroppingPdf::showEvent (QShowEvent * /* event */)
 
 void DlgImportCroppingPdf::slotCancel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingPdf::slotCancel";
 
   // Restore cursor in case updatePreview has not already completed and then restored it
   QApplication::restoreOverrideCursor ();
@@ -240,7 +235,6 @@ void DlgImportCroppingPdf::slotCancel ()
 
 void DlgImportCroppingPdf::slotOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingPdf::slotOk";
 
   // Restore cursor in case updatePreview has not already completed and then restored it
   QApplication::restoreOverrideCursor ();
@@ -252,7 +246,6 @@ void DlgImportCroppingPdf::slotOk ()
 
 void DlgImportCroppingPdf::slotPage (int page)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingPdf::slotPage"
                               << " page=" << page
                               << " stepBy=" << m_spinPage->singleStep ();
 
@@ -264,14 +257,12 @@ void DlgImportCroppingPdf::slotPage (int page)
 
 void DlgImportCroppingPdf::slotTimeout ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingPdf::slotTimeout";
 
   updatePreview ();
 }
 
 void DlgImportCroppingPdf::updatePreview ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingPdf::updatePreview";
 
   if (m_pixmap != nullptr) {
     m_scenePreview->removeItem (m_pixmap);

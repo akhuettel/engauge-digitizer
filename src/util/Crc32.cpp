@@ -68,7 +68,6 @@ Crc32::Crc32 ()
 
 unsigned Crc32::filecrc (const QString &filename) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Crc32::filecrc";
   
   unsigned i, c, b = 0;
   
@@ -99,7 +98,6 @@ unsigned Crc32::filecrc (const QString &filename) const
 
 unsigned Crc32::memcrc (const unsigned char *b, unsigned int length) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Crc32::memcrc";
   
   unsigned i, c, rtn = 0;
 

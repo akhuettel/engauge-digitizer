@@ -19,7 +19,6 @@ const QString CMD_DESCRIPTION ("Open File");
 FileCmdOpen::FileCmdOpen (QXmlStreamReader &reader) :
   FileCmdAbstract (CMD_DESCRIPTION)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FileCmdOpen::FileCmdOpen";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -39,7 +38,6 @@ FileCmdOpen::~FileCmdOpen ()
 
 void FileCmdOpen::redo (MainWindow &mainWindow)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FileCmdOpen::redo";
 
   mainWindow.cmdFileOpen (m_filename);
 }

@@ -24,7 +24,6 @@ CmdSettingsGuideline::CmdSettingsGuideline(MainWindow &mainWindow,
   m_modelGuidelineBefore (modelGuidelineBefore),
   m_modelGuidelineAfter (modelGuidelineAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGuideline::CmdSettingsGuideline";
 }
 
 CmdSettingsGuideline::CmdSettingsGuideline (MainWindow &mainWindow,
@@ -35,7 +34,6 @@ CmdSettingsGuideline::CmdSettingsGuideline (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGuideline::CmdSettingsGuideline";
 
   bool success = true;
 
@@ -80,7 +78,6 @@ CmdSettingsGuideline::~CmdSettingsGuideline()
 
 void CmdSettingsGuideline::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGuideline::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -91,7 +88,6 @@ void CmdSettingsGuideline::cmdRedo ()
 
 void CmdSettingsGuideline::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGuideline::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

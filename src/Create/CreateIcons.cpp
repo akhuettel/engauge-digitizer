@@ -14,7 +14,6 @@ CreateIcons::CreateIcons()
 
 void CreateIcons::create(MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateIcons::create";
 
   QIcon icon;
 

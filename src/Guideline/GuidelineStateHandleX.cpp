@@ -25,9 +25,6 @@ GuidelineStateHandleX::~GuidelineStateHandleX ()
 
 void GuidelineStateHandleX::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateHandleX::begin"
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon ();
 }
 
@@ -39,9 +36,6 @@ QPointF GuidelineStateHandleX::convertGraphCoordinateToScreenPoint (double value
                                                                  ARBITRARY_Y),
                                                         posScreen);
 
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateHandleX::convertGraphCoordinateToScreenPoint"
-                               << " pos=(" << posScreen.x() << ", " << posScreen.y() << ")";
-
   return posScreen;
 }
 
@@ -51,21 +45,15 @@ double GuidelineStateHandleX::convertScreenPointToGraphCoordinate(const QPointF 
   context().transformation().transformScreenToRawGraph (posScreen,
                                                         posGraph);
 
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateHandleX::convertScreenPointToGraphCoordinate"
-                               << " pos=(" << posGraph.x() << ", " << posGraph.y() << ")";
-
   return posGraph.x();
 }
 
 void GuidelineStateHandleX::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateHandleX::end";
 }
 
 void GuidelineStateHandleX::handleMouseRelease (const QPointF &posScene)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateHandleX::handleMouseRelease";
-
   context().guideline().sacrificeHandleAndVisibleGuidelines(posScene,
                                                             GUIDELINE_STATE_DEPLOYED_CONSTANT_X_SELECT_EDIT);
   context().requestStateTransition (GUIDELINE_STATE_DISCARDED);

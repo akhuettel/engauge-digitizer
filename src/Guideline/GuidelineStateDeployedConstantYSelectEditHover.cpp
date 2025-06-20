@@ -23,9 +23,6 @@ GuidelineStateDeployedConstantYSelectEditHover::~GuidelineStateDeployedConstantY
 
 void GuidelineStateDeployedConstantYSelectEditHover::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantYSelectEditHover::begin"
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (true,
                false);
 
@@ -39,7 +36,6 @@ bool GuidelineStateDeployedConstantYSelectEditHover::doPaint () const
 
 void GuidelineStateDeployedConstantYSelectEditHover::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantYSelectEditHover::end";
 }
 
 void GuidelineStateDeployedConstantYSelectEditHover::handleActiveChange (bool active)

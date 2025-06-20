@@ -48,8 +48,6 @@ void Correlation::correlateWithShift (int N,
                                       double &corrMax,
                                       double correlations []) const
 {
-  // LOG4CPP_DEBUG_S ((*mainCat)) << "Correlation::correlateWithShift";
-
   int i;
 
   ENGAUGE_ASSERT (N == m_N);
@@ -142,8 +140,6 @@ void Correlation::correlateWithoutShift (int N,
                                          const double function2 [],
                                          double &corrMax) const
 {
-//  LOG4CPP_DEBUG_S ((*mainCat)) << "Correlation::correlateWithoutShift";
-
   corrMax = 0.0;
 
   for (int i = 0; i < N; i++) {

@@ -62,7 +62,6 @@ QTransform Transformation::calculateTransformFromLinearCartesianPoints (const QP
                                                                         const QPointF &posTo1,
                                                                         const QPointF &posTo2)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Transformation::calculateTransformFromLinearCartesianPoints";
 
   QTransform from, to;
   from.setMatrix (posFrom0.x(), posFrom1.x(), posFrom2.x(),
@@ -308,7 +307,6 @@ void Transformation::printStream (QString indentation,
 
 void Transformation::resetOnLoad()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Transformation::resetOnLoad";
 
   m_transformIsDefined = false;
 }
@@ -463,8 +461,6 @@ void Transformation::update (bool fileIsLoaded,
                              const CmdMediator &cmdMediator,
                              const MainWindowModel &modelMainWindow)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Transformation::update";
-
   if (!fileIsLoaded) {
 
     m_transformIsDefined = false;
@@ -498,7 +494,6 @@ void Transformation::update (bool fileIsLoaded,
 void Transformation::updateTransformFromMatrices (const QTransform &matrixScreen,
                                                   const QTransform &matrixGraph)
 {
-  // LOG4CPP_INFO_S is below
 
   m_transformIsDefined = true;
 
@@ -551,14 +546,4 @@ void Transformation::updateTransformFromMatrices (const QTransform &matrixScreen
   QPointF pointScreen2 (matrixScreen.m13(),
                         matrixScreen.m23());
 
-  LOG4CPP_INFO_S ((*mainCat)) << "Transformation::updateTransformFromMatrices"
-                              << " matrixScreen=\n" << QTransformToString (matrixScreen).toLatin1().data () << " "
-                              << " matrixGraphRaw=\n" << QTransformToString (matrixGraph).toLatin1().data() << " "
-                              << " matrixGraphLinear=\n" << QTransformToString (matrixGraphLinear).toLatin1().data() << "\n"
-                              << " originalScreen0=" << QPointFToString (pointScreen0).toLatin1().data() << "\n"
-                              << " originalScreen1=" << QPointFToString (pointScreen1).toLatin1().data() << "\n"
-                              << " originalScreen2=" << QPointFToString (pointScreen2).toLatin1().data() << "\n"
-                              << " roundTripScreen0=" << QPointFToString (pointScreenRoundTrip0).toLatin1().data() << "\n"
-                              << " roundTripScreen1=" << QPointFToString (pointScreenRoundTrip1).toLatin1().data() << "\n"
-                              << " roundTripScreen2=" << QPointFToString (pointScreenRoundTrip2).toLatin1().data() << "\n";
 }

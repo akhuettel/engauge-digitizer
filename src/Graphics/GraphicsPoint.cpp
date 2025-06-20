@@ -113,8 +113,6 @@ QRectF GraphicsPoint::boundingRect () const
 
 void GraphicsPoint::createPointEllipse (unsigned int radius)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsPoint::createPointEllipse";
-
   const int radiusSigned = signed (radius); // Radius must be signed before multiplying by -1 below, for Visual Studio
   m_graphicsItemEllipse = new GraphicsPointEllipse (*this,
                                                     QRect (- radiusSigned,
@@ -156,8 +154,6 @@ void GraphicsPoint::createPointEllipse (unsigned int radius)
 
 void GraphicsPoint::createPointPolygon (const QPolygonF &polygon)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsPoint::createPointPolygon";
-
   m_graphicsItemPolygon = new GraphicsPointPolygon (*this,
                                                     polygon);
   m_scene.addItem (m_graphicsItemPolygon);
@@ -250,10 +246,6 @@ void GraphicsPoint::reset ()
 
 void GraphicsPoint::setData (int key, const QVariant &data)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsPoint::setData"
-                               << " key=" << dataKeyToString (static_cast<DataKey> (key)).toLatin1().data()
-                               << " data=" << data.toString().toLatin1().data();
-
   if (m_graphicsItemEllipse == nullptr) {
     m_graphicsItemPolygon->setData (key, data);
   } else {
@@ -263,10 +255,6 @@ void GraphicsPoint::setData (int key, const QVariant &data)
 
 void GraphicsPoint::setHighlightOpacity (double highlightOpacity)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsPoint::setHighlightOpacity"
-                               << " identifier=" << m_identifier.toLatin1().data()
-                               << " highlightOpacity=" << highlightOpacity;
-
   m_highlightOpacity = highlightOpacity;
 }
 

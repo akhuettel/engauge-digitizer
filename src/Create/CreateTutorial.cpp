@@ -15,7 +15,6 @@ CreateTutorial::CreateTutorial()
 
 void CreateTutorial::create(MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateTutorial::create";
 
   mw.m_tutorialDlg = new TutorialDlg (&mw);
   mw.m_tutorialDlg->setModal (true);

@@ -124,21 +124,10 @@ void Spline::computeControlPointsForIntervals ()
   // Debug logging
   for (i = 0; i < qFloor (m_xy.size ()) - 1; i++) {
     unsigned int iU = unsigned (i);
-    LOG4CPP_DEBUG_S ((*mainCat)) << "Spline::computeControlPointsForIntervals" << " i=" << i
-             << " xy=" << m_xy [iU]
-             << " elementt=" << m_elements[iU].t()
-             << " elementa=" << m_elements[iU].a()
-             << " elementb=" << m_elements[iU].b()
-             << " elementc=" << m_elements[iU].c()
-             << " elementd=" << m_elements[iU].d()
-             << " p1=" << m_p1[iU]
-             << " p2=" << m_p2[iU];
   }
 
   if (m_xy.size() > 1) {
     unsigned int iU = unsigned (m_xy.size() - 1);
-    LOG4CPP_DEBUG_S ((*mainCat)) << "Spline::computeControlPointsForIntervals" << " i=" << iU
-                  << " xy=" << m_xy [iU];
   }
 }
 

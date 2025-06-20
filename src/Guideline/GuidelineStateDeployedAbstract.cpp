@@ -59,7 +59,6 @@ void GuidelineStateDeployedAbstract::beginCommon (bool hovering,
 
 void GuidelineStateDeployedAbstract::end ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateDeployedAbstract::end";
 }
 
 void GuidelineStateDeployedAbstract::handleMouseRelease (const QPointF & /* posScene */)

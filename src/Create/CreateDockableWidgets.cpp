@@ -17,7 +17,6 @@ CreateDockableWidgets::CreateDockableWidgets()
 
 void CreateDockableWidgets::create (MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateDockableWidgets::create";
 
   // Checklist guide starts out hidden. It will be positioned in settingsRead
   mw.m_dockChecklistGuide = new ChecklistGuide (&mw);

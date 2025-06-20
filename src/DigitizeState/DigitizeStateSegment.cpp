@@ -37,7 +37,6 @@ QString DigitizeStateSegment::activeCurve () const
 void DigitizeStateSegment::begin (CmdMediator *cmdMediator,
                                   DigitizeState /* previousState */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSegment::begin";
 
   m_cmdMediator = cmdMediator; // Save for slotMouseClickOnSegment
 
@@ -58,14 +57,12 @@ bool DigitizeStateSegment::canPaste (const Transformation &transformation,
 
 QCursor DigitizeStateSegment::cursor(CmdMediator * /* cmdMediator */) const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateSegment::cursor";
 
   return QCursor (Qt::ArrowCursor);
 }
 
 void DigitizeStateSegment::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSegment::end";
 
   GraphicsScene &scene = context().mainWindow().scene();
   SegmentFactory segmentFactory (dynamic_cast<QGraphicsScene &> (scene),
@@ -82,20 +79,15 @@ bool DigitizeStateSegment::guidelinesAreSelectable () const
 void DigitizeStateSegment::handleContextMenuEventAxis (CmdMediator * /* cmdMediator */,
                                                        const QString &pointIdentifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSegment::handleContextMenuEventAxis "
-                              << " point=" << pointIdentifier.toLatin1 ().data ();
 }
 
 void DigitizeStateSegment::handleContextMenuEventGraph (CmdMediator * /* cmdMediator */,
                                                         const QStringList &pointIdentifiers)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSegment ::handleContextMenuEventGraph "
-                              << "points=" << pointIdentifiers.join(",").toLatin1 ().data ();
 }
 
 void DigitizeStateSegment::handleCurveChange(CmdMediator *cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSegment::handleCurveChange";
 
   QImage img = context().mainWindow().imageFiltered();
 
@@ -115,8 +107,6 @@ void DigitizeStateSegment::handleCurveChange(CmdMediator *cmdMediator)
   for (itr = m_segments.begin(); itr != m_segments.end(); itr++) {
     Segment *segment = *itr;
 
-    LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSegment::handleCurveChange"
-                                << " lines=" << segment->lineCount();
 
     connect (segment, SIGNAL (signalMouseClickOnSegment (QPointF)), this, SLOT (slotMouseClickOnSegment (QPointF)));
   }
@@ -126,8 +116,6 @@ void DigitizeStateSegment::handleKeyPress (CmdMediator *cmdMediator,
                                            Qt::Key key,
                                            bool atLeastOneSelectedItem)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSegment::handleKeyPress"
-                              << " key=" << QKeySequence (key).toString ().toLatin1 ().data ();
 
   handleKeyPressArrow (cmdMediator,
                        key,
@@ -137,25 +125,20 @@ void DigitizeStateSegment::handleKeyPress (CmdMediator *cmdMediator,
 void DigitizeStateSegment::handleMouseMove (CmdMediator * /* cmdMediator */,
                                             QPointF /* posScreen */)
 {
-//  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateSegment::handleMouseMove";
 }
 
 void DigitizeStateSegment::handleMousePress (CmdMediator * /* cmdMediator */,
                                              QPointF /* posScreen */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSegment::handleMousePress";
 }
 
 void DigitizeStateSegment::handleMouseRelease (CmdMediator * /* cmdMediator */,
                                                QPointF /* posScreen */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSegment::handleMouseRelease";
 }
 
 Segment *DigitizeStateSegment::segmentFromSegmentStart (const QPointF &posSegmentStart) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSegment::segmentFromSegmentStart"
-                              << " segments=" << m_segments.count();
 
   QList<Segment*>::const_iterator itr;
   for (itr = m_segments.begin(); itr != m_segments.end(); itr++) {
@@ -167,14 +150,12 @@ Segment *DigitizeStateSegment::segmentFromSegmentStart (const QPointF &posSegmen
     }
   }
 
-  LOG4CPP_ERROR_S ((*mainCat)) << "DigitizeStateSegment::segmentFromSegmentStart";
   ENGAUGE_ASSERT (false);
   return nullptr;
 }
 
 void DigitizeStateSegment::slotMouseClickOnSegment(QPointF posSegmentStart)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSegment::slotMouseClickOnSegment";
 
   Segment *segment = segmentFromSegmentStart (posSegmentStart);
 
@@ -222,18 +203,15 @@ QString DigitizeStateSegment::state() const
 
 void DigitizeStateSegment::updateAfterPointAddition ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSegment::updateAfterPointAddition";
 }
 
 void DigitizeStateSegment::updateModelDigitizeCurve (CmdMediator * /* cmdMediator */,
                                                      const DocumentModelDigitizeCurve & /*modelDigitizeCurve */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSegment::updateModelDigitizeCurve";
 }
 
 void DigitizeStateSegment::updateModelSegments(const DocumentModelSegments &modelSegments)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSegment::updateModelSegments";
 
   QList<Segment*>::const_iterator itr;
   for (itr = m_segments.begin(); itr != m_segments.end(); itr++) {

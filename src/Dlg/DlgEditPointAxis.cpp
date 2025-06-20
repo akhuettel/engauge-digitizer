@@ -51,7 +51,6 @@ DlgEditPointAxis::DlgEditPointAxis (MainWindow &mainWindow,
   m_modelGeneral (modelGeneral),
   m_modelMainWindow (modelMainWindow)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgEditPointAxis::DlgEditPointAxis";
 
   // Either one or two coordinates are desired
   bool isX = (documentAxesPointsRequired == DOCUMENT_AXES_POINTS_REQUIRED_3) || isXOnly;
@@ -80,7 +79,6 @@ DlgEditPointAxis::DlgEditPointAxis (MainWindow &mainWindow,
 
 DlgEditPointAxis::~DlgEditPointAxis()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgEditPointAxis::~DlgEditPointAxis";
 }
 
 void DlgEditPointAxis::createCoords (QVBoxLayout *layoutOuter)
@@ -225,7 +223,6 @@ void DlgEditPointAxis::initializeGraphCoordinates (const double *xInitialValue,
                                                    bool isX,
                                                    bool isY)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgEditPointAxis::initializeGraphCoordinates";
 
   QString xTheta, yRadius;
   if ((xInitialValue != nullptr) &&

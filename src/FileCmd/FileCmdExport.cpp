@@ -19,7 +19,6 @@ const QString CMD_DESCRIPTION ("Export File");
 FileCmdExport::FileCmdExport (QXmlStreamReader &reader) :
   FileCmdAbstract (CMD_DESCRIPTION)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FileCmdExport::FileCmdExport";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -39,7 +38,6 @@ FileCmdExport::~FileCmdExport ()
 
 void FileCmdExport::redo (MainWindow &mainWindow)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FileCmdExport::redo";
 
   mainWindow.cmdFileExport (m_filename);
 }

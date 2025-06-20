@@ -22,7 +22,6 @@ TutorialButtonText::TutorialButtonText (TutorialButton &tutorialButton,
 
 void TutorialButtonText::mouseReleaseEvent (QGraphicsSceneMouseEvent *event)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialButtonText::mouseReleaseEvent";
 
   QGraphicsTextItem::mouseReleaseEvent (event);
 

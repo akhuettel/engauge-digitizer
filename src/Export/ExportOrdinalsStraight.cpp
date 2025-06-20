@@ -20,7 +20,6 @@ ExportOrdinalsStraight::ExportOrdinalsStraight ()
 ExportValuesOrdinal ExportOrdinalsStraight::ordinalsAtIntervalsGraphWithoutTransformation (const Points &points,
                                                                                            double pointsInterval) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportOrdinalsStraight::ordinalsAtIntervalsGraph";
 
   // Results
   ExportValuesOrdinal ordinals;
@@ -63,7 +62,6 @@ ExportValuesOrdinal ExportOrdinalsStraight::ordinalsAtIntervalsGraphWithTransfor
                                                                                         const Transformation &transformation,
                                                                                         double pointsInterval) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportOrdinalsStraight::ordinalsAtIntervalsGraph";
 
   // Results
   ExportValuesOrdinal ordinals;

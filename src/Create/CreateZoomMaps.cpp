@@ -14,7 +14,6 @@ CreateZoomMaps::CreateZoomMaps()
 
 void CreateZoomMaps::create(MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateZoomMaps::create";
 
   mw.m_zoomMapFromInitial [ZOOM_INITIAL_16_TO_1] = ZOOM_16_TO_1;
   mw.m_zoomMapFromInitial [ZOOM_INITIAL_8_TO_1] = ZOOM_8_TO_1;

@@ -16,7 +16,6 @@ CreateMenus::CreateMenus()
 
 void CreateMenus::create(MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateMenus::create";
 
   mw.m_menuFile = mw.menuBar()->addMenu(tr("&File"));
   mw.m_menuFile->addAction (mw.m_actionImport);

@@ -29,9 +29,6 @@ CmdAddPointGraph::CmdAddPointGraph (MainWindow &mainWindow,
   m_posScreen (posScreen),
   m_ordinal (ordinal)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAddPointGraph::CmdAddPointGraph"
-                              << " posScreen=" << QPointFToString (posScreen).toLatin1 ().data ()
-                              << " ordinal=" << m_ordinal;
 }
 
 CmdAddPointGraph::CmdAddPointGraph (MainWindow &mainWindow,
@@ -42,7 +39,6 @@ CmdAddPointGraph::CmdAddPointGraph (MainWindow &mainWindow,
                       document,
                       cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAddPointGraph::CmdAddPointGraph";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -70,7 +66,6 @@ CmdAddPointGraph::~CmdAddPointGraph ()
 
 void CmdAddPointGraph::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAddPointGraph::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -87,7 +82,6 @@ void CmdAddPointGraph::cmdRedo ()
 
 void CmdAddPointGraph::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAddPointGraph::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

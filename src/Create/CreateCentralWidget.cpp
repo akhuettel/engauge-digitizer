@@ -16,7 +16,6 @@ CreateCentralWidget::CreateCentralWidget()
 
 void CreateCentralWidget::create(MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateCentralWidget::create";
 
   QWidget *widget = new QWidget;
   mw.setCentralWidget (widget);

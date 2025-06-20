@@ -26,7 +26,6 @@ CmdMediator::CmdMediator (MainWindow &mainWindow,
                           const QImage &image) :
   m_document (image)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdMediator::CmdMediator image=" << image.width() << "x" << image.height ();
 
   connectSignals(mainWindow);
 }
@@ -35,7 +34,6 @@ CmdMediator::CmdMediator (MainWindow &mainWindow,
                           const QString &fileName) :
   m_document (fileName)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdMediator::CmdMediator filename=" << fileName.toLatin1().data();
 
   connectSignals(mainWindow);
 }

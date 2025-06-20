@@ -24,7 +24,6 @@ CmdSettingsColorFilter::CmdSettingsColorFilter(MainWindow &mainWindow,
   m_modelColorFilterBefore (modelColorFilterBefore),
   m_modelColorFilterAfter (modelColorFilterAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsColorFilter::CmdSettingsColorFilter";
 }
 
 CmdSettingsColorFilter::CmdSettingsColorFilter (MainWindow &mainWindow,
@@ -35,7 +34,6 @@ CmdSettingsColorFilter::CmdSettingsColorFilter (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsColorFilter::CmdSettingsColorFilter";
 
   bool success = true;
 
@@ -80,7 +78,6 @@ CmdSettingsColorFilter::~CmdSettingsColorFilter ()
 
 void CmdSettingsColorFilter::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsColorFilter::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -91,7 +88,6 @@ void CmdSettingsColorFilter::cmdRedo ()
 
 void CmdSettingsColorFilter::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsColorFilter::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

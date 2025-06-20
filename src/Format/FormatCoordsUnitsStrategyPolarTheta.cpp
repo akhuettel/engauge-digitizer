@@ -19,8 +19,6 @@ double FormatCoordsUnitsStrategyPolarTheta::formattedToUnformatted (const QStrin
                                                                     const QLocale &locale,
                                                                     CoordUnitsPolarTheta coordUnits) const
 {
-  //LOG4CPP_DEBUG_S ((*mainCat)) << "FormatCoordsUnitsStrategyPolarTheta::formattedToUnformatted";
-
   double value;
 
   switch (coordUnits) {
@@ -42,7 +40,6 @@ double FormatCoordsUnitsStrategyPolarTheta::formattedToUnformatted (const QStrin
       break;
 
     default:
-      LOG4CPP_ERROR_S ((*mainCat)) << "FormatCoordsUnitsStrategyPolarTheta::unformattedToFormattedStrategyPolarTheta";
       ENGAUGE_ASSERT (false);
       break;
   }
@@ -57,8 +54,6 @@ QString FormatCoordsUnitsStrategyPolarTheta::unformattedToFormatted (double valu
                                                                      const Transformation &transformation,
                                                                      double valueUnformattedOther) const
 {
-  //LOG4CPP_DEBUG_S ((*mainCat)) << "FormatCoordsUnitsStrategyPolarTheta::unformattedToFormatted";
-
   const char FORMAT ('g');
   const bool IS_X_THETA = true;
 
@@ -90,7 +85,6 @@ QString FormatCoordsUnitsStrategyPolarTheta::unformattedToFormatted (double valu
       break;
 
     default:
-      LOG4CPP_ERROR_S ((*mainCat)) << "FormatCoordsUnitsStrategyPolarTheta::unformattedToFormattedStrategyPolarTheta";
       ENGAUGE_ASSERT (false);
       break;
   }

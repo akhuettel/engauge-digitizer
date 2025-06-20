@@ -74,10 +74,6 @@ void CallbackGatherXThetasInGridLines::addGridLines (const MainWindowModel &mode
 CallbackSearchReturn CallbackGatherXThetasInGridLines::callback (const QString &curveName,
                                                                  const Point &point)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CallbackGatherXThetasInGridLines::callback"
-                               << " curveName=" << curveName.toLatin1().data()
-                               << " point=" << point.identifier().toLatin1().data();
-
   updateMinMax (curveName,
                 point);
 

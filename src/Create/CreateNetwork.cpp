@@ -21,7 +21,6 @@ void CreateNetwork::create(MainWindow &
 #endif                           
                            )
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateNetwork::create";
   
 #ifdef NETWORKING
   mw.m_networkClient = new NetworkClient (&mw);

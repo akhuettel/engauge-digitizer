@@ -52,7 +52,6 @@ QString DigitizeStatePointMatch::activeCurve () const
 void DigitizeStatePointMatch::begin (CmdMediator *cmdMediator,
                                      DigitizeState /* previousState */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStatePointMatch::begin";
 
   setCursor(cmdMediator);
   context().setDragMode(QGraphicsView::NoDrag);
@@ -97,7 +96,6 @@ void DigitizeStatePointMatch::createPermanentPoint (CmdMediator *cmdMediator,
 void DigitizeStatePointMatch::createTemporaryPoint (CmdMediator *cmdMediator,
                                                     const QPoint &posScreen)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStatePointMatch::createTemporaryPoint";
 
   GeometryWindow *NULL_GEOMETRY_WINDOW = nullptr;
 
@@ -123,14 +121,12 @@ void DigitizeStatePointMatch::createTemporaryPoint (CmdMediator *cmdMediator,
 
 QCursor DigitizeStatePointMatch::cursor(CmdMediator * /* cmdMediator */) const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStatePointMatch::cursor";
 
   return QCursor (Qt::ArrowCursor);
 }
 
 void DigitizeStatePointMatch::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStatePointMatch::end";
 
   // Remove candidate point which may or may not exist at this point
   context().mainWindow().scene().removeTemporaryPointIfExists();
@@ -145,7 +141,6 @@ QList<PointMatchPixel> DigitizeStatePointMatch::extractSamplePointPixels (const 
                                                                           const DocumentModelPointMatch &modelPointMatch,
                                                                           const QPointF &posScreen) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStatePointMatch::extractSamplePointPixels";
 
   // All points inside modelPointMatch.maxPointSize() are collected, whether or not they
   // are on or off. Originally only the on points were collected, but obvious mismatches
@@ -188,28 +183,21 @@ bool DigitizeStatePointMatch::guidelinesAreSelectable () const
 void DigitizeStatePointMatch::handleContextMenuEventAxis (CmdMediator * /* cmdMediator */,
                                                           const QString &pointIdentifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStatePointMatch::handleContextMenuEventAxis "
-                              << " point=" << pointIdentifier.toLatin1 ().data ();
 }
 
 void DigitizeStatePointMatch::handleContextMenuEventGraph (CmdMediator * /* cmdMediator */,
                                                            const QStringList &pointIdentifiers)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStatePointMatch ::handleContextMenuEventGraph "
-                              << "points=" << pointIdentifiers.join(",").toLatin1 ().data ();
 }
 
 void DigitizeStatePointMatch::handleCurveChange(CmdMediator * /* cmdMediator */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStatePointMatch::handleCurveChange";
 }
 
 void DigitizeStatePointMatch::handleKeyPress (CmdMediator *cmdMediator,
                                               Qt::Key key,
                                               bool /* atLeastOneSelectedItem */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStatePointMatch::handleKeyPress"
-                              << " key=" << QKeySequence (key).toString ().toLatin1 ().data ();
 
   // Qt::Key_Right is reserved by this state for adding points so we cannot also call
   // handleKeyPressArrow (which also uses Qt::Key_Right for a different purpose). So
@@ -228,7 +216,6 @@ void DigitizeStatePointMatch::handleKeyPress (CmdMediator *cmdMediator,
 void DigitizeStatePointMatch::handleMouseMove (CmdMediator *cmdMediator,
                                                QPointF posScreen)
 {
-//  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStatePointMatch::handleMouseMove";
 
   const DocumentModelPointMatch &modelPointMatch = cmdMediator->document().modelPointMatch();
 
@@ -255,13 +242,11 @@ void DigitizeStatePointMatch::handleMouseMove (CmdMediator *cmdMediator,
 void DigitizeStatePointMatch::handleMousePress (CmdMediator * /* cmdMediator */,
                                                 QPointF /* posScreen */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStatePointMatch::handleMousePress";  
 }
 
 void DigitizeStatePointMatch::handleMouseRelease (CmdMediator *cmdMediator,
                                                   QPointF posScreen)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStatePointMatch::handleMouseRelease";
 
   createPermanentPoint (cmdMediator,
                         posScreen);
@@ -273,7 +258,6 @@ void DigitizeStatePointMatch::handleMouseRelease (CmdMediator *cmdMediator,
 void DigitizeStatePointMatch::findPointsAndShowFirstCandidate (CmdMediator *cmdMediator,
                                                                const QPointF &posScreen)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStatePointMatch::findPointsAndShowFirstCandidate";
 
   const DocumentModelPointMatch &modelPointMatch = cmdMediator->document().modelPointMatch();
   const QImage &img = context().mainWindow().imageFiltered();
@@ -342,7 +326,6 @@ bool DigitizeStatePointMatch::pixelIsOnInImage (const QImage &img,
 
 void DigitizeStatePointMatch::popCandidatePoint (CmdMediator *cmdMediator)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStatePointMatch::popCandidatePoint";
 
   if (m_candidatePoints.count() > 0) {
 
@@ -376,16 +359,13 @@ QString DigitizeStatePointMatch::state() const
 
 void DigitizeStatePointMatch::updateAfterPointAddition ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStatePointMatch::updateAfterPointAddition";
 }
 
 void DigitizeStatePointMatch::updateModelDigitizeCurve (CmdMediator * /* cmdMediator */,
                                                         const DocumentModelDigitizeCurve & /*modelDigitizeCurve */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStatePointMatch::updateModelDigitizeCurve";
 }
 
 void DigitizeStatePointMatch::updateModelSegments(const DocumentModelSegments & /* modelSegments */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStatePointMatch::updateModelSegments";
 }

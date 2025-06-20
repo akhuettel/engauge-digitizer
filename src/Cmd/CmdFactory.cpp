@@ -58,8 +58,6 @@ CmdAbstract *CmdFactory::createCmd (MainWindow &mainWindow,
       !attributes.hasAttribute(DOCUMENT_SERIALIZE_CMD_DESCRIPTION)) {
 
     // Invalid xml
-    LOG4CPP_ERROR_S ((*mainCat)) << "CmdFactory::createCmd missing " << DOCUMENT_SERIALIZE_CMD_TYPE.toLatin1().data()
-                                 << " or " << DOCUMENT_SERIALIZE_CMD_DESCRIPTION.toLatin1().data();
     ENGAUGE_ASSERT(false);
 
   }
@@ -221,7 +219,6 @@ CmdAbstract *CmdFactory::createCmd (MainWindow &mainWindow,
   } else {
 
     // Invalid xml
-    LOG4CPP_ERROR_S ((*mainCat)) << "CmdFactory::createCmd invalid command type " << cmdType.toLatin1().data();
     ENGAUGE_ASSERT (false);
 
   }

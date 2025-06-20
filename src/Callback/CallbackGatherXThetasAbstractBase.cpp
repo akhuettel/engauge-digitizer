@@ -101,7 +101,6 @@ void CallbackGatherXThetasAbstractBase::updateMinMax (const QString &curveName,
 
 ValuesVectorXOrY CallbackGatherXThetasAbstractBase::xThetaValuesRaw () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CallbackGatherXThetasAbstractBase::xThetaValuesRaw";
 
   return m_xThetaValues;
 }

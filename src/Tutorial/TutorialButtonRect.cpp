@@ -17,7 +17,6 @@ TutorialButtonRect::TutorialButtonRect (TutorialButton &tutorialButton) :
 
 void TutorialButtonRect::mouseReleaseEvent (QGraphicsSceneMouseEvent *event)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialButtonRect::mouseReleaseEvent";
 
   QGraphicsRectItem::mouseReleaseEvent (event);
 

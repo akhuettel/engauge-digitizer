@@ -27,7 +27,6 @@ CreateActions::CreateActions()
 
 void CreateActions::create(MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateActions::create";
 
   createFile (mw);
   createEdit (mw);
@@ -39,7 +38,6 @@ void CreateActions::create(MainWindow &mw)
 
 void CreateActions::createDigitize (MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateActions::createDigitize";
 
   QPixmap pixmapAxis (DigitAxis_xpm);
   QPixmap pixmapCurve (DigitCurve_xpm);
@@ -160,7 +158,6 @@ void CreateActions::createDigitize (MainWindow &mw)
 
 void CreateActions::createEdit (MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateActions::createEdit";
 
   mw.m_actionEditUndo = new QAction(tr ("&Undo"), &mw);
   mw.m_actionEditUndo->setShortcut (QKeySequence::Undo);
@@ -219,7 +216,6 @@ void CreateActions::createEdit (MainWindow &mw)
 
 void CreateActions::createFile (MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateActions::createFile";
 
   mw.m_actionImport = new QAction(tr ("&Import..."), &mw);
   mw.m_actionImport->setShortcut (tr ("Ctrl+I"));
@@ -307,7 +303,6 @@ void CreateActions::createFile (MainWindow &mw)
 
 void CreateActions::createHelp (MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateActions::createHelp";
 
   mw.m_actionHelpChecklistGuideWizard = new QAction (tr ("Checklist Guide Wizard"), &mw);
   mw.m_actionHelpChecklistGuideWizard->setCheckable (true);
@@ -343,7 +338,6 @@ void CreateActions::createHelp (MainWindow &mw)
 
 void CreateActions::createSettings (MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateActions::createSettings";
 
   mw.m_actionSettingsCoords = new QAction (tr ("Coordinates..."), &mw);
   mw.m_actionSettingsCoords->setStatusTip (tr ("Edit Coordinate settings."));
@@ -437,7 +431,6 @@ void CreateActions::createSettings (MainWindow &mw)
 
 void CreateActions::createView (MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateActions::createView";
 
   mw.m_actionViewBackgroundToolBar = new QAction (tr ("Background Toolbar"), &mw);
   mw.m_actionViewBackgroundToolBar->setCheckable (true);

@@ -39,7 +39,6 @@ GuidelineAbstract::~GuidelineAbstract ()
 
 void GuidelineAbstract::bindGuidelineVisibleToInvisible (GuidelineAbstract *guidelineVisible)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineAbstract::bindGuidelineVisibleToInvisible";
 
   m_guidelineVisible = guidelineVisible;
 
@@ -81,8 +80,6 @@ void GuidelineAbstract::handleHoverLeaveEvent()
 
 void GuidelineAbstract::handleMouseMoveEvent (const QPointF &posScene)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineAbstract::handleMouseMoveEvent ("
-                              << posScene.x() << ", " << posScene.y() << ")";
 
   // Skip if there is no bound visible Guideline
   if (m_guidelineVisible != nullptr) {
@@ -93,33 +90,24 @@ void GuidelineAbstract::handleMouseMoveEvent (const QPointF &posScene)
 
 void GuidelineAbstract::handleMousePressEvent(const QPointF &posScene)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineAbstract::handleMousePressEvent";
 
   m_context->handleMousePress(posScene);
 }
 
 void GuidelineAbstract::handleMouseReleaseEvent (const QPointF &posScene)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineAbstract::handleMouseReleaseEvent";
-
   m_context->handleMouseRelease (posScene);
 }
 
 void GuidelineAbstract::sacrificeHandleAndVisibleGuidelines (const QPointF &posScene,
                                                              GuidelineState guidelineStateForReplacement)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineAbstract::sacrificeHandleAndVisibleGuidelines"
-                               << " keeping identifier=" << identifier().toLatin1().data()
-                               << " in " << stateName ().toLatin1().data();
-
   if (m_guidelineVisible != nullptr) {
 
     // If scene position is off-screen then user is removing the visible Guideline
     bool offscreen = !m_scene.sceneRect().contains (posScene);
 
     // Remove transient Guideline, which was never registered with Guidelines
-    LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineAbstract::sacrificeHandleAndVisibleGuidelines identifierDeleting="
-                                 << m_guidelineVisible->identifier().toLatin1().data();
     disconnect (this, SIGNAL (signalHandleMoved (QPointF)),
                 m_guidelineVisible, SLOT (slotHandleMoved (QPointF)));
     m_guidelineVisible->removeFromScene (&m_scene);

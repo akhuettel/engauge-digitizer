@@ -42,7 +42,6 @@ void ExportFileRelations::exportAllPerLineXThetaValuesMerged (const DocumentMode
                                                               QTextStream &str,
                                                               unsigned int &numWritesSoFar) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::exportAllPerLineXThetaValuesMerged";
 
   int maxColumnSize = maxColumnSizeAllocation (modelExportOverride,
                                                document,
@@ -200,7 +199,6 @@ void ExportFileRelations::exportOnePerLineXThetaValuesMerged (const DocumentMode
                                                               QTextStream &str,
                                                               unsigned int &numWritesSoFar) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::exportOnePerLineXThetaValuesMerged";
 
   QStringList::const_iterator itr;
   for (itr = curvesIncluded.begin(); itr != curvesIncluded.end(); itr++) {
@@ -228,7 +226,6 @@ void ExportFileRelations::exportToFile (const DocumentModelExportFormat &modelEx
                                         unsigned int &numWritesSoFar,
                                         bool &isOverrun) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::exportToFile";
 
   // There are no known ways for relations to overflow the maximum points limit so
   // this initialization value will not be overwritten
@@ -278,7 +275,6 @@ void ExportFileRelations::exportToFile (const DocumentModelExportFormat &modelEx
 void ExportFileRelations::initializeXThetaYRadiusValues (const QStringList &curvesIncluded,
                                                          QVector<QVector<QString*> > &xThetaYRadiusValues) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::initializeXThetaYRadiusValues";
 
   // Initialize every entry with empty string
   int curveCount = curvesIncluded.count();
@@ -294,7 +290,6 @@ QPointF ExportFileRelations::linearlyInterpolate (const Points &points,
                                                   double ordinal,
                                                   const Transformation &transformation) const
 {
-  //  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::linearlyInterpolate";
 
   double xTheta = 0, yRadius = 0;
   double ordinalBefore = 0; // Not set until ip=1
@@ -353,7 +348,6 @@ void ExportFileRelations::loadXThetaYRadiusValues (const DocumentModelExportForm
                                                    bool isLogYRadius,
                                                    QVector<QVector<QString*> > &xThetaYRadiusValues) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::loadXThetaYRadiusValues";
 
   // The curve processing logic here is mirrored in maxColumnSizeAllocation so the array allocations are in sync
   for (int ic = 0; ic < curvesIncluded.count(); ic++) {
@@ -428,7 +422,6 @@ void ExportFileRelations::loadXThetaYRadiusValuesForCurveInterpolatedSmooth (con
                                                                              bool isLogXTheta,
                                                                              bool isLogYRadius) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::loadXThetaYRadiusValuesForCurveInterpolatedSmooth";
 
   vector<double> t;
   vector<SplinePair> xy;
@@ -480,7 +473,6 @@ void ExportFileRelations::loadXThetaYRadiusValuesForCurveInterpolatedStraight (c
                                                                                QVector<QString*> &yRadiusValues,
                                                                                const Transformation &transformation) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::loadXThetaYRadiusValuesForCurveInterpolatedStraight";
 
   FormatCoordsUnits format;
 
@@ -513,7 +505,6 @@ void ExportFileRelations::loadXThetaYRadiusValuesForCurveRaw (const DocumentMode
                                                               QVector<QString*> &yRadiusValues,
                                                               const Transformation &transformation) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::loadXThetaYRadiusValuesForCurveRaw";
 
   FormatCoordsUnits format;
 
@@ -544,7 +535,6 @@ int ExportFileRelations::maxColumnSizeAllocation (const DocumentModelExportForma
                                                   bool isLogYRadius,
                                                   const QStringList &curvesIncluded) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::maxColumnSizeAllocation";
 
   int maxColumnSize = 0;
 
@@ -592,7 +582,6 @@ ExportValuesOrdinal ExportFileRelations::ordinalsAtIntervals (double pointsInter
                                                               bool isLogYRadius,
                                                               const Points &points) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::ordinalsAtIntervals";
 
   if (pointsIntervalUnits == EXPORT_POINTS_INTERVAL_UNITS_GRAPH) {
     if (curveConnectAs == CONNECT_AS_RELATION_SMOOTH) {
@@ -632,7 +621,6 @@ ExportValuesOrdinal ExportFileRelations::ordinalsAtIntervalsSmoothGraph (double 
                                                                          bool isLogYRadius,
                                                                          const Points &points) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::ordinalsAtIntervalsSmoothGraph";
 
   ExportValuesOrdinal ordinals;
 
@@ -662,8 +650,6 @@ ExportValuesOrdinal ExportFileRelations::ordinalsAtIntervalsSmoothGraph (double 
 ExportValuesOrdinal ExportFileRelations::ordinalsAtIntervalsSmoothScreen (double pointsIntervalRelations,
                                                                           const Points &points) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::ordinalsAtIntervalsSmoothScreen"
-                              << " pointCount=" << points.count();
 
   // Results
   ExportValuesOrdinal ordinals;
@@ -692,7 +678,6 @@ ExportValuesOrdinal ExportFileRelations::ordinalsAtIntervalsStraightGraph (doubl
                                                                            const Transformation &transformation,
                                                                            const Points &points) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::ordinalsAtIntervalsStraightGraph";
 
   ExportValuesOrdinal ordinals;
 
@@ -713,8 +698,6 @@ ExportValuesOrdinal ExportFileRelations::ordinalsAtIntervalsStraightGraph (doubl
 ExportValuesOrdinal ExportFileRelations::ordinalsAtIntervalsStraightScreen (double pointsIntervalRelations,
                                                                             const Points &points) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::ordinalsAtIntervalsStraightScreen"
-                              << " pointCount=" << points.count();
 
   // Results
   ExportValuesOrdinal ordinals;
@@ -739,7 +722,6 @@ void ExportFileRelations::outputXThetaYRadiusValues (const DocumentModelExportFo
                                                      QTextStream &str,
                                                      unsigned int &numWritesSoFar) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileRelations::outputXThetaYRadiusValues";
 
   // Header
   if (modelExportOverride.header() != EXPORT_HEADER_NONE) {

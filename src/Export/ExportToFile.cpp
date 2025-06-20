@@ -26,7 +26,6 @@ void ExportToFile::exportToFile (const DocumentModelExportFormat &modelExport,
                                  const Transformation &transformation,
                                  QTextStream &str) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportToFile::exportToFile";
 
   unsigned int numWritesSoFar = 0;
   bool isOverrunFunctions = false, isOverrunRelations = false;

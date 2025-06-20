@@ -49,7 +49,6 @@ DlgSettingsDigitizeCurve::DlgSettingsDigitizeCurve(MainWindow &mainWindow) :
   m_modelDigitizeCurveBefore (nullptr),
   m_modelDigitizeCurveAfter (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsDigitizeCurve::DlgSettingsDigitizeCurve";
 
   QWidget *subPanel = createSubPanel ();
   finishPanel (subPanel);
@@ -57,13 +56,11 @@ DlgSettingsDigitizeCurve::DlgSettingsDigitizeCurve(MainWindow &mainWindow) :
 
 DlgSettingsDigitizeCurve::~DlgSettingsDigitizeCurve()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsDigitizeCurve::~DlgSettingsDigitizeCurve";
 }
 
 void DlgSettingsDigitizeCurve::createControls (QGridLayout *layout,
                                                int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsDigitizeCurve::createControls";
 
   m_boxCursor = new QGroupBox (tr ("Cursor"));
   layout->addWidget (m_boxCursor, row, 1, 1, 2);
@@ -130,7 +127,6 @@ void DlgSettingsDigitizeCurve::createOptionalSaveDefault (QHBoxLayout * /* layou
 void DlgSettingsDigitizeCurve::createPreview (QGridLayout *layout,
                                          int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsDigitizeCurve::createPreview";
 
   QLabel *labelPreview = new QLabel (tr ("Preview"));
   layout->addWidget (labelPreview, row++, 0, 1, 4);
@@ -155,7 +151,6 @@ void DlgSettingsDigitizeCurve::createPreview (QGridLayout *layout,
 
 QWidget *DlgSettingsDigitizeCurve::createSubPanel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsDigitizeCurve::createSubPanel";
 
   QWidget *subPanel = new QWidget ();
   QGridLayout *layout = new QGridLayout (subPanel);
@@ -175,7 +170,6 @@ QWidget *DlgSettingsDigitizeCurve::createSubPanel ()
 
 void DlgSettingsDigitizeCurve::handleOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsDigitizeCurve::handleOk";
 
   CmdSettingsDigitizeCurve *cmd = new CmdSettingsDigitizeCurve (mainWindow (),
                                                                 cmdMediator ().document(),
@@ -188,7 +182,6 @@ void DlgSettingsDigitizeCurve::handleOk ()
 
 void DlgSettingsDigitizeCurve::load (CmdMediator &cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsDigitizeCurve::load";
 
   setCmdMediator (cmdMediator);
 
@@ -228,7 +221,6 @@ void DlgSettingsDigitizeCurve::setSmallDialogs(bool smallDialogs)
 
 void DlgSettingsDigitizeCurve::slotCursorCustom (bool)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsDigitizeCurve::slotCursorCustom";
 
   m_modelDigitizeCurveAfter->setCursorStandardCross(false);
   updateControls();
@@ -237,7 +229,6 @@ void DlgSettingsDigitizeCurve::slotCursorCustom (bool)
 
 void DlgSettingsDigitizeCurve::slotCursorInnerRadius (const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsDigitizeCurve::slotCursorInnerRadius";
 
   m_modelDigitizeCurveAfter->setCursorInnerRadius (m_spinInnerRadius->value());
   updateControls();
@@ -246,7 +237,6 @@ void DlgSettingsDigitizeCurve::slotCursorInnerRadius (const QString &)
 
 void DlgSettingsDigitizeCurve::slotCursorLineWidth (const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsDigitizeCurve::slotCursorLineWidth";
 
   m_modelDigitizeCurveAfter->setCursorLineWidth (m_spinLineWidth->value());
   updateControls();
@@ -255,7 +245,6 @@ void DlgSettingsDigitizeCurve::slotCursorLineWidth (const QString &)
 
 void DlgSettingsDigitizeCurve::slotCursorSize (const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsDigitizeCurve::slotCursorSize";
 
   m_modelDigitizeCurveAfter->setCursorSize (static_cast<CursorSize> (m_cmbSize->currentData().toInt()));
   updateControls();
@@ -264,7 +253,6 @@ void DlgSettingsDigitizeCurve::slotCursorSize (const QString &)
 
 void DlgSettingsDigitizeCurve::slotCursorStandard (bool)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsDigitizeCurve::slotCursorStandard";
 
   m_modelDigitizeCurveAfter->setCursorStandardCross(true);
   updateControls();
@@ -290,7 +278,6 @@ void DlgSettingsDigitizeCurve::updateControls()
 
 void DlgSettingsDigitizeCurve::updatePreview()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsDigitizeCurve::updatePreview";
 
   CursorFactory cursorFactory;
   QCursor cursor = cursorFactory.generate (*m_modelDigitizeCurveAfter);

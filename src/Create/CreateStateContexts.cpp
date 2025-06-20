@@ -19,7 +19,6 @@ CreateStateContexts::CreateStateContexts()
 
 void CreateStateContexts::create(MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateStateContexts::create";
 
   mw.m_backgroundStateContext = new BackgroundStateContext (mw);
   mw.m_digitizeStateContext = new DigitizeStateContext (mw,

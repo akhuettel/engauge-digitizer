@@ -148,7 +148,6 @@ double ColorFilterSettings::high () const
     const ColorFilterSettingsStrategyAbstractBase *strategy = m_strategies.value (m_colorFilterMode);
     return strategy->high (*this);
   } else {
-    LOG4CPP_ERROR_S ((*mainCat)) << "ColorFilterSettings::high is missing color filter mode";
     ENGAUGE_ASSERT (false);
     return m_strategies [COLOR_FILTER_MODE_INTENSITY]->high (*this);
   }
@@ -176,7 +175,6 @@ int ColorFilterSettings::intensityLow () const
 
 void ColorFilterSettings::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ColorFilterSettings::loadXml";
 
   bool success = true;
 
@@ -229,7 +227,6 @@ double ColorFilterSettings::low () const
     const ColorFilterSettingsStrategyAbstractBase *strategy = m_strategies.value (m_colorFilterMode);
     return strategy->low (*this);
   } else {
-    LOG4CPP_ERROR_S ((*mainCat)) << "ColorFilterSettings::low is missing color filter mode";
     ENGAUGE_ASSERT (false);
     return m_strategies [COLOR_FILTER_MODE_INTENSITY]->low (*this);
   }
@@ -263,7 +260,6 @@ int ColorFilterSettings::saturationLow () const
 void ColorFilterSettings::saveXml(QXmlStreamWriter &writer,
                                   const QString &curveName) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ColorFilterSettings::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_COLOR_FILTER);
   writer.writeAttribute(DOCUMENT_SERIALIZE_CURVE_NAME, curveName);
@@ -306,7 +302,6 @@ void ColorFilterSettings::setHigh (double s0To1)
     return strategy->setHigh (*this,
                               s0To1);
   } else {
-    LOG4CPP_ERROR_S ((*mainCat)) << "ColorFilterSettings::setHigh is missing color filter mode";
     ENGAUGE_ASSERT (false);
   }
 }
@@ -342,7 +337,6 @@ void ColorFilterSettings::setLow (double s0To1)
     return strategy->setLow (*this,
                              s0To1);
   } else {
-    LOG4CPP_ERROR_S ((*mainCat)) << "ColorFilterSettings::setLow is missing color filter mode";
     ENGAUGE_ASSERT (false);
   }
 }

@@ -26,8 +26,6 @@ CentipedeStateBuildCartesian::~CentipedeStateBuildCartesian ()
 
 void CentipedeStateBuildCartesian::begin ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CentipedeStateBuildCartesian::begin";
-
   // Start showing CentipedePair
   m_centipedePair = new CentipedePairCartesian (context().scene(),
                                                 context().transformation (),
@@ -38,8 +36,6 @@ void CentipedeStateBuildCartesian::begin ()
 
 void CentipedeStateBuildCartesian::end ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CentipedeStateBuildCartesian::end";
-
   delete m_centipedePair;
   m_centipedePair = nullptr;  
 }

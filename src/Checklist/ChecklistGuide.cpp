@@ -36,7 +36,6 @@ bool ChecklistGuide::browserIsEmpty () const
 
 void ChecklistGuide::closeEvent(QCloseEvent * /* event */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuide::closeEvent";
 
   emit signalChecklistClosed();
 }
@@ -44,7 +43,6 @@ void ChecklistGuide::closeEvent(QCloseEvent * /* event */)
 void ChecklistGuide::setTemplateHtml (const QString &html,
                                       const QStringList &curveNames)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuide::setTemplateHtml";
 
   m_browser->setTemplateHtml (html,
                               curveNames);
@@ -53,7 +51,6 @@ void ChecklistGuide::setTemplateHtml (const QString &html,
 void ChecklistGuide::update (const CmdMediator &cmdMediator,
                              bool documentIsExported)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuide::update";
 
   ENGAUGE_CHECK_PTR (m_browser);
 

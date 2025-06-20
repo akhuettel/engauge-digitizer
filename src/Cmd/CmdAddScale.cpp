@@ -32,12 +32,6 @@ CmdAddScale::CmdAddScale (MainWindow &mainWindow,
   m_ordinal0 (ordinal0),
   m_ordinal1 (ordinal1)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAddScale::CmdAddScale"
-                              << " posScreen0=" << QPointFToString (posScreen0).toLatin1 ().data ()
-                              << " posScreen1=" << QPointFToString (posScreen1).toLatin1 ().data ()
-                              << " scaleLength=" << scaleLength
-                              << " ordinal0=" << ordinal0
-                              << " ordinal1=" << ordinal1;
 }
 
 CmdAddScale::CmdAddScale (MainWindow &mainWindow,
@@ -48,7 +42,6 @@ CmdAddScale::CmdAddScale (MainWindow &mainWindow,
                       document,
                       cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAddScale::CmdAddScale";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -83,7 +76,6 @@ CmdAddScale::~CmdAddScale ()
 
 void CmdAddScale::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAddScale::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -102,7 +94,6 @@ void CmdAddScale::cmdRedo ()
 
 void CmdAddScale::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAddScale::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

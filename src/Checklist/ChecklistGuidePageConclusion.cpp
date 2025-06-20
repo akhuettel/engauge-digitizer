@@ -10,7 +10,6 @@
 ChecklistGuidePageConclusion::ChecklistGuidePageConclusion() :
   ChecklistGuidePage (tr ("Conclusion"))
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuidePageConclusion::ChecklistGuidePageConclusion";
 
   addHtml (QString ("<p>%1</p>"
                "<br/><br/><br/>"
@@ -28,7 +27,6 @@ ChecklistGuidePageConclusion::ChecklistGuidePageConclusion() :
 
 bool ChecklistGuidePageConclusion::validatePage ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuidePageConclusion::validatePage";
 
   return true;
 }

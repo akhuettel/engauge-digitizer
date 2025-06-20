@@ -43,7 +43,6 @@ void GridHealerVertical::applyMutualPairs (const QImage &image)
 
 void GridHealerVertical::doHealingAcrossGaps (QImage &image)
 {
-  // LOG4CPP_INFO_S is replaced by GridLog
   GridIndependentToDependent::const_iterator itrBelow, itrAbove;
   for (itrBelow = m_blackPixelsBelow.begin(); itrBelow != m_blackPixelsBelow.end(); itrBelow++) {
     QPoint p (itrBelow.value(),
@@ -101,7 +100,6 @@ void GridHealerVertical::doHealingOnBelowAndAboveRangePair (QImage &image,
                                                             int yAboveStart,
                                                             int yAboveEnd)
 {
-  // LOG4CPP_INFO_S is replaced by GridLog
 
   int x0 = m_blackPixelsBelow [yBelowStart];
   int x1 = m_blackPixelsBelow [yBelowEnd  ];
@@ -133,7 +131,6 @@ void GridHealerVertical::doHealingOnBelowRange (QImage &image,
                                                 int xBelowEnd,
                                                 int maxHorSep)
 {
-  // LOG4CPP_INFO_S is replaced by GridLog
 
   // Below range goes from xBelowStart (inclusive) to xBelowEnd (exclusive). There could
   // be zero, one or more above ranges that overlap within maxHorSep, corresponding

@@ -22,7 +22,6 @@ CmdSettingsCurveList::CmdSettingsCurveList(MainWindow &mainWindow,
               document,
               CMD_DESCRIPTION)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsCurveList::CmdSettingsCurveList";
 
   m_curvesGraphsBefore = document.curvesGraphs ();
 
@@ -64,7 +63,6 @@ CmdSettingsCurveList::CmdSettingsCurveList (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsCurveList::CmdSettingsCurveList";
 
   bool success = true;
 
@@ -109,7 +107,6 @@ CmdSettingsCurveList::~CmdSettingsCurveList ()
 
 void CmdSettingsCurveList::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsCurveList::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -120,7 +117,6 @@ void CmdSettingsCurveList::cmdRedo ()
 
 void CmdSettingsCurveList::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsCurveList::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

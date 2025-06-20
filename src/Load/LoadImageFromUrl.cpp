@@ -74,7 +74,6 @@ void LoadImageFromUrl::slotFinished ()
 
 void LoadImageFromUrl::startLoadImage (const UrlDirty &url)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "LoadImageFromUrl::startLoadImage url=" << url.toString ().toLatin1 ().data ();
 
   m_url = url;
   if (url.isLocalFile ()) {

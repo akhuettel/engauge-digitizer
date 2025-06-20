@@ -31,7 +31,6 @@ CreateFacade::CreateFacade()
 
 void CreateFacade::create(MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateFacade::create";
 
   CreateActions createActions;
   CreateCentralWidget createCentralWidget;

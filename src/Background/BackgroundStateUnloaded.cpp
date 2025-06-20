@@ -22,17 +22,14 @@ BackgroundStateUnloaded::BackgroundStateUnloaded(BackgroundStateContext &context
 
 void BackgroundStateUnloaded::begin()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateUnloaded::begin";
 }
 
 void BackgroundStateUnloaded::end()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateUnloaded::end";
 }
 
 void BackgroundStateUnloaded::fitInView (GraphicsView & /* view */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateUnloaded::fitInView";
 }
 
 void BackgroundStateUnloaded::setCurveSelected (bool /* isGnuplot */,
@@ -41,7 +38,6 @@ void BackgroundStateUnloaded::setCurveSelected (bool /* isGnuplot */,
                                                 const DocumentModelColorFilter & /* modelColorFilter */,
                                                 const QString & /* curveSelected */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateUnloaded::setCurveSelected";
 }
 
 void BackgroundStateUnloaded::setPixmap (bool /* isGnuplot */,
@@ -51,7 +47,6 @@ void BackgroundStateUnloaded::setPixmap (bool /* isGnuplot */,
                                          const QPixmap & /* pixmap */,
                                          const QString & /* curveSelected */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateUnloaded::setPixmap";
 
   // This state has no displayed image
 }
@@ -67,5 +62,4 @@ void BackgroundStateUnloaded::updateColorFilter (bool /* isGnuplot */,
                                                  const DocumentModelColorFilter & /* modelColorFilter */,
                                                  const QString & /* curveSelected */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateUnloaded::updateColorFilter";
 }

@@ -25,12 +25,10 @@ TutorialStatePointMatch::TutorialStatePointMatch (TutorialStateContext &context)
   m_previous (nullptr),
   m_next (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStatePointMatch::TutorialStatePointMatch";
 }
 
 void TutorialStatePointMatch::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStatePointMatch::begin ()";
 
   context().tutorialDlg().scene().clear ();
 
@@ -73,7 +71,6 @@ void TutorialStatePointMatch::begin ()
 
 void TutorialStatePointMatch::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStatePointMatch::end ()";
 
   // It is not safe to remove and deallocate items here since an active TutorialButton
   // may be on the stack. So we clear the scene as the first step in the next begin()
@@ -81,14 +78,12 @@ void TutorialStatePointMatch::end ()
 
 void TutorialStatePointMatch::slotNext ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStatePointMatch::slotNext";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_CHECKLIST_WIZARD_POINTS);
 }
 
 void TutorialStatePointMatch::slotPrevious ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStatePointMatch::slotPrevious";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_CURVE_TYPE);
 }

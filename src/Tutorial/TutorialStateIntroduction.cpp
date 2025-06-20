@@ -23,12 +23,10 @@ TutorialStateIntroduction::TutorialStateIntroduction (TutorialStateContext &cont
   m_text2 (nullptr),
   m_next (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateIntroduction::TutorialStateIntroduction";
 }
 
 void TutorialStateIntroduction::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateIntroduction::begin ()";
 
   context().tutorialDlg().scene().clear ();
 
@@ -56,7 +54,6 @@ void TutorialStateIntroduction::begin ()
 
 void TutorialStateIntroduction::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateIntroduction::end ()";
 
   // It is not safe to remove and deallocate items here since an active TutorialButton
   // may be on the stack. So we clear the scene as the first step in the next begin()
@@ -64,7 +61,6 @@ void TutorialStateIntroduction::end ()
 
 void TutorialStateIntroduction::slotNext ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateIntroduction::slotNext";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_AXIS_POINTS);
 }

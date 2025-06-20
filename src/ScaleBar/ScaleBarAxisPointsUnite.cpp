@@ -13,7 +13,6 @@
 
 ScaleBarAxisPointsUnite::ScaleBarAxisPointsUnite()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ScaleBarAxisPointsUnite::ScaleBarAxisPointsUnite";
 }
 
 ScaleBarAxisPointsUnite::~ScaleBarAxisPointsUnite()

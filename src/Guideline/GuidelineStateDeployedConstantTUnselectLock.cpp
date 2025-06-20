@@ -23,9 +23,6 @@ GuidelineStateDeployedConstantTUnselectLock::~GuidelineStateDeployedConstantTUns
 
 void GuidelineStateDeployedConstantTUnselectLock::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantTUnselectLock::begin"
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (false,
                true);
 
@@ -39,7 +36,6 @@ bool GuidelineStateDeployedConstantTUnselectLock::doPaint () const
 
 void GuidelineStateDeployedConstantTUnselectLock::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantTUnselectLock::end";
 }
 
 void GuidelineStateDeployedConstantTUnselectLock::handleActiveChange (bool active)

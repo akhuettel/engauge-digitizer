@@ -46,7 +46,6 @@ QString DigitizeStateSelect::activeCurve () const
 
 void DigitizeStateSelect::addHoverHighlighting()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSelect::addHoverHighlighting";
 
   QList<QGraphicsItem*> items = context().mainWindow().scene().items();
   QList<QGraphicsItem*>::iterator itr;
@@ -63,7 +62,6 @@ void DigitizeStateSelect::addHoverHighlighting()
 void DigitizeStateSelect::begin (CmdMediator *cmdMediator,
                                  DigitizeState /* previousState */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSelect::begin";
 
   setCursor(cmdMediator);
   context().setDragMode(QGraphicsView::RubberBandDrag);
@@ -81,14 +79,12 @@ bool DigitizeStateSelect::canPaste (const Transformation & /* transformation */,
 
 QCursor DigitizeStateSelect::cursor(CmdMediator * /* cmdMediator */) const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateSelect::cursor";
 
   return QCursor (Qt::ArrowCursor);
 }
 
 void DigitizeStateSelect::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSelect::end";
 
   removeHoverHighlighting();
 }
@@ -101,8 +97,6 @@ bool DigitizeStateSelect::guidelinesAreSelectable () const
 void DigitizeStateSelect::handleContextMenuEventAxis (CmdMediator *cmdMediator,
                                                       const QString &pointIdentifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSelect::handleContextMenuEventAxis "
-                              << " point=" << pointIdentifier.toLatin1 ().data ();
 
   if (cmdMediator->document().documentAxesPointsRequired() == DOCUMENT_AXES_POINTS_REQUIRED_2) {
     handleContextMenuEventAxis2 (cmdMediator);
@@ -114,7 +108,6 @@ void DigitizeStateSelect::handleContextMenuEventAxis (CmdMediator *cmdMediator,
 
 void DigitizeStateSelect::handleContextMenuEventAxis2 (CmdMediator *cmdMediator)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateSelect::handleContextMenuEventAxis2";
 
   const bool IS_NOT_X_ONLY = false;
 
@@ -177,7 +170,6 @@ void DigitizeStateSelect::handleContextMenuEventAxis2 (CmdMediator *cmdMediator)
 void DigitizeStateSelect::handleContextMenuEventAxis34 (CmdMediator *cmdMediator,
                                                         const QString &pointIdentifier)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateSelect::handleContextMenuEventAxis34";
 
   QPointF posScreen = cmdMediator->document().positionScreen (pointIdentifier);
   QPointF posGraphBefore = cmdMediator->document().positionGraph (pointIdentifier);
@@ -238,8 +230,6 @@ void DigitizeStateSelect::handleContextMenuEventAxis34 (CmdMediator *cmdMediator
 void DigitizeStateSelect::handleContextMenuEventGraph (CmdMediator *cmdMediator,
                                                        const QStringList &pointIdentifiers)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSelect::handleContextMenuEventGraph "
-                              << "points=" << pointIdentifiers.join(",").toLatin1 ().data ();
 
   // Editing graph coordinates before the axes are defined is not useful because:
   // 1) That functionality is for fine tuning point placement based on defined axes
@@ -302,15 +292,12 @@ void DigitizeStateSelect::handleContextMenuEventGraph (CmdMediator *cmdMediator,
 
 void DigitizeStateSelect::handleCurveChange(CmdMediator * /* cmdMediator */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSelect::handleCurveChange";
 }
 
 void DigitizeStateSelect::handleKeyPress (CmdMediator *cmdMediator,
                                           Qt::Key key,
                                           bool atLeastOneSelectedItem)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSelect::handleKeyPress"
-                              << " key=" << QKeySequence (key).toString ().toLatin1 ().data ();
 
   handleKeyPressArrow (cmdMediator,
                        key,
@@ -320,14 +307,11 @@ void DigitizeStateSelect::handleKeyPress (CmdMediator *cmdMediator,
 void DigitizeStateSelect::handleMouseMove (CmdMediator * /* cmdMediator */,
                                            QPointF /* posScreen */)
 {
-//  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateSelect::handleMouseMove";
 }
 
 void DigitizeStateSelect::handleMousePress (CmdMediator * /* cmdMediator */,
                                             QPointF posScreen)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSelect::handleMousePress"
-                              << " posScreen=" << QPointFToString (posScreen).toLatin1 ().data ();
 
   // Note that GraphicsView has already called GraphicsPointAbstract::resetPositionHasChanged on all items
 
@@ -337,8 +321,6 @@ void DigitizeStateSelect::handleMousePress (CmdMediator * /* cmdMediator */,
 void DigitizeStateSelect::handleMouseRelease (CmdMediator *cmdMediator,
                                               QPointF posScreen)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSelect::handleMouseRelease"
-                              << " posScreen=" << QPointFToString (posScreen).toLatin1 ().data ();
 
   QPointF deltaScreen = posScreen - m_movingStart;
   QStringList positionHasChangedIdentifers = context().mainWindow().scene().positionHasChangedPointIdentifiers();
@@ -395,7 +377,6 @@ QString DigitizeStateSelect::moveTextFromDeltaScreen (const QPointF &deltaScreen
 
 void DigitizeStateSelect::removeHoverHighlighting()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSelect::removeHoverHighlighting";
 
   QList<QGraphicsItem*> items = context().mainWindow().scene().items();
   QList<QGraphicsItem*>::iterator itr;
@@ -433,7 +414,6 @@ QString DigitizeStateSelect::scaleBarPointIdentifier (CmdMediator *cmdMediator) 
 
 void DigitizeStateSelect::setHoverHighlighting(const MainWindowModel &modelMainWindow)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSelect::addHoverHighlighting";
 
   // Set the opacity for all points. It should be already set for pre-existing points
   QList<QGraphicsItem*> items = context().mainWindow().scene().items();
@@ -478,7 +458,6 @@ QString DigitizeStateSelect::state() const
 
 void DigitizeStateSelect::updateAfterPointAddition ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSelect::updateAfterPointAddition";
 
   addHoverHighlighting ();
 }
@@ -486,10 +465,8 @@ void DigitizeStateSelect::updateAfterPointAddition ()
 void DigitizeStateSelect::updateModelDigitizeCurve (CmdMediator * /* cmdMediator */,
                                                     const DocumentModelDigitizeCurve & /*modelDigitizeCurve */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSelect::updateModelDigitizeCurve";
 }
 
 void DigitizeStateSelect::updateModelSegments(const DocumentModelSegments & /* modelSegments */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateSelect::updateModelSegments";
 }

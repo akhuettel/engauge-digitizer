@@ -47,7 +47,6 @@ DlgSettingsAxesChecker::DlgSettingsAxesChecker(MainWindow &mainWindow) :
   m_modelAxesCheckerAfter (nullptr),
   m_modelCoords (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAxesChecker::DlgSettingsAxesChecker";
 
   QWidget *subPanel = createSubPanel ();
   finishPanel (subPanel);
@@ -55,7 +54,6 @@ DlgSettingsAxesChecker::DlgSettingsAxesChecker(MainWindow &mainWindow) :
 
 DlgSettingsAxesChecker::~DlgSettingsAxesChecker()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAxesChecker::~DlgSettingsAxesChecker";
 
   delete m_checker;
 }
@@ -63,7 +61,6 @@ DlgSettingsAxesChecker::~DlgSettingsAxesChecker()
 void DlgSettingsAxesChecker::createControls (QGridLayout *layout,
                                              int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAxesChecker::createControls";
 
   QGroupBox *groupBox = new QGroupBox (tr ("Axes Checker Lifetime"));
   layout->addWidget (groupBox, row, 1, 1, 2);
@@ -119,7 +116,6 @@ void DlgSettingsAxesChecker::createOptionalSaveDefault (QHBoxLayout * /* layout 
 
 void DlgSettingsAxesChecker::createPoints ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAxesChecker::createPoints";
 
   QBrush AXES_BRUSH (Qt::gray);
 
@@ -159,7 +155,6 @@ void DlgSettingsAxesChecker::createPoints ()
 void DlgSettingsAxesChecker::createPreview (QGridLayout *layout,
                                             int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAxesChecker::createPreview";
 
   QLabel *labelPreview = new QLabel (tr ("Preview"));
   layout->addWidget (labelPreview, row++, 0, 1, 4);
@@ -178,7 +173,6 @@ void DlgSettingsAxesChecker::createPreview (QGridLayout *layout,
 
 QWidget *DlgSettingsAxesChecker::createSubPanel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAxesChecker::createSubPanel";
 
   QWidget *subPanel = new QWidget ();
   QGridLayout *layout = new QGridLayout (subPanel);
@@ -200,7 +194,6 @@ QWidget *DlgSettingsAxesChecker::createSubPanel ()
 
 void DlgSettingsAxesChecker::handleOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAxesChecker::handleOk";
 
   CmdSettingsAxesChecker *cmd = new CmdSettingsAxesChecker (mainWindow (),
                                                             cmdMediator ().document(),
@@ -213,7 +206,6 @@ void DlgSettingsAxesChecker::handleOk ()
 
 void DlgSettingsAxesChecker::load (CmdMediator &cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAxesChecker::load";
 
   setCmdMediator (cmdMediator);
 
@@ -254,7 +246,6 @@ void DlgSettingsAxesChecker::setSmallDialogs(bool smallDialogs)
 
 void DlgSettingsAxesChecker::slotGroupMode (QAbstractButton*)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAxesChecker::slotGroupMode";
 
   if (m_btnNever->isChecked ()) {
     m_modelAxesCheckerAfter->setCheckerMode(CHECKER_MODE_NEVER);
@@ -270,7 +261,6 @@ void DlgSettingsAxesChecker::slotGroupMode (QAbstractButton*)
 
 void DlgSettingsAxesChecker::slotLineColor(const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAxesChecker::slotLineColor";
 
   m_modelAxesCheckerAfter->setLineColor (static_cast<ColorPalette> (m_cmbLineColor->currentData().toInt()));
   updateControls();
@@ -279,7 +269,6 @@ void DlgSettingsAxesChecker::slotLineColor(const QString &)
 
 void DlgSettingsAxesChecker::slotSeconds (const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAxesChecker::slotLineColor";
 
   m_modelAxesCheckerAfter->setCheckerSeconds(m_cmbSeconds->currentData().toInt());
   updateControls();

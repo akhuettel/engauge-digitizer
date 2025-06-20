@@ -63,8 +63,6 @@ void DigitizeStateAbstractBase::handleKeyPressArrow (CmdMediator *cmdMediator,
                                                      Qt::Key key,
                                                      bool atLeastOneSelectedItem)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateAbstractBase::handleKeyPressArrow"
-                              << " key=" << QKeySequence (key).toString ().toLatin1 ().data ();
 
   if (atLeastOneSelectedItem) {
 
@@ -144,7 +142,6 @@ QString DigitizeStateAbstractBase::moveTextUp () const
 
 void DigitizeStateAbstractBase::setCursor(CmdMediator *cmdMediator)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateAbstractBase::setCursor";
 
   // Note that we are setting the QGraphicsView cursor and NOT the QApplication override cursor
   m_context.view ().setCursor (cursor (cmdMediator));

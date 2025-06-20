@@ -15,10 +15,6 @@ QXmlStreamReader::TokenType loadNextFromReader (QXmlStreamReader &reader)
 {
   QXmlStreamReader::TokenType tokenType = reader.readNext();
 
-  LOG4CPP_DEBUG_S ((*mainCat)) << "loadNextFromReader "
-                               << " tokenType=" << QXmlStreamReaderTokenTypeToString (tokenType).toLatin1().data()
-                               << " tag=" << reader.name().toLatin1().data();
-
   return tokenType;
 }
 
@@ -53,8 +49,6 @@ void xmlExitWithError (QXmlStreamReader &reader,
   QMessageBox::critical (nullptr,
                          QObject::tr ("Error reading xml"),
                          adornedMsg);
-
-  LOG4CPP_ERROR_S ((*mainCat)) << "xmlExitWithError error='" << adornedMsg.toLatin1().data() << "'";
 
   exit (-1);
 }

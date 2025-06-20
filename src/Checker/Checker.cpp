@@ -48,7 +48,6 @@ void Checker::adjustPolarAngleRanges (const DocumentModelCoords &modelCoords,
                                       double &xMax,
                                       double &yMin) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Checker::adjustPolarAngleRanges transformation=" << transformation;
 
   const double UNIT_LENGTH = 1.0;
 
@@ -129,7 +128,6 @@ void Checker::adjustPolarAngleRanges (const DocumentModelCoords &modelCoords,
     }
   }
 
-  LOG4CPP_INFO_S ((*mainCat)) << "Checker::adjustPolarAngleRanges path=(" << path.toLatin1().data() << ")";
 }
 
 void Checker::prepareForDisplay (const QPolygonF &polygon,
@@ -138,7 +136,6 @@ void Checker::prepareForDisplay (const QPolygonF &polygon,
                                  const DocumentModelCoords &modelCoords,
                                  DocumentAxesPointsRequired documentAxesPointsRequired)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Checker::prepareForDisplay";
 
   ENGAUGE_ASSERT ((polygon.count () == NUM_AXES_POINTS_2) ||
                   (polygon.count () == NUM_AXES_POINTS_3) ||
@@ -177,8 +174,6 @@ void Checker::prepareForDisplay (const QList<Point> &points,
                                  const Transformation &transformation,
                                  DocumentAxesPointsRequired documentAxesPointsRequired)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Checker::prepareForDisplay "
-                              << " transformation=" << transformation;
 
   ENGAUGE_ASSERT ((points.count () == NUM_AXES_POINTS_2) ||
                   (points.count () == NUM_AXES_POINTS_3) ||

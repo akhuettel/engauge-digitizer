@@ -44,7 +44,6 @@ QString DigitizeStateScale::activeCurve () const
 void DigitizeStateScale::begin (CmdMediator *cmdMediator,
                                 DigitizeState /* previousState */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateScale::begin";
 
   setCursor(cmdMediator);
   context().setDragMode(QGraphicsView::NoDrag);
@@ -60,7 +59,6 @@ bool DigitizeStateScale::canPaste (const Transformation & /* transformation */,
 
 QCursor DigitizeStateScale::cursor(CmdMediator *cmdMediator) const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateScale::cursor";
 
   CursorFactory cursorFactory;
   QCursor cursor = cursorFactory.generate (cmdMediator->document().modelDigitizeCurve());
@@ -70,7 +68,6 @@ QCursor DigitizeStateScale::cursor(CmdMediator *cmdMediator) const
 
 void DigitizeStateScale::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateScale::end";
 }
 
 bool DigitizeStateScale::guidelinesAreSelectable () const
@@ -81,38 +78,27 @@ bool DigitizeStateScale::guidelinesAreSelectable () const
 void DigitizeStateScale::handleContextMenuEventAxis (CmdMediator * /* cmdMediator */,
                                                      const QString &pointIdentifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateScale::handleContextMenuEventAxis "
-                              << " point=" << pointIdentifier.toLatin1 ().data ();
 }
 
 void DigitizeStateScale::handleContextMenuEventGraph (CmdMediator * /* cmdMediator */,
                                                       const QStringList &pointIdentifiers)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateScale::handleContextMenuEventGraph "
-                              << "points=" << pointIdentifiers.join(",").toLatin1 ().data ();
 }
 
 void DigitizeStateScale::handleCurveChange(CmdMediator * /* cmdMediator */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateScale::handleCurveChange";
 }
 
 void DigitizeStateScale::handleKeyPress (CmdMediator * /* cmdMediator */,
                                          Qt::Key key,
                                          bool /* atLeastOneSelectedItem */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateScale::handleKeyPress"
-                              << " key=" << QKeySequence (key).toString ().toLatin1 ().data ();
 }
 
 void DigitizeStateScale::handleMouseMove (CmdMediator * /* cmdMediator */,
                                           QPointF posScreen)
 {
   if (m_temporaryPoint1 != nullptr) {
-
-    LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateScale::handleMouseMove"
-                                 << " oldPos=" << QPointFToString (m_temporaryPoint1->pos ()).toLatin1().data()
-                                 << " newPos=" << QPointFToString (posScreen).toLatin1().data();
 
     m_temporaryPoint1->setPos (posScreen);
 
@@ -123,7 +109,6 @@ void DigitizeStateScale::handleMouseMove (CmdMediator * /* cmdMediator */,
 void DigitizeStateScale::handleMousePress (CmdMediator *cmdMediator,
                                            QPointF posScreen)
 { 
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateScale::handleMousePress";
 
   GeometryWindow *NULL_GEOMETRY_WINDOW = nullptr;
 
@@ -171,7 +156,6 @@ void DigitizeStateScale::handleMousePress (CmdMediator *cmdMediator,
 void DigitizeStateScale::handleMouseRelease (CmdMediator *cmdMediator,
                                              QPointF /* posScreen */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateScale::handleMouseRelease";
 
   if (context().mainWindow().transformIsDefined()) {
 
@@ -237,7 +221,6 @@ QString DigitizeStateScale::state() const
 
 void DigitizeStateScale::updateAfterPointAddition ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateScale::updateAfterPointAddition";
 }
 
 void DigitizeStateScale::updateLineGeometry ()
@@ -251,12 +234,10 @@ void DigitizeStateScale::updateLineGeometry ()
 void DigitizeStateScale::updateModelDigitizeCurve (CmdMediator *cmdMediator,
                                                    const DocumentModelDigitizeCurve & /*modelDigitizeCurve */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateScale::updateModelDigitizeCurve";
 
   setCursor(cmdMediator);
 }
 
 void DigitizeStateScale::updateModelSegments(const DocumentModelSegments & /* modelSegments */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateScale::updateModelSegments";
 }

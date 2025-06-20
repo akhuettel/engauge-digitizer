@@ -24,7 +24,6 @@ CmdSettingsPointMatch::CmdSettingsPointMatch(MainWindow &mainWindow,
   m_modelPointMatchBefore (modelPointMatchBefore),
   m_modelPointMatchAfter (modelPointMatchAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsPointMatch::CmdSettingsPointMatch";
 }
 
 CmdSettingsPointMatch::CmdSettingsPointMatch (MainWindow &mainWindow,
@@ -35,7 +34,6 @@ CmdSettingsPointMatch::CmdSettingsPointMatch (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsPointMatch::CmdSettingsPointMatch";
 
   bool success = true;
 
@@ -80,7 +78,6 @@ CmdSettingsPointMatch::~CmdSettingsPointMatch ()
 
 void CmdSettingsPointMatch::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsPointMatch::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -91,7 +88,6 @@ void CmdSettingsPointMatch::cmdRedo ()
 
 void CmdSettingsPointMatch::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsPointMatch::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

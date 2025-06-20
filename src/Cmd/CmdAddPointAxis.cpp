@@ -31,10 +31,6 @@ CmdAddPointAxis::CmdAddPointAxis (MainWindow &mainWindow,
   m_ordinal (ordinal),
   m_isXOnly (isXOnly)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAddPointAxis::CmdAddPointAxis"
-                              << " posScreen=" << QPointFToString (posScreen).toLatin1 ().data ()
-                              << " posGraph=" << QPointFToString (posGraph).toLatin1 ().data ()
-                              << " ordinal=" << ordinal;
 }
 
 CmdAddPointAxis::CmdAddPointAxis (MainWindow &mainWindow,
@@ -45,7 +41,6 @@ CmdAddPointAxis::CmdAddPointAxis (MainWindow &mainWindow,
                       document,
                       cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAddPointAxis::CmdAddPointAxis";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -80,7 +75,6 @@ CmdAddPointAxis::~CmdAddPointAxis ()
 
 void CmdAddPointAxis::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAddPointAxis::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -98,7 +92,6 @@ void CmdAddPointAxis::cmdRedo ()
 
 void CmdAddPointAxis::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdAddPointAxis::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

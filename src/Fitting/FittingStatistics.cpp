@@ -83,27 +83,17 @@ bool FittingStatistics::calculateCurveFitReducedFurther (int orderReducedFurther
   // uses more complicated transposes rather than just using a = X^(-1) y since the transpose approach
   // can handle when the a matrix is nonsquare
   Matrix denominator = X.transpose () * X;
-  LOG4CPP_DEBUG_S ((*mainCat)) << "FittingStatistics::calculateCurveFitReducedFurther determinant=" << denominator.determinant();
-
   MatrixConsistent matrixConsistent = MATRIX_CONSISTENT;
   Matrix inv = denominator.inverse (significantDigits,
                                     matrixConsistent);
 
   if (matrixConsistent == MATRIX_INCONSISTENT) {
 
-    LOG4CPP_DEBUG_S ((*mainCat)) << "FittingStatistics::calculateCurveFitReducedFurther failed with order="
-                                 << orderReducedFurther;
-
     return false;
   }
 
   a = inv * X.transpose () * Y;
   Matrix expectedIdentity = denominator * inv;
-
-  LOG4CPP_DEBUG_S ((*mainCat)) << "FittingStatistics::calculateCurveFitReducedFurther succeeded with order="
-                               << orderReducedFurther
-                               << " expectedIdentity="
-                               << expectedIdentity.toString ().toLatin1().data ();
 
   return true;
 }

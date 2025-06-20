@@ -37,7 +37,6 @@ GridLineFactory::GridLineFactory(QGraphicsScene &scene,
   m_modelCoords (modelCoords),
   m_isChecker (false)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GridLineFactory::GridLineFactory";
 }
 
 GridLineFactory::GridLineFactory(QGraphicsScene &scene,
@@ -50,15 +49,10 @@ GridLineFactory::GridLineFactory(QGraphicsScene &scene,
   m_modelCoords (modelCoords),
   m_isChecker (true)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GridLineFactory::GridLineFactory"
-                               << " pointRadius=" << pointRadius
-                               << " pointsToIsolate=" << pointsToIsolate.count();
 }
 
 void GridLineFactory::bindItemToScene(QGraphicsItem *item) const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GridLineFactory::bindItemToScene";
-
   item->setOpacity (CHECKER_OPACITY);
   item->setZValue (Z_VALUE_IN_FRONT);
   if (m_isChecker) {
@@ -74,12 +68,6 @@ GridLine *GridLineFactory::createGridLine (double xFrom,
                                            double yTo,
                                            const Transformation &transformation)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GridLineFactory::createGridLine"
-                               << " xFrom=" << xFrom
-                               << " yFrom=" << yFrom
-                               << " xTo=" << xTo
-                               << " yTo=" << yTo;
-
   GridLine *gridLine = new GridLine ();
 
   // Originally a complicated algorithm tried to intercept a straight line from (xFrom,yFrom) to (xTo,yTo). That did not work well since:
@@ -243,7 +231,6 @@ void GridLineFactory::createTransformAlign (const Transformation &transformation
                                             double &ellipseXAxis,
                                             double &ellipseYAxis) const
 {
-  // LOG4CPP_INFO_S is below
 
   // Compute a minimal transformation that aligns the graph x and y axes with the screen x and y axes. Specifically, shear,
   // translation and rotation are allowed but not scaling. Scaling is bad since it messes up the line thickness of the drawn arc.
@@ -280,17 +267,6 @@ void GridLineFactory::createTransformAlign (const Transformation &transformation
                                                                                 posXRadiusY0AlignedScreen,
                                                                                 posX0YRadiusAlignedScreen);
 
-  // Use \n rather than endl to prevent compiler warning "nonnull argument t compared to null"
-  LOG4CPP_INFO_S ((*mainCat)) << "GridLineFactory::createTransformAlign"
-                              << " transformation=" << QTransformToString (transformation.transformMatrix()).toLatin1().data() << "\n"
-                              << " radiusLinearCartesian=" << radiusLinearCartesian
-                              << " posXRadiusY0Screen=" << QPointFToString (posXRadiusY0Screen).toLatin1().data()
-                              << " posX0YRadiusScreen=" << QPointFToString (posX0YRadiusScreen).toLatin1().data()
-                              << " ellipseXAxis=" << ellipseXAxis
-                              << " ellipseYAxis=" << ellipseYAxis
-                              << " posXRadiusY0AlignedScreen=" << QPointFToString (posXRadiusY0AlignedScreen).toLatin1().data()
-                              << " posX0YRadiusAlignedScreen=" << QPointFToString (posX0YRadiusAlignedScreen).toLatin1().data()
-                              << " transformAlign=" << QTransformToString (transformAlign).toLatin1().data();
 }
 
 QGraphicsItem *GridLineFactory::ellipseItem (const Transformation &transformation,
@@ -298,7 +274,6 @@ QGraphicsItem *GridLineFactory::ellipseItem (const Transformation &transformatio
                                              const QPointF &posStartScreen,
                                              const QPointF &posEndScreen) const
 {
-  // LOG4CPP_INFO_S is below
 
   QPointF posStartGraph, posEndGraph;
 
@@ -319,15 +294,6 @@ QGraphicsItem *GridLineFactory::ellipseItem (const Transformation &transformatio
   QPointF posOriginGraph (0, 0), posOriginScreen;
   transformation.transformLinearCartesianGraphToScreen (posOriginGraph,
                                                         posOriginScreen);
-
-  LOG4CPP_INFO_S ((*mainCat)) << "GridLineFactory::ellipseItem"
-                              << " radiusLinearCartesian=" << radiusLinearCartesian
-                              << " posStartScreen=" << QPointFToString (posStartScreen).toLatin1().data()
-                              << " posEndScreen=" << QPointFToString (posEndScreen).toLatin1().data()
-                              << " posOriginScreen=" << QPointFToString (posOriginScreen).toLatin1().data()
-                              << " angleStart=" << qRadiansToDegrees (angleStart)
-                              << " angleEnd=" << qRadiansToDegrees (angleEnd)
-                              << " transformation=" << transformation;
 
   // Compute rotate/shear transform that aligns linear cartesian graph coordinates with screen coordinates, and ellipse parameters.
   // Transform does not include scaling since that messes up the thickness of the drawn line, and does not include
@@ -362,12 +328,6 @@ void GridLineFactory::finishActiveGridLine (const QPointF &posStartScreen,
                                             const Transformation &transformation,
                                             GridLine &gridLine) const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GridLineFactory::finishActiveGridLine"
-                               << " posStartScreen=" << QPointFToString (posStartScreen).toLatin1().data()
-                               << " posEndScreen=" << QPointFToString (posEndScreen).toLatin1().data()
-                               << " yFrom=" << yFrom
-                               << " yTo=" << yTo;
-
   QGraphicsItem *item;
   if ((m_modelCoords.coordsType() == COORDS_TYPE_POLAR) &&
       (yFrom == yTo)) {
@@ -401,10 +361,6 @@ void GridLineFactory::finishActiveGridLine (const QPointF &posStartScreen,
 QGraphicsItem *GridLineFactory::lineItem (const QPointF &posStartScreen,
                                           const QPointF &posEndScreen) const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GridLineFactory::lineItem"
-                               << " posStartScreen=" << QPointFToString (posStartScreen).toLatin1().data()
-                               << " posEndScreen=" << QPointFToString (posEndScreen).toLatin1().data();
-
   return new QGraphicsLineItem (QLineF (posStartScreen,
                                         posEndScreen));
 }

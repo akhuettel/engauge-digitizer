@@ -57,7 +57,6 @@ void GridClassifier::classify (bool isGnuplot,
                                double &startY,
                                double &stepY)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GridClassifier::classify";
 
   QImage image = originalPixmap.toImage ();
 
@@ -121,7 +120,6 @@ void GridClassifier::computeGraphCoordinateLimits (const QImage &image,
                                                    double &yMin,
                                                    double &yMax)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GridClassifier::computeGraphCoordinateLimits";
 
   // Project every pixel onto the x axis, and onto the y axis. One set of histogram bins will be
   // set up along each of the axes. The range of bins will encompass every pixel in the image, and no more.
@@ -290,7 +288,6 @@ void GridClassifier::dumpGnuplotCorrelations (const QString &coordinateLabel,
 
 void GridClassifier::initializeHistogramBins ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GridClassifier::initializeHistogramBins";
 
   for (int bin = 0; bin < m_numHistogramBins; bin++) {
     m_binsX [bin] = 0;
@@ -356,7 +353,6 @@ void GridClassifier::populateHistogramBins (const QImage &image,
                                             double yMin,
                                             double yMax)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GridClassifier::populateHistogramBins";
 
   ColorFilter filter;
   QRgb rgbBackground = filter.marginColor (&image);
@@ -409,9 +405,6 @@ void GridClassifier::searchCountSpace (double bins [],
                                        double binStep,
                                        int &countMax)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GridClassifier::searchCountSpace"
-                              << " start=" << binStart
-                              << " step=" << binStep;
 
   // Loop though the space of possible counts
   Correlation correlation (m_numHistogramBins);
@@ -452,7 +445,6 @@ void GridClassifier::searchStartStepSpace (bool isGnuplot,
                                            double &binStartMax,
                                            double &binStepMax)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GridClassifier::searchStartStepSpace";
 
   // Correlations are tracked for logging
   double *signalA = new double [unsigned (m_numHistogramBins)];

@@ -73,8 +73,6 @@ GraphicsView::~GraphicsView()
 
 void GraphicsView::contextMenuEvent(QContextMenuEvent *event)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsView::contextMenuEvent"
-                              << " selectedCount=" << scene()->selectedItems().count();
 
   GraphicsItemsExtractor graphicsItemsExtractor;
   const QList<QGraphicsItem*> &items = scene()->selectedItems();
@@ -102,7 +100,6 @@ void GraphicsView::contextMenuEvent(QContextMenuEvent *event)
 
 void GraphicsView::dragEnterEvent (QDragEnterEvent *event)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsView::dragEnterEvent " << (event->mimeData ()->hasUrls () ? "urls" : "non-urls");
 
   if (event->mimeData ()->hasImage () ||
       event->mimeData ()->hasUrls ()) {
@@ -112,7 +109,6 @@ void GraphicsView::dragEnterEvent (QDragEnterEvent *event)
 
 void GraphicsView::dragMoveEvent (QDragMoveEvent *event)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsView::dragMoveEvent";
 
   if (event->mimeData ()->hasImage () ||
       event->mimeData ()->hasUrls ()) {
@@ -122,7 +118,6 @@ void GraphicsView::dragMoveEvent (QDragMoveEvent *event)
 
 void GraphicsView::dropEvent (QDropEvent *event)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsView::dropEvent";
 
   // Urls from text/uri-list
   QList<QUrl> urlList = event->mimeData ()->urls ();
@@ -151,7 +146,6 @@ void GraphicsView::dropEvent (QDropEvent *event)
 
   } else {
 
-    LOG4CPP_INFO_S ((*mainCat)) << "GraphicsView::dropEvent dropped";
     QGraphicsView::dropEvent (event);
   }
 }
@@ -168,7 +162,6 @@ bool GraphicsView::handleDropEvent (const QString &possibleDigFileName,
   if (loadFileInfo.loadsAsDigFile (possibleDigFileName)) {
 
     // Branch that applies when a dig file name has been dropped
-    LOG4CPP_INFO_S ((*mainCat)) << "QGraphicsView::handleDropEvent dig file";
     UrlDirty url (possibleDigFileName);
     emit signalDraggedDigFile (url.toLocalFile());
     willAccept = true;
@@ -176,14 +169,12 @@ bool GraphicsView::handleDropEvent (const QString &possibleDigFileName,
   } else if (hasImage) {
 
     // Branch that applies when an image selected within another application (e.g. LibreOffice Draw) has been dropped
-    LOG4CPP_INFO_S ((*mainCat)) << "GraphicsView::handleDropEvent image";
     emit signalDraggedImage (image);
     willAccept = true;
 
   } else if (hasUrl) {
 
     // Branch that applies when a local file name or internet url has been dropped
-    LOG4CPP_INFO_S ((*mainCat)) << "GraphicsView::handleDropEvent url=" << urlFirst.toString ().toLatin1 ().data ();
     emit signalDraggedImageUrl (urlFirst);
     willAccept = true;
   }
@@ -203,8 +194,6 @@ bool GraphicsView::inBounds (const QPointF &posScreen)
 
 void GraphicsView::keyPressEvent (QKeyEvent *event)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsView::keyPressEvent";
-
   // Intercept up/down/left/right if any items are selected
   Qt::Key key = static_cast<Qt::Key> (event->key());
 
@@ -231,8 +220,6 @@ void GraphicsView::keyPressEvent (QKeyEvent *event)
 
 void GraphicsView::mouseMoveEvent (QMouseEvent *event)
 {
-//  LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsView::mouseMoveEvent cursor="
-//                               << QtCursorToString (cursor().shape()).toLatin1 ().data ();
 
   QPointF posScreen = mapToScene (event->pos ());
 
@@ -249,8 +236,6 @@ void GraphicsView::mouseMoveEvent (QMouseEvent *event)
 
 void GraphicsView::mousePressEvent (QMouseEvent *event)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsView::mousePressEvent";
-
   QPointF posScreen = mapToScene (event->pos ());
 
   if (!inBounds (posScreen)) {
@@ -266,8 +251,6 @@ void GraphicsView::mousePressEvent (QMouseEvent *event)
 
 void GraphicsView::mouseReleaseEvent (QMouseEvent *event)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsView::mouseReleaseEvent signalMouseRelease";
-
   QPointF posScreen = mapToScene (event->pos ());
 
   if (!inBounds (posScreen)) {
@@ -336,10 +319,6 @@ void GraphicsView::wheelEvent(QWheelEvent *event)
   const int DELTAS_PER_DEGREE = 8; // From QWheelEvent documentation
 
   QPoint numDegrees = event->angleDelta() / DELTAS_PER_DEGREE;
-
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::wheelEvent"
-                              << " degrees=" << numDegrees.y()
-                              << " phase=" << event->phase();
 
   // Criteria:
   // 1) User has enabled wheel zoom control (but that is not known here so MainWindow will handle that part)

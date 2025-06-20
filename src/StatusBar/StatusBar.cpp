@@ -240,11 +240,6 @@ void StatusBar::setCoordinates (const QString &coordsScreen,
                                 const QString &coordsGraph,
                                 const QString &resolutionGraph)
 {
-//  LOG4CPP_DEBUG_S ((*mainCat)) << "StatusBar::setCoordinates"
-//                               << " screen=" << coordsScreen.toLatin1 ().data ()
-//                               << " graph=" << coordsGraph.toLatin1 ().data ()
-//                               << " resolution=" << resolutionGraph.toLatin1 ().data ();
-
   if (m_cmbUnits->isEnabled ()) {
 
     m_coordsScreen = coordsScreen;
@@ -267,9 +262,6 @@ void StatusBar::setStatusBarMode(StatusBarMode statusBarMode)
 
 void StatusBar::showTemporaryMessage(const QString &message)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "StatusBar::showTemporaryMessage"
-                               << " mode=" << statusBarModeToString (m_statusBarMode).toLatin1 ().data ()
-                               << " message=" << message.toLatin1 ().data ();
 
   if (m_statusBarMode != STATUS_BAR_MODE_NEVER) {
     if (m_statusBarMode == STATUS_BAR_MODE_TEMPORARY) {
@@ -286,15 +278,11 @@ void StatusBar::showTemporaryMessage(const QString &message)
 
 void StatusBar::slotComboUnits (const QString &text)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "StatusBar::slotComboUnits text=" << text.toLatin1 ().data ();
-
   updateCoordsText();
 }
 
 void StatusBar::slotComboZoom (const QString &text)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "StatusBar::slotComboZoom text=" << text.toLatin1 ().data ();
-
   ENGAUGE_ASSERT (m_zoomMapFromLabel.contains (text));
   ZoomFactor zoomFactor = m_zoomMapFromLabel [text];
   emit signalZoom (zoomFactor);
@@ -302,8 +290,6 @@ void StatusBar::slotComboZoom (const QString &text)
 
 void StatusBar::slotStatusBarChanged(const QString &message)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "StatusBar::slotStatusBarChanged message=" << message.toLatin1 ().data ();
-
   if (m_statusBarMode == STATUS_BAR_MODE_TEMPORARY) {
     m_statusBar.hide();
   }
@@ -311,7 +297,6 @@ void StatusBar::slotStatusBarChanged(const QString &message)
 
 void StatusBar::slotTimeout()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "StatusBar::slotTimeout";
 
   delete m_timer;
   m_timer = nullptr;
@@ -321,7 +306,6 @@ void StatusBar::slotTimeout()
 
 void StatusBar::slotZoom(int zoom)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "StatusBar::slotZoom zoom=" << zoom;
 
   // Show string for the numeric zoom value
   ZoomFactor zoomFactor = static_cast<ZoomFactor> (zoom);

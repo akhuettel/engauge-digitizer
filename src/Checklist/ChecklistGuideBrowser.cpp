@@ -25,7 +25,6 @@ ChecklistGuideBrowser::ChecklistGuideBrowser ()
 QString ChecklistGuideBrowser::ahref (QString &html,
                                       const QString &name) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideBrowser::bindToDocument";
 
   QString expression = QString ("%1%2%3")
                        .arg (TAG_AHREF_DELIMITER_START)
@@ -55,7 +54,6 @@ void ChecklistGuideBrowser::check (QString &html,
                                    const QString &anchor,
                                    bool isChecked) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideBrowser::check";
 
   QString tag = QString ("%1%2%3")
                 .arg (TAG_ANCHOR_DELIMITER_START)
@@ -72,8 +70,6 @@ void ChecklistGuideBrowser::check (QString &html,
 void ChecklistGuideBrowser::divHide (QString &html,
                                      const QString &anchor) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideBrowser::divHide"
-                              << " anchor=" << anchor.toLatin1().data();
 
   // Remove everything between the start and end tags, inclusive
   QString expression = QString ("\\%1%2\\%3.*\\%4%5\\%6")
@@ -90,8 +86,6 @@ void ChecklistGuideBrowser::divHide (QString &html,
 void ChecklistGuideBrowser::divShow (QString &html,
                                      const QString &anchor) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideBrowser::divShow"
-                              << " anchor=" << anchor.toLatin1().data();
 
   if (!anchor.isEmpty ()) {
 
@@ -113,7 +107,6 @@ void ChecklistGuideBrowser::divShow (QString &html,
 
 QString ChecklistGuideBrowser::processAhrefs (const QString &htmlBefore)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideBrowser::processAhrefs";
 
   QString html = htmlBefore;
 
@@ -141,7 +134,6 @@ QString ChecklistGuideBrowser::processAhrefs (const QString &htmlBefore)
 
 QString ChecklistGuideBrowser::processCheckboxes (const QString &htmlBefore)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideBrowser::processCheckboxes";
 
   QString html = htmlBefore;
 
@@ -166,7 +158,6 @@ QString ChecklistGuideBrowser::processCheckboxes (const QString &htmlBefore)
 
 QString ChecklistGuideBrowser::processDivs (const QString &htmlBefore)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideBrowser::processDivs";
 
   QString html = htmlBefore;
 
@@ -197,7 +188,6 @@ QString ChecklistGuideBrowser::processDivs (const QString &htmlBefore)
 
 void ChecklistGuideBrowser::refresh ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideBrowser::refresh";
 
   QString html = m_templateHtml;
 
@@ -211,7 +201,6 @@ void ChecklistGuideBrowser::refresh ()
 void ChecklistGuideBrowser::repopulateCheckedTags (const CmdMediator &cmdMediator,
                                                    bool documentIsExported)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideBrowser::repopulateCheckedTags";
 
   m_checkedTags.clear();
 
@@ -257,7 +246,6 @@ void ChecklistGuideBrowser::setTemplateHtml (const QString &html,
 
 void ChecklistGuideBrowser::slotAnchorClicked (const QUrl &url)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideBrowser::slotAnchorClicked";
 
   m_anchor = "";
   if (url.hasFragment ()) {
@@ -270,7 +258,6 @@ void ChecklistGuideBrowser::slotAnchorClicked (const QUrl &url)
 void ChecklistGuideBrowser::update (const CmdMediator &cmdMediator,
                                     bool documentIsExported)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideBrowser::update";
 
   repopulateCheckedTags(cmdMediator,
                         documentIsExported);

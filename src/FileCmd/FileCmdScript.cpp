@@ -18,8 +18,6 @@
 
 FileCmdScript::FileCmdScript(const QString &fileCmdScriptFile)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FileCmdScript::FileCmdScript"
-                              << " curDir=" << QDir::currentPath().toLatin1().data();
 
   // A non-existent script file is allowed in which case nothing gets done, as a way
   // of tracking MainWindow being in a regression test that has no command script
@@ -63,14 +61,12 @@ FileCmdScript::~FileCmdScript()
 
 bool FileCmdScript::canRedo() const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FileCmdScript::canRedo";
 
   return (m_fileCmdStack.count () > 0);
 }
 
 void FileCmdScript::redo(MainWindow &mainWindow)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FileCmdScript::redo";
 
   m_fileCmdStack.first()->redo(mainWindow);
   m_fileCmdStack.pop_front();

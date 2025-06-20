@@ -15,7 +15,6 @@ DocumentHashGenerator::DocumentHashGenerator()
 
 DocumentHash DocumentHashGenerator::generate (const Document &document) const
 {
-  // LOG4CPP_INFO_S is below
 
   // Get hash by letting functor iterate through Document
   CallbackDocumentHash ftor (document.documentAxesPointsRequired());
@@ -26,7 +25,6 @@ DocumentHash DocumentHashGenerator::generate (const Document &document) const
   document.iterateThroughCurvePointsAxes (ftorWithCallback);
   document.iterateThroughCurvesPointsGraphs (ftorWithCallback);
 
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentHashGenerator::generator result=" << ftor.hash().data ();
 
   return ftor.hash ();
 }

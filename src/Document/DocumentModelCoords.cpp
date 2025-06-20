@@ -127,7 +127,6 @@ CoordUnitsNonPolarTheta DocumentModelCoords::coordUnitsY() const
 
 void DocumentModelCoords::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelCoords::loadXml";
 
   bool success = true;
 
@@ -197,7 +196,6 @@ void DocumentModelCoords::printStream(QString indentation,
 
 void DocumentModelCoords::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelCoords::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_COORDS);
   writer.writeAttribute(DOCUMENT_SERIALIZE_COORDS_TYPE, QString::number (m_coordsType));
@@ -293,8 +291,6 @@ double DocumentModelCoords::thetaPeriod () const
     default:
       break;
   }
-
-  LOG4CPP_ERROR_S ((*mainCat)) << "DocumentModelCoords::thetaPeriod";
 
   ENGAUGE_ASSERT(false);
   return 0;

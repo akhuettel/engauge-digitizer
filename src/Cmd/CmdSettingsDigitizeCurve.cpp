@@ -24,7 +24,6 @@ CmdSettingsDigitizeCurve::CmdSettingsDigitizeCurve(MainWindow &mainWindow,
   m_modelDigitizeCurveBefore (modelDigitizeCurveBefore),
   m_modelDigitizeCurveAfter (modelDigitizeCurveAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsDigitizeCurve::CmdSettingsDigitizeCurve";
 }
 
 CmdSettingsDigitizeCurve::CmdSettingsDigitizeCurve (MainWindow &mainWindow,
@@ -35,7 +34,6 @@ CmdSettingsDigitizeCurve::CmdSettingsDigitizeCurve (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsDigitizeCurve::CmdSettingsDigitizeCurve";
 
   bool success = true;
 
@@ -80,7 +78,6 @@ CmdSettingsDigitizeCurve::~CmdSettingsDigitizeCurve ()
 
 void CmdSettingsDigitizeCurve::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsDigitizeCurve::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -91,7 +88,6 @@ void CmdSettingsDigitizeCurve::cmdRedo ()
 
 void CmdSettingsDigitizeCurve::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsDigitizeCurve::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

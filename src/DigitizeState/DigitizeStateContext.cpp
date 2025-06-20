@@ -66,7 +66,6 @@ QString DigitizeStateContext::activeCurve () const
 void DigitizeStateContext::appendNewCmd(CmdMediator *cmdMediator,
                                         QUndoCommand *cmd)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateContext::appendNewCmd";
 
   cmdMediator->push (cmd);
 }
@@ -201,7 +200,6 @@ void DigitizeStateContext::requestImmediateStateTransition (CmdMediator *cmdMedi
 
 void DigitizeStateContext::resetOnLoad (CmdMediator *cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateContext::resetOnLoad";
 
   // Reset current state. At this point, the current state is DIGITIZE_STATE_EMPTY when opening the first document
   // so for consistency we always reset it so succeeding documents work the same way
@@ -213,7 +211,6 @@ void DigitizeStateContext::resetOnLoad (CmdMediator *cmdMediator)
 
 void DigitizeStateContext::setCursor (CmdMediator *cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateContext::setCursor";
 
   ENGAUGE_ASSERT(m_currentState < m_states.count());
 
@@ -222,8 +219,6 @@ void DigitizeStateContext::setCursor (CmdMediator *cmdMediator)
 
 void DigitizeStateContext::setDragMode (QGraphicsView::DragMode dragMode)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateContext::setDragMode";
-
   if (m_imageIsLoaded) {
     m_view.setDragMode (dragMode);
   }
@@ -232,7 +227,6 @@ void DigitizeStateContext::setDragMode (QGraphicsView::DragMode dragMode)
 void DigitizeStateContext::setImageIsLoaded(CmdMediator *cmdMediator,
                                             bool imageIsLoaded)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateContext::setImageIsLoaded";
 
   m_imageIsLoaded = imageIsLoaded;
   setCursor (cmdMediator);
@@ -255,7 +249,6 @@ void DigitizeStateContext::updateAfterPointAddition ()
 void DigitizeStateContext::updateModelDigitizeCurve (CmdMediator *cmdMediator,
                                                      const DocumentModelDigitizeCurve &modelDigitizeCurve)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateContext::updateModelDigitizeCurve";
 
   ENGAUGE_ASSERT(m_currentState < m_states.count());
 
@@ -265,7 +258,6 @@ void DigitizeStateContext::updateModelDigitizeCurve (CmdMediator *cmdMediator,
 
 void DigitizeStateContext::updateModelSegments(const DocumentModelSegments &modelSegments)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateContext::updateModelSegments";
 
   ENGAUGE_ASSERT(m_currentState < m_states.count());
 

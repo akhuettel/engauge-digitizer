@@ -28,7 +28,6 @@ TutorialStateAxisPoints::TutorialStateAxisPoints (TutorialStateContext &context)
 
 void TutorialStateAxisPoints::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateAxisPoints::begin ()";
 
   context().tutorialDlg().scene().clear ();
 
@@ -68,7 +67,6 @@ void TutorialStateAxisPoints::begin ()
 
 void TutorialStateAxisPoints::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateAxisPoints::end ()";
 
   // It is not safe to remove and deallocate items here since an active TutorialButton
   // may be on the stack. So we clear the scene as the first step in the next begin()
@@ -76,14 +74,12 @@ void TutorialStateAxisPoints::end ()
 
 void TutorialStateAxisPoints::slotNext ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateAxisPoints::slotNextCurves";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_CURVE_SELECTION);
 }
 
 void TutorialStateAxisPoints::slotPrevious ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateAxisPoints::slotPrevious";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_INTRODUCTION);
 }

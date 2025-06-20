@@ -94,7 +94,6 @@ double DocumentModelSegments::lineWidthInactive() const
 
 void DocumentModelSegments::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelSegments::loadXml";
 
   bool success = true;
 
@@ -187,7 +186,6 @@ void DocumentModelSegments::printStream(QString indentation,
 
 void DocumentModelSegments::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelSegments::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_SEGMENTS);
   writer.writeAttribute(DOCUMENT_SERIALIZE_SEGMENTS_POINT_SEPARATION, QString::number (m_pointSeparation));

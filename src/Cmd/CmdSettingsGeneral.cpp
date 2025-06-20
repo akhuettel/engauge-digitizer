@@ -24,7 +24,6 @@ CmdSettingsGeneral::CmdSettingsGeneral(MainWindow &mainWindow,
   m_modelGeneralBefore (modelGeneralBefore),
   m_modelGeneralAfter (modelGeneralAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGeneral::CmdSettingsGeneral";
 }
 
 CmdSettingsGeneral::CmdSettingsGeneral (MainWindow &mainWindow,
@@ -35,7 +34,6 @@ CmdSettingsGeneral::CmdSettingsGeneral (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGeneral::CmdSettingsGeneral";
   
   bool success = true;
 
@@ -80,7 +78,6 @@ CmdSettingsGeneral::~CmdSettingsGeneral ()
 
 void CmdSettingsGeneral::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGeneral::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -91,7 +88,6 @@ void CmdSettingsGeneral::cmdRedo ()
 
 void CmdSettingsGeneral::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGeneral::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

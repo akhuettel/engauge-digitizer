@@ -55,7 +55,6 @@ QStringList ChecklistGuideWizard::curveNames(CoordSystemIndex coordSystemIndex) 
 QString ChecklistGuideWizard::pageCurvesTitle (CoordSystemIndex coordSystemIndex,
                                                unsigned int numberCoordSystem) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideWizard::pageCurvesTitle";
 
   ENGAUGE_ASSERT (coordSystemIndex < numberCoordSystem);
 
@@ -78,7 +77,6 @@ QString ChecklistGuideWizard::pageCurvesTitle (CoordSystemIndex coordSystemIndex
 void ChecklistGuideWizard::populateCurvesGraphs (CoordSystemIndex coordSystemIndex,
                                                  CurvesGraphs &curvesGraphs)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideWizard::populateCurvesGraphs";
 
   QStringList curveNames = m_pageCurves [signed (coordSystemIndex)]->curveNames();
   QStringList::const_iterator itr;
@@ -113,7 +111,6 @@ void ChecklistGuideWizard::showEvent (QShowEvent *event)
 
 QString ChecklistGuideWizard::templateHtml (CoordSystemIndex coordSystemIndex) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideWizard::templateHtml";
 
   QStringList curveNames = m_pageCurves [signed (coordSystemIndex)]->curveNames();
   bool withLines = m_pageCurves [signed (coordSystemIndex)]->withLines();
@@ -222,7 +219,6 @@ QString ChecklistGuideWizard::templateHtml (CoordSystemIndex coordSystemIndex) c
 
 QString ChecklistGuideWizard::templateHtmlToAdjustColorFilterSettings () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideWizard::templateHtmlToAdjustColorFilterSettings";
 
   QString html;
   QTextStream str (&html);

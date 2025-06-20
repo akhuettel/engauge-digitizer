@@ -54,7 +54,6 @@ ZoomFactor ZoomTransition::zoomIn (ZoomFactor currentZoomFactor,
                                    double m22,
                                    bool actionZoomFillIsChecked) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ZoomTransition::zoomIn";
 
   // Try to zoom in
   ZoomFactor zoomFactorOld = currentZoomFactor;
@@ -89,7 +88,6 @@ ZoomFactor ZoomTransition::zoomOut (ZoomFactor currentZoomFactor,
                                     double m22,
                                     bool actionZoomFillIsChecked) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ZoomTransition::zoomOut";
 
   // Try to zoom out
   ZoomFactor zoomFactorOld = currentZoomFactor;

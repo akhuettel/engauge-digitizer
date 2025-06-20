@@ -27,7 +27,6 @@ CmdAbstract *GuidelineDragCommandFactory::createAfterDrag (MainWindow &mainWindo
                                                            const QString &identifier,
                                                            bool draggedOffscreen)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineDragCommandFactory::GuidelineDragCommandFactory";
 
   GuidelineValues valuesXDocument = modelGuidelineDocument.valuesX ();
   GuidelineValues valuesYDocument = modelGuidelineDocument.valuesY ();
@@ -113,9 +112,6 @@ double GuidelineDragCommandFactory::valueForIdentifier (const DocumentModelGuide
       return itr.value ();
     }
   }
-
-  LOG4CPP_ERROR_S ((*mainCat)) << "GuidelineDragCommandFactory::valueForIdentifier identifier "
-                               << identifierWanted.toLatin1().data() << " was not found";
 
   return 0.0;
 }

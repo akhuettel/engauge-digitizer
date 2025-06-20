@@ -53,7 +53,6 @@ void TutorialDlg::createContext ()
 
 void TutorialDlg::createSceneAndView ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialDlg::createSceneAndView";
 
   m_scene = new QGraphicsScene (this);
 

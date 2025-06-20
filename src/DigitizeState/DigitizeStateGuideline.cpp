@@ -53,7 +53,6 @@ QString DigitizeStateGuideline::activeCurve () const
 void DigitizeStateGuideline::begin (CmdMediator *cmdMediator,
                                     DigitizeState /* previousState */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateGuideline::beginn";
 
   setCursor(cmdMediator);
   context().setDragMode(QGraphicsView::NoDrag);
@@ -69,7 +68,6 @@ bool DigitizeStateGuideline::canPaste (const Transformation & /* transformation 
 void DigitizeStateGuideline::createGuidelineCommand (bool selectedXT,
                                                      double valueSelected)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateGuideline::createGuidelineCommand";
 
   CmdAbstract *cmd = nullptr;
   if (selectedXT) {
@@ -88,14 +86,12 @@ void DigitizeStateGuideline::createGuidelineCommand (bool selectedXT,
 
 QCursor DigitizeStateGuideline::cursor(CmdMediator * /* cmdMediator */) const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateGuideline::cursor";
 
   return QCursor (Qt::ArrowCursor);
 }
 
 void DigitizeStateGuideline::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateGuideline::end";
 
   lockNonGuidelinesAndUnlockGuidelines (false);
 }
@@ -108,15 +104,11 @@ bool DigitizeStateGuideline::guidelinesAreSelectable () const
 void DigitizeStateGuideline::handleContextMenuEventAxis (CmdMediator * /* cmdMediator */,
                                                           const QString &pointIdentifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateGuideline::handleContextMenuEventAxis "
-                              << " point=" << pointIdentifier.toLatin1 ().data ();
 }
 
 void DigitizeStateGuideline::handleContextMenuEventGraph (CmdMediator * /* cmdMediator */,
                                                            const QStringList &pointIdentifiers)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateGuideline ::handleContextMenuEventGraph "
-                              << "points=" << pointIdentifiers.join(",").toLatin1 ().data ();
 }
 
 void DigitizeStateGuideline::handleCurveChange(CmdMediator * /* cmdMediator */)
@@ -192,7 +184,6 @@ bool DigitizeStateGuideline::hitTestForGraphics (const QPointF &posScreen)
 
 void DigitizeStateGuideline::lockNonGuidelinesAndUnlockGuidelines (bool lockdown)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateGuideline::lockNonGuidelinesAndUnlockGuidelines";
 
   QList<QGraphicsItem*> items = context().mainWindow().scene().items();
   QList<QGraphicsItem*>::iterator itr;

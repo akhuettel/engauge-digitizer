@@ -55,7 +55,6 @@ DlgSettingsMainWindow::DlgSettingsMainWindow(MainWindow &mainWindow) :
   m_modelMainWindowBefore (nullptr),
   m_modelMainWindowAfter (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::DlgSettingsMainWindow";
 
   QWidget *subPanel = createSubPanel ();
   finishPanel (subPanel,
@@ -64,13 +63,11 @@ DlgSettingsMainWindow::DlgSettingsMainWindow(MainWindow &mainWindow) :
 
 DlgSettingsMainWindow::~DlgSettingsMainWindow()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::~DlgSettingsMainWindow";
 }
 
 void DlgSettingsMainWindow::createControls (QGridLayout *layout,
                                             int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::createControls";
 
   const int COLUMN0 = 0;
 
@@ -290,12 +287,10 @@ void DlgSettingsMainWindow::createControls (QGridLayout *layout,
 
 void DlgSettingsMainWindow::createOptionalSaveDefault (QHBoxLayout * /* layout */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::createOptionalSaveDefault";
 }
 
 QWidget *DlgSettingsMainWindow::createSubPanel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::createSubPanel";
 
   QWidget *subPanel = new QWidget ();
   QGridLayout *layout = new QGridLayout (subPanel);
@@ -322,8 +317,6 @@ QStringList DlgSettingsMainWindow::gatherQmFilenames () const
   // Get available locales. The static QLocale::matchingLocales gives the few available translations
   // but also the many unavailable translations. We use a list of translation files to see what is available
   QDir translationPath (TranslatorContainer::qmDirectory ());
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::gatherQmFilenames directory="
-                              << translationPath.path().toLatin1().data();
   QStringList filenames = translationPath.entryList (QStringList ("engauge_*.qm"));
 
   return filenames;
@@ -331,7 +324,6 @@ QStringList DlgSettingsMainWindow::gatherQmFilenames () const
 
 void DlgSettingsMainWindow::handleOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::handleOk";
 
   mainWindow().updateSettingsMainWindow (*m_modelMainWindowAfter);
 
@@ -340,15 +332,12 @@ void DlgSettingsMainWindow::handleOk ()
 
 void DlgSettingsMainWindow::load (CmdMediator & /* cmdMediator */)
 {
-  LOG4CPP_ERROR_S ((*mainCat)) << "DlgSettingsMainWindow::load";
-
   ENGAUGE_ASSERT (false);
 }
 
 void DlgSettingsMainWindow::loadMainWindowModel (CmdMediator &cmdMediator,
                                                  const MainWindowModel &modelMainWindow)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::loadMainWindowModel";
 
   setCmdMediator (cmdMediator);
 
@@ -400,7 +389,6 @@ void DlgSettingsMainWindow::setSmallDialogs(bool /* smallDialogs */)
 
 void DlgSettingsMainWindow::slotDragDropExport (bool)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::slotDragDropExport";
 
   m_modelMainWindowAfter->setDragDropExport (m_chkDragDropExport->isChecked());
   updateControls ();
@@ -408,7 +396,6 @@ void DlgSettingsMainWindow::slotDragDropExport (bool)
 
 void DlgSettingsMainWindow::slotHighlightOpacity(double)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::slotHighlightOpacity";
 
   m_modelMainWindowAfter->setHighlightOpacity (m_spinHighlightOpacity->value());
   updateControls();
@@ -416,7 +403,6 @@ void DlgSettingsMainWindow::slotHighlightOpacity(double)
 
 void DlgSettingsMainWindow::slotImageReplaceRenamesDocument (bool)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::slotImageReplaceRenamesDocument";
 
   m_modelMainWindowAfter->setImageReplaceRenamesDocument (m_chkImageReplaceRenamesDocument->isChecked());
   updateControls ();
@@ -424,7 +410,6 @@ void DlgSettingsMainWindow::slotImageReplaceRenamesDocument (bool)
 
 void DlgSettingsMainWindow::slotImportCropping (int index)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::slotImportCropping";
 
   m_modelMainWindowAfter->setImportCropping (static_cast<ImportCropping> (m_cmbImportCropping->itemData (index).toInt ()));
   updateControls();
@@ -432,14 +417,12 @@ void DlgSettingsMainWindow::slotImportCropping (int index)
 
 void DlgSettingsMainWindow::slotLoadViews (int index)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::slotLoadViews";
 
   m_modelMainWindowAfter->setLoadViews (static_cast<LoadViews> (m_cmbLoadViews->itemData (index).toInt ()));
   updateControls();
 }
 void DlgSettingsMainWindow::slotLocale (int index)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::slotLocale";
 
   QLocale locale = m_cmbLocale->itemData (index).toLocale();
 
@@ -449,7 +432,6 @@ void DlgSettingsMainWindow::slotLocale (int index)
 
 void DlgSettingsMainWindow::slotMaximumExportedPointsPerCurve (int limit)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::slotMaximumExportedPointsPerCurve";
 
   m_modelMainWindowAfter->setMaximumExportedPointsPerCurve (limit);
   updateControls ();
@@ -457,7 +439,6 @@ void DlgSettingsMainWindow::slotMaximumExportedPointsPerCurve (int limit)
 
 void DlgSettingsMainWindow::slotMaximumGridLines (int limit)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::slotMaximumGridLines";
 
   m_modelMainWindowAfter->setMaximumGridLines (limit);
   updateControls ();
@@ -465,7 +446,6 @@ void DlgSettingsMainWindow::slotMaximumGridLines (int limit)
 
 void DlgSettingsMainWindow::slotPdfResolution(const QString)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWIndow::slotPdfResolution";
 
 #ifdef ENGAUGE_PDF
   m_modelMainWindowAfter->setPdfResolution(m_cmbPdfResolution->currentData().toInt());
@@ -475,7 +455,6 @@ void DlgSettingsMainWindow::slotPdfResolution(const QString)
 
 void DlgSettingsMainWindow::slotRecentFileClear()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::slotRecentFileClear";
 
   // The signal that triggered the call to this method was also sent to MainWindow to clear the list there
   updateControls();
@@ -483,7 +462,6 @@ void DlgSettingsMainWindow::slotRecentFileClear()
 
 void DlgSettingsMainWindow::slotSignificantDigits(int)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::slotSignificantDigits";
 
   m_modelMainWindowAfter->setSignificantDigits(m_spinSignificantDigits->value ());
   updateControls ();
@@ -491,7 +469,6 @@ void DlgSettingsMainWindow::slotSignificantDigits(int)
 
 void DlgSettingsMainWindow::slotSmallDialogs (bool)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::slotSmallDialogs";
 
   m_modelMainWindowAfter->setSmallDialogs (m_chkSmallDialogs->isChecked());
   updateControls ();
@@ -499,7 +476,6 @@ void DlgSettingsMainWindow::slotSmallDialogs (bool)
 
 void DlgSettingsMainWindow::slotTitleBarFormat(bool)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::slotTitleBarFormat";
 
   m_modelMainWindowAfter->setMainTitleBarFormat(m_chkTitleBarFormat->isChecked() ?
                                                 MAIN_TITLE_BAR_FORMAT_PATH :
@@ -514,7 +490,6 @@ void DlgSettingsMainWindow::slotWhatsThis ()
 
 void DlgSettingsMainWindow::slotZoomControl(const QString)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWindow::slotZoomControl";
 
   m_modelMainWindowAfter->setZoomControl (static_cast<ZoomControl> (m_cmbZoomControl->currentData().toInt()));
   updateControls();
@@ -522,7 +497,6 @@ void DlgSettingsMainWindow::slotZoomControl(const QString)
 
 void DlgSettingsMainWindow::slotZoomFactor(const QString)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsMainWIndow::slotZoomFactor";
 
   m_modelMainWindowAfter->setZoomFactorInitial(static_cast<ZoomFactorInitial> (m_cmbZoomFactor->currentData().toInt()));
   updateControls();

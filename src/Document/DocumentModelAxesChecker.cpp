@@ -67,7 +67,6 @@ ColorPalette DocumentModelAxesChecker::lineColor () const
 
 void DocumentModelAxesChecker::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelAxesChecker::loadXml";
 
   bool success = true;
 
@@ -111,7 +110,6 @@ void DocumentModelAxesChecker::printStream(QString indentation,
 
 void DocumentModelAxesChecker::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelAxesChecker::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_AXES_CHECKER);
   writer.writeAttribute(DOCUMENT_SERIALIZE_AXES_CHECKER_MODE, QString::number (m_checkerMode));

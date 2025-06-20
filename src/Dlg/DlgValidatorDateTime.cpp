@@ -17,7 +17,6 @@ DlgValidatorDateTime::DlgValidatorDateTime(CoordScale coordScale,
   m_coordUnitsDate (coordUnitsDate),
   m_coordUnitsTime (coordUnitsTime)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgValidatorDateTime::DlgValidatorDateTime";
 }
 
 QValidator::State DlgValidatorDateTime::validate (QString &input,

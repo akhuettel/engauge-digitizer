@@ -82,7 +82,6 @@ double DocumentModelGuideline::lineWidthInactive () const
 
 void DocumentModelGuideline::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelGuideline::loadXml";
 
   bool success = true;
 
@@ -136,7 +135,6 @@ void DocumentModelGuideline::loadXmlVector (QXmlStreamReader &reader,
                                              const QString &tokenEnd,
                                              GuidelineValues &guidelineValues) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelGuideline::loadXmlVector";
 
   while ((reader.tokenType() != QXmlStreamReader::EndElement) ||
   (reader.name() != tokenEnd)){
@@ -192,7 +190,6 @@ void DocumentModelGuideline::printStream(QString indentation,
 
 void DocumentModelGuideline::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelGuideline::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_GUIDELINES);
   writer.writeAttribute(DOCUMENT_SERIALIZE_GUIDELINE_CREATION_CIRCLE_RADIUS, QString::number (m_creationCircleRadius));

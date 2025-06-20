@@ -31,8 +31,5 @@ double CallbackNextOrdinal::nextOrdinal () const
 {
   int nextOrdinal = qFloor (m_maxOrdinalUsed) + 1;
 
-  LOG4CPP_INFO_S ((*mainCat)) << "CallbackNextOrdinal::nextOrdinal"
-                              << " ordinal=" << nextOrdinal;
-
   return nextOrdinal;
 }

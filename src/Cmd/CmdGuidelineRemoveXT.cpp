@@ -23,7 +23,6 @@ CmdGuidelineRemoveXT::CmdGuidelineRemoveXT(MainWindow &mainWindow,
   m_identifier (identifier),
   m_valueBefore (valueBefore)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineRemoveXT::CmdGuidelineRemoveXT";
 }
 
 CmdGuidelineRemoveXT::CmdGuidelineRemoveXT (MainWindow &mainWindow,
@@ -34,7 +33,6 @@ CmdGuidelineRemoveXT::CmdGuidelineRemoveXT (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineRemoveXT::CmdGuidelineRemoveXT";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -55,8 +53,6 @@ CmdGuidelineRemoveXT::~CmdGuidelineRemoveXT ()
 
 void CmdGuidelineRemoveXT::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineRemoveXT::cmdRedo"
-                              << " identifier=" << m_identifier.toLatin1().data();
 
   restoreState ();
   mainWindow().guidelineRemove (m_identifier);
@@ -64,9 +60,6 @@ void CmdGuidelineRemoveXT::cmdRedo ()
 
 void CmdGuidelineRemoveXT::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineRemoveXT::cmdUndo"
-                              << " identifier=" << m_identifier.toLatin1().data()
-                              << " value=" << m_valueBefore;
 
   restoreState ();
   mainWindow().guidelineAddXT (m_identifier,

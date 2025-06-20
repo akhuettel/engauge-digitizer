@@ -23,9 +23,6 @@ GuidelineStateDeployedConstantRUnselectEdit::~GuidelineStateDeployedConstantRUns
 
 void GuidelineStateDeployedConstantRUnselectEdit::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantRUnselectEdit::begin"
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (false,
                true);
 
@@ -39,7 +36,6 @@ bool GuidelineStateDeployedConstantRUnselectEdit::doPaint () const
 
 void GuidelineStateDeployedConstantRUnselectEdit::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantRUnselectEdit::end";
 }
 
 void GuidelineStateDeployedConstantRUnselectEdit::handleActiveChange (bool /* active */)

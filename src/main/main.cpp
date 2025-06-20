@@ -170,7 +170,6 @@ int main(int argc, char *argv[])
   initializeLogging ("engauge",
                      engaugeLogFilename(),
                      isDebug);
-  LOG4CPP_INFO_S ((*mainCat)) << "main args=" << QApplication::arguments().join (" ").toLatin1().data();
 
   // Upgrade or run normally
   int rtn = 0;
@@ -565,7 +564,6 @@ void upgradeFiles (const QStringList &loadStartupFiles)
 
   // Do not show a message using QMessageBox since upgrade mode may be called hundreds
   // of times successively by python scripts. Logging is used instead
-  LOG4CPP_INFO_S ((*mainCat)) << "Upgrade results: " << msg.toLatin1().data ();
   
   exit (0);
 }

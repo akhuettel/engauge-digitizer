@@ -36,7 +36,6 @@ DlgSettingsCurveList::DlgSettingsCurveList(MainWindow &mainWindow) :
                            mainWindow),
   m_curveNameList (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::DlgSettingsCurveList";
 
   QWidget *subPanel = createSubPanel ();
   finishPanel (subPanel);
@@ -44,15 +43,12 @@ DlgSettingsCurveList::DlgSettingsCurveList(MainWindow &mainWindow) :
 
 DlgSettingsCurveList::~DlgSettingsCurveList()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::~DlgSettingsCurveList";
 }
 
 void DlgSettingsCurveList::appendCurveName (const QString &curveNameNew,
                                             const QString &curveNameOriginal,
                                             int numPoints)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::appendCurveName"
-                              << " curve=" << curveNameNew.toLatin1().data();
 
   ENGAUGE_CHECK_PTR (m_curveNameList);
 
@@ -66,7 +62,6 @@ void DlgSettingsCurveList::appendCurveName (const QString &curveNameNew,
 void DlgSettingsCurveList::createButtons (QGridLayout *layout,
                                           int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::createButtons";
 
   m_btnAdd = new QPushButton (tr ("Add..."));
   m_btnAdd->setWhatsThis (tr ("Adds a new curve to the curve list. The curve name can be edited in the curve name list.\n\n"
@@ -86,7 +81,6 @@ void DlgSettingsCurveList::createButtons (QGridLayout *layout,
 void DlgSettingsCurveList::createListCurves (QGridLayout *layout,
                                              int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::createListCurves";
 
   QLabel *label = new QLabel (QString ("%1:").arg (tr ("Curve Names")));
   layout->addWidget (label, row++, 1);
@@ -123,7 +117,6 @@ void DlgSettingsCurveList::createListCurves (QGridLayout *layout,
 
 void DlgSettingsCurveList::createOptionalSaveDefault (QHBoxLayout *layout)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::createOptionalSaveDefault";
 
   m_btnSaveDefault = new QPushButton (tr ("Save As Default"));
   m_btnSaveDefault->setWhatsThis (tr ("Save the curve names for use as defaults for future graph curves."));
@@ -141,7 +134,6 @@ void DlgSettingsCurveList::createOptionalSaveDefault (QHBoxLayout *layout)
 
 QWidget *DlgSettingsCurveList::createSubPanel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::createSubPanel";
 
   const int EMPTY_COLUMN_WIDTH = 30;
 
@@ -177,7 +169,6 @@ bool DlgSettingsCurveList::endsWithNumber (const QString &str) const
 
 void DlgSettingsCurveList::handleOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::handleOk";
 
   CmdSettingsCurveList *cmd = new CmdSettingsCurveList (mainWindow (),
                                                         cmdMediator ().document(),
@@ -201,7 +192,6 @@ void DlgSettingsCurveList::insertCurveName (int row,
 
 void DlgSettingsCurveList::load (CmdMediator &cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::load";
 
   setCmdMediator (cmdMediator);
 
@@ -378,7 +368,6 @@ void DlgSettingsCurveList::printStream(QTextStream &str) const
 
 void DlgSettingsCurveList::removeSelectedCurves ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::removeSelectedCurves";
 
   ENGAUGE_ASSERT (m_listCurves->selectionModel ()->selectedIndexes ().count () > 0); // Also guarantees number of indexes > 0
 
@@ -419,8 +408,6 @@ void DlgSettingsCurveList::removeSelectedCurves ()
 
 void DlgSettingsCurveList::selectCurveName (const QString &curveWanted)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::selectCurveName"
-                              << " curve=" << curveWanted.toLatin1().data();
 
   for (int row = 0; row < m_listCurves->model()->rowCount(); row++) {
 
@@ -448,26 +435,17 @@ void DlgSettingsCurveList::slotDataChanged (const QModelIndex &topLeft,
                                             const QModelIndex &bottomRight,
                                             const QVector<int> &roles)
 {
-  // LOG4CPP_INFO_S is below
 
   // Since list just changed we dump all of it, including the visible and hidden data
   QString curveEntries;
   QTextStream str (&curveEntries);
   printStream (str);
 
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::slotDataChanged"
-                              << " topLeft=(" << topLeft.row () << "," << topLeft.column () << ")"
-                              << " bottomRight=(" << bottomRight.row () << "," << bottomRight.column () << ")"
-                              << " roles=" << rolesAsString (roles).toLatin1 ().data ()
-                              << " defaultDragOption=" << (m_listCurves->defaultDropAction() == Qt::MoveAction ? "MoveAction" : "CopyAction")
-                              << " curveEntries=(" << curveEntries.toLatin1().data() << ")";
-
   updateControls ();
 }
 
 void DlgSettingsCurveList::slotNew ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::slotNew";
 
   const QString NO_ORIGINAL_CURVE_NAME;
   const int NO_POINTS = 0;
@@ -488,7 +466,6 @@ void DlgSettingsCurveList::slotNew ()
 
 void DlgSettingsCurveList::slotRemove ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::slotRemove";
 
   // Count the number of curve points to be deleted
   int numPoints = signed (numPointsForSelectedCurves ());
@@ -525,7 +502,6 @@ void DlgSettingsCurveList::slotRemove ()
 
 void DlgSettingsCurveList::slotResetDefault()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::slotResetDefault";
 
   const QString REMOVE_ALL_SETTINGS_IN_GROUP; // Empty string
 
@@ -550,17 +526,11 @@ void DlgSettingsCurveList::slotRowsAboutToBeRemoved (const QModelIndex &parent,
                                                      int rowFirst,
                                                      int rowLast)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DlgSettingsCurveList::slotRowsAboutToBeRemoved"
-                               << " parentValid=" << (parent.isValid() ? "yes" : "no")
-                               << " rowFirst=" << rowFirst
-                               << " rowLast=" << rowLast;
-
   updateControls ();
 }
 
 void DlgSettingsCurveList::slotSaveDefault()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::slotSaveDefault";
 
   QSettings settings (SETTINGS_ENGAUGE, SETTINGS_DIGITIZER);
 
@@ -589,7 +559,6 @@ void DlgSettingsCurveList::slotWhatsThis ()
 
 void DlgSettingsCurveList::updateControls ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveList::updateControls";
 
   enableOk (true);
 

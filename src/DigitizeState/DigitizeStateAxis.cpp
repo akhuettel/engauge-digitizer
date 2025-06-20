@@ -38,7 +38,6 @@ QString DigitizeStateAxis::activeCurve () const
 void DigitizeStateAxis::begin (CmdMediator *cmdMediator,
                                DigitizeState /* previousState */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateAxis::begin";
 
   setCursor(cmdMediator);
   context().setDragMode(QGraphicsView::NoDrag);
@@ -55,7 +54,6 @@ bool DigitizeStateAxis::canPaste (const Transformation & /* transformation */,
 void DigitizeStateAxis::createTemporaryPoint (CmdMediator *cmdMediator,
                                               const QPointF &posScreen)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateAxis::createTemporaryPoint";
 
   GeometryWindow *NULL_GEOMETRY_WINDOW = nullptr;
 
@@ -73,7 +71,6 @@ void DigitizeStateAxis::createTemporaryPoint (CmdMediator *cmdMediator,
 
 QCursor DigitizeStateAxis::cursor(CmdMediator *cmdMediator) const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateAxis::cursor";
 
   CursorFactory cursorFactory;
   QCursor cursor = cursorFactory.generate (cmdMediator->document().modelDigitizeCurve());
@@ -83,7 +80,6 @@ QCursor DigitizeStateAxis::cursor(CmdMediator *cmdMediator) const
 
 void DigitizeStateAxis::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateAxis::end";
 }
 
 bool DigitizeStateAxis::guidelinesAreSelectable () const
@@ -94,28 +90,21 @@ bool DigitizeStateAxis::guidelinesAreSelectable () const
 void DigitizeStateAxis::handleContextMenuEventAxis (CmdMediator * /* cmdMediator */,
                                                     const QString &pointIdentifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateAxis::handleContextMenuEventAxis "
-                              << " point=" << pointIdentifier.toLatin1 ().data ();
 }
 
 void DigitizeStateAxis::handleContextMenuEventGraph (CmdMediator * /* cmdMediator */,
                                                      const QStringList &pointIdentifiers)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateAxis::handleContextMenuEventGraph "
-                              << "points=" << pointIdentifiers.join(",").toLatin1 ().data ();
 }
 
 void DigitizeStateAxis::handleCurveChange(CmdMediator * /* cmdMediator */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateAxis::handleCurveChange";
 }
 
 void DigitizeStateAxis::handleKeyPress (CmdMediator *cmdMediator,
                                         Qt::Key key,
                                         bool atLeastOneSelectedItem)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateAxis::handleKeyPress"
-                              << " key=" << QKeySequence (key).toString ().toLatin1 ().data ();
 
   handleKeyPressArrow (cmdMediator,
                        key,
@@ -125,19 +114,16 @@ void DigitizeStateAxis::handleKeyPress (CmdMediator *cmdMediator,
 void DigitizeStateAxis::handleMouseMove (CmdMediator * /* cmdMediator */,
                                          QPointF /* posScreen */)
 {
-//  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateAxis::handleMouseMove";
 }
 
 void DigitizeStateAxis::handleMousePress (CmdMediator * /* cmdMediator */,
                                           QPointF /* posScreen */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateAxis::handleMousePress";
 }
 
 void DigitizeStateAxis::handleMouseRelease (CmdMediator *cmdMediator,
                                             QPointF posScreen)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateAxis::handleMouseRelease";
 
   if (context().mainWindow().transformIsDefined()) {
 
@@ -210,18 +196,15 @@ QString DigitizeStateAxis::state() const
 
 void DigitizeStateAxis::updateAfterPointAddition ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateAxis::updateAfterPointAddition";
 }
 
 void DigitizeStateAxis::updateModelDigitizeCurve (CmdMediator *cmdMediator,
                                                   const DocumentModelDigitizeCurve & /*modelDigitizeCurve */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateAxis::updateModelDigitizeCurve";
 
   setCursor(cmdMediator);
 }
 
 void DigitizeStateAxis::updateModelSegments(const DocumentModelSegments & /* modelSegments */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateAxis::updateModelSegments";
 }

@@ -25,7 +25,6 @@ CmdSettingsExportFormat::CmdSettingsExportFormat(MainWindow &mainWindow,
   m_modelExportBefore (modelExportBefore),
   m_modelExportAfter (modelExportAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsExportFormat::CmdSettingsExportFormat";
 }
 
 CmdSettingsExportFormat::CmdSettingsExportFormat (MainWindow &mainWindow,
@@ -36,7 +35,6 @@ CmdSettingsExportFormat::CmdSettingsExportFormat (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsExportFormat::CmdSettingsExportFormat";
 
   bool success = true;
 
@@ -81,7 +79,6 @@ CmdSettingsExportFormat::~CmdSettingsExportFormat ()
 
 void CmdSettingsExportFormat::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsExportFormat::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -92,7 +89,6 @@ void CmdSettingsExportFormat::cmdRedo ()
 
 void CmdSettingsExportFormat::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsExportFormat::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

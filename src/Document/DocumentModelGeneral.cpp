@@ -65,7 +65,6 @@ int DocumentModelGeneral::extraPrecision() const
 
 void DocumentModelGeneral::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelGeneral::loadXml";
 
   bool success = true;
 
@@ -107,7 +106,6 @@ void DocumentModelGeneral::printStream(QString indentation,
 
 void DocumentModelGeneral::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelGeneral::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_GENERAL);
   writer.writeAttribute(DOCUMENT_SERIALIZE_GENERAL_CURSOR_SIZE, QString::number (m_cursorSize));

@@ -33,8 +33,6 @@ DlgSettingsAbstractBase::DlgSettingsAbstractBase(const QString &title,
   m_dialogName (dialogName),
   m_disableOkAtStartup (true)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAbstractBase::DlgSettingsAbstractBase"
-                              << " name=" << m_dialogName.toLatin1().data();
 
   setWindowTitle (title);
   setModal (true);
@@ -50,8 +48,6 @@ DlgSettingsAbstractBase::DlgSettingsAbstractBase(const QString &title,
 
 DlgSettingsAbstractBase::~DlgSettingsAbstractBase()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAbstractBase::~DlgSettingsAbstractBase"
-                              << " name=" << m_dialogName.toLatin1().data();
 }
 
 void DlgSettingsAbstractBase::addPixmap (QGraphicsScene &scene,
@@ -228,14 +224,12 @@ void DlgSettingsAbstractBase::showEvent (QShowEvent * /* event */)
 
 void DlgSettingsAbstractBase::slotCancel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAbstractBase::slotCancel";
 
   hide();
 }
 
 void DlgSettingsAbstractBase::slotOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsAbstractBase::slotOk";
 
   // Forward to leaf class
   handleOk ();

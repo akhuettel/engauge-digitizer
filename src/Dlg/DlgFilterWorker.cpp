@@ -28,9 +28,6 @@ void DlgFilterWorker::slotNewParameters (ColorFilterMode colorFilterMode,
                                          double low,
                                          double high)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgFilterWorker::slotNewParameters filterMode=" << colorFilterMode
-                              << " low=" << low
-                              << " high=" << high;
 
   // Push onto queue
   DlgFilterCommand command (colorFilterMode,

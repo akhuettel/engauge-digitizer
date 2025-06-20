@@ -25,7 +25,6 @@ CmdSettingsCoords::CmdSettingsCoords(MainWindow &mainWindow,
   m_modelCoordsBefore (modelCoordsBefore),
   m_modelCoordsAfter (modelCoordsAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsCoords::CmdSettingsCoords";
 }
 
 CmdSettingsCoords::CmdSettingsCoords (MainWindow &mainWindow,
@@ -36,7 +35,6 @@ CmdSettingsCoords::CmdSettingsCoords (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsCoords::CmdSettingsCoords";
   
   bool success = true;
 
@@ -81,7 +79,6 @@ CmdSettingsCoords::~CmdSettingsCoords ()
 
 void CmdSettingsCoords::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsCoords::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -92,7 +89,6 @@ void CmdSettingsCoords::cmdRedo ()
 
 void CmdSettingsCoords::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsCoords::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

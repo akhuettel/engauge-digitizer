@@ -52,9 +52,6 @@ QPointF GuidelineStateDeployedConstantTAbstract::convertGraphCoordinateToScreenP
                                                                  arbitraryRange),
                                                         posScreen);
 
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateDeployedConstantTAbstract::convertGraphCoordinateToScreenPoint"
-                               << " pos=(" << posScreen.x() << ", " << posScreen.y() << ")";
-
   return posScreen;
 }
 
@@ -63,9 +60,6 @@ double GuidelineStateDeployedConstantTAbstract::convertScreenPointToGraphCoordin
   QPointF posGraph;
   context().transformation().transformScreenToRawGraph (posScreen,
                                                         posGraph);
-
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateDeployedConstantTAbstract::convertScreenPointToGraphCoordinate"
-                               << " pos=(" << posGraph.x() << ", " << posGraph.y() << ")";
 
   return posGraph.x();
 }
@@ -87,8 +81,6 @@ QLineF GuidelineStateDeployedConstantTAbstract::pointToLine (const QPointF &posS
 
 void GuidelineStateDeployedConstantTAbstract::updateWithLatestTransformation ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateDeployedConstantTAbstract::updateWithLatestTransformation";
-
   if (!context().transformation().transformIsDefined()) {
     // Discard this Guideline immediately if the transformation transitions to undefined
     context().requestStateTransition(GUIDELINE_STATE_DISCARDED);

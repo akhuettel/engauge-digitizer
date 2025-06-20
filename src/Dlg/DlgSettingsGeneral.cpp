@@ -30,7 +30,6 @@ DlgSettingsGeneral::DlgSettingsGeneral(MainWindow &mainWindow) :
   m_modelGeneralBefore (nullptr),
   m_modelGeneralAfter (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGeneral::DlgSettingsGeneral";
 
   QWidget *subPanel = createSubPanel ();
   finishPanel (subPanel);
@@ -38,13 +37,11 @@ DlgSettingsGeneral::DlgSettingsGeneral(MainWindow &mainWindow) :
 
 DlgSettingsGeneral::~DlgSettingsGeneral()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGeneral::~DlgSettingsGeneral";
 }
 
 void DlgSettingsGeneral::createControls (QGridLayout *layout,
                                          int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGeneral::createControls";
 
   QLabel *labelCursorSize = new QLabel (QString ("%1:").arg (tr ("Effective cursor size (pixels)")));
   layout->addWidget (labelCursorSize, row, 1);
@@ -76,7 +73,6 @@ void DlgSettingsGeneral::createControls (QGridLayout *layout,
 
 void DlgSettingsGeneral::createOptionalSaveDefault (QHBoxLayout *layout)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGeneral::createOptionalSaveDefault";
 
   m_btnSaveDefault = new QPushButton (tr ("Save As Default"));
   m_btnSaveDefault->setWhatsThis (tr ("Save the settings for use as future defaults, according to the curve name selection."));
@@ -86,7 +82,6 @@ void DlgSettingsGeneral::createOptionalSaveDefault (QHBoxLayout *layout)
 
 QWidget *DlgSettingsGeneral::createSubPanel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGeneral::createSubPanel";
 
   QWidget *subPanel = new QWidget ();
   QGridLayout *layout = new QGridLayout (subPanel);
@@ -111,7 +106,6 @@ QWidget *DlgSettingsGeneral::createSubPanel ()
 
 void DlgSettingsGeneral::handleOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGeneral::handleOk";
 
   CmdSettingsGeneral *cmd = new CmdSettingsGeneral (mainWindow (),
                                                     cmdMediator ().document(),
@@ -124,7 +118,6 @@ void DlgSettingsGeneral::handleOk ()
 
 void DlgSettingsGeneral::load (CmdMediator &cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGeneral::load";
 
   setCmdMediator (cmdMediator);
 
@@ -150,7 +143,6 @@ void DlgSettingsGeneral::setSmallDialogs(bool /* smallDialogs */)
 
 void DlgSettingsGeneral::slotCursorSize (int cursorSize)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGeneral::slotCursorSize";
 
   m_modelGeneralAfter->setCursorSize (cursorSize);
   updateControls();
@@ -158,7 +150,6 @@ void DlgSettingsGeneral::slotCursorSize (int cursorSize)
 
 void DlgSettingsGeneral::slotExtraPrecision (int extraPrecision)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGeneral::slotExtraPrecision";
 
   m_modelGeneralAfter->setExtraPrecision (extraPrecision);
   updateControls();
@@ -166,7 +157,6 @@ void DlgSettingsGeneral::slotExtraPrecision (int extraPrecision)
 
 void DlgSettingsGeneral::slotSaveDefault()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGeneral::slotSaveDefault";
 
   QSettings settings (SETTINGS_ENGAUGE, SETTINGS_DIGITIZER);
   settings.beginGroup (SETTINGS_GROUP_GENERAL);

@@ -23,8 +23,6 @@ double FormatCoordsUnitsStrategyNonPolarTheta::formattedToUnformatted (const QSt
                                                                        CoordUnitsDate coordUnitsDate,
                                                                        CoordUnitsTime coordUnitsTime) const
 {
-  //LOG4CPP_DEBUG_S ((*mainCat)) << "FormatCoordsUnitsStrategyNonPolarTheta::formattedToUnformatted";
-
   double value;
 
   switch (coordUnits) {
@@ -52,7 +50,6 @@ double FormatCoordsUnitsStrategyNonPolarTheta::formattedToUnformatted (const QSt
       break;
 
     default:
-      LOG4CPP_ERROR_S ((*mainCat)) << "FormatCoordsUnitsStrategyNonPolarTheta::formattedToFormatted";
       ENGAUGE_ASSERT (false);
       break;
   }
@@ -70,8 +67,6 @@ QString FormatCoordsUnitsStrategyNonPolarTheta::unformattedToFormatted (double v
                                                                         const Transformation &transformation,
                                                                         double valueUnformattedOther) const
 {
-  //LOG4CPP_DEBUG_S ((*mainCat)) << "FormatCoordsUnitsStrategyNonPolarTheta::unformattedToFormatted";
-
   const char FORMAT ('g');
 
   QString valueFormatted;
@@ -107,7 +102,6 @@ QString FormatCoordsUnitsStrategyNonPolarTheta::unformattedToFormatted (double v
       break;
 
     default:
-      LOG4CPP_ERROR_S ((*mainCat)) << "FormatCoordsUnitsStrategyNonPolarTheta::unformattedToFormatted";
       ENGAUGE_ASSERT (false);
       break;
   }

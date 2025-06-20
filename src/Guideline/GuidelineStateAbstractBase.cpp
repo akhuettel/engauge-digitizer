@@ -33,8 +33,6 @@ void GuidelineStateAbstractBase::handleMousePressCommon (const QPointF &posScene
                                                          GuidelineState stateHandle,
                                                          GuidelineState stateDeployed)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateAbstractBase::handleMousePressCommon "
-                              << m_context.stateDump ().toLatin1().data();
 
   // Unselect all selected items. This prevents the extremely confusing error where an
   // a currently-selected axis point stays selected and gets dragged along with this Guideline,

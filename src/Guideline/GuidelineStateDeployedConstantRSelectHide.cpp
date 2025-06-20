@@ -23,9 +23,6 @@ GuidelineStateDeployedConstantRSelectHide::~GuidelineStateDeployedConstantRSelec
 
 void GuidelineStateDeployedConstantRSelectHide::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantRSelectHide::begin"
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (false,
                false);
 
@@ -39,7 +36,6 @@ bool GuidelineStateDeployedConstantRSelectHide::doPaint () const
 
 void GuidelineStateDeployedConstantRSelectHide::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantRSelectHide::end";
 }
 
 void GuidelineStateDeployedConstantRSelectHide::handleActiveChange (bool /* active */)

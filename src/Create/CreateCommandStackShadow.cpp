@@ -15,7 +15,6 @@ CreateCommandStackShadow::CreateCommandStackShadow()
 
 void CreateCommandStackShadow::create(MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateCommandStackShadow::create";
 
   mw.m_cmdStackShadow = new CmdStackShadow;
 }

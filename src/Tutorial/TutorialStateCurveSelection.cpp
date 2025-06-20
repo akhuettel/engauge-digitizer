@@ -27,12 +27,10 @@ TutorialStateCurveSelection::TutorialStateCurveSelection (TutorialStateContext &
   m_colorFilter (nullptr),  
   m_next (nullptr)  
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateCurveSelection::TutorialStateCurveSelection";
 }
 
 void TutorialStateCurveSelection::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateCurveSelection::begin ()";
 
   context().tutorialDlg().scene().clear ();
 
@@ -86,7 +84,6 @@ void TutorialStateCurveSelection::begin ()
 
 void TutorialStateCurveSelection::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateCurveSelection::end ()";
 
   // It is not safe to remove and deallocate items here since an active TutorialButton
   // may be on the stack. So we clear the scene as the first step in the next begin()
@@ -94,21 +91,18 @@ void TutorialStateCurveSelection::end ()
 
 void TutorialStateCurveSelection::slotColorFilter ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateCurveSelection::slotColorFilter";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_COLOR_FILTER);
 }
 
 void TutorialStateCurveSelection::slotNext ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateCurveSelection::slotNextCurves";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_CURVE_TYPE);
 }
 
 void TutorialStateCurveSelection::slotPrevious ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateCurveSelection::slotPrevious";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_AXIS_POINTS);
 }

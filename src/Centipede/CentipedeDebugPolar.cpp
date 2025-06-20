@@ -124,105 +124,6 @@ void CentipedeDebugPolar::display (QGraphicsScene &scene,
                                    const DocumentModelCoords &modelCoords,
                                    const Transformation &transformation)
 {
-  // LOG4CPP is below
-
-  if (mainCat->getPriority() == log4cpp::Priority::DEBUG) {
-
-    // Center
-    QPointF posOriginGraph (0, 0), posOriginScreen;
-    if (modelCoords.coordScaleYRadius() == COORD_SCALE_LOG) {
-      posOriginGraph = QPointF (0,
-                                modelCoords.originRadius());
-    }
-    transformation.transformRawGraphToScreen (posOriginGraph,
-                                              posOriginScreen);
-
-    // Circumscribing parallelogram
-    QVector<QPointF> points;
-    points << m_posScreenParallelogramBL;
-    points << m_posScreenParallelogramTL;
-    points << m_posScreenParallelogramTR;
-    points << m_posScreenParallelogramBR;
-    points << m_posScreenParallelogramBL;
-    QGraphicsPolygonItem *parallelogram = new QGraphicsPolygonItem (points);
-    parallelogram->setPen (QPen (Qt::green));
-    addToLegend (scene,
-                 QString ("Parallelogram a=%1 b=%2").arg (m_aAligned).arg (m_bAligned),
-                 Qt::green);
-    scene.addItem (parallelogram);
-
-    // X axis in circumscribing parallelogram
-    QPointF posAbsolute0 = (m_posScreenParallelogramTR + m_posScreenParallelogramBR) / 2.0;
-    QLineF xAxisLine0 (posOriginScreen,
-                       posAbsolute0);
-    QPointF posRelative0 = posAbsolute0 - posOriginScreen;
-    double ang = qDegreesToRadians (45.0);
-    double ca = qCos (ang);
-    double sa = qSin (ang);
-    QLineF xAxisLine45 (posOriginScreen,
-                        posOriginScreen + QPointF (ca * posRelative0.x() + sa * posRelative0.y(),
-                                                   -1.0 * sa * posRelative0.x() + ca * posRelative0.y()));
-    QGraphicsLineItem *xAxisParallelogram0 = new QGraphicsLineItem (xAxisLine0);
-    QGraphicsLineItem *xAxisParallelogram45 = new QGraphicsLineItem (xAxisLine45);
-    xAxisParallelogram0->setPen (QPen (Qt::green));
-    xAxisParallelogram45->setPen (QPen (Qt::green));
-    scene.addItem (xAxisParallelogram0);
-    scene.addItem (xAxisParallelogram45);
-
-    // Right-angled rectangle
-    QRectF rect (posOriginScreen.x() - m_aAligned,
-                 posOriginScreen.y() - m_bAligned,
-                 2 * m_aAligned,
-                 2 * m_bAligned);
-    rect.setLeft (posOriginScreen.x() - m_aAligned);
-    rect.setTop (posOriginScreen.y() - m_bAligned);
-
-    // Circumscribing rectangle
-    QGraphicsRectItem *rectItem = new QGraphicsRectItem (rect);
-    rectItem->setTransformOriginPoint(posOriginScreen);
-    rectItem->setRotation (qRadiansToDegrees (m_angleEllipseFromMajorAxis));
-    rectItem->setPen (QPen (Qt::cyan));
-    addToLegend (scene,
-                 QString ("Rectangle rotation=%1").arg (qRadiansToDegrees (m_angleEllipseFromMajorAxis)),
-                 Qt::cyan);
-    scene.addItem (rectItem);
-
-    // X axis in circumscribing rectangle. Without screen-to-ellipse rotation this would be horizontal
-    QLineF xAxisRectangle (posOriginScreen,
-                           (rect.topRight() + rect.bottomRight()) / 2.0);
-    QGraphicsLineItem *xAxisRect = new QGraphicsLineItem (xAxisRectangle);
-    xAxisRect->setTransformOriginPoint (posOriginScreen);
-    xAxisRect->setRotation (m_angleGraphAxisFromScreenAxis);
-    xAxisRect->setPen (QPen (Qt::cyan));
-    scene.addItem (xAxisRect);
-
-    // Put an ellipse in the circumscribing rectangle to see if they line up
-    QGraphicsEllipseItem *ellipse = new QGraphicsEllipseItem (rect);
-    ellipse->setTransformOriginPoint (posOriginScreen);
-    ellipse->setRotation (qRadiansToDegrees (m_angleGraphAxisFromScreenAxis));
-    ellipse->setPen (QPen (Qt::red));
-    scene.addItem (ellipse);
-
-    // A and B axes. These are NOT orthogonal when there is shear
-    QPointF posAAxisGraph (0, m_radius), posBAxisGraph (90, m_radius);
-    QPointF posAAxisScreen, posBAxisScreen;
-    transformation.transformRawGraphToScreen (posAAxisGraph,
-                                              posAAxisScreen);
-    transformation.transformRawGraphToScreen (posBAxisGraph,
-                                              posBAxisScreen);
-
-    displayTics (scene,
-                 transformation,
-                 posOriginScreen,
-                 posAAxisScreen,
-                 QColor (255, 0, 0),
-                 QColor (255, 150, 150));
-
-    // Finish up with details in log stream
-    LOG4CPP_DEBUG_S ((*mainCat)) << "CentipedeDebugPolar::displayTics"
-                                 << " angleFromAxis=" << qDegreesToRadians (m_angleEllipseFromMajorAxis)
-                                 << " angleFromScreen=" << qDegreesToRadians (m_angleGraphAxisFromScreenAxis);
-  }
 }
 
 void CentipedeDebugPolar::displayTics (QGraphicsScene &scene,
@@ -310,18 +211,6 @@ void CentipedeDebugPolar::displayTics (QGraphicsScene &scene,
 void CentipedeDebugPolar::dumpEllipseGraphicsItem (const QString &callerMethod,
                                                    const QGraphicsEllipseItem *ellipse) const
 {
-  if (mainCat->getPriority () == log4cpp::Priority::DEBUG) {
-
-    LOG4CPP_DEBUG_S ((*mainCat)) << "CentipedeDebugPolar::dumpEllipseGraphicsItem dump from "
-                                 << callerMethod.toLatin1().data();
-    LOG4CPP_DEBUG_S ((*mainCat)) << "    rect=" << QRectFToString (ellipse->rect()).toLatin1().data();
-    LOG4CPP_DEBUG_S ((*mainCat)) << "    rotation=" << ellipse->rotation();
-    LOG4CPP_DEBUG_S ((*mainCat)) << "    start=" << (ellipse->startAngle() / 16.0);
-    LOG4CPP_DEBUG_S ((*mainCat)) << "    span=" << (ellipse->spanAngle() / 16.0);
-    LOG4CPP_DEBUG_S ((*mainCat)) << "    transformOrigin=" << QPointFToString (ellipse->transformOriginPoint()).toLatin1().data();
-    LOG4CPP_DEBUG_S ((*mainCat)) << "    pos=" << QPointFToString (ellipse->pos ()).toLatin1().data();
-    LOG4CPP_DEBUG_S ((*mainCat)) << "    radius=" << m_radius;
-  }
 }
 
 QLineF CentipedeDebugPolar::portionOfLineLast (const QLineF &line,

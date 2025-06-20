@@ -32,8 +32,6 @@ CmdCopy::CmdCopy(MainWindow &mainWindow,
               CMD_DESCRIPTION),
   m_transformIsDefined (mainWindow.transformIsDefined())
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdCopy::CmdCopy"
-                              << " selected=" << selectedPointIdentifiers.count ();
 
   ExportToClipboard exportStrategy;
   QTextStream strCsv (&m_csv), strHtml (&m_html);
@@ -54,7 +52,6 @@ CmdCopy::CmdCopy (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdCopy::CmdCopy";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -81,7 +78,6 @@ CmdCopy::~CmdCopy ()
 
 void CmdCopy::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdCopy::cmdRedo";
 
   restoreState ();
   MimePointsExport *mimePointsExport;
@@ -103,7 +99,6 @@ void CmdCopy::cmdRedo ()
 
 void CmdCopy::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdCopy::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

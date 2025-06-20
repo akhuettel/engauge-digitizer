@@ -32,7 +32,6 @@ CreateToolBars::CreateToolBars()
 
 void CreateToolBars::create (MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateToolBars::create";
 
   createToolbarBackground (mw);
   createToolbarDigitize (mw);

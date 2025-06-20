@@ -38,7 +38,6 @@ DlgSettingsPointMatch::DlgSettingsPointMatch(MainWindow &mainWindow) :
   m_modelPointMatchBefore (nullptr),
   m_modelPointMatchAfter (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsPointMatch::DlgSettingsPointMatch";
 
   QWidget *subPanel = createSubPanel ();
   finishPanel (subPanel);
@@ -46,12 +45,10 @@ DlgSettingsPointMatch::DlgSettingsPointMatch(MainWindow &mainWindow) :
 
 DlgSettingsPointMatch::~DlgSettingsPointMatch()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsPointMatch::~DlgSettingsPointMatch";
 }
 
 QPointF DlgSettingsPointMatch::boxPositionConstraint(const QPointF &posIn)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsPointMatch::boxPositionConstraint";
 
   double radius = radiusAlongDiagonal();
   double diameter = 2.0 * radius;
@@ -80,7 +77,6 @@ QPointF DlgSettingsPointMatch::boxPositionConstraint(const QPointF &posIn)
 void DlgSettingsPointMatch::createControls (QGridLayout *layout,
                                             int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsPointMatch::createControls";
 
   QLabel *labelPointSize = new QLabel (QString ("%1:").arg (tr ("Maximum point size (pixels)")));
   layout->addWidget (labelPointSize, row, 1);
@@ -132,7 +128,6 @@ void DlgSettingsPointMatch::createOptionalSaveDefault (QHBoxLayout * /* layout *
 void DlgSettingsPointMatch::createPreview (QGridLayout *layout,
                                            int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsPointMatch::createPreview";
 
   QLabel *labelPreview = new QLabel (tr ("Preview"));
   layout->addWidget (labelPreview, row++, 0, 1, 4);
@@ -154,7 +149,6 @@ void DlgSettingsPointMatch::createPreview (QGridLayout *layout,
 
 QWidget *DlgSettingsPointMatch::createSubPanel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsPointMatch::createSubPanel";
 
   QWidget *subPanel = new QWidget ();
   QGridLayout *layout = new QGridLayout (subPanel);
@@ -181,7 +175,6 @@ QWidget *DlgSettingsPointMatch::createSubPanel ()
 
 void DlgSettingsPointMatch::createTemplate ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsPointMatch::createTemplate";
 
   QPen pen (QBrush (Qt::black), 0);
 
@@ -193,7 +186,6 @@ void DlgSettingsPointMatch::createTemplate ()
 
 void DlgSettingsPointMatch::handleOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsPointMatch::handleOk";
 
   CmdSettingsPointMatch *cmd = new CmdSettingsPointMatch (mainWindow (),
                                                           cmdMediator ().document(),
@@ -206,7 +198,6 @@ void DlgSettingsPointMatch::handleOk ()
 
 void DlgSettingsPointMatch::initializeBox ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsPointMatch::initializeBox";
 
   m_circle->setPos (cmdMediator().document().pixmap().width () / 2.0,
                     cmdMediator().document().pixmap().height () / 2.0); // Initially box is in center of preview
@@ -214,7 +205,6 @@ void DlgSettingsPointMatch::initializeBox ()
 
 void DlgSettingsPointMatch::load (CmdMediator &cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsPointMatch::load";
 
   setCmdMediator (cmdMediator);
 
@@ -278,7 +268,6 @@ void DlgSettingsPointMatch::setSmallDialogs(bool smallDialogs)
 
 void DlgSettingsPointMatch::slotAcceptedPointColor (const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsPointMatch::slotAcceptedPointColor";
 
   m_modelPointMatchAfter->setPaletteColorAccepted(static_cast<ColorPalette> (m_cmbAcceptedPointColor->currentData().toInt()));
 
@@ -288,7 +277,6 @@ void DlgSettingsPointMatch::slotAcceptedPointColor (const QString &)
 
 void DlgSettingsPointMatch::slotCandidatePointColor (const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsPointMatch::slotCandidatePointColor";
 
   m_modelPointMatchAfter->setPaletteColorCandidate(static_cast<ColorPalette> (m_cmbCandidatePointColor->currentData().toInt()));
   updateControls();
@@ -297,7 +285,6 @@ void DlgSettingsPointMatch::slotCandidatePointColor (const QString &)
 
 void DlgSettingsPointMatch::slotMaxPointSize (int maxPointSize)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsPointMatch::slotMaxPointSize";
 
   m_modelPointMatchAfter->setMaxPointSize(maxPointSize);
   updateControls();
@@ -315,7 +302,6 @@ void DlgSettingsPointMatch::slotMouseMove (QPointF pos)
 
 void DlgSettingsPointMatch::slotRejectedPointColor (const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsPointMatch::slotRejectedPointColor";
 
   m_modelPointMatchAfter->setPaletteColorRejected(static_cast<ColorPalette> (m_cmbRejectedPointColor->currentData().toInt()));
   updateControls();

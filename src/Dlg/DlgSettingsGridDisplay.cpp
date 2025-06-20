@@ -47,7 +47,6 @@ DlgSettingsGridDisplay::DlgSettingsGridDisplay(MainWindow &mainWindow) :
   m_modelGridDisplayBefore (nullptr),
   m_modelGridDisplayAfter (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::DlgSettingsGridDisplay";
 
   QWidget *subPanel = createSubPanel ();
   finishPanel (subPanel);
@@ -55,7 +54,6 @@ DlgSettingsGridDisplay::DlgSettingsGridDisplay(MainWindow &mainWindow) :
 
 DlgSettingsGridDisplay::~DlgSettingsGridDisplay()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::~DlgSettingsGridDisplay";
 
   delete m_validatorCountX;
   delete m_validatorStartX;
@@ -69,7 +67,6 @@ DlgSettingsGridDisplay::~DlgSettingsGridDisplay()
 
 void DlgSettingsGridDisplay::createDisplayCommon (QGridLayout *layout, int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::createDisplayCommon";
 
   QWidget *widgetCommon = new QWidget;
   layout->addWidget (widgetCommon, row++, 2, 1, 2);
@@ -109,7 +106,6 @@ void DlgSettingsGridDisplay::createDisplayCommon (QGridLayout *layout, int &row)
 
 void DlgSettingsGridDisplay::createDisplayGridLinesX (QGridLayout *layout, int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::createDisplayGridLinesX";
 
   m_groupX = new QGroupBox; // Text is added at load time at which point current context is known
   layout->addWidget (m_groupX, row, 2);
@@ -185,7 +181,6 @@ void DlgSettingsGridDisplay::createDisplayGridLinesX (QGridLayout *layout, int &
 
 void DlgSettingsGridDisplay::createDisplayGridLinesY (QGridLayout *layout, int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::createDisplayGridLinesY";
 
   m_groupY = new QGroupBox; // Text is added at load time at which point current context is known
   layout->addWidget (m_groupY, row++, 3);
@@ -265,7 +260,6 @@ void DlgSettingsGridDisplay::createOptionalSaveDefault (QHBoxLayout * /* layout 
 
 void DlgSettingsGridDisplay::createPreview (QGridLayout *layout, int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::createPreview";
 
   QLabel *labelPreview = new QLabel (tr ("Preview"));
   layout->addWidget (labelPreview, row++, 0, 1, 5);
@@ -283,7 +277,6 @@ void DlgSettingsGridDisplay::createPreview (QGridLayout *layout, int &row)
 
 QWidget *DlgSettingsGridDisplay::createSubPanel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::createSubPanel";
 
   QWidget *subPanel = new QWidget ();
   QGridLayout *layout = new QGridLayout (subPanel);
@@ -312,7 +305,6 @@ QWidget *DlgSettingsGridDisplay::createSubPanel ()
 
 void DlgSettingsGridDisplay::handleOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::handleOk";
 
   // Set the stable flag
   m_modelGridDisplayAfter->setStable (true);
@@ -328,7 +320,6 @@ void DlgSettingsGridDisplay::handleOk ()
 
 void DlgSettingsGridDisplay::load (CmdMediator &cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::load";
 
   setCmdMediator (cmdMediator);
 
@@ -393,7 +384,6 @@ void DlgSettingsGridDisplay::setSmallDialogs(bool smallDialogs)
 
 void DlgSettingsGridDisplay::slotColor (QString const &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::slotColor";
 
   m_modelGridDisplayAfter->setPaletteColor(static_cast<ColorPalette> (m_cmbColor->currentData().toInt()));
   updateControls();
@@ -402,7 +392,6 @@ void DlgSettingsGridDisplay::slotColor (QString const &)
 
 void DlgSettingsGridDisplay::slotCountX(const QString &count)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::slotCountX";
 
   m_modelGridDisplayAfter->setCountX(unsigned (count.toInt()));
   updateDisplayedVariableX ();
@@ -412,7 +401,6 @@ void DlgSettingsGridDisplay::slotCountX(const QString &count)
 
 void DlgSettingsGridDisplay::slotCountY(const QString &count)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::slotCountY";
 
   m_modelGridDisplayAfter->setCountY(unsigned (count.toInt()));
   updateDisplayedVariableY ();
@@ -422,7 +410,6 @@ void DlgSettingsGridDisplay::slotCountY(const QString &count)
 
 void DlgSettingsGridDisplay::slotDisableX(const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::slotDisableX";
 
   GridCoordDisable gridCoordDisable = static_cast<GridCoordDisable> (m_cmbDisableX->currentData().toInt());
   m_modelGridDisplayAfter->setDisableX(gridCoordDisable);
@@ -433,7 +420,6 @@ void DlgSettingsGridDisplay::slotDisableX(const QString &)
 
 void DlgSettingsGridDisplay::slotDisableY(const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::slotDisableY";
 
   GridCoordDisable gridCoordDisable = static_cast<GridCoordDisable> (m_cmbDisableY->currentData().toInt());
   m_modelGridDisplayAfter->setDisableY(gridCoordDisable);
@@ -444,7 +430,6 @@ void DlgSettingsGridDisplay::slotDisableY(const QString &)
 
 void DlgSettingsGridDisplay::slotLineWidth (int lineWidth)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::slotLineWidth width=" << lineWidth;
 
   m_modelGridDisplayAfter->setLineWidth (lineWidth);
   updateControls();
@@ -453,7 +438,6 @@ void DlgSettingsGridDisplay::slotLineWidth (int lineWidth)
 
 void DlgSettingsGridDisplay::slotStartX(const QString &startX)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::slotStartX";
 
   m_modelGridDisplayAfter->setStartX(startX.toDouble());
   updateDisplayedVariableX ();
@@ -463,7 +447,6 @@ void DlgSettingsGridDisplay::slotStartX(const QString &startX)
 
 void DlgSettingsGridDisplay::slotStartY(const QString &startY)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::slotStartY";
 
   m_modelGridDisplayAfter->setStartY(startY.toDouble());
   updateDisplayedVariableY ();
@@ -473,7 +456,6 @@ void DlgSettingsGridDisplay::slotStartY(const QString &startY)
 
 void DlgSettingsGridDisplay::slotStepX(const QString &stepX)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::slotStepX";
 
   m_modelGridDisplayAfter->setStepX(stepX.toDouble());
   updateDisplayedVariableX ();
@@ -483,7 +465,6 @@ void DlgSettingsGridDisplay::slotStepX(const QString &stepX)
 
 void DlgSettingsGridDisplay::slotStepY(const QString &stepY)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::slotStepY";
 
   m_modelGridDisplayAfter->setStepY(stepY.toDouble());
   updateDisplayedVariableY ();
@@ -493,7 +474,6 @@ void DlgSettingsGridDisplay::slotStepY(const QString &stepY)
 
 void DlgSettingsGridDisplay::slotStopX(const QString &stopX)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::slotStopX";
 
   m_modelGridDisplayAfter->setStopX(stopX.toDouble());
   updateDisplayedVariableX ();
@@ -503,7 +483,6 @@ void DlgSettingsGridDisplay::slotStopX(const QString &stopX)
 
 void DlgSettingsGridDisplay::slotStopY(const QString &stopY)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridDisplay::slotStopY";
 
   m_modelGridDisplayAfter->setStopY(stopY.toDouble());
   updateDisplayedVariableY ();

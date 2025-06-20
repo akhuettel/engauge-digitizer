@@ -20,7 +20,6 @@ void CreateHelpWindow::create (MainWindow &
 #endif                               
                                )
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateHelpWindow::create";
 
 #if !defined(OSX_DEBUG) && !defined(OSX_RELEASE)
   mw.m_helpWindow = new HelpWindow (&mw);

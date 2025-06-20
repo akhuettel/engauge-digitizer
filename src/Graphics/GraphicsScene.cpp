@@ -39,8 +39,6 @@ GraphicsScene::~GraphicsScene()
 void GraphicsScene::addTemporaryPoint (const QString &identifier,
                                        GraphicsPoint *point)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::addTemporaryPoint"
-                              << " identifier=" << identifier.toLatin1().data();
 
   m_graphicsLinesForCurves.addPoint (AXIS_CURVE_NAME,
                                      identifier,
@@ -53,7 +51,6 @@ void GraphicsScene::addTemporaryScaleBar (GraphicsPoint *point0,
                                           const QString &pointIdentifier0,
                                           const QString &pointIdentifier1)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::addTemporaryScaleBar";
 
   const double ORDINAL_0 = 0, ORDINAL_1 = 1;
 
@@ -72,8 +69,6 @@ GraphicsPoint *GraphicsScene::createPoint (const QString &identifier,
                                            const QPointF &posScreen,
                                            GeometryWindow *geometryWindow)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::createPoint"
-                              << " identifier=" << identifier.toLatin1().data();
 
   // Ordinal value is initially computed as one plus the max ordinal seen so far. This initial ordinal value will be overridden if the
   // cordinates determine the ordinal values.
@@ -107,7 +102,6 @@ QString GraphicsScene::dumpCursors () const
 
 void GraphicsScene::hideAllItemsExceptImage()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::hideAllItemsExceptImage";
 
   for (int index = 0; index < QGraphicsScene::items().count(); index++) {
     QGraphicsItem *item = QGraphicsScene::items().at(index);
@@ -143,7 +137,6 @@ const QGraphicsPixmapItem *GraphicsScene::image () const
 
 QStringList GraphicsScene::positionHasChangedPointIdentifiers () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::positionHasChangedPointIdentifiers";
 
   QStringList movedIds;
 
@@ -159,10 +152,6 @@ QStringList GraphicsScene::positionHasChangedPointIdentifiers () const
 
       QString identifier = item->data (DATA_KEY_IDENTIFIER).toString ();
       bool positionHasChanged = item->data (DATA_KEY_POSITION_HAS_CHANGED).toBool ();
-
-      LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsScene::positionHasChangedPointIdentifiers"
-                                   << " identifier=" << identifier.toLatin1().data()
-                                   << " positionHasChanged=" << (positionHasChanged ? "yes" : "no");
 
       if (isPoint && positionHasChanged) {
 
@@ -185,26 +174,22 @@ void GraphicsScene::printStream (QString indentation,
 
 void GraphicsScene::removePoint (const QString &identifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::removePoint identifier=" << identifier.toLatin1().data();
 
   m_graphicsLinesForCurves.removePoint (identifier);
 }
 
 void GraphicsScene::removeTemporaryPointIfExists ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::removeTemporaryPointIfExists";
 
   m_graphicsLinesForCurves.removeTemporaryPointIfExists ();
 }
 
 void GraphicsScene::removeTemporaryScaleBarIfExists ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::removeTemporaryScaleBarIfExists";
 }
 
 void GraphicsScene::resetOnLoad()
 {
-  // LOG4CPP_INFO_S is below
 
   int itemsBefore = items().count();
 
@@ -212,14 +197,10 @@ void GraphicsScene::resetOnLoad()
 
   int itemsAfter = items().count();
 
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::resetOnLoad"
-                              << " itemsBefore=" << itemsBefore
-                              << " itemsAfter=" << itemsAfter;
 }
 
 void GraphicsScene::resetPositionHasChangedFlags()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::resetPositionHasChangedFlags";
 
   QList<QGraphicsItem*> itms = items ();
   QList<QGraphicsItem*>::const_iterator itr;
@@ -234,11 +215,6 @@ void GraphicsScene::showCurves (bool show,
                                 bool showAll,
                                 const QString &curveNameWanted)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::showCurves"
-                              << " show=" << (show ? "true" : "false")
-                              << " showAll=" << (showAll ? "true" : "false")
-                              << " curve=" << curveNameWanted.toLatin1().data();
-
   const QList<QGraphicsItem*> &items = QGraphicsScene::items();
   QList<QGraphicsItem*>::const_iterator itr;
   for (itr = items.begin(); itr != items.end(); itr++) {
@@ -278,7 +254,6 @@ void GraphicsScene::updateAfterCommand (CmdMediator &cmdMediator,
                                         GeometryWindow *geometryWindow,
                                         const Transformation &transformation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::updateAfterCommand";
 
   m_graphicsLinesForCurves.updateHighlightOpacity (highlightOpacity);
 
@@ -292,7 +267,6 @@ void GraphicsScene::updateAfterCommand (CmdMediator &cmdMediator,
 
 void GraphicsScene::updateCurves (CmdMediator &cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::updateCurves";
 
   // Desired curve names include both axes and graph curve names
   QStringList curveNames;
@@ -305,7 +279,6 @@ void GraphicsScene::updateCurves (CmdMediator &cmdMediator)
 
 void GraphicsScene::updateCurveStyles (const CurveStyles &modelCurveStyles)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::updateCurveStyles";
 
   m_graphicsLinesForCurves.updateCurveStyles (modelCurveStyles);
 }
@@ -313,7 +286,6 @@ void GraphicsScene::updateCurveStyles (const CurveStyles &modelCurveStyles)
 void GraphicsScene::updateGraphicsLinesToMatchGraphicsPoints (const CurveStyles &curveStyles,
                                                               const Transformation &transformation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::updateGraphicsLinesToMatchGraphicsPoints";
 
   if (transformation.transformIsDefined()) {
 
@@ -356,7 +328,6 @@ void GraphicsScene::updatePointMembership (CmdMediator &cmdMediator,
                                            GeometryWindow *geometryWindow,
                                            const Transformation &transformation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::updatePointMembership";
 
   CallbackSceneUpdateAfterCommand ftor (m_graphicsLinesForCurves,
                                         *this,

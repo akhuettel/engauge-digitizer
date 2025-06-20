@@ -23,9 +23,6 @@ GuidelineStateDeployedConstantTUnselectHide::~GuidelineStateDeployedConstantTUns
 
 void GuidelineStateDeployedConstantTUnselectHide::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantTUnselectHide::begin"
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (false,
                false);
 
@@ -39,7 +36,6 @@ bool GuidelineStateDeployedConstantTUnselectHide::doPaint () const
 
 void GuidelineStateDeployedConstantTUnselectHide::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantTUnselectHide::end";
 }
 
 void GuidelineStateDeployedConstantTUnselectHide::handleActiveChange (bool /* active */)

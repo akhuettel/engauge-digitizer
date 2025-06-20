@@ -41,7 +41,6 @@ DlgEditScale::DlgEditScale (MainWindow &mainWindow,
   m_modelGeneral (modelGeneral),
   m_modelMainWindow (modelMainWindow)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgEditScale::DlgEditScale";
 
   QVBoxLayout *layout = new QVBoxLayout;
   setLayout (layout);
@@ -61,7 +60,6 @@ DlgEditScale::DlgEditScale (MainWindow &mainWindow,
 
 DlgEditScale::~DlgEditScale()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgEditScale::~DlgEditScale";
 }
 
 void DlgEditScale::createHint (QVBoxLayout *layoutOuter)

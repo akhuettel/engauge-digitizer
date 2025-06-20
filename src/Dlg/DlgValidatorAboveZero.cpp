@@ -14,7 +14,6 @@ DlgValidatorAboveZero::DlgValidatorAboveZero(const QLocale &locale,
   DlgValidatorAbstract(parent),
   m_locale (locale)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgValidatorAboveZero::DlgValidatorAboveZero";
 }
 
 QValidator::State DlgValidatorAboveZero::validate (QString &input,

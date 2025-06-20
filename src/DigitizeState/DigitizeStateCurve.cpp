@@ -35,7 +35,6 @@ QString DigitizeStateCurve::activeCurve () const
 void DigitizeStateCurve::begin (CmdMediator *cmdMediator,
                                 DigitizeState /* previousState */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateCurve::begin";
 
   setCursor(cmdMediator);
   context().setDragMode(QGraphicsView::NoDrag);
@@ -52,7 +51,6 @@ bool DigitizeStateCurve::canPaste (const Transformation &transformation,
 
 QCursor DigitizeStateCurve::cursor(CmdMediator *cmdMediator) const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateCurve::cursor";
 
   CursorFactory cursorFactory;
   QCursor cursor = cursorFactory.generate (cmdMediator->document().modelDigitizeCurve());
@@ -62,7 +60,6 @@ QCursor DigitizeStateCurve::cursor(CmdMediator *cmdMediator) const
 
 void DigitizeStateCurve::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateCurve::end";
 }
 
 bool DigitizeStateCurve::guidelinesAreSelectable () const
@@ -73,28 +70,21 @@ bool DigitizeStateCurve::guidelinesAreSelectable () const
 void DigitizeStateCurve::handleContextMenuEventAxis (CmdMediator * /* cmdMediator */,
                                                      const QString &pointIdentifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateCurve::handleContextMenuEventAxis "
-                              << " point=" << pointIdentifier.toLatin1 ().data ();
 }
 
 void DigitizeStateCurve::handleContextMenuEventGraph (CmdMediator * /* cmdMediator */,
                                                       const QStringList &pointIdentifiers)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateCurve ::handleContextMenuEventGraph "
-                              << "points=" << pointIdentifiers.join(",").toLatin1 ().data ();
 }
 
 void DigitizeStateCurve::handleCurveChange(CmdMediator * /* cmdMediator */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateCurve::handleCurveChange";
 }
 
 void DigitizeStateCurve::handleKeyPress (CmdMediator *cmdMediator,
                                          Qt::Key key,
                                          bool atLeastOneSelectedItem)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateCurve::handleKeyPress"
-                              << " key=" << QKeySequence (key).toString ().toLatin1 ().data ();
 
   handleKeyPressArrow (cmdMediator,
                        key,
@@ -104,19 +94,16 @@ void DigitizeStateCurve::handleKeyPress (CmdMediator *cmdMediator,
 void DigitizeStateCurve::handleMouseMove (CmdMediator * /* cmdMediator */,
                                           QPointF /* posScreen */)
 {
-//  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateCurve::handleMouseMove";
 }
 
 void DigitizeStateCurve::handleMousePress (CmdMediator * /* cmdMediator */,
                                            QPointF /* posScreen */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateCurve::handleMousePress";
 }
 
 void DigitizeStateCurve::handleMouseRelease (CmdMediator *cmdMediator,
                                              QPointF posScreen)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateCurve::handleMouseRelease";
 
   // Create command to add point
   OrdinalGenerator ordinalGenerator;
@@ -141,18 +128,15 @@ QString DigitizeStateCurve::state() const
 
 void DigitizeStateCurve::updateAfterPointAddition ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateCurve::updateAfterPointAddition";
 }
 
 void DigitizeStateCurve::updateModelDigitizeCurve (CmdMediator *cmdMediator,
                                                    const DocumentModelDigitizeCurve & /*modelDigitizeCurve */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateCurve::updateModelDigitizeCurve";
 
   setCursor(cmdMediator);
 }
 
 void DigitizeStateCurve::updateModelSegments(const DocumentModelSegments & /* modelSegments */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateCurve::updateModelSegments";
 }

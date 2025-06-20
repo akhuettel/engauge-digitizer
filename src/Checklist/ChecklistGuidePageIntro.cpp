@@ -10,7 +10,6 @@
 ChecklistGuidePageIntro::ChecklistGuidePageIntro() :
   ChecklistGuidePage (tr ("Introduction"))
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuidePageIntro::ChecklistGuidePageIntro";
 
   addHtml (QString ("<p>%1</p>"
                     "<p>%2</p>"

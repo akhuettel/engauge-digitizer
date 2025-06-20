@@ -16,7 +16,6 @@ DlgValidatorNumber::DlgValidatorNumber(CoordScale coordScale,
   m_coordScale (coordScale),
   m_locale (locale)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgValidatorNumber::DlgValidatorNumber";
 }
 
 QValidator::State DlgValidatorNumber::validate (QString &input,

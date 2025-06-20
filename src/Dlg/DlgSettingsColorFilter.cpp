@@ -45,7 +45,6 @@ DlgSettingsColorFilter::DlgSettingsColorFilter(MainWindow &mainWindow) :
   m_modelColorFilterBefore (nullptr),
   m_modelColorFilterAfter (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::DlgSettingsColorFilter";
 
   QWidget *subPanel = createSubPanel ();
   finishPanel (subPanel,
@@ -54,14 +53,12 @@ DlgSettingsColorFilter::DlgSettingsColorFilter(MainWindow &mainWindow) :
 
 DlgSettingsColorFilter::~DlgSettingsColorFilter()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::~DlgSettingsColorFilter";
 
   delete m_filterThread;
 }
 
 void DlgSettingsColorFilter::createControls (QGridLayout *layout, int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::createControls";
 
   QLabel *labelCurve = new QLabel (QString ("%1:").arg (tr ("Curve Name")));
   layout->addWidget (labelCurve, row++, 1);
@@ -121,7 +118,6 @@ void DlgSettingsColorFilter::createOptionalSaveDefault (QHBoxLayout * /* layout 
 
 void DlgSettingsColorFilter::createPreview (QGridLayout *layout, int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::createPreview";
 
   QLabel *labelPreview = new QLabel (tr ("Preview"));
   layout->addWidget (labelPreview, row++, 0, 1, 5);
@@ -141,7 +137,6 @@ void DlgSettingsColorFilter::createPreview (QGridLayout *layout, int &row)
 
 void DlgSettingsColorFilter::createProfileAndScale (QGridLayout *layout, int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::createProfileAndScale";
 
   const int MINIMUM_VIEW_PROFILE_WIDTH = 70;
 
@@ -167,7 +162,6 @@ void DlgSettingsColorFilter::createProfileAndScale (QGridLayout *layout, int &ro
 
 QWidget *DlgSettingsColorFilter::createSubPanel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::createSubPanel";
 
   const int EMPTY_COLUMN_WIDTH = 40;
 
@@ -203,7 +197,6 @@ QWidget *DlgSettingsColorFilter::createSubPanel ()
 
 QRgb DlgSettingsColorFilter::createThread ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::createThread";
 
   // Get background color
   QImage image = cmdMediator().document().pixmap().toImage();
@@ -224,7 +217,6 @@ QRgb DlgSettingsColorFilter::createThread ()
 
 void DlgSettingsColorFilter::handleOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::handleOk";
 
   CmdSettingsColorFilter *cmd = new CmdSettingsColorFilter (mainWindow (),
                                                             cmdMediator ().document(),
@@ -237,7 +229,6 @@ void DlgSettingsColorFilter::handleOk ()
 
 void DlgSettingsColorFilter::load (CmdMediator &cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::load";
 
   setCmdMediator (cmdMediator);
 
@@ -269,7 +260,6 @@ void DlgSettingsColorFilter::load (CmdMediator &cmdMediator)
 
 void DlgSettingsColorFilter::loadForCurveName()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::loadForCurveName";
 
   // Get curve name from control
   QString curveName = m_cmbCurveName->currentText();
@@ -307,7 +297,6 @@ void DlgSettingsColorFilter::setSmallDialogs(bool smallDialogs)
 
 void DlgSettingsColorFilter::slotCurveName(const QString & /* curveName */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::slotCurveName";
 
   loadForCurveName ();
 }
@@ -328,7 +317,6 @@ void DlgSettingsColorFilter::slotDividerLow (double xCenter)
 
 void DlgSettingsColorFilter::slotForeground ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::slotForeground";
 
   m_modelColorFilterAfter->setColorFilterMode(m_cmbCurveName->currentText(),
                                               COLOR_FILTER_MODE_FOREGROUND);
@@ -338,7 +326,6 @@ void DlgSettingsColorFilter::slotForeground ()
 
 void DlgSettingsColorFilter::slotHue ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::slotHue";
 
   m_modelColorFilterAfter->setColorFilterMode(m_cmbCurveName->currentText(),
                                               COLOR_FILTER_MODE_HUE);
@@ -348,7 +335,6 @@ void DlgSettingsColorFilter::slotHue ()
 
 void DlgSettingsColorFilter::slotIntensity ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::slotIntensity";
 
   m_modelColorFilterAfter->setColorFilterMode(m_cmbCurveName->currentText(),
                                               COLOR_FILTER_MODE_INTENSITY);
@@ -358,7 +344,6 @@ void DlgSettingsColorFilter::slotIntensity ()
 
 void DlgSettingsColorFilter::slotSaturation ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::slotSaturation";
 
   m_modelColorFilterAfter->setColorFilterMode(m_cmbCurveName->currentText(),
                                               COLOR_FILTER_MODE_SATURATION);
@@ -394,7 +379,6 @@ void DlgSettingsColorFilter::slotTransferPiece (int xLeft,
 
 void DlgSettingsColorFilter::slotValue ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::slotValue";
 
   m_modelColorFilterAfter->setColorFilterMode(m_cmbCurveName->currentText(),
                                          COLOR_FILTER_MODE_VALUE);
@@ -409,7 +393,6 @@ void DlgSettingsColorFilter::slotWhatsThis ()
 
 void DlgSettingsColorFilter::updateHistogram()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsColorFilter::updateHistogram";
 
   enableOk (true);
 
@@ -514,7 +497,6 @@ void DlgSettingsColorFilter::updateHistogram()
 
   } else {
 
-    LOG4CPP_ERROR_S ((*mainCat)) << "DlgSettingsColorFilter::updateHistogram unknown button pressed";
     ENGAUGE_ASSERT (false);
 
   }
@@ -524,7 +506,6 @@ void DlgSettingsColorFilter::updateHistogram()
 
 void DlgSettingsColorFilter::updatePreview ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettings::updatePreview";
 
   enableOk (true);
 

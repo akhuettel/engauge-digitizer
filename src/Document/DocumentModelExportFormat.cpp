@@ -139,7 +139,6 @@ ExportLayoutFunctions DocumentModelExportFormat::layoutFunctions() const
 
 void DocumentModelExportFormat::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelExportFormat::loadXml";
 
   bool success = true;
 
@@ -296,7 +295,6 @@ void DocumentModelExportFormat::printStream(QString indentation,
 
 void DocumentModelExportFormat::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelExportFormat::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_EXPORT);
   writer.writeAttribute(DOCUMENT_SERIALIZE_EXPORT_POINTS_SELECTION_FUNCTIONS, QString::number (m_pointsSelectionFunctions));

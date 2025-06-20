@@ -25,10 +25,6 @@ CallbackGatherXThetasInCurves::CallbackGatherXThetasInCurves(const DocumentModel
 CallbackSearchReturn CallbackGatherXThetasInCurves::callback (const QString &curveName,
                                                               const Point &point)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CallbackGatherXThetasInCurves::callback"
-                               << " curveName=" << curveName.toLatin1().data()
-                               << " point=" << point.identifier().toLatin1().data();
-
   updateMinMax (curveName,
                 point);
 

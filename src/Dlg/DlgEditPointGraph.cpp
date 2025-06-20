@@ -38,7 +38,6 @@ DlgEditPointGraph::DlgEditPointGraph (MainWindow &mainWindow,
   m_modelGeneral (modelGeneral),
   m_modelMainWindow (modelMainWindow)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgEditPointGraph::DlgEditPointGraph";
 
   QVBoxLayout *layout = new QVBoxLayout;
   setLayout (layout);
@@ -61,7 +60,6 @@ DlgEditPointGraph::DlgEditPointGraph (MainWindow &mainWindow,
 
 DlgEditPointGraph::~DlgEditPointGraph()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgEditPointGraph::~DlgEditPointGraph";
 }
 
 void DlgEditPointGraph::createCoords (QVBoxLayout *layoutOuter)
@@ -180,7 +178,6 @@ void DlgEditPointGraph::initializeGraphCoordinates (const double *xInitialValue,
                                                     const double *yInitialValue,
                                                     const Transformation &transformation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgEditPointGraph::initializeGraphCoordinates";
 
   QString xTheta, yRadius;
   if ((xInitialValue != nullptr) &&

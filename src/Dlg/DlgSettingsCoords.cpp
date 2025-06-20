@@ -85,7 +85,6 @@ DlgSettingsCoords::DlgSettingsCoords(MainWindow &mainWindow) :
   m_modelCoordsBefore (nullptr),
   m_modelCoordsAfter (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::DlgSettingsCoords";
 
   QWidget *subPanel = createSubPanel ();
   finishPanel (subPanel,
@@ -94,7 +93,6 @@ DlgSettingsCoords::DlgSettingsCoords(MainWindow &mainWindow) :
 
 DlgSettingsCoords::~DlgSettingsCoords()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::~DlgSettingsCoords";
 }
 
 void DlgSettingsCoords::annotateAngles (const QFont &defaultFont) {
@@ -213,7 +211,6 @@ void DlgSettingsCoords::boundingRectGraph (CmdMediator &cmdMediator,
 void DlgSettingsCoords::createDateTime (QGridLayout *layout,
                                         int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::createDateTime";
 
   QLabel *label = new QLabel(QString ("%1:").arg (tr ("Date/Time")));
   layout->addWidget (label, row, 1);
@@ -242,7 +239,6 @@ void DlgSettingsCoords::createDateTime (QGridLayout *layout,
 void DlgSettingsCoords::createGroupCoordsType (QGridLayout *layout,
                                                int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::createGroupCoordsType";
 
   m_boxCoordsType = new QGroupBox(tr ("Coordinates Types"));
   layout->addWidget (m_boxCoordsType, row, 1, 1, 2);
@@ -273,7 +269,6 @@ void DlgSettingsCoords::createGroupCoordsType (QGridLayout *layout,
 void DlgSettingsCoords::createGroupXTheta (QGridLayout *layout,
                                            int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::createGroupXTheta";
 
   m_boxXTheta = new QGroupBox(OVERRIDDEN_VALUE);
   layout->addWidget (m_boxXTheta, row, 1, 1, 1);
@@ -308,7 +303,6 @@ void DlgSettingsCoords::createGroupXTheta (QGridLayout *layout,
 void DlgSettingsCoords::createGroupYRadius (QGridLayout *layout,
                                             int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::createGroupYRadius";
 
   m_boxYRadius = new QGroupBox (OVERRIDDEN_VALUE);
   layout->addWidget (m_boxYRadius, row++, 2, 1, 1);
@@ -357,7 +351,6 @@ void DlgSettingsCoords::createOptionalSaveDefault (QHBoxLayout * /* layout */)
 void DlgSettingsCoords::createPreview (QGridLayout *layout,
                                        int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::createPreview";
 
   QLabel *labelPreview = new QLabel (tr ("Preview"));
   layout->addWidget (labelPreview, row++, 0, 1, 4);
@@ -376,7 +369,6 @@ void DlgSettingsCoords::createPreview (QGridLayout *layout,
 
 QWidget *DlgSettingsCoords::createSubPanel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::createSubPanel";
 
   QWidget *subPanel = new QWidget ();
 
@@ -400,7 +392,6 @@ QWidget *DlgSettingsCoords::createSubPanel ()
 
 void DlgSettingsCoords::drawCartesianLinearX ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::drawCartesianLinearX";
 
   bool isAxis = true;
   for (int step = 0; step < NUM_COORD_STEPS; step++) {
@@ -421,7 +412,6 @@ void DlgSettingsCoords::drawCartesianLinearX ()
 
 void DlgSettingsCoords::drawCartesianLinearY ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::drawCartesianLinearY";
 
   bool isAxis = true;
   for (int step = NUM_COORD_STEPS - 1; step >= 0; step--) {
@@ -442,7 +432,6 @@ void DlgSettingsCoords::drawCartesianLinearY ()
 
 void DlgSettingsCoords::drawCartesianLogX ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::drawCartesianLogX";
 
   bool isAxis = true;
   for (int step = 0; step < NUM_COORD_STEPS; step++) {
@@ -465,7 +454,6 @@ void DlgSettingsCoords::drawCartesianLogX ()
 
 void DlgSettingsCoords::drawCartesianLogY ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::drawCartesianLogY";
 
   bool isAxis = true;
   for (int step = 0; step < NUM_COORD_STEPS; step++) {
@@ -488,7 +476,6 @@ void DlgSettingsCoords::drawCartesianLogY ()
 
 void DlgSettingsCoords::drawPolarLinearRadius ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::drawPolarLinearRadius";
 
   for (int step = 0; step < NUM_COORD_STEPS; step++) {
     double radius = step * POLAR_STEP;
@@ -505,7 +492,6 @@ void DlgSettingsCoords::drawPolarLinearRadius ()
 
 void DlgSettingsCoords::drawPolarLogRadius ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::drawPolarLogRadius";
 
   for (int step = 0; step < NUM_COORD_STEPS; step++) {
     double s = (pow (POWER_FOR_LOG, step / (NUM_COORD_STEPS - 1.0)) - 1.0) /
@@ -524,7 +510,6 @@ void DlgSettingsCoords::drawPolarLogRadius ()
 
 void DlgSettingsCoords::drawPolarTheta ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::drawPolarTheta";
 
   bool isAxis = true;
   for (int step = 0; step < NUM_COORD_STEPS; step++) {
@@ -547,7 +532,6 @@ void DlgSettingsCoords::drawPolarTheta ()
 
 void DlgSettingsCoords::handleOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::handleOk";
 
   CmdSettingsCoords *cmd = new CmdSettingsCoords (mainWindow (),
                                                   cmdMediator ().document(),
@@ -560,7 +544,6 @@ void DlgSettingsCoords::handleOk ()
 
 void DlgSettingsCoords::load (CmdMediator &cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::load";
 
   setCmdMediator (cmdMediator);
 
@@ -618,7 +601,6 @@ void DlgSettingsCoords::load (CmdMediator &cmdMediator)
 
 void DlgSettingsCoords::loadComboBoxDate()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::loadComboBoxDate";
 
   m_cmbDate->clear ();
 
@@ -639,7 +621,6 @@ void DlgSettingsCoords::loadComboBoxDate()
 
 void DlgSettingsCoords::loadComboBoxTime()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::loadComboBoxTime";
 
   m_cmbTime->clear ();
 
@@ -659,7 +640,6 @@ void DlgSettingsCoords::loadComboBoxTime()
 void DlgSettingsCoords::loadComboBoxUnitsNonPolar (QComboBox &cmb,
                                                    CoordUnitsNonPolarTheta coordUnits)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::loadComboBoxUnitsNonPolar";
 
   cmb.clear();
 
@@ -687,7 +667,6 @@ void DlgSettingsCoords::loadComboBoxUnitsNonPolar (QComboBox &cmb,
 void DlgSettingsCoords::loadComboBoxUnitsPolar (QComboBox &cmb,
                                                 CoordUnitsPolarTheta coordUnits)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::loadComboBoxUnitsPolar";
 
   cmb.clear();
 
@@ -743,7 +722,6 @@ void DlgSettingsCoords::setSmallDialogs(bool smallDialogs)
 
 void DlgSettingsCoords::slotCartesianPolar (bool)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::slotCartesian";
 
   if (m_btnCartesian->isChecked ()) {
     m_modelCoordsAfter->setCoordsType (COORDS_TYPE_CARTESIAN);
@@ -757,7 +735,6 @@ void DlgSettingsCoords::slotCartesianPolar (bool)
 
 void DlgSettingsCoords::slotDate(const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::slotDate";
 
   CoordUnitsDate coordUnits = static_cast<CoordUnitsDate> (m_cmbDate->currentData ().toInt());
   m_modelCoordsAfter->setCoordUnitsDate(coordUnits);
@@ -767,7 +744,6 @@ void DlgSettingsCoords::slotDate(const QString &)
 
 void DlgSettingsCoords::slotPolarOriginRadius(const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::slotPolarOriginRadius";
 
   QString numberText = m_editOriginRadius->text();
 
@@ -778,7 +754,6 @@ void DlgSettingsCoords::slotPolarOriginRadius(const QString &)
 
 void DlgSettingsCoords::slotTime(const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::slotTime";
 
   CoordUnitsTime coordUnits = static_cast<CoordUnitsTime> (m_cmbTime->currentData ().toInt());
   m_modelCoordsAfter->setCoordUnitsTime(coordUnits);
@@ -788,7 +763,6 @@ void DlgSettingsCoords::slotTime(const QString &)
 
 void DlgSettingsCoords::slotUnitsXTheta(const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::slotUnitsXTheta";
 
   if (m_modelCoordsAfter->coordsType() == COORDS_TYPE_CARTESIAN) {
     CoordUnitsNonPolarTheta coordUnits = static_cast<CoordUnitsNonPolarTheta> (m_cmbXThetaUnits->currentData ().toInt ());
@@ -803,7 +777,6 @@ void DlgSettingsCoords::slotUnitsXTheta(const QString &)
 
 void DlgSettingsCoords::slotUnitsYRadius(const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::slotUnitsYRadius";
 
   CoordUnitsNonPolarTheta coordUnits = static_cast<CoordUnitsNonPolarTheta> (m_cmbYRadiusUnits->currentData ().toInt ());
   if (m_modelCoordsAfter->coordsType() == COORDS_TYPE_CARTESIAN) {
@@ -822,7 +795,6 @@ void DlgSettingsCoords::slotWhatsThis ()
 
 void DlgSettingsCoords::slotXThetaLinear()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::slotXThetaLinear";
 
   m_modelCoordsAfter->setCoordScaleXTheta(COORD_SCALE_LINEAR);
   updateControls ();
@@ -831,7 +803,6 @@ void DlgSettingsCoords::slotXThetaLinear()
 
 void DlgSettingsCoords::slotXThetaLog()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::slotXThetaLog";
 
   m_modelCoordsAfter->setCoordScaleXTheta(COORD_SCALE_LOG);
   updateControls ();
@@ -840,7 +811,6 @@ void DlgSettingsCoords::slotXThetaLog()
 
 void DlgSettingsCoords::slotYRadiusLinear()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::slotYRadiusLinear";
 
   delete m_validatorOriginRadius;
 
@@ -859,7 +829,6 @@ void DlgSettingsCoords::slotYRadiusLinear()
 
 void DlgSettingsCoords::slotYRadiusLog()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::slotYRadiusLog";
 
   delete m_validatorOriginRadius;
 
@@ -878,7 +847,6 @@ void DlgSettingsCoords::slotYRadiusLog()
 
 void DlgSettingsCoords::updateControls ()
 {
-  // LOG4CPP_INFO_S is below
 
   QString textOriginRadius = m_editOriginRadius->text();
   int posOriginRadius = 0;
@@ -946,12 +914,6 @@ void DlgSettingsCoords::updateControls ()
   m_cmbDate->setEnabled (enableDateTime);
   m_cmbTime->setEnabled (enableDateTime);
 
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCoords::updateControls"
-                              << " textOriginRadius=" << textOriginRadius.toLatin1().data()
-                              << " goodOriginRadius=" << (goodOriginRadius ? "true" : "false")
-                              << " originRadius=" << posOriginRadius
-                              << " btnPolarChecked=" << (m_btnPolar->isChecked() ? "true" : "false")
-                              << " enableDateTime=" << (enableDateTime ? "true" : "false");
 }
 
 void DlgSettingsCoords::updateCoordUnits()

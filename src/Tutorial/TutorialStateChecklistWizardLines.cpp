@@ -12,12 +12,10 @@
 TutorialStateChecklistWizardLines::TutorialStateChecklistWizardLines (TutorialStateContext &context) : 
   TutorialStateChecklistWizardAbstract (context)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateChecklistWizardLines::TutorialStateChecklistWizardLines";
 }
 
 void TutorialStateChecklistWizardLines::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateChecklistWizardLines::begin ()";
 
   TutorialStateChecklistWizardAbstract::begin();
   connect (previous(), SIGNAL (signalTriggered ()), this, SLOT (slotPrevious ()));
@@ -25,14 +23,12 @@ void TutorialStateChecklistWizardLines::begin ()
 
 void TutorialStateChecklistWizardLines::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateChecklistWizardLines::end ()";
 
   TutorialStateChecklistWizardAbstract::end();
 }
 
 void TutorialStateChecklistWizardLines::slotPrevious ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateChecklistWizardLines::slotPrevious";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_SEGMENT_FILL);
 }

@@ -30,7 +30,6 @@ CmdDelete::CmdDelete(MainWindow &mainWindow,
                       CMD_DESCRIPTION),
   m_deletedPointIdentifiers (deletedPointIdentifiers)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdDelete::CmdDelete";
 
   // Export to clipboard
   ExportToClipboard exportStrategy;
@@ -52,7 +51,6 @@ CmdDelete::CmdDelete (MainWindow &mainWindow,
                       document,
                       cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdDelete::CmdDelete";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -81,7 +79,6 @@ CmdDelete::~CmdDelete ()
 
 void CmdDelete::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdDelete::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -95,7 +92,6 @@ void CmdDelete::cmdRedo ()
 
 void CmdDelete::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdDelete::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

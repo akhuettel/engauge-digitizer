@@ -53,29 +53,21 @@ void GuidelineStateHandleAbstract::handleGuidelineMode (bool /* visible */,
 
 void GuidelineStateHandleAbstract::handleHoverEnterEvent ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateHandleAbstract::handleHoverEnterEvent";
-
   // Noop
 }
 
 void GuidelineStateHandleAbstract::handleHoverLeaveEvent ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateHandleAbstract::handleHoverEnterEvent";
-
   // Noop
 }
 
 void GuidelineStateHandleAbstract::handleMousePress (const QPointF & /* posScene */)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateHandleAbstract::handleMousePress";
-
   // Noop
 }
 
 void GuidelineStateHandleAbstract::handleTimeout ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateHandleAbstract::handleTimeout";
-
   // Noop
 }
 

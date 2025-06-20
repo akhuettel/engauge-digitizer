@@ -56,7 +56,6 @@ DocumentModelPointMatch &DocumentModelPointMatch::operator=(const DocumentModelP
 
 void DocumentModelPointMatch::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelPointMatch::loadXml";
 
   bool success = true;
 
@@ -124,7 +123,6 @@ void DocumentModelPointMatch::printStream(QString indentation,
 
 void DocumentModelPointMatch::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelPointMatch::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_POINT_MATCH);
   writer.writeAttribute(DOCUMENT_SERIALIZE_POINT_MATCH_POINT_SIZE, QString::number (m_maxPointSize));

@@ -236,7 +236,6 @@ int imagetopnm(opj_image_t * image,
 
   if (image->numcomps > ncomp)
   {
-    LOG4CPP_WARN_S ((*mainCat)) << "imagetopnm will only use the first component";
   }
 
   for (compno = 0; compno < ncomp; compno++)

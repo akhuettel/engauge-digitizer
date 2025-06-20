@@ -15,7 +15,6 @@
 
 DlgValidatorFactory::DlgValidatorFactory()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgValidatorFactory::DlgValidatorFactory";
 }
 
 DlgValidatorAbstract *DlgValidatorFactory::createAboveZero (const QLocale &locale) const
@@ -31,7 +30,6 @@ DlgValidatorAbstract *DlgValidatorFactory::createCartesianOrPolarWithNonPolarPol
                                                                                     CoordUnitsTime coordUnitsTime,
                                                                                     const QLocale &locale) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgValidatorFactory::createCartesianOrPolarWithNonPolarPolar";
 
   if (isCartesian) {
     return createWithNonPolar (coordScale,
@@ -56,7 +54,6 @@ DlgValidatorAbstract *DlgValidatorFactory::createCartesianOrPolarWithPolarPolar 
                                                                                  CoordUnitsTime coordUnitsTime,
                                                                                  const QLocale &locale) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgValidatorFactory::createCartesianOrPolarWithPolarPolar";
 
   if (isCartesian) {
     return createWithNonPolar (coordScale,
@@ -77,7 +74,6 @@ DlgValidatorAbstract *DlgValidatorFactory::createWithNonPolar (CoordScale coordS
                                                                CoordUnitsTime coordUnitsTime,
                                                                const QLocale &locale) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgValidatorFactory::createWithNonPolar";
 
   switch (coordUnits) {
     case COORD_UNITS_NON_POLAR_THETA_DATE_TIME:
@@ -93,7 +89,6 @@ DlgValidatorAbstract *DlgValidatorFactory::createWithNonPolar (CoordScale coordS
                                     locale);
 
     default:
-      LOG4CPP_ERROR_S ((*mainCat)) << "DlgValidatorFactory::createWithNonPolar";
       exit (-1);
   }
 }
@@ -102,7 +97,6 @@ DlgValidatorAbstract *DlgValidatorFactory::createWithPolar (CoordScale coordScal
                                                             CoordUnitsPolarTheta coordUnits,
                                                             const QLocale &locale) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgValidatorFactory::createWithPolar";
 
   switch (coordUnits) {
     case COORD_UNITS_POLAR_THETA_DEGREES:
@@ -118,7 +112,6 @@ DlgValidatorAbstract *DlgValidatorFactory::createWithPolar (CoordScale coordScal
                                      locale);
 
     default:
-      LOG4CPP_ERROR_S ((*mainCat)) << "DlgValidatorFactory::createWithNonPolar";
       exit (-1);
   }
 }

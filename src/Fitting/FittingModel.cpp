@@ -20,11 +20,6 @@ FittingModel::~FittingModel()
 
 QVariant FittingModel::data(const QModelIndex &index, int role) const
 {
-//  LOG4CPP_DEBUG_S ((*mainCat)) << "FittingModel::data"
-//                               << " index=(row=" << index.row() << ",col=" << index.column() << ",role=" << role << ")="
-//                               << " rows=" << rowCount()
-//                               << " cols=" << columnCount();
-
   if (role == Qt::BackgroundRole &&
       index.row() == rowCount() - 1 &&
       index.column() == COLUMN_POLYNOMIAL_TERMS) {

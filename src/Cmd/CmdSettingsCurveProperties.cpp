@@ -25,7 +25,6 @@ CmdSettingsCurveProperties::CmdSettingsCurveProperties(MainWindow &mainWindow,
   m_modelCurveStylesBefore (modelCurveStylesBefore),
   m_modelCurveStylesAfter (modelCurveStylesAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsCurveProperties::CmdSettingsCurveProperties";
 }
 
 CmdSettingsCurveProperties::CmdSettingsCurveProperties (MainWindow &mainWindow,
@@ -36,7 +35,6 @@ CmdSettingsCurveProperties::CmdSettingsCurveProperties (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsCurveProperties::CmdSettingsCurveProperties";
   
   bool success = true;
 
@@ -81,7 +79,6 @@ CmdSettingsCurveProperties::~CmdSettingsCurveProperties ()
 
 void CmdSettingsCurveProperties::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsCurveProperties::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -93,7 +90,6 @@ void CmdSettingsCurveProperties::cmdRedo ()
 
 void CmdSettingsCurveProperties::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsCurveProperties::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

@@ -19,7 +19,6 @@ LoadFileInfo::~LoadFileInfo()
 
 bool LoadFileInfo::loadsAsDigFile (const QString &urlString) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "LoadFileInfo::loadsAsDigFile";
 
   bool success = false;
 

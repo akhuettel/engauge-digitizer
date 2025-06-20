@@ -17,7 +17,6 @@ Compatibility::Compatibility ()
 
 QTextStream &Compatibility::endl (QTextStream &str)
 {
-  LOG4CPP_INFO_S ((*mainCat)) <<  "Compatibility::endl";
   
   // Comments:
   // 1) QTextStream in text mode uses \n\r for carriage return

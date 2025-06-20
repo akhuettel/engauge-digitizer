@@ -113,7 +113,6 @@ QColor ViewSegmentFilter::colorFromSetting (ColorFilterMode colorFilterMode,
       break;
 
     default:
-      LOG4CPP_ERROR_S ((*mainCat)) << "ViewSegmentFilter::colorFromSetting unexpected color filter mode " << colorFilterMode;
       ENGAUGE_ASSERT (false);
   }
 
@@ -186,7 +185,6 @@ void ViewSegmentFilter::paintEvent(QPaintEvent * /* event */)
 void ViewSegmentFilter::setColorFilterSettings (const ColorFilterSettings &colorFilterSettings,
                                                 const QPixmap &pixmap)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ViewSegmentFilter::setColorFilterSettings";
 
   m_colorFilterSettings = colorFilterSettings;
   m_filterIsDefined = true;
@@ -202,9 +200,6 @@ void ViewSegmentFilter::setColorFilterSettings (const ColorFilterSettings &color
 
 void ViewSegmentFilter::setEnabled (bool enabled)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ViewSegmentFilter::setEnabled"
-                              << " enabled=" << (enabled ? "true" : "false");
-
   m_enabled = enabled;
 
   // Force a redraw

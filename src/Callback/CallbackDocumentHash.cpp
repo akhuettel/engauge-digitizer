@@ -25,8 +25,6 @@ CallbackDocumentHash::~CallbackDocumentHash()
 CallbackSearchReturn CallbackDocumentHash::callback (const QString &curveName,
                                                      const Point &point)
 {
-  // LOG4CPP_DEBUG_S is below
-
   // Capture all important information about the point into the hash. A single string representing all of the point's details is
   // created, which can be logged, and then that string is added to the hash
 
@@ -67,8 +65,6 @@ CallbackSearchReturn CallbackDocumentHash::callback (const QString &curveName,
       break;
     }
   }
-
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CallbackDocumentHash::callback details=" << details.toLatin1().data();
 
   // Add details to hash
   m_documentHash.addData (details.toLatin1());

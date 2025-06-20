@@ -34,7 +34,6 @@ GuidelineEllipse::GuidelineEllipse(QGraphicsScene &scene,
   GuidelineAbstract (scene),
   m_mainWindow (mainWindow)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineEllipse::GuidelineEllipse identifier=" << identifier.toLatin1().data();
 
   // Create context after all virtual methods have been created. The transition
   // into the initial state will position the line if it was created by a button press
@@ -151,8 +150,6 @@ void GuidelineEllipse::mouseMoveEvent (QGraphicsSceneMouseEvent *event)
 
 void GuidelineEllipse::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineEllipse::mousePressEvent";
-
   QGraphicsEllipseItem::mousePressEvent (event);
 
   handleMousePressEvent (event->scenePos ());
@@ -162,8 +159,6 @@ void GuidelineEllipse::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void GuidelineEllipse::mouseReleaseEvent (QGraphicsSceneMouseEvent *event)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineEllipse::mouseReleaseEvent";
-
   handleMouseReleaseEvent (event->scenePos());
 
   QGraphicsEllipseItem::mouseReleaseEvent (event);
@@ -183,9 +178,6 @@ void GuidelineEllipse::paint(QPainter *painter,
 
 void GuidelineEllipse::removeFromScene (QGraphicsScene *scene)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineLine::removeFromScene identifier="
-                               << identifier().toLatin1().data();
-
   scene->removeItem (this);
 }
 
@@ -248,9 +240,6 @@ void GuidelineEllipse::updateGeometry (double valueGraph)
 
 void GuidelineEllipse::updateGeometry (const QPointF &posScreen)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineEllipse::updateGeometry scale=" << scale()
-                              << " rotation(deg)=" << rotation();
-
   EllipseParameters ellipseParameters = context()->pointToEllipse (posScreen);
 
   QPointF posCenter = ellipseParameters.posCenter();

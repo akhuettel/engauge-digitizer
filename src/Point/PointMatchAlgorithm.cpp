@@ -28,7 +28,6 @@ const int PIXEL_ON = 1; // Arbitrary value as long as negative of PIXEL_OFF
 PointMatchAlgorithm::PointMatchAlgorithm(bool isGnuplot) :
   m_isGnuplot (isGnuplot)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::PointMatchAlgorithm";
 }
 
 void PointMatchAlgorithm::allocateMemory(double** array,
@@ -36,7 +35,6 @@ void PointMatchAlgorithm::allocateMemory(double** array,
                                          int width,
                                          int height)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::allocateMemory";
 
   *array = new double [unsigned (width * height)];
   ENGAUGE_CHECK_PTR(*array);
@@ -50,7 +48,6 @@ void PointMatchAlgorithm::assembleLocalMaxima(double* convolution,
                                               int width,
                                               int height)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::assembleLocalMaxima";
 
   // Ignore tiny correlation values near zero by applying this threshold
   const double SINGLE_PIXEL_CORRELATION = 1.0;
@@ -113,7 +110,6 @@ void PointMatchAlgorithm::computeConvolution(fftw_complex* imagePrime,
                                              int sampleXCenter,
                                              int sampleYCenter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::computeConvolution";
 
   fftw_complex* convolutionPrime;
 
@@ -170,7 +166,6 @@ void PointMatchAlgorithm::conjugateMatrix(int width,
                                           int height,
                                           fftw_complex* matrix)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::conjugateMatrix";
 
   ENGAUGE_CHECK_PTR(matrix);
 
@@ -188,7 +183,6 @@ void PointMatchAlgorithm::dumpToGnuplot (double* convolution,
                                          int height,
                                          const QString &filename) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::dumpToGnuplot";
 
   cout << GNUPLOT_FILE_MESSAGE.toLatin1().data() << filename.toLatin1().data() << "\n";
 
@@ -221,8 +215,6 @@ QList<QPoint> PointMatchAlgorithm::findPoints (const QList<PointMatchPixel> &sam
                                                const DocumentModelPointMatch &modelPointMatch,
                                                const Points &pointsExisting)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::findPoints"
-                              << " samplePointPixels=" << samplePointPixels.count();
 
   // Use larger arrays for computations, if necessary, to improve fft performance
   int originalWidth = imageProcessed.width();
@@ -318,7 +310,6 @@ void PointMatchAlgorithm::loadImage(const QImage &imageProcessed,
                                     double** image,
                                     fftw_complex** imagePrime)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::loadImage";
 
   allocateMemory(image,
                  imagePrime,
@@ -355,7 +346,6 @@ void PointMatchAlgorithm::loadSample(const QList<PointMatchPixel> &samplePointPi
                                      int* sampleXExtent,
                                      int* sampleYExtent)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::loadImage";
 
   // Populate 2d sample array with same size (width x height) as image so fft transforms will have same
   // dimensions, which means their transforms can be multiplied element-to-element
@@ -388,7 +378,6 @@ void PointMatchAlgorithm::multiplyMatrices(int width,
                                         fftw_complex* in2,
                                         fftw_complex* out)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::multiplyMatrices";
 
   for (int x = 0; x < width; x++) {
     for (int y = 0; y < height; y++) {
@@ -403,7 +392,6 @@ void PointMatchAlgorithm::multiplyMatrices(int width,
 
 int PointMatchAlgorithm::optimizeLengthForFft(int originalLength)
 {
-  // LOG4CPP_INFO_S is below
 
   const int INITIAL_CLOSEST_LENGTH = 0;
 
@@ -438,9 +426,6 @@ int PointMatchAlgorithm::optimizeLengthForFft(int originalLength)
     closestLength = originalLength;
   }
 
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::optimizeLengthForFft"
-                              << " originalLength=" << originalLength
-                              << " newLength=" << closestLength;
 
   return closestLength;
 }
@@ -450,7 +435,6 @@ void PointMatchAlgorithm::populateImageArray(const QImage &imageProcessed,
                                              int height,
                                              double** image)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::populateImageArray";
 
   // Initialize memory with original image in real component, and imaginary component set to zero
   ColorFilter colorFilter;
@@ -476,7 +460,6 @@ void PointMatchAlgorithm::populateSampleArray(const QList<PointMatchPixel> &samp
                                               int* sampleXExtent,
                                               int* sampleYExtent)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::populateSampleArray";
 
   // Compute bounds
   bool first = true;
@@ -549,7 +532,6 @@ void PointMatchAlgorithm::populateSampleArray(const QList<PointMatchPixel> &samp
 
 void PointMatchAlgorithm::releaseImageArray(double* array)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::releaseImageArray";
 
   ENGAUGE_CHECK_PTR(array);
   delete[] array;
@@ -557,7 +539,6 @@ void PointMatchAlgorithm::releaseImageArray(double* array)
 
 void PointMatchAlgorithm::releasePhaseArray(fftw_complex* arrayPrime)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::releasePhaseArray";
 
   ENGAUGE_CHECK_PTR(arrayPrime);
   delete[] arrayPrime;
@@ -569,7 +550,6 @@ void PointMatchAlgorithm::removePixelsNearExistingPoints(double* image,
                                                          const Points &pointsExisting,
                                                          int pointSeparation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "PointMatchAlgorithm::removePixelsNearExistingPoints";
 
   for (int i = 0; i < pointsExisting.size(); i++) {
 

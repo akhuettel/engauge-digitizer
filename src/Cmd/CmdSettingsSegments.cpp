@@ -24,7 +24,6 @@ CmdSettingsSegments::CmdSettingsSegments(MainWindow &mainWindow,
   m_modelSegmentsBefore (modelSegmentsBefore),
   m_modelSegmentsAfter (modelSegmentsAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsSegments::CmdSettingsSegments";
 }
 
 CmdSettingsSegments::CmdSettingsSegments (MainWindow &mainWindow,
@@ -35,7 +34,6 @@ CmdSettingsSegments::CmdSettingsSegments (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsSegments::CmdSettingsSegments";
 
   bool success = true;
 
@@ -80,7 +78,6 @@ CmdSettingsSegments::~CmdSettingsSegments ()
 
 void CmdSettingsSegments::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsSegments::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -91,7 +88,6 @@ void CmdSettingsSegments::cmdRedo ()
 
 void CmdSettingsSegments::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsSegments::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

@@ -38,7 +38,6 @@ QString DigitizeStateColorPicker::activeCurve () const
 void DigitizeStateColorPicker::begin (CmdMediator *cmdMediator,
                                       DigitizeState previousState)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateColorPicker::begin";
 
   setCursor(cmdMediator);
   context().setDragMode(QGraphicsView::NoDrag);
@@ -62,7 +61,6 @@ bool DigitizeStateColorPicker::computeFilterFromPixel (CmdMediator *cmdMediator,
                                                        const QString &curveName,
                                                        DocumentModelColorFilter &modelColorFilterAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateColorPicker::computeFilterFromPixel";
 
   bool rtn = false;
 
@@ -163,7 +161,6 @@ QCursor DigitizeStateColorPicker::cursor(CmdMediator * /* cmdMediator */) const
   // Hot point is at the point of the eye dropper
   const int HOT_X_IN_BITMAP = 8;
   const int HOT_Y_IN_BITMAP = 24;
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateColorPicker::cursor";
 
   QBitmap bitmap (":/engauge/img/cursor_eyedropper.xpm");
   QBitmap bitmapMask (":/engauge/img/cursor_eyedropper_mask.xpm");
@@ -175,7 +172,6 @@ QCursor DigitizeStateColorPicker::cursor(CmdMediator * /* cmdMediator */) const
 
 void DigitizeStateColorPicker::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateColorPicker::end";
 
   // Restore original background. The state transition was triggered earlier by either the user selecting
   // a valid point, or by user clicking on another digitize state button
@@ -236,46 +232,36 @@ bool DigitizeStateColorPicker::guidelinesAreSelectable () const
 void DigitizeStateColorPicker::handleContextMenuEventAxis (CmdMediator * /* cmdMediator */,
                                                            const QString &pointIdentifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateColorPicker::handleContextMenuEventAxis "
-                              << " point=" << pointIdentifier.toLatin1 ().data ();
 }
 
 void DigitizeStateColorPicker::handleContextMenuEventGraph (CmdMediator * /* cmdMediator */,
                                                             const QStringList &pointIdentifiers)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateColorPicker ::handleContextMenuEventGraph "
-                              << "points=" << pointIdentifiers.join(",").toLatin1 ().data ();
 }
 
 void DigitizeStateColorPicker::handleCurveChange(CmdMediator * /* cmdMediator */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateColorPicker::handleCurveChange";
 }
 
 void DigitizeStateColorPicker::handleKeyPress (CmdMediator * /* cmdMediator */,
                                                Qt::Key key,
                                                bool /* atLeastOneSelectedItem */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateColorPicker::handleKeyPress"
-                              << " key=" << QKeySequence (key).toString ().toLatin1 ().data ();
 }
 
 void DigitizeStateColorPicker::handleMouseMove (CmdMediator * /* cmdMediator */,
                                                 QPointF /* posScreen */)
 {
-//  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateColorPicker::handleMouseMove";
 }
 
 void DigitizeStateColorPicker::handleMousePress (CmdMediator * /* cmdMediator */,
                                                  QPointF /* posScreen */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateColorPicker::handleMousePress";
 }
 
 void DigitizeStateColorPicker::handleMouseRelease (CmdMediator *cmdMediator,
                                                    QPointF posScreen)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateColorPicker::handleMouseRelease";
 
   DocumentModelColorFilter modelColorFilterBefore = cmdMediator->document().modelColorFilter();
   DocumentModelColorFilter modelColorFilterAfter = cmdMediator->document().modelColorFilter();
@@ -342,8 +328,6 @@ void DigitizeStateColorPicker::saveLowerValueUpperValue (DocumentModelColorFilte
       break;
 
     default:
-      LOG4CPP_ERROR_S ((*mainCat)) << "DigitizeStateColorPicker::saveLowerValueUpperValue unexpected color filter mode "
-                                   << modelColorFilterAfter.colorFilterMode (curveName);
       ENGAUGE_ASSERT (false);
   }
 }
@@ -355,16 +339,13 @@ QString DigitizeStateColorPicker::state() const
 
 void DigitizeStateColorPicker::updateAfterPointAddition ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateColorPicker::updateAfterPointAddition";
 }
 
 void DigitizeStateColorPicker::updateModelDigitizeCurve (CmdMediator * /* cmdMediator */,
                                                          const DocumentModelDigitizeCurve & /*modelDigitizeCurve */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateColorPicker::updateModelDigitizeCurve";
 }
 
 void DigitizeStateColorPicker::updateModelSegments(const DocumentModelSegments & /* modelSegments */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DigitizeStateColorPicker::updateModelSegments";
 }

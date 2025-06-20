@@ -30,8 +30,6 @@ GuidelineLine::GuidelineLine(QGraphicsScene &scene,
   GuidelineAbstract (scene),
   m_mainWindow (mainWindow)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineLine::Guideline identifier=" << identifier.toLatin1().data();
-
   // Create context after all virtual methods have been created
   setContext (new GuidelineStateContext (*this,
                                          mainWindow,
@@ -91,8 +89,6 @@ void GuidelineLine::mouseMoveEvent (QGraphicsSceneMouseEvent *event)
 
 void GuidelineLine::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineLine::mousePressEvent";
-
   handleMousePressEvent (event->scenePos ());
   
   QGraphicsLineItem::mousePressEvent (event);
@@ -100,8 +96,6 @@ void GuidelineLine::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void GuidelineLine::mouseReleaseEvent (QGraphicsSceneMouseEvent *event)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineLine::mouseReleaseEvent";
-
   QGraphicsLineItem::mouseReleaseEvent (event);
 
   handleMouseReleaseEvent (event->scenePos ());
@@ -121,9 +115,6 @@ void GuidelineLine::paint(QPainter *painter,
 
 void GuidelineLine::removeFromScene (QGraphicsScene *scene)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineLine::removeFromScene identifier="
-                               << identifier().toLatin1().data();
-
   scene->removeItem (this);
 }
 

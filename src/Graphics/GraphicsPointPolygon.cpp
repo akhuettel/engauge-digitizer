@@ -17,7 +17,6 @@ GraphicsPointPolygon::GraphicsPointPolygon(GraphicsPoint &graphicsPoint,
   m_graphicsPoint (graphicsPoint),
   m_shadow (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsPointPolygon::GraphicsPointPolygon";
 }
 
 void GraphicsPointPolygon::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
@@ -44,11 +43,6 @@ QVariant GraphicsPointPolygon::itemChange(GraphicsItemChange change,
                                           const QVariant &value)
 {
   if (change == QGraphicsItem::ItemPositionHasChanged) {
-
-    LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsPointPolygon::itemChange"
-                                 << " identifier=" << data (DATA_KEY_IDENTIFIER).toString().toLatin1().data()
-                                 << " positionHasChanged";
-
     setData (DATA_KEY_POSITION_HAS_CHANGED, QVariant (true));
   }
 

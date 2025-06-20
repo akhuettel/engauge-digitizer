@@ -138,7 +138,6 @@ GridCoordDisable DocumentModelGridRemoval::gridCoordDisableY () const
 
 void DocumentModelGridRemoval::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelGridRemoval::loadXml";
 
   bool success = true;
 
@@ -221,7 +220,6 @@ bool DocumentModelGridRemoval::removeDefinedGridLines () const
 
 void DocumentModelGridRemoval::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelGridRemoval::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_GRID_REMOVAL);
   writer.writeAttribute(DOCUMENT_SERIALIZE_GRID_REMOVAL_STABLE, m_stable ?

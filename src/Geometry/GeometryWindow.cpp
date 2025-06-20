@@ -63,7 +63,6 @@ void GeometryWindow::clear ()
 
 void GeometryWindow::closeEvent(QCloseEvent * /* event */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GeometryWindow::closeEvent";
 
   emit signalGeometryWindowClosed();
 }
@@ -86,7 +85,6 @@ void GeometryWindow::createWidgets (MainWindow *mainWindow)
 
 void GeometryWindow::doCopy ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GeometryWindow::doCopy";
 
   QString text = m_model->selectionAsText (m_modelExport.delimiter());
 
@@ -100,7 +98,6 @@ void GeometryWindow::doCopy ()
 
 void GeometryWindow::initializeHeader ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GeometryWindow::initializeHeader";
 
   resizeTable (NUM_HEADER_ROWS);
 
@@ -118,12 +115,10 @@ void GeometryWindow::initializeHeader ()
 
 void GeometryWindow::loadStrategies ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GeometryWindow::loadStrategies";
 }
 
 void GeometryWindow::resizeTable (int rowCount)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GeometryWindow::resizeTable";
 
   unselectAll();
 
@@ -194,7 +189,6 @@ void GeometryWindow::update (const CmdMediator &cmdMediator,
                              const QString &curveSelected,
                              const Transformation &transformation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GeometryWindow::update";
 
   const int NUM_LEGEND_ROWS_UNSPANNED = 2; // Match with GeometryModel::NUM_LEGEND_ROWS_UNSPANNED
 

@@ -103,7 +103,6 @@ LineStyle LineStyle::defaultGraphCurve (int index)
 
 void LineStyle::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "LineStyle::loadXml";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -144,7 +143,6 @@ void LineStyle::printStream(QString indentation,
 
 void LineStyle::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat))  << "LineStyle::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_LINE_STYLE);
   writer.writeAttribute (DOCUMENT_SERIALIZE_LINE_STYLE_WIDTH, QString::number(m_width));

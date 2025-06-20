@@ -28,7 +28,6 @@ CreateSettingsDialogs::CreateSettingsDialogs()
 
 void CreateSettingsDialogs::create (MainWindow & mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateSettingsDialogs::create";
 
   mw.m_dlgSettingsCoords = new DlgSettingsCoords (mw);
   mw.m_dlgSettingsCurveList = new DlgSettingsCurveList (mw);

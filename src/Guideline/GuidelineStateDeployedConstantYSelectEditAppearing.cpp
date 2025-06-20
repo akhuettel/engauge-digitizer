@@ -28,9 +28,6 @@ GuidelineStateDeployedConstantYSelectEditAppearing::~GuidelineStateDeployedConst
 
 void GuidelineStateDeployedConstantYSelectEditAppearing::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantYSelectEditAppearing::begin"
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (true,
                false);
 
@@ -48,7 +45,6 @@ bool GuidelineStateDeployedConstantYSelectEditAppearing::doPaint () const
 
 void GuidelineStateDeployedConstantYSelectEditAppearing::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantYSelectEditAppearing::end";
 
   // Cancel timer if active so it does not interrupt the next state
   QObject::disconnect (m_timer, SIGNAL (timeout ()), &context(), SLOT (slotTimeout ()));

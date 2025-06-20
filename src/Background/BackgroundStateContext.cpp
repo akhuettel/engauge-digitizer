@@ -21,7 +21,6 @@
 BackgroundStateContext::BackgroundStateContext(MainWindow &mainWindow) :
   m_mainWindow (mainWindow)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateContext::BackgroundStateContext";
 
   // These states follow the same order as the BackgroundState enumeration
   m_states.insert (BACKGROUND_STATE_CURVE   , new BackgroundStateCurve    (*this, mainWindow.scene()));
@@ -42,7 +41,6 @@ BackgroundStateContext::~BackgroundStateContext()
 
 void BackgroundStateContext::close()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateContext::close";
 
   // It is safe to transition to the new state immediately since no BackgroundState classes are on the stack
   requestStateTransition (BACKGROUND_STATE_UNLOADED);
@@ -51,7 +49,6 @@ void BackgroundStateContext::close()
 
 void BackgroundStateContext::completeRequestedStateTransitionIfExists()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateContext::completeRequestedStateTransitionIfExists";
 
   if (m_currentState != m_requestedState) {
 
@@ -71,7 +68,6 @@ void BackgroundStateContext::completeRequestedStateTransitionIfExists()
 
 void BackgroundStateContext::fitInView (GraphicsView &view)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateContext::fitInView";
 
   // After initialization, we should be in unloaded state or some other equally valid state
   ENGAUGE_ASSERT (m_currentState != NUM_BACKGROUND_STATES);
@@ -80,10 +76,6 @@ void BackgroundStateContext::fitInView (GraphicsView &view)
 
   double width = imageItem->boundingRect().width();
   double height = imageItem->boundingRect().height();
-
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateContext::fitInView"
-                              << " state=" << m_states [m_currentState]->state ().toLatin1().data()
-                              << " boundingRect=(" << width << "x" << height << ")";
 
   // Get the image from a state that is guaranteed to have an image
   view.fitInView (imageItem);
@@ -97,15 +89,12 @@ QImage BackgroundStateContext::imageForCurveState () const
 
 void BackgroundStateContext::requestStateTransition (BackgroundState backgroundState)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateContext::requestStateTransition";
 
   m_requestedState = backgroundState;
 }
 
 void BackgroundStateContext::setBackgroundImage (BackgroundImage backgroundImage)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateContext::setBackgroundImage"
-                              << " background=" << backgroundImageToString (backgroundImage).toLatin1().data();
 
   BackgroundState backgroundState= BACKGROUND_STATE_NONE;
   
@@ -134,8 +123,6 @@ void BackgroundStateContext::setCurveSelected (bool isGnuplot,
                                                const DocumentModelColorFilter &modelColorFilter,
                                                const QString &curveSelected)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateContext::setCurveSelected"
-                              << " curve=" << curveSelected.toLatin1().data();
 
   for (int backgroundState = 0; backgroundState < NUM_BACKGROUND_STATES; backgroundState++) {
 
@@ -154,9 +141,6 @@ void BackgroundStateContext::setPixmap (bool isGnuplot,
                                         const QPixmap &pixmapOriginal,
                                         const QString &curveSelected)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateContext::setPixmap"
-                              << " image=" << pixmapOriginal.width() << "x" << pixmapOriginal.height()
-                              << " currentState=" << m_states [m_currentState]->state().toLatin1().data();
 
   for (int backgroundState = 0; backgroundState < NUM_BACKGROUND_STATES; backgroundState++) {
 
@@ -175,7 +159,6 @@ void BackgroundStateContext::updateColorFilter (bool isGnuplot,
                                                 const DocumentModelColorFilter &modelColorFilter,
                                                 const QString &curveSelected)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateContext::updateColorFilter";
 
   for (int backgroundState = 0; backgroundState < NUM_BACKGROUND_STATES; backgroundState++) {
 

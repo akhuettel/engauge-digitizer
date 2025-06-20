@@ -24,21 +24,18 @@ BackgroundStateCurve::BackgroundStateCurve(BackgroundStateContext &context,
 
 void BackgroundStateCurve::begin()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateCurve::begin";
 
   setImageVisible (true);
 }
 
 void BackgroundStateCurve::end()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateCurve::end";
 
   setImageVisible (false);
 }
 
 void BackgroundStateCurve::fitInView (GraphicsView &view)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateCurve::fitInView";
 
   view.fitInView (imageItem ().boundingRect());
 }
@@ -49,7 +46,6 @@ void BackgroundStateCurve::processImageFromSavedInputs (bool isGnuplot,
                                                         const DocumentModelColorFilter &modelColorFilter,
                                                         const QString &curveSelected)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateCurve::processImageFromSavedInputs";
 
   // Use the settings if the selected curve is known
   if (!curveSelected.isEmpty()) {
@@ -79,8 +75,6 @@ void BackgroundStateCurve::setCurveSelected (bool isGnuplot,
                                              const DocumentModelColorFilter &modelColorFilter,
                                              const QString &curveSelected)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateCurve::setCurveSelected"
-                              << " curve=" << curveSelected.toLatin1().data();
 
   // Even if m_curveSelected equals curveSelected we update the image, since the transformation
   // may have changed
@@ -98,7 +92,6 @@ void BackgroundStateCurve::setPixmap (bool isGnuplot,
                                       const QPixmap &pixmapOriginal,
                                       const QString &curveSelected)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateCurve::setPixmap";
 
   m_pixmapOriginal = pixmapOriginal;
   processImageFromSavedInputs (isGnuplot,
@@ -119,7 +112,6 @@ void BackgroundStateCurve::updateColorFilter (bool isGnuplot,
                                               const DocumentModelColorFilter &modelColorFilter,
                                               const QString &curveSelected)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "BackgroundStateCurve::updateColorFilter";
 
   processImageFromSavedInputs (isGnuplot,
                                transformation,

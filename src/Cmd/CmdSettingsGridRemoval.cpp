@@ -24,7 +24,6 @@ CmdSettingsGridRemoval::CmdSettingsGridRemoval(MainWindow &mainWindow,
   m_modelGridRemovalBefore (modelGridRemovalBefore),
   m_modelGridRemovalAfter (modelGridRemovalAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGridRemoval::CmdSettingsGridRemoval";
 }
 
 CmdSettingsGridRemoval::CmdSettingsGridRemoval (MainWindow &mainWindow,
@@ -35,7 +34,6 @@ CmdSettingsGridRemoval::CmdSettingsGridRemoval (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGridRemoval::CmdSettingsGridRemoval";
 
   bool success = true;
 
@@ -80,7 +78,6 @@ CmdSettingsGridRemoval::~CmdSettingsGridRemoval()
 
 void CmdSettingsGridRemoval::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGridRemoval::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -91,7 +88,6 @@ void CmdSettingsGridRemoval::cmdRedo ()
 
 void CmdSettingsGridRemoval::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGridRemoval::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

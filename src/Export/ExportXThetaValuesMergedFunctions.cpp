@@ -41,7 +41,6 @@ void ExportXThetaValuesMergedFunctions::firstSimplestNumberLinear (double &xThet
                                                                    double &xThetaMin,
                                                                    double &xThetaMax) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportXThetaValuesMergedFunctions::firstSimplestNumberLinear";
 
   // X/theta range
   xThetaMin = m_xThetaValuesRaw.firstKey();
@@ -58,7 +57,6 @@ void ExportXThetaValuesMergedFunctions::firstSimplestNumberLog (double &xThetaFi
                                                                 double &xThetaMin,
                                                                 double &xThetaMax) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportXThetaValuesMergedFunctions::firstSimplestNumberLog";
 
   // X/theta range
   xThetaMin = m_xThetaValuesRaw.firstKey();
@@ -73,7 +71,6 @@ void ExportXThetaValuesMergedFunctions::firstSimplestNumberLog (double &xThetaFi
 
 ExportValuesXOrY ExportXThetaValuesMergedFunctions::periodicLinear(bool &isOverrun) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportXThetaValuesMergedFunctions::periodicLinear";
 
   if (m_xThetaValuesRaw.count () > 0) {
 
@@ -106,7 +103,6 @@ ExportValuesXOrY ExportXThetaValuesMergedFunctions::periodicLinearGraph(double x
                                                                         double xThetaMax,
                                                                         bool &isOverrun) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportXThetaValuesMergedFunctions::periodicLinearGraph";
 
   // Convert the gathered values into a periodic sequence
   ValuesVectorXOrY values;
@@ -141,7 +137,6 @@ ExportValuesXOrY ExportXThetaValuesMergedFunctions::periodicLinearScreen (double
                                                                           double xThetaMax,
                                                                           bool &isOverrun) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportXThetaValuesMergedFunctions::periodicLinearScreen";
 
   // This must be greater than zero. Otherwise, logarithmic y axis will trigger errors in the
   // transform, which cascades into NaN values for the x coordinates below
@@ -189,7 +184,6 @@ ExportValuesXOrY ExportXThetaValuesMergedFunctions::periodicLinearScreen (double
 
 ExportValuesXOrY ExportXThetaValuesMergedFunctions::periodicLog(bool &isOverrun) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportXThetaValuesMergedFunctions::periodicLog";
 
   double xThetaFirstSimplestNumber, xThetaMin, xThetaMax;
   firstSimplestNumberLog (xThetaFirstSimplestNumber,
@@ -215,7 +209,6 @@ ExportValuesXOrY ExportXThetaValuesMergedFunctions::periodicLogGraph (double xTh
                                                                       double xThetaMax,
                                                                       bool &isOverrun) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportXThetaValuesMergedFunctions::periodicLogGraph";
 
   // Convert the gathered values into a periodic sequence
   ValuesVectorXOrY values;
@@ -254,7 +247,6 @@ ExportValuesXOrY ExportXThetaValuesMergedFunctions::periodicLogScreen (double xT
                                                                        double xThetaMax,
                                                                        bool &isOverrun) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportXThetaValuesMergedFunctions::periodicLogScreen";
 
   const double ARBITRARY_Y = 0.0;
 
@@ -302,7 +294,6 @@ ExportValuesXOrY ExportXThetaValuesMergedFunctions::periodicLogScreen (double xT
 
 ExportValuesXOrY ExportXThetaValuesMergedFunctions::xThetaValues (bool &isOverrun) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportXThetaValuesMergedFunctions::xThetaValues";
 
   if (m_modelExport.pointsSelectionFunctions() == EXPORT_POINTS_SELECTION_FUNCTIONS_INTERPOLATE_PERIODIC) {
 

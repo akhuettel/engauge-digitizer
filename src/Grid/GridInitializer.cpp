@@ -180,7 +180,6 @@ DocumentModelGridDisplay GridInitializer::initializeWithNarrowCoverage (const QP
                                                                         const QPointF &boundingRectGraphMax,
                                                                         const DocumentModelCoords &modelCoords) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GridInitializer::initializeWithNarrowCoverage";
 
   DocumentModelGridDisplay modelGridDisplay;
 
@@ -228,7 +227,6 @@ DocumentModelGridDisplay GridInitializer::initializeWithWidePolarCoverage (const
                                                                            const Transformation &transformation,
                                                                            const QSize &imageSize) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GridInitializer::initializeWithWidePolarCoverage";
 
   DocumentModelGridDisplay modelGridDisplay = initializeWithNarrowCoverage (boundingRectGraphMin,
                                                                             boundingRectGraphMax,

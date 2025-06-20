@@ -18,7 +18,6 @@ CmdGong::CmdGong(MainWindow &mainWindow,
               document,
               CMD_DESCRIPTION)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGong::CmdGong";
 }
 
 CmdGong::CmdGong (MainWindow &mainWindow,
@@ -29,7 +28,6 @@ CmdGong::CmdGong (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGong::CmdGong";
 }
 
 CmdGong::~CmdGong ()
@@ -38,7 +36,6 @@ CmdGong::~CmdGong ()
 
 void CmdGong::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGong::cmdRedo";
 
   // No setup, teardown or other updates are required since this command only sends a signal
   restoreState ();
@@ -47,7 +44,6 @@ void CmdGong::cmdRedo ()
 
 void CmdGong::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGong::cmdUndo";
 
   restoreState ();
 }

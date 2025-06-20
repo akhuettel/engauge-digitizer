@@ -154,10 +154,6 @@ int Jpeg2000::inputFormat(const char *filename) const
 
   s = filename + strlen(filename) - 4;
 
-  LOG4CPP_ERROR_S ((*mainCat)) << "Jpeg2000::inputFormat"
-                               << "The extension of this file is incorrect. Found " << s
-                               << ". Should be " << magic_s;
-
   return magic_format;
 }
 
@@ -192,7 +188,6 @@ bool Jpeg2000::invalidFileExtension (const QString &filename) const
 bool Jpeg2000::load (const QString &filename,
                      QImage &imageResult) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Jpeg2000::load"
                               << " filename=" << filename.toLatin1().data();
 
   if (invalidFileExtension (filename)) {
@@ -206,14 +201,12 @@ bool Jpeg2000::load (const QString &filename,
 
   opj_stream_t *inStream = opj_stream_create_default_file_stream (filename.toLatin1().data(), 1);
   if (!inStream) {
-    LOG4CPP_ERROR_S ((*mainCat)) << "Jpeg2000::load encountered error opening stream";
     return false;
   }
 
   // Create decoder
   opj_codec_t *inCodec = decode (parameters.decod_format);
   if (!inCodec) {
-    LOG4CPP_ERROR_S ((*mainCat)) << "Jpeg2000::load encountered error creating decoding stream";
     opj_stream_destroy (inStream);
     return false;
   }
@@ -225,7 +218,6 @@ bool Jpeg2000::load (const QString &filename,
 
   if (!opj_setup_decoder (inCodec,
                           &parameters)) {
-    LOG4CPP_ERROR_S ((*mainCat)) << "Jpeg2000::load encountered error decoding stream";
     opj_stream_destroy (inStream);
     opj_destroy_codec (inCodec);
     return false;
@@ -236,7 +228,6 @@ bool Jpeg2000::load (const QString &filename,
   if (!opj_read_header (inStream,
                         inCodec,
                         &image)) {
-    LOG4CPP_ERROR_S ((*mainCat)) << "Jpeg2000::load encountered error reading header";
     opj_stream_destroy (inStream);
     opj_destroy_codec (inCodec);
     opj_image_destroy (image);
@@ -249,7 +240,6 @@ bool Jpeg2000::load (const QString &filename,
                     image) &&
        opj_end_decompress (inCodec,
                            inStream))) {
-    LOG4CPP_ERROR_S ((*mainCat)) << "Jpeg2000::load failed to decode image";
     opj_destroy_codec (inCodec);
     opj_stream_destroy (inStream);
     opj_image_destroy (image);
@@ -267,7 +257,6 @@ bool Jpeg2000::load (const QString &filename,
   buffer.open (QBuffer::WriteOnly);
   if (imagetopnm (image,
                   buffer)) {
-    LOG4CPP_ERROR_S ((*mainCat)) << "Jpeg2000::load failed to generate new image";
     success = false;
 
   } else {

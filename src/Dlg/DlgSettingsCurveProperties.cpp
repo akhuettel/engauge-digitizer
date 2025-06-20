@@ -70,7 +70,6 @@ DlgSettingsCurveProperties::DlgSettingsCurveProperties(MainWindow &mainWindow) :
   m_modelCurveStylesBefore (nullptr),
   m_modelCurveStylesAfter (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::DlgSettingsCurveProperties";
 
   QWidget *subPanel = createSubPanel ();
   finishPanel (subPanel);
@@ -80,13 +79,11 @@ DlgSettingsCurveProperties::DlgSettingsCurveProperties(MainWindow &mainWindow) :
 
 DlgSettingsCurveProperties::~DlgSettingsCurveProperties()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::~DlgSettingsCurveProperties";
 }
 
 void DlgSettingsCurveProperties::createCurveName (QGridLayout *layout,
                                                       int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::createCurveName";
 
   QLabel *labelCurveName = new QLabel (QString ("%1:").arg (tr ("Curve Name")));
   layout->addWidget (labelCurveName, row, 1, 1, 1);
@@ -105,7 +102,6 @@ void DlgSettingsCurveProperties::createCurveName (QGridLayout *layout,
 void DlgSettingsCurveProperties::createLine (QGridLayout *layout,
                                              int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::createLine";
 
   m_groupLine = new QGroupBox (tr ("Line"));
   layout->addWidget (m_groupLine, row++, 2);
@@ -160,7 +156,6 @@ void DlgSettingsCurveProperties::createLine (QGridLayout *layout,
 void DlgSettingsCurveProperties::createPoint (QGridLayout *layout,
                                               int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::createPoint";
 
   m_groupPoint = new QGroupBox (tr ("Point"));
   layout->addWidget (m_groupPoint, row++, 1);
@@ -225,7 +220,6 @@ void DlgSettingsCurveProperties::createPoint (QGridLayout *layout,
 
 void DlgSettingsCurveProperties::createOptionalSaveDefault (QHBoxLayout *layout)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::createOptionalSaveDefault";
 
   m_btnSaveDefault = new QPushButton ("Save As Default");
   m_btnSaveDefault->setWhatsThis (tr ("Save the visible curve settings for use as future defaults, according to the curve name selection.\n\n"
@@ -240,7 +234,6 @@ void DlgSettingsCurveProperties::createOptionalSaveDefault (QHBoxLayout *layout)
 void DlgSettingsCurveProperties::createPreview (QGridLayout *layout,
                                                 int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::createPreview";
 
   QLabel *labelPreview = new QLabel (tr ("Preview"));
   layout->addWidget (labelPreview, row++, 0, 1, 4);
@@ -263,7 +256,6 @@ void DlgSettingsCurveProperties::createPreview (QGridLayout *layout,
 
 QWidget *DlgSettingsCurveProperties::createSubPanel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::createSubPanel";
 
   QWidget *subPanel = new QWidget ();
   QGridLayout *layout = new QGridLayout (subPanel);
@@ -373,7 +365,6 @@ void DlgSettingsCurveProperties::drawPoints (const PointStyle &pointStyle)
 
 void DlgSettingsCurveProperties::handleOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::handleOk";
 
   ENGAUGE_CHECK_PTR (m_modelCurveStylesBefore);
   ENGAUGE_CHECK_PTR (m_modelCurveStylesAfter);
@@ -389,7 +380,6 @@ void DlgSettingsCurveProperties::handleOk ()
 
 void DlgSettingsCurveProperties::load (CmdMediator &cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::load";
 
   setCmdMediator (cmdMediator);
 
@@ -485,7 +475,6 @@ void DlgSettingsCurveProperties::setSmallDialogs(bool smallDialogs)
 
 void DlgSettingsCurveProperties::slotCurveName(const QString &curveName)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::slotCurveName";
 
   // Dirty flag is not set when simply changing to new curve
 
@@ -498,7 +487,6 @@ void DlgSettingsCurveProperties::slotCurveName(const QString &curveName)
 
 void DlgSettingsCurveProperties::slotLineColor(const QString &lineColor)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::slotLineColor color=" << lineColor.toLatin1().data();
 
   m_isDirty = true;
 
@@ -510,7 +498,6 @@ void DlgSettingsCurveProperties::slotLineColor(const QString &lineColor)
 
 void DlgSettingsCurveProperties::slotLineWidth(int width)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::slotLineWidth width=" << width;
 
   m_isDirty = true;
 
@@ -522,7 +509,6 @@ void DlgSettingsCurveProperties::slotLineWidth(int width)
 
 void DlgSettingsCurveProperties::slotLineType(const QString &lineType)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::slotLineType lineType=" << lineType.toLatin1().data();
 
   m_isDirty = true;
 
@@ -534,7 +520,6 @@ void DlgSettingsCurveProperties::slotLineType(const QString &lineType)
 
 void DlgSettingsCurveProperties::slotPointColor(const QString &pointColor)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::slotPointColor pointColor=" << pointColor.toLatin1().data();
 
   m_isDirty = true;
 
@@ -546,7 +531,6 @@ void DlgSettingsCurveProperties::slotPointColor(const QString &pointColor)
 
 void DlgSettingsCurveProperties::slotPointLineWidth(int lineWidth)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::slotPointLineWidth lineWidth=" << lineWidth;
 
   m_isDirty = true;
 
@@ -558,7 +542,6 @@ void DlgSettingsCurveProperties::slotPointLineWidth(int lineWidth)
 
 void DlgSettingsCurveProperties::slotPointRadius(int radius)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::slotPointRadius radius=" << radius;
 
   m_isDirty = true;
 
@@ -570,7 +553,6 @@ void DlgSettingsCurveProperties::slotPointRadius(int radius)
 
 void DlgSettingsCurveProperties::slotPointShape(const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::slotPointShape";
 
   m_isDirty = true;
 
@@ -582,7 +564,6 @@ void DlgSettingsCurveProperties::slotPointShape(const QString &)
 
 void DlgSettingsCurveProperties::slotSaveDefault()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsCurveProperties::slotSaveDefault";
 
   QString curve = m_cmbCurveName->currentText ();
 

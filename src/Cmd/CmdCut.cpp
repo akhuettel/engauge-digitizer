@@ -32,8 +32,6 @@ CmdCut::CmdCut(MainWindow &mainWindow,
                       CMD_DESCRIPTION),
   m_transformIsDefined (mainWindow.transformIsDefined())
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdCut::CmdCut"
-                              << " selected=" << selectedPointIdentifiers.count ();
 
   // Export to clipboard
   ExportToClipboard exportStrategy;
@@ -55,7 +53,6 @@ CmdCut::CmdCut (MainWindow &mainWindow,
                       document,
                       cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdCut::CmdCut";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -82,7 +79,6 @@ CmdCut::~CmdCut ()
 
 void CmdCut::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdCut::cmdRedo";
 
   MimePointsExport *mimePointsExport;
   if (m_transformIsDefined) {
@@ -107,7 +103,6 @@ void CmdCut::cmdRedo ()
 
 void CmdCut::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdCut::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

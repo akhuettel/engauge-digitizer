@@ -110,7 +110,6 @@ void FittingWindow::clear ()
 
 void FittingWindow::closeEvent(QCloseEvent * /* event */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FittingWindow::closeEvent";
 
   emit signalFittingWindowClosed();
 }
@@ -177,7 +176,6 @@ void FittingWindow::createWidgets (MainWindow *mainWindow)
 
 void FittingWindow::doCopy ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FittingWindow::doCopy";
 
   QString text = m_model->selectionAsText (m_modelExport.delimiter());
 
@@ -214,7 +212,6 @@ void FittingWindow::refreshTable ()
 
 void FittingWindow::resizeTable (int order)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FittingWindow::resizeTable";
 
   m_model->setRowCount (order + 1);
 
@@ -257,7 +254,6 @@ void FittingWindow::update (const CmdMediator &cmdMediator,
                             const QString &curveSelected,
                             const Transformation &transformation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FittingWindow::update";
 
   // Save inputs
   m_curveSelected = curveSelected;

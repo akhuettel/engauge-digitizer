@@ -24,7 +24,6 @@ CmdSettingsGridDisplay::CmdSettingsGridDisplay(MainWindow &mainWindow,
   m_modelGridDisplayBefore (modelGridDisplayBefore),
   m_modelGridDisplayAfter (modelGridDisplayAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGridDisplay::CmdSettingsGridDisplay";
 }
 
 CmdSettingsGridDisplay::CmdSettingsGridDisplay (MainWindow &mainWindow,
@@ -35,7 +34,6 @@ CmdSettingsGridDisplay::CmdSettingsGridDisplay (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGridDisplay::CmdSettingsGridDisplay";
 
   bool success = true;
 
@@ -80,7 +78,6 @@ CmdSettingsGridDisplay::~CmdSettingsGridDisplay()
 
 void CmdSettingsGridDisplay::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGridDisplay::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -91,7 +88,6 @@ void CmdSettingsGridDisplay::cmdRedo ()
 
 void CmdSettingsGridDisplay::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsGridDisplay::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

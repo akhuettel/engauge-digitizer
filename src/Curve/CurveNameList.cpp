@@ -27,7 +27,6 @@ int CurveNameList::columnCount (const QModelIndex &  /* parent */) const
 
 bool CurveNameList::containsCurveNameCurrent (const QString &curveName) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CurveNameList::containsCurveNameCurrent";
 
   // Search for curve with matching name
   CurrentCurveToOriginalCurve::const_iterator itr;
@@ -43,7 +42,6 @@ bool CurveNameList::containsCurveNameCurrent (const QString &curveName) const
 
 QString CurveNameList::currentCurvesAsString () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CurveNameList::currentCurvesAsString";
 
   QString out;
   QTextStream str (&out);
@@ -145,12 +143,6 @@ void CurveNameList::insertRow (int row,
                                const QString &curveOriginal,
                                unsigned int pointCount)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CurveNameList::insertRow"
-                               << " row=" <<row
-                               << " curveCurrent=" << curveCurrent.toLatin1().data()
-                               << " curveOriginal=" << curveOriginal.toLatin1().data()
-                               << " points=" << pointCount;
-
   QStandardItem *item = new QStandardItem (curveCurrent);
   QStandardItemModel::insertRow (row, item);
 
@@ -167,9 +159,6 @@ void CurveNameList::insertRow (int row,
 
 QStandardItem *CurveNameList::item(int row, int column) const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CurveNameList::item"
-                               << " row=" << row;
-
   ENGAUGE_ASSERT (row < rowCount ());
 
   return QStandardItemModel::item (row, column);
@@ -200,8 +189,6 @@ bool CurveNameList::removeRows (int row,
                                 int count,
                                 const QModelIndex &parent)
 {
-  // LOG4CPP is below
-
   bool skip = (count != 1 || row < 0 || row > rowCount () || parent.isValid());
 
   QString before, after;
@@ -227,19 +214,11 @@ bool CurveNameList::removeRows (int row,
     after = currentCurvesAsString ();
   }
 
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CurveNameList::removeRows"
-                               << " row=" << row
-                               << " count=" << count
-                               << " isRoot=" << (parent.isValid () ? "no" : "yes")
-                               << " skip=" << (skip ? "yes" : "no")
-                               << " before=" << before.toLatin1().data()
-                               << " after=" << after.toLatin1().data();
   return true;
 }
 
 void CurveNameList::reset()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CurveNameList::reset";
 
   clear();
   m_currentCurveToOriginalCurve.clear();
@@ -250,9 +229,6 @@ int CurveNameList::rowCount (const QModelIndex & /* parent */) const
 {
   int count = QStandardItemModel::rowCount ();
 
-//  LOG4CPP_DEBUG_S ((*mainCat)) << "CurveNameList::rowCount"
-//                               << " count=" << count;
-
   return count;
 }
 
@@ -260,11 +236,6 @@ bool CurveNameList::setData (const QModelIndex &index,
                              const QVariant &value,
                              int role)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CurveNameList::setData"
-                               << " row=" << index.row()
-                               << " value=" << value.toString().toLatin1().data()
-                               << " role=" << roleAsString (role).toLatin1().data();
-
   bool success;
   if (role == Qt::EditRole) {
 
@@ -317,8 +288,6 @@ void CurveNameList::setItem(int row,
                             int column,
                             QStandardItem *item)
 {
-  // LOG4CPP is below
-
   ENGAUGE_ASSERT (column == CURVE_NAME_LIST_COLUMN_CURRENT);
 
   QString before = currentCurvesAsString ();
@@ -329,10 +298,6 @@ void CurveNameList::setItem(int row,
 
   QString after = currentCurvesAsString ();
 
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CurveNameList::setItem"
-                               << " row=" << row
-                               << " before=" << before.toLatin1().data()
-                               << " after=" << after.toLatin1().data();
 }
 
 Qt::DropActions CurveNameList::supportedDropActions () const

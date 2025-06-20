@@ -33,10 +33,6 @@ CmdEditPointGraph::CmdEditPointGraph (MainWindow &mainWindow,
   m_x (x),
   m_y (y)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdEditPointGraph::CmdEditPointGraph point="
-                              << pointIdentifiers.join(" ").toLatin1 ().data ()
-                              << " x=" << (m_isX ? QString::number (x).toLatin1().data() : "")
-                              << " y=" << (m_isY ? QString::number (y).toLatin1().data() : "");
 }
 
 CmdEditPointGraph::CmdEditPointGraph (MainWindow &mainWindow,
@@ -47,7 +43,6 @@ CmdEditPointGraph::CmdEditPointGraph (MainWindow &mainWindow,
                       document,
                       cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdEditPointGraph::CmdEditPointGraph";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -107,7 +102,6 @@ CmdEditPointGraph::~CmdEditPointGraph ()
 
 void CmdEditPointGraph::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdEditPointGraph::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -125,7 +119,6 @@ void CmdEditPointGraph::cmdRedo ()
 
 void CmdEditPointGraph::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdEditPointGraph::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

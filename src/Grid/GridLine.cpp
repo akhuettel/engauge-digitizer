@@ -18,7 +18,6 @@ GridLine::GridLine ()
 
 GridLine::GridLine (const GridLine & /* other */)
 {
-  LOG4CPP_ERROR_S ((*mainCat)) << "GridLine::GridLine";
   ENGAUGE_ASSERT (false);
 }
 
@@ -36,7 +35,6 @@ GridLine::~GridLine ()
 
 GridLine &GridLine::operator= (GridLine & /* other */)
 {
-  LOG4CPP_ERROR_S ((*mainCat)) << "GridLine::operator=";
   ENGAUGE_ASSERT (false);
 
   return *this;

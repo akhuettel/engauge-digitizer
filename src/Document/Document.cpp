@@ -55,8 +55,6 @@ Document::Document (const QImage &image) :
   m_name ("untitled"),
   m_documentAxesPointsRequired (DOCUMENT_AXES_POINTS_REQUIRED_3)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::Document"
-                              << " image=" << image.width() << "x" << image.height();
 
   m_coordSystemContext.addCoordSystems(NOMINAL_COORD_SYSTEM_COUNT);
 
@@ -69,8 +67,6 @@ Document::Document (const QString &fileName) :
   m_name (fileName),
   m_documentAxesPointsRequired (DOCUMENT_AXES_POINTS_REQUIRED_3)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::Document"
-                              << " fileName=" << fileName.toLatin1().data();
 
   m_successfulRead = true;
 
@@ -94,7 +90,6 @@ Document::Document (const QString &fileName) :
 
         m_successfulRead = false;
         m_reasonForUnsuccessfulRead = QObject::tr ("Operating system says file is not readable");
-        LOG4CPP_ERROR_S ((*mainCat)) << "Document::loadVersion6 " << m_reasonForUnsuccessfulRead.toLatin1().data();
 
       }
     } else {
@@ -126,7 +121,6 @@ Document::Document (const QString &fileName) :
                                           .arg (QObject::tr ("cannot read newer files from version"))
                                           .arg (version)
                                           .arg (QObject::tr ("of"));\
-            LOG4CPP_ERROR_S ((*mainCat)) << "Document::loadVersion6 " << m_reasonForUnsuccessfulRead.toLatin1().data();
             break;
         }
 
@@ -139,7 +133,6 @@ Document::Document (const QString &fileName) :
 
         m_successfulRead = false;
         m_reasonForUnsuccessfulRead = QObject::tr ("Operating system says file is not readable");
-        LOG4CPP_ERROR_S ((*mainCat)) << "Document::Document " << m_reasonForUnsuccessfulRead.toLatin1().data();
       }
     }
   } else {
@@ -149,21 +142,17 @@ Document::Document (const QString &fileName) :
                                   .arg (QObject::tr ("File"))
                                   .arg (fileName)
                                   .arg (QObject::tr ("was not found"));
-    LOG4CPP_ERROR_S ((*mainCat)) << "Document::Document " << m_reasonForUnsuccessfulRead.toLatin1().data();
   }
 }
 
 void Document::addCoordSystems(unsigned int numberCoordSystemToAdd)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::addCoordSystems"
-                              << " toAdd=" << numberCoordSystemToAdd;
 
   m_coordSystemContext.addCoordSystems(numberCoordSystemToAdd);
 }
 
 void Document::addGraphCurveAtEnd (const QString &curveName)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::addGraphCurveAtEnd";
 
   m_coordSystemContext.addGraphCurveAtEnd  (curveName);
 }
@@ -174,7 +163,6 @@ void Document::addPointAxisWithGeneratedIdentifier (const QPointF &posScreen,
                                                     double ordinal,
                                                     bool isXOnly)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::addPointAxisWithGeneratedIdentifier";
 
   m_coordSystemContext.addPointAxisWithGeneratedIdentifier(posScreen,
                                                            posGraph,
@@ -189,7 +177,6 @@ void Document::addPointAxisWithSpecifiedIdentifier (const QPointF &posScreen,
                                                     double ordinal,
                                                     bool isXOnly)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::addPointAxisWithSpecifiedIdentifier";
 
   m_coordSystemContext.addPointAxisWithSpecifiedIdentifier(posScreen,
                                                            posGraph,
@@ -203,7 +190,6 @@ void Document::addPointGraphWithGeneratedIdentifier (const QString &curveName,
                                                      QString &identifier,
                                                      double ordinal)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::addPointGraphWithGeneratedIdentifier";
 
   m_coordSystemContext.addPointGraphWithGeneratedIdentifier(curveName,
                                                             posScreen,
@@ -216,7 +202,6 @@ void Document::addPointGraphWithSpecifiedIdentifier (const QString &curveName,
                                                      const QString &identifier,
                                                      double ordinal)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::addPointGraphWithSpecifiedIdentifier";
 
   m_coordSystemContext.addPointGraphWithSpecifiedIdentifier(curveName,
                                                             posScreen,
@@ -226,7 +211,6 @@ void Document::addPointGraphWithSpecifiedIdentifier (const QString &curveName,
 
 void Document::addPointsInCurvesGraphs (CurvesGraphs &curvesGraphs)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::addPointsInCurvesGraphs";
 
   m_coordSystemContext.addPointsInCurvesGraphs(curvesGraphs);
 }
@@ -239,7 +223,6 @@ void Document::addScaleWithGeneratedIdentifier (const QPointF &posScreen0,
                                                 double ordinal0,
                                                 double ordinal1)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::addScaleWithGeneratedIdentifier";
 
   const bool IS_X_ONLY = false;
 
@@ -257,7 +240,6 @@ void Document::addScaleWithGeneratedIdentifier (const QPointF &posScreen0,
 
 bool Document::bytesIndicatePreVersion6 (const QByteArray &bytes) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::bytesIndicatePreVersion6";
 
   QByteArray preVersion6MagicNumber;
   preVersion6MagicNumber.resize (FOUR_BYTES);
@@ -277,7 +259,6 @@ void Document::checkAddPointAxis (const QPointF &posScreen,
                                   QString &errorMessage,
                                   bool isXOnly)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::checkAddPointAxis";
 
   m_coordSystemContext.checkAddPointAxis(posScreen,
                                          posGraph,
@@ -293,7 +274,6 @@ void Document::checkEditPointAxis (const QString &pointIdentifier,
                                    bool &isError,
                                    QString &errorMessage)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::checkEditPointAxis";
 
   m_coordSystemContext.checkEditPointAxis(pointIdentifier,
                                           posScreen,
@@ -305,63 +285,54 @@ void Document::checkEditPointAxis (const QString &pointIdentifier,
 
 const CoordSystem &Document::coordSystem() const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::coordSystem";
 
   return m_coordSystemContext.coordSystem();
 }
 
 unsigned int Document::coordSystemCount () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::coordSystemCount";
 
   return m_coordSystemContext.coordSystemCount();
 }
 
 CoordSystemIndex Document::coordSystemIndex() const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::coordSystemIndex";
 
   return m_coordSystemContext.coordSystemIndex();
 }
 
 const Curve &Document::curveAxes () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::curveAxes";
 
   return m_coordSystemContext.curveAxes();
 }
 
 Curve *Document::curveForCurveName (const QString &curveName)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::curveForCurveName";
 
   return m_coordSystemContext.curveForCurveName(curveName);
 }
 
 const Curve *Document::curveForCurveName (const QString &curveName) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::curveForCurveName";
 
   return m_coordSystemContext.curveForCurveName (curveName);
 }
 
 const CurvesGraphs &Document::curvesGraphs () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::curvesGraphs";
 
   return m_coordSystemContext.curvesGraphs();
 }
 
 QStringList Document::curvesGraphsNames() const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::curvesGraphsNames";
 
   return m_coordSystemContext.curvesGraphsNames();
 }
 
 int Document::curvesGraphsNumPoints(const QString &curveName) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::curvesGraphsNumPoints";
 
   return m_coordSystemContext.curvesGraphsNumPoints(curveName);
 }
@@ -374,7 +345,6 @@ DocumentAxesPointsRequired Document::documentAxesPointsRequired () const
 void Document::editPointAxis (const QPointF &posGraph,
                               const QString &identifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::editPointAxis";
 
   m_coordSystemContext.editPointAxis(posGraph,
                                      identifier);
@@ -387,7 +357,6 @@ void Document::editPointGraph (bool isX,
                                const QStringList &identifiers,
                                const Transformation &transformation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::editPointCurve";
 
   m_coordSystemContext.editPointGraph (isX,
                                        isY,
@@ -399,7 +368,6 @@ void Document::editPointGraph (bool isX,
 
 void Document::generateEmptyPixmap(const QXmlStreamAttributes &attributes)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::generateEmptyPixmap";
 
   int width = 800, height = 500; // Defaults
 
@@ -416,7 +384,6 @@ void Document::generateEmptyPixmap(const QXmlStreamAttributes &attributes)
 
 void Document::initializeGridDisplay (const Transformation &transformation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::initializeGridDisplay";
 
   ENGAUGE_ASSERT (!m_coordSystemContext.modelGridDisplay().stable());
 
@@ -454,14 +421,12 @@ bool Document::isXOnly (const QString &pointIdentifier) const
 
 void Document::iterateThroughCurvePointsAxes (const Functor2wRet<const QString &, const Point &, CallbackSearchReturn> &ftorWithCallback)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::iterateThroughCurvePointsAxes";
 
   m_coordSystemContext.iterateThroughCurvePointsAxes(ftorWithCallback);
 }
 
 void Document::iterateThroughCurvePointsAxes (const Functor2wRet<const QString &, const Point &, CallbackSearchReturn> &ftorWithCallback) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::iterateThroughCurvePointsAxes";
 
   m_coordSystemContext.iterateThroughCurvePointsAxes(ftorWithCallback);
 }
@@ -469,7 +434,6 @@ void Document::iterateThroughCurvePointsAxes (const Functor2wRet<const QString &
 void Document::iterateThroughCurveSegments (const QString &curveName,
                                             const Functor2wRet<const Point &, const Point &, CallbackSearchReturn> &ftorWithCallback) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::iterateThroughCurveSegments";
 
   m_coordSystemContext.iterateThroughCurveSegments(curveName,
                                                    ftorWithCallback);
@@ -477,21 +441,18 @@ void Document::iterateThroughCurveSegments (const QString &curveName,
 
 void Document::iterateThroughCurvesPointsGraphs (const Functor2wRet<const QString &, const Point &, CallbackSearchReturn> &ftorWithCallback)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::iterateThroughCurvesPointsGraphs";
 
   m_coordSystemContext.iterateThroughCurvesPointsGraphs(ftorWithCallback);
 }
 
 void Document::iterateThroughCurvesPointsGraphs (const Functor2wRet<const QString &, const Point &, CallbackSearchReturn> &ftorWithCallback) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::iterateThroughCurvesPointsGraphs";
 
   m_coordSystemContext.iterateThroughCurvesPointsGraphs(ftorWithCallback);
 }
 
 void Document::loadImage(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::loadImage";
 
   loadNextFromReader(reader); // Read to CDATA
   if (reader.isCDATA ()) {
@@ -526,7 +487,6 @@ void Document::loadImage(QXmlStreamReader &reader)
 
 void Document::loadPreVersion6 (QDataStream &str)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::loadPreVersion6";
 
   qint32 int32;
   double version;
@@ -546,7 +506,6 @@ void Document::loadPreVersion6 (QDataStream &str)
 
 void Document::loadVersion6 (QFile *file)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::loadVersion6";
 
   QXmlStreamReader reader (file);
 
@@ -610,7 +569,6 @@ void Document::loadVersion6 (QFile *file)
 
     m_successfulRead = false;
     m_reasonForUnsuccessfulRead = reader.errorString();
-    LOG4CPP_ERROR_S ((*mainCat)) << "Document::loadVersion6 " << m_reasonForUnsuccessfulRead.toLatin1().data();
   }
 
   // There are already one axes curve and at least one graph curve so we do not need to add any more graph curves
@@ -618,7 +576,6 @@ void Document::loadVersion6 (QFile *file)
 
 void Document::loadVersions7AndUp (QFile *file)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::loadVersions7AndUp";
 
   const int ONE_COORDINATE_SYSTEM = 1;
 
@@ -684,7 +641,6 @@ void Document::loadVersions7AndUp (QFile *file)
 
     m_successfulRead = false;
     m_reasonForUnsuccessfulRead = reader.errorString();\
-    LOG4CPP_ERROR_S ((*mainCat)) << "Document::loadVersions7AndUp " << m_reasonForUnsuccessfulRead.toLatin1().data();
   }
 
   // There are already one axes curve and at least one graph curve so we do not need to add any more graph curves
@@ -692,92 +648,61 @@ void Document::loadVersions7AndUp (QFile *file)
 
 DocumentModelAxesChecker Document::modelAxesChecker() const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Document::modelAxesChecker";
-
   return m_coordSystemContext.modelAxesChecker();
 }
 
 DocumentModelColorFilter Document::modelColorFilter() const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Document::modelColorFilter";
-
   return m_coordSystemContext.modelColorFilter();
 }
 
 DocumentModelCoords Document::modelCoords() const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Document::modelCoords";
-
   return m_coordSystemContext.modelCoords();
 }
 
 CurveStyles Document::modelCurveStyles() const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Document::modelCurveStyles";
-
   return m_coordSystemContext.modelCurveStyles();
 }
 
 DocumentModelDigitizeCurve Document::modelDigitizeCurve() const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Document::modelDigitizeCurve";
-
   return m_coordSystemContext.modelDigitizeCurve();
 }
 
 DocumentModelExportFormat Document::modelExport() const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Document::modelExport";
-
   return m_coordSystemContext.modelExport();
 }
 
 DocumentModelGeneral Document::modelGeneral() const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Document::modelGeneral";
-
   return m_coordSystemContext.modelGeneral();
 }
 
 DocumentModelGridDisplay Document::modelGridDisplay() const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Document::modelGridDisplay";
-
-  return m_coordSystemContext.modelGridDisplay();
-}
-
-DocumentModelGridRemoval Document::modelGridRemoval() const
-{
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Document::modelGridRemoval";
-
   return m_coordSystemContext.modelGridRemoval();
 }
 
 DocumentModelGuideline Document::modelGuideline() const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Document::modelGuideline";
-
   return m_coordSystemContext.modelGuideline();
 }
 
 DocumentModelLoadViews Document::modelLoadViews() const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Document::modelLoadViews";
-
   return m_modelLoadViews;
 }
 
 DocumentModelPointMatch Document::modelPointMatch() const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Document::modelPointMatch";
-
   return m_coordSystemContext.modelPointMatch();
 }
 
 DocumentModelSegments Document::modelSegments() const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Document::modelSegments";
-
   return m_coordSystemContext.modelSegments();
 }
 
@@ -790,7 +715,6 @@ void Document::movePoint (const QString &pointIdentifier,
 
 int Document::nextOrdinalForCurve (const QString &curveName) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::nextOrdinalForCurve";
 
   return m_coordSystemContext.nextOrdinalForCurve(curveName);
 }
@@ -888,21 +812,18 @@ QString Document::reasonForUnsuccessfulRead () const
 
 void Document::removePointAxis (const QString &identifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::removePointAxis";
 
   m_coordSystemContext.removePointAxis(identifier);
 }
 
 void Document::removePointGraph (const QString &identifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::removePointGraph";
 
   m_coordSystemContext.removePointGraph(identifier);
 }
 
 void Document::removePointsInCurvesGraphs (CurvesGraphs &curvesGraphs)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::removePointsInCurvesGraphs";
 
   m_coordSystemContext.removePointsInCurvesGraphs(curvesGraphs);
 }
@@ -944,28 +865,24 @@ QString Document::selectedCurveName() const
 
 void Document::setCoordSystemIndex(CoordSystemIndex coordSystemIndex)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setCoordSystemIndex";
 
   m_coordSystemContext.setCoordSystemIndex (coordSystemIndex);
 }
 
 void Document::setCurveAxes (const Curve &curveAxes)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setCurveAxes";
 
   m_coordSystemContext.setCurveAxes (curveAxes);
 }
 
 void Document::setCurvesGraphs (const CurvesGraphs &curvesGraphs)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setCurvesGraphs";
 
   m_coordSystemContext.setCurvesGraphs(curvesGraphs);
 }
 
 void Document::setDocumentAxesPointsRequired(DocumentAxesPointsRequired documentAxesPointsRequired)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setDocumentAxesPointsRequired";
 
   m_documentAxesPointsRequired = documentAxesPointsRequired;
 
@@ -977,14 +894,12 @@ void Document::setDocumentAxesPointsRequired(DocumentAxesPointsRequired document
 
 void Document::setModelAxesChecker(const DocumentModelAxesChecker &modelAxesChecker)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setModelAxesChecker";
 
   m_coordSystemContext.setModelAxesChecker(modelAxesChecker);
 }
 
 void Document::setModelColorFilter(const DocumentModelColorFilter &modelColorFilter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setModelColorFilter";
 
   // Save the CurveFilter for each Curve
   ColorFilterSettingsList::const_iterator itr;
@@ -1002,14 +917,12 @@ void Document::setModelColorFilter(const DocumentModelColorFilter &modelColorFil
 
 void Document::setModelCoords (const DocumentModelCoords &modelCoords)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setModelCoords";
 
   m_coordSystemContext.setModelCoords(modelCoords);
 }
 
 void Document::setModelCurveStyles(const CurveStyles &modelCurveStyles)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setModelCurveStyles";
 
   // Save the LineStyle and PointStyle for each Curve
   QStringList curveNames = modelCurveStyles.curveNames();
@@ -1026,70 +939,60 @@ void Document::setModelCurveStyles(const CurveStyles &modelCurveStyles)
 
 void Document::setModelDigitizeCurve (const DocumentModelDigitizeCurve &modelDigitizeCurve)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setModelDigitizeCurve";
 
   m_coordSystemContext.setModelDigitizeCurve(modelDigitizeCurve);
 }
 
 void Document::setModelExport(const DocumentModelExportFormat &modelExport)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setModelExport";
 
   m_coordSystemContext.setModelExport (modelExport);
 }
 
 void Document::setModelGeneral (const DocumentModelGeneral &modelGeneral)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setModelGeneral";
 
   m_coordSystemContext.setModelGeneral(modelGeneral);
 }
 
 void Document::setModelGridDisplay(const DocumentModelGridDisplay &modelGridDisplay)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setModelGridDisplay";
 
   m_coordSystemContext.setModelGridDisplay(modelGridDisplay);
 }
 
 void Document::setModelGridRemoval(const DocumentModelGridRemoval &modelGridRemoval)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setModelGridRemoval";
 
   m_coordSystemContext.setModelGridRemoval(modelGridRemoval);
 }
 
 void Document::setModelGuideline(const DocumentModelGuideline &modelGuideline)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setModelGuideline";
 
   m_coordSystemContext.setModelGuideline(modelGuideline);
 }  
 
 void Document::setModelLoadViews(const DocumentModelLoadViews &modelLoadViews)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setModelLoadViews";
 
   m_modelLoadViews = modelLoadViews;
 }
 
 void Document::setModelPointMatch(const DocumentModelPointMatch &modelPointMatch)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setModelPointMatch";
 
   m_coordSystemContext.setModelPointMatch(modelPointMatch);
 }
 
 void Document::setModelSegments(const DocumentModelSegments &modelSegments)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setModelSegments";
 
   m_coordSystemContext.setModelSegments (modelSegments);
 }
 
 void Document::setPixmap(const QImage &image)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::setPixmap";
 
   m_pixmap = QPixmap::fromImage (image);
 }
@@ -1106,14 +1009,12 @@ bool Document::successfulRead () const
 
 void Document::updatePointOrdinals (const Transformation &transformation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::updatePointOrdinals";
 
   m_coordSystemContext.updatePointOrdinals(transformation);
 }
 
 int Document::versionFromFile (QFile *file) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Document::versionFromFile";
 
   int version = VERSION_6; // Use default if tag is missing
 

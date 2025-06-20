@@ -24,7 +24,6 @@ CmdSettingsAxesChecker::CmdSettingsAxesChecker(MainWindow &mainWindow,
   m_modelAxesCheckerBefore (modelAxesCheckerBefore),
   m_modelAxesCheckerAfter (modelAxesCheckerAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsAxesChecker::CmdSettingsAxesChecker";
 }
 
 CmdSettingsAxesChecker::CmdSettingsAxesChecker (MainWindow &mainWindow,
@@ -35,7 +34,6 @@ CmdSettingsAxesChecker::CmdSettingsAxesChecker (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsAxesChecker::CmdSettingsAxesChecker";
 
   bool success = true;
 
@@ -80,7 +78,6 @@ CmdSettingsAxesChecker::~CmdSettingsAxesChecker ()
 
 void CmdSettingsAxesChecker::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsAxesChecker::cmdRedo";
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -91,7 +88,6 @@ void CmdSettingsAxesChecker::cmdRedo ()
 
 void CmdSettingsAxesChecker::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSettingsAxesChecker::cmdUndo";
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

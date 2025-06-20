@@ -23,7 +23,6 @@ CmdGuidelineRemoveYR::CmdGuidelineRemoveYR(MainWindow &mainWindow,
   m_identifier (identifier),
   m_valueBefore (valueBefore)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineRemoveYR::CmdGuidelineRemoveYR";
 }
 
 CmdGuidelineRemoveYR::CmdGuidelineRemoveYR (MainWindow &mainWindow,
@@ -34,7 +33,6 @@ CmdGuidelineRemoveYR::CmdGuidelineRemoveYR (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineRemoveYR::CmdGuidelineRemoveYR";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -55,8 +53,6 @@ CmdGuidelineRemoveYR::~CmdGuidelineRemoveYR ()
 
 void CmdGuidelineRemoveYR::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineRemoveYR::cmdRedo"
-                              << " identifier=" << m_identifier.toLatin1().data();
 
   restoreState ();
   mainWindow().guidelineRemove (m_identifier);
@@ -64,9 +60,6 @@ void CmdGuidelineRemoveYR::cmdRedo ()
 
 void CmdGuidelineRemoveYR::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineRemoveYR::cmdUndo"
-                              << " identifier=" << m_identifier.toLatin1().data()
-                              << " value=" << m_valueBefore;
 
   restoreState ();
   mainWindow().guidelineAddYR (m_identifier,

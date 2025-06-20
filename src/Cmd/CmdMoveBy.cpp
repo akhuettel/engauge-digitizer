@@ -38,9 +38,6 @@ CmdMoveBy::CmdMoveBy(MainWindow &mainWindow,
     m_movedPoints.setKeyValue (selectedPointIdentifier, true);
   }
 
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdMoveBy::CmdMoveBy"
-                              << " deltaScreen=" << QPointFToString (deltaScreen).toLatin1 ().data ()
-                              << " selected=" << selected.join (", ").toLatin1 ().data () << ")";
 }
 
 CmdMoveBy::CmdMoveBy (MainWindow &mainWindow,
@@ -51,7 +48,6 @@ CmdMoveBy::CmdMoveBy (MainWindow &mainWindow,
                       document,
                       cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdMoveBy::CmdMoveBy";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -73,9 +69,6 @@ CmdMoveBy::~CmdMoveBy ()
 
 void CmdMoveBy::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdMoveBy::cmdRedo"
-                              << " deltaScreen=" << QPointFToString (m_deltaScreen).toLatin1().data()
-                              << " moving=" << m_movedPoints.count ();
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -88,9 +81,6 @@ void CmdMoveBy::cmdRedo ()
 
 void CmdMoveBy::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdMoveBy::cmdUndo"
-                              << " deltaScreen=" << QPointFToString (-1.0 * m_deltaScreen).toLatin1().data()
-                              << " moving=" << m_movedPoints.count ();
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());
@@ -102,7 +92,6 @@ void CmdMoveBy::cmdUndo ()
 
 void CmdMoveBy::moveBy (const QPointF &deltaScreen)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdMoveBy::moveBy";
 
   // Move Points in the Document
   for (int i = 0; i < m_movedPoints.count(); i++) {

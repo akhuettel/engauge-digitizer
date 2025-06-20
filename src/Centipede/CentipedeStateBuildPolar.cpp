@@ -26,8 +26,6 @@ CentipedeStateBuildPolar::~CentipedeStateBuildPolar ()
 
 void CentipedeStateBuildPolar::begin ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CentipedeStateBuildPolar::begin";
-
   m_centipedePair = new CentipedePairPolar (context().scene(),
                                             context().transformation(),
                                             context().modelGuideline (),
@@ -37,8 +35,6 @@ void CentipedeStateBuildPolar::begin ()
 
 void CentipedeStateBuildPolar::end ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CentipedeStateBuildPolar::end";
-
   delete m_centipedePair;
   m_centipedePair = nullptr;
 }

@@ -4,19 +4,11 @@
  * LICENSE or go to gnu.org/licenses for details. Distribution requires prior written permission.     *
  ******************************************************************************************************/
 
-#include <log4cpp/Category.hh>
-#include <log4cpp/PatternLayout.hh>
-#include <log4cpp/PropertyConfigurator.hh>
 #include "Logger.h"
-#include <log4cpp/RollingFileAppender.hh>
 #include <QString>
-
-log4cpp::Category *mainCat;
 
 const QString INDENTATION_PAST_TIMESTAMP ("             ");
 const QString INDENTATION_DELTA ("  ");
-
-using namespace log4cpp;
 
 void initializeLogging (const QString &name,
                         const QString &filename,

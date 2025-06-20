@@ -70,7 +70,6 @@ DlgSettingsGuideline::DlgSettingsGuideline(MainWindow &mainWindow) :
   m_modelGuidelineBefore (nullptr),
   m_modelGuidelineAfter (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGuideline::DlgSettingsGuideline";
 
   QWidget *subPanel = createSubPanel ();
   finishPanel (subPanel,
@@ -79,7 +78,6 @@ DlgSettingsGuideline::DlgSettingsGuideline(MainWindow &mainWindow) :
 
 DlgSettingsGuideline::~DlgSettingsGuideline()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGuideline::~DlgSettingsGuideline";
 }
 
 void DlgSettingsGuideline::createCircle ()
@@ -94,7 +92,6 @@ void DlgSettingsGuideline::createCircle ()
 void DlgSettingsGuideline::createControls (QGridLayout *layout,
                                             int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGuideline::createControls";
   
   createWhatsThis (layout,
                    m_btnWhatsThis,
@@ -193,12 +190,10 @@ void DlgSettingsGuideline::createLinesPolar ()
 
 void DlgSettingsGuideline::createOptionalSaveDefault (QHBoxLayout * /* layout */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGuideline::createOptionalSaveDefault";
 }
 
 void DlgSettingsGuideline::createPreview (QGridLayout *layout, int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGuideline::createPreview";
 
   // Need local gridlayout to get nicely even 50/50 split
   int row5050 = 0;
@@ -245,7 +240,6 @@ void DlgSettingsGuideline::createPreview (QGridLayout *layout, int &row)
 
 QWidget *DlgSettingsGuideline::createSubPanel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGuideline::createSubPanel";
 
   QWidget *subPanel = new QWidget ();
   QGridLayout *layout = new QGridLayout (subPanel);
@@ -265,7 +259,6 @@ QWidget *DlgSettingsGuideline::createSubPanel ()
 
 void DlgSettingsGuideline::handleOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGuideline::handleOk";
 
   CmdSettingsGuideline *cmd = new CmdSettingsGuideline (mainWindow (),
                                                         cmdMediator().document(),
@@ -278,7 +271,6 @@ void DlgSettingsGuideline::handleOk ()
 
 void DlgSettingsGuideline::load (CmdMediator &cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGuideline::load";
 
   setCmdMediator (cmdMediator);
 
@@ -450,7 +442,6 @@ void DlgSettingsGuideline::safeSetRotation (QGraphicsEllipseItem *ellipse,
 
 void DlgSettingsGuideline::slotCreationCircleRadius (int radius)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGuideline::slotCreationCircleRadius";
 
   m_modelGuidelineAfter->setCreationCircleRadius (radius); 
   updateControls();
@@ -459,7 +450,6 @@ void DlgSettingsGuideline::slotCreationCircleRadius (int radius)
 
 void DlgSettingsGuideline::slotLineColor (QString const &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGuideline::slotLineColor";
 
   m_modelGuidelineAfter->setLineColor(static_cast<ColorPalette> (m_lineColor->currentData().toInt()));
   updateControls();
@@ -468,7 +458,6 @@ void DlgSettingsGuideline::slotLineColor (QString const &)
 
 void DlgSettingsGuideline::slotLineWidthActive (int lineWidth)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGuideline::slotLineWidthActive";
 
   m_modelGuidelineAfter->setLineWidthActive (lineWidth);
   updateControls();
@@ -477,7 +466,6 @@ void DlgSettingsGuideline::slotLineWidthActive (int lineWidth)
 
 void DlgSettingsGuideline::slotLineWidthInactive (int lineWidth)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGuideline::slotLineWidthInactive";
 
   m_modelGuidelineAfter->setLineWidthInactive (lineWidth);
   updateControls();
@@ -496,7 +484,6 @@ void DlgSettingsGuideline::updateControls ()
 
 void DlgSettingsGuideline::updatePreview()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGuideline::updatePreview";
 
   enableOk (true);
   updatePreviewGeometry ();

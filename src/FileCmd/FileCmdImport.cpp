@@ -19,7 +19,6 @@ const QString CMD_DESCRIPTION ("Import File");
 FileCmdImport::FileCmdImport (QXmlStreamReader &reader) :
   FileCmdAbstract (CMD_DESCRIPTION)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FileCmdImport::FileCmdImport";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -39,7 +38,6 @@ FileCmdImport::~FileCmdImport ()
 
 void FileCmdImport::redo (MainWindow &mainWindow)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FileCmdImport::redo";
 
   mainWindow.cmdFileImport (m_filename);
 }

@@ -19,7 +19,6 @@ DlgImportAdvanced::DlgImportAdvanced(MainWindow &mainWindow) :
                            "DlgImportAdvanced",
                            mainWindow)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportAdvanced::DlgImportAdvanced";
 
   QWidget *subPanel = createSubPanel ();
   finishPanel (subPanel,
@@ -32,12 +31,10 @@ DlgImportAdvanced::DlgImportAdvanced(MainWindow &mainWindow) :
 
 void DlgImportAdvanced::createOptionalSaveDefault (QHBoxLayout * /* layout */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportAdvanced::createOptionalSaveDefault";
 }
 
 QWidget *DlgImportAdvanced::createSubPanel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportAdvanced::createSubPanel";
 
   QWidget *subPanel = new QWidget ();
   QGridLayout *layout = new QGridLayout (subPanel);
@@ -107,7 +104,6 @@ DocumentAxesPointsRequired DlgImportAdvanced::documentAxesPointsRequired () cons
 
 void DlgImportAdvanced::handleOk()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportAdvanced::handleOk";
 
   setResult (QDialog::Accepted); // Set return value so Ok button is not handled like the Cancel button
 
@@ -116,7 +112,6 @@ void DlgImportAdvanced::handleOk()
 
 void DlgImportAdvanced::load(CmdMediator & /* cmdMediator */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportAdvanced::load";
 }
 
 unsigned int DlgImportAdvanced::numberCoordSystem () const
@@ -130,11 +125,9 @@ void DlgImportAdvanced::setSmallDialogs(bool /* smallDialogs */)
 
 void DlgImportAdvanced::slotAxesPointCount (bool)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgCoordSystem::slotAxesPointCount";
 }
 
 void DlgImportAdvanced::slotCoordSystemCount (const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgCoordSystem::slotImportAdvanced";
 }
 

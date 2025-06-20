@@ -52,7 +52,6 @@ DlgSettingsGridRemoval::DlgSettingsGridRemoval(MainWindow &mainWindow) :
   m_modelGridRemovalBefore (nullptr),
   m_modelGridRemovalAfter (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::DlgSettingsGridRemoval";
 
   QWidget *subPanel = createSubPanel ();
   finishPanel (subPanel);
@@ -60,7 +59,6 @@ DlgSettingsGridRemoval::DlgSettingsGridRemoval(MainWindow &mainWindow) :
 
 DlgSettingsGridRemoval::~DlgSettingsGridRemoval()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::~DlgSettingsGridRemoval";
 
   delete m_validatorCloseDistance;
   delete m_validatorCountX;
@@ -79,7 +77,6 @@ void DlgSettingsGridRemoval::createOptionalSaveDefault (QHBoxLayout * /* layout 
 
 void DlgSettingsGridRemoval::createPreview (QGridLayout *layout, int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::createPreview";
 
   QLabel *labelPreview = new QLabel (tr ("Preview"));
   layout->addWidget (labelPreview, row++, 0, 1, 5);
@@ -97,7 +94,6 @@ void DlgSettingsGridRemoval::createPreview (QGridLayout *layout, int &row)
 
 void DlgSettingsGridRemoval::createRemoveGridLines (QGridLayout *layout, int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::createRemoveGridLines";
 
   m_chkRemoveGridLines = new QCheckBox (tr ("Remove pixels close to defined grid lines"));
   m_chkRemoveGridLines->setWhatsThis (tr ("Check this box to have pixels close to regularly spaced gridlines removed.\n\n"
@@ -124,7 +120,6 @@ void DlgSettingsGridRemoval::createRemoveGridLines (QGridLayout *layout, int &ro
 
 void DlgSettingsGridRemoval::createRemoveGridLinesX (QGridLayout *layout, int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::createRemoveGridLinesX";
 
   QString titleX = tr ("X Grid Lines");
   if (false) {
@@ -202,7 +197,6 @@ void DlgSettingsGridRemoval::createRemoveGridLinesX (QGridLayout *layout, int &r
 
 void DlgSettingsGridRemoval::createRemoveGridLinesY (QGridLayout *layout, int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::createRemoveGridLinesY";
 
   QString titleY = tr ("Y Grid Lines");
   if (false) {
@@ -280,7 +274,6 @@ void DlgSettingsGridRemoval::createRemoveGridLinesY (QGridLayout *layout, int &r
 
 QWidget *DlgSettingsGridRemoval::createSubPanel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::createSubPanel";
 
   QWidget *subPanel = new QWidget ();
   QGridLayout *layout = new QGridLayout (subPanel);
@@ -307,7 +300,6 @@ QWidget *DlgSettingsGridRemoval::createSubPanel ()
 
 void DlgSettingsGridRemoval::handleOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::handleOk";
 
   // Set the stable flag
   m_modelGridRemovalAfter->setStable ();
@@ -323,7 +315,6 @@ void DlgSettingsGridRemoval::handleOk ()
 
 void DlgSettingsGridRemoval::load (CmdMediator &cmdMediator)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::load";
 
   setCmdMediator (cmdMediator);
 
@@ -374,7 +365,6 @@ void DlgSettingsGridRemoval::setSmallDialogs(bool smallDialogs)
 
 void DlgSettingsGridRemoval::slotCloseDistance(const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::slotCloseDistance";
 
   m_modelGridRemovalAfter->setCloseDistance(m_editCloseDistance->text().toDouble());
   updateControls ();
@@ -383,7 +373,6 @@ void DlgSettingsGridRemoval::slotCloseDistance(const QString &)
 
 void DlgSettingsGridRemoval::slotCountX(const QString &count)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::slotCountX";
 
   m_modelGridRemovalAfter->setCountX(count.toInt());
   updateDisplayedVariableX ();
@@ -393,7 +382,6 @@ void DlgSettingsGridRemoval::slotCountX(const QString &count)
 
 void DlgSettingsGridRemoval::slotCountY(const QString &count)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::slotCountY";
 
   m_modelGridRemovalAfter->setCountY(count.toInt());
   updateDisplayedVariableY ();
@@ -403,7 +391,6 @@ void DlgSettingsGridRemoval::slotCountY(const QString &count)
 
 void DlgSettingsGridRemoval::slotDisableX(const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::slotDisableX";
 
   GridCoordDisable gridCoordDisable = static_cast<GridCoordDisable> (m_cmbDisableX->currentData().toInt());
   m_modelGridRemovalAfter->setGridCoordDisableX(gridCoordDisable);
@@ -414,7 +401,6 @@ void DlgSettingsGridRemoval::slotDisableX(const QString &)
 
 void DlgSettingsGridRemoval::slotDisableY(const QString &)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::slotDisableY";
 
   GridCoordDisable gridCoordDisable = static_cast<GridCoordDisable> (m_cmbDisableY->currentData().toInt());
   m_modelGridRemovalAfter->setGridCoordDisableY(gridCoordDisable);
@@ -425,7 +411,6 @@ void DlgSettingsGridRemoval::slotDisableY(const QString &)
 
 void DlgSettingsGridRemoval::slotRemoveGridLines (int state)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::slotRemoveGridLines";
 
   m_modelGridRemovalAfter->setRemoveDefinedGridLines(state == Qt::Checked);
   updateControls();
@@ -434,7 +419,6 @@ void DlgSettingsGridRemoval::slotRemoveGridLines (int state)
 
 void DlgSettingsGridRemoval::slotStartX(const QString &startX)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::slotStartX";
 
   m_modelGridRemovalAfter->setStartX(startX.toDouble());
   updateDisplayedVariableX ();
@@ -444,7 +428,6 @@ void DlgSettingsGridRemoval::slotStartX(const QString &startX)
 
 void DlgSettingsGridRemoval::slotStartY(const QString &startY)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::slotStartY";
 
   m_modelGridRemovalAfter->setStartY(startY.toDouble());
   updateDisplayedVariableY ();
@@ -454,7 +437,6 @@ void DlgSettingsGridRemoval::slotStartY(const QString &startY)
 
 void DlgSettingsGridRemoval::slotStepX(const QString &stepX)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::slotStepX";
 
   m_modelGridRemovalAfter->setStepX(stepX.toDouble());
   updateDisplayedVariableX ();
@@ -464,7 +446,6 @@ void DlgSettingsGridRemoval::slotStepX(const QString &stepX)
 
 void DlgSettingsGridRemoval::slotStepY(const QString &stepY)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::slotStepY";
 
   m_modelGridRemovalAfter->setStepY(stepY.toDouble());
   updateDisplayedVariableY ();
@@ -474,7 +455,6 @@ void DlgSettingsGridRemoval::slotStepY(const QString &stepY)
 
 void DlgSettingsGridRemoval::slotStopX(const QString &stopX)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::slotStopX";
 
   m_modelGridRemovalAfter->setStopX(stopX.toDouble());
   updateDisplayedVariableX ();
@@ -484,7 +464,6 @@ void DlgSettingsGridRemoval::slotStopX(const QString &stopX)
 
 void DlgSettingsGridRemoval::slotStopY(const QString &stopY)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgSettingsGridRemoval::slotStopY";
 
   m_modelGridRemovalAfter->setStopY(stopY.toDouble());
   updateDisplayedVariableY ();

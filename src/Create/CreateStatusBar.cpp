@@ -15,7 +15,6 @@ CreateStatusBar::CreateStatusBar()
 
 void CreateStatusBar::create(MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateStatusBar::create";
 
   mw.m_statusBar = new StatusBar (*mw.statusBar ());
   connect (&mw, SIGNAL (signalZoom(int)), mw.m_statusBar, SLOT (slotZoom(int)));

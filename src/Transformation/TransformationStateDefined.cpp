@@ -36,7 +36,6 @@ void TransformationStateDefined::begin(bool isGnuplot,
                                        const Transformation &transformation,
                                        const QString &selectedGraphCurve)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TransformationStateDefined::begin";
 
   if (!cmdMediator.document().modelGridDisplay().stable()) {
 
@@ -63,7 +62,6 @@ void TransformationStateDefined::begin(bool isGnuplot,
 void TransformationStateDefined::end(CmdMediator & /* cmdMediator */,
                                      const Transformation & /* transformation */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TransformationStateDefined::end";
 
   m_axesChecker->setVisible (false);
 }
@@ -79,7 +77,6 @@ void TransformationStateDefined::initializeModelGridRemoval (bool isGnuplot,
                                                              const Transformation &transformation,
                                                              const QString &selectedGraphCurve)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TransformationStateDefined::initializeModelGridRemoval";
 
   // Generate filtered image
   FilterImage filterImage;
@@ -114,14 +111,12 @@ void TransformationStateDefined::initializeModelGridRemoval (bool isGnuplot,
 
 void TransformationStateDefined::slotTimeout()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TransformationStateDefined::slotTimeout";
 
   m_axesChecker->setVisible (false);
 }
 
 void TransformationStateDefined::startTimer (const DocumentModelAxesChecker &modelAxesChecker)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TransformationStateDefined::startTimer";
 
   m_axesChecker->setVisible (modelAxesChecker.checkerMode () != CHECKER_MODE_NEVER);
 

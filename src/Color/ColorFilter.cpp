@@ -187,7 +187,6 @@ double ColorFilter::pixelToZeroToOneOrMinusOne (ColorFilterMode colorFilterMode,
 
   } else {
 
-    LOG4CPP_ERROR_S ((*mainCat)) << "ColorFilter::pixelToZeroToOneOrMinusOne is missing color filter mode";
     ENGAUGE_ASSERT (false);
     return 0.0;
 
@@ -204,7 +203,6 @@ int ColorFilter::zeroToOneToValue (ColorFilterMode colorFilterMode,
 
   } else {
 
-    LOG4CPP_ERROR_S ((*mainCat)) << "ColorFilter::zeroToOneToValue is missing color filter mode";    
     ENGAUGE_ASSERT (false);
     return 0;
 

@@ -25,7 +25,6 @@ CmdGuidelineMoveXT::CmdGuidelineMoveXT(MainWindow &mainWindow,
   m_valueBefore (valueBefore),
   m_valueAfter (valueAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineMoveXT::CmdGuidelineMoveXT";
 }
 
 CmdGuidelineMoveXT::CmdGuidelineMoveXT (MainWindow &mainWindow,
@@ -36,7 +35,6 @@ CmdGuidelineMoveXT::CmdGuidelineMoveXT (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineMoveXT::CmdGuidelineMoveXT";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -59,9 +57,6 @@ CmdGuidelineMoveXT::~CmdGuidelineMoveXT ()
 
 void CmdGuidelineMoveXT::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineMoveXT::cmdRedo"
-                              << " identifier=" << m_identifier.toLatin1().data()
-                              << " value=" << m_valueAfter;
 
   restoreState ();
   mainWindow().guidelineMoveXT (m_identifier,
@@ -70,9 +65,6 @@ void CmdGuidelineMoveXT::cmdRedo ()
 
 void CmdGuidelineMoveXT::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineMoveXT::cmdUndo"
-                              << " identifier=" << m_identifier.toLatin1().data()
-                              << " value=" << m_valueBefore;
 
   restoreState ();
   mainWindow().guidelineMoveXT (m_identifier,

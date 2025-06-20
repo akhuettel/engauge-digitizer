@@ -23,7 +23,6 @@ CmdGuidelineAddYR::CmdGuidelineAddYR(MainWindow &mainWindow,
   m_identifier (GuidelineIdentifierGenerator::next ()),
   m_value (value)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineAddYR::CmdGuidelineAddYR";
 }
 
 CmdGuidelineAddYR::CmdGuidelineAddYR (MainWindow &mainWindow,
@@ -34,7 +33,6 @@ CmdGuidelineAddYR::CmdGuidelineAddYR (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineAddYR::CmdGuidelineAddYR";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -55,9 +53,6 @@ CmdGuidelineAddYR::~CmdGuidelineAddYR ()
 
 void CmdGuidelineAddYR::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineAddYR::cmdRedo"
-                              << " identifier=" << m_identifier.toLatin1().data()
-                              << " value=" << m_value;
 
   restoreState ();
   mainWindow().guidelineAddYR (m_identifier,
@@ -66,8 +61,6 @@ void CmdGuidelineAddYR::cmdRedo ()
 
 void CmdGuidelineAddYR::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdGuidelineAddYR::cmdUndo"
-                              << " identifier=" << m_identifier.toLatin1().data();
 
   restoreState ();
   mainWindow().guidelineRemove (m_identifier);

@@ -36,7 +36,6 @@ TutorialStateContext::~TutorialStateContext ()
 
 void TutorialStateContext::createStates ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateContext::createStates";
 
   // These states follow the same order as the TutorialState enumeration
   m_states.insert (TUTORIAL_STATE_AXIS_POINTS            , new TutorialStateAxisPoints            (*this));
@@ -57,7 +56,6 @@ void TutorialStateContext::createStates ()
 
 void TutorialStateContext::createTimer ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateContext::createTimer";
 
   m_timer = new QTimer ();
   m_timer->setInterval (TIMER_INTERVAL);
@@ -85,7 +83,6 @@ void TutorialStateContext::completeRequestedStateTransitionIfExists ()
 
 void TutorialStateContext::requestDelayedStateTransition (TutorialState tutorialState)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateContext::requestDelayedStateTransition";
 
   m_requestedState = tutorialState;
 
@@ -94,14 +91,12 @@ void TutorialStateContext::requestDelayedStateTransition (TutorialState tutorial
 
 void TutorialStateContext::requestImmediateStateTransition (TutorialState tutorialState)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateContext::requestImmediateStateTransition";
 
   m_requestedState = tutorialState;
 }
 
 void TutorialStateContext::slotTimeout()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateContext::slotTimeout";
 
   completeRequestedStateTransitionIfExists();
 }

@@ -35,7 +35,6 @@ QColor ColorPaletteToQColor (ColorPalette color)
 
   } else {
 
-    LOG4CPP_ERROR_S ((*mainCat)) << "ColorPaletteToQColor unexpected color " << color;
     ENGAUGE_ASSERT (false);
     return colorPaletteLookupTable [COLOR_PALETTE_BLACK];
 

@@ -25,12 +25,10 @@ TutorialStateColorFilter::TutorialStateColorFilter (TutorialStateContext &contex
   m_text4 (nullptr),
   m_back (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateColorFilter::TutorialStateColorFilter";
 }
 
 void TutorialStateColorFilter::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateColorFilter::begin ()";
 
   context().tutorialDlg().scene().clear ();
 
@@ -71,7 +69,6 @@ void TutorialStateColorFilter::begin ()
 
 void TutorialStateColorFilter::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateColorFilter::end ()";
 
   // It is not safe to remove and deallocate items here since an active TutorialButton
   // may be on the stack. So we clear the scene as the first step in the next begin()
@@ -79,7 +76,6 @@ void TutorialStateColorFilter::end ()
 
 void TutorialStateColorFilter::slotBack ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateColorFilter::slotBack";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_CURVE_SELECTION);
 }

@@ -18,7 +18,6 @@ const QString CMD_DESCRIPTION ("Close File");
 FileCmdClose::FileCmdClose (QXmlStreamReader & /* reader */) :
   FileCmdAbstract (CMD_DESCRIPTION)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FileCmdClose::FileCmdClose";
 }
 
 FileCmdClose::~FileCmdClose ()
@@ -27,7 +26,6 @@ FileCmdClose::~FileCmdClose ()
 
 void FileCmdClose::redo (MainWindow &mainWindow)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FileCmdClose::redo";
 
   mainWindow.cmdFileClose ();
 }

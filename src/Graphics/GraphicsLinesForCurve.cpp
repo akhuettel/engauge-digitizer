@@ -56,13 +56,6 @@ void GraphicsLinesForCurve::addPoint (const QString &pointIdentifier,
                                       double ordinal,
                                       GraphicsPoint &graphicsPoint)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurve::addPoint"
-                              << " curve=" << m_curveName.toLatin1().data()
-                              << " identifier=" << pointIdentifier.toLatin1().data()
-                              << " ordinal=" << ordinal
-                              << " pos=" << QPointFToString (graphicsPoint.pos()).toLatin1().data()
-                              << " newPointCount=" << (m_graphicsPoints.count() + 1);
-
   m_graphicsPoints [ordinal] = &graphicsPoint;
 }
 
@@ -71,8 +64,6 @@ QPainterPath GraphicsLinesForCurve::drawLinesSmooth (const LineStyle &lineStyle,
                                                      QPainterPath &pathMultiValued,
                                                      LineStyle &lineMultiValued)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurve::drawLinesSmooth"
-                              << " curve=" << m_curveName.toLatin1().data();
 
   QPainterPath path;
 
@@ -160,8 +151,6 @@ QPainterPath GraphicsLinesForCurve::drawLinesSmooth (const LineStyle &lineStyle,
 
 QPainterPath GraphicsLinesForCurve::drawLinesStraight (QPainterPath  & /* pathMultiValued */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurve::drawLinesStraight"
-                              << " curve=" << m_curveName.toLatin1().data();
 
   QPainterPath path;
 
@@ -185,8 +174,6 @@ QPainterPath GraphicsLinesForCurve::drawLinesStraight (QPainterPath  & /* pathMu
 
 double GraphicsLinesForCurve::identifierToOrdinal (const QString &identifier) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurve::identifierToOrdinal"
-                              << " identifier=" << identifier.toLatin1().data();
 
   OrdinalToGraphicsPoint::const_iterator itr;
   for (itr = m_graphicsPoints.begin(); itr != m_graphicsPoints.end(); itr++) {
@@ -208,8 +195,6 @@ void GraphicsLinesForCurve::lineMembershipPurge (const LineStyle &lineStyle,
                                                  QPainterPath &pathMultiValued,
                                                  LineStyle &lineMultiValued)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurve::lineMembershipPurge"
-                              << " curve=" << m_curveName.toLatin1().data();
 
   OrdinalToGraphicsPoint::iterator itr, itrNext;
   for (itr = m_graphicsPoints.begin(); itr != m_graphicsPoints.end(); itr = itrNext) {
@@ -251,8 +236,6 @@ void GraphicsLinesForCurve::lineMembershipPurge (const LineStyle &lineStyle,
 
 void GraphicsLinesForCurve::lineMembershipReset ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurve::lineMembershipReset"
-                              << " curve=" << m_curveName.toLatin1().data();
 
   OrdinalToGraphicsPoint::iterator itr;
   for (itr = m_graphicsPoints.begin(); itr != m_graphicsPoints.end(); itr++) {
@@ -308,10 +291,6 @@ void GraphicsLinesForCurve::printStream (QString indentation,
 
 void GraphicsLinesForCurve::removePoint (double ordinal)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurve::removePoint"
-                              << " point=" << ordinal
-                              << " pointCount=" << m_graphicsPoints.count();
-
   ENGAUGE_ASSERT (m_graphicsPoints.contains (ordinal));
   GraphicsPoint *graphicsPoint = m_graphicsPoints [ordinal];
 
@@ -322,7 +301,6 @@ void GraphicsLinesForCurve::removePoint (double ordinal)
 
 void GraphicsLinesForCurve::removeTemporaryPointIfExists()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurve::removeTemporaryPointIfExists";
 
   // Compiler warning about this loop only iterating once is not an issue since there
   // is never more than one temporary point
@@ -341,7 +319,6 @@ void GraphicsLinesForCurve::removeTemporaryPointIfExists()
 
 void GraphicsLinesForCurve::renumberOrdinals ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurve::renumberOrdinals";
 
   int ordinalKeyWanted;
 
@@ -368,10 +345,6 @@ void GraphicsLinesForCurve::updateAfterCommand (GraphicsScene &scene,
                                                 const Point &point,
                                                 GeometryWindow *geometryWindow)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsLinesForCurve::updateAfterCommand"
-                               << " curve=" << m_curveName.toLatin1().data()
-                               << " pointCount=" << m_graphicsPoints.count();
-
   GraphicsPoint *graphicsPoint = nullptr;
   if (m_graphicsPoints.contains (point.ordinal())) {
 
@@ -402,7 +375,6 @@ void GraphicsLinesForCurve::updateAfterCommand (GraphicsScene &scene,
 
 void GraphicsLinesForCurve::updateCurveStyle (const CurveStyle &curveStyle)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurve::updateCurveStyle";
 
   OrdinalToGraphicsPoint::const_iterator itr;
   for (itr = m_graphicsPoints.begin(); itr != m_graphicsPoints.end(); itr++) {
@@ -414,10 +386,6 @@ void GraphicsLinesForCurve::updateCurveStyle (const CurveStyle &curveStyle)
 
 void GraphicsLinesForCurve::updateHighlightOpacity (double highlightOpacity)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurve::updateCurveStyle"
-                              << " curve=" << m_curveName.toLatin1().data()
-                              << " highlightOpacity=" << highlightOpacity;
-
   OrdinalToGraphicsPoint::const_iterator itr;
   for (itr = m_graphicsPoints.begin(); itr != m_graphicsPoints.end(); itr++) {
 
@@ -431,7 +399,6 @@ void GraphicsLinesForCurve::updateGraphicsLinesToMatchGraphicsPoints (const Line
                                                                       QPainterPath &pathMultiValued,
                                                                       LineStyle &lineMultiValued)
 {
-  // LOG4CPP_INFO_S is below
 
   bool needRenumbering = needOrdinalRenumbering ();
   if (needRenumbering) {
@@ -439,10 +406,6 @@ void GraphicsLinesForCurve::updateGraphicsLinesToMatchGraphicsPoints (const Line
     renumberOrdinals();
 
   }
-
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurve::updateGraphicsLinesToMatchGraphicsPoints"
-                              << " numberPoints=" << m_graphicsPoints.count()
-                              << " ordinalRenumbering=" << (needRenumbering ? "true" : "false");
 
   if (lineStyle.curveConnectAs() != CONNECT_SKIP_FOR_AXIS_CURVE) {
 
@@ -469,10 +432,6 @@ void GraphicsLinesForCurve::updatePointOrdinalsAfterDrag (const LineStyle &lineS
                                                           const Transformation &transformation)
 {
   CurveConnectAs curveConnectAs = lineStyle.curveConnectAs();
-
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsLinesForCurve::updatePointOrdinalsAfterDrag"
-                               << " curve=" << m_curveName.toLatin1().data()
-                               << " curveConnectAs=" << curveConnectAsToString(curveConnectAs).toLatin1().data();
 
   if (curveConnectAs == CONNECT_AS_FUNCTION_SMOOTH ||
       curveConnectAs == CONNECT_AS_FUNCTION_STRAIGHT) {

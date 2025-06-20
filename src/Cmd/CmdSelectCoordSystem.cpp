@@ -29,7 +29,6 @@ CmdSelectCoordSystem::CmdSelectCoordSystem(MainWindow &mainWindow,
   m_coordSystemIndexBefore (document.coordSystemIndex()),
   m_coordSystemIndexAfter (coordSystemIndex)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSelectCoordSystem::CmdSelectCoordSystem";
 }
 
 CmdSelectCoordSystem::CmdSelectCoordSystem (MainWindow &mainWindow,
@@ -40,7 +39,6 @@ CmdSelectCoordSystem::CmdSelectCoordSystem (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSelectCoordSystem::CmdSelectCoordSystem";
 
   QXmlStreamAttributes attributes = reader.attributes();
 
@@ -61,8 +59,6 @@ CmdSelectCoordSystem::~CmdSelectCoordSystem ()
 
 void CmdSelectCoordSystem::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSelectCoordSystem::cmdRedo"
-                              << " index=" << m_coordSystemIndexBefore << "->" << m_coordSystemIndexAfter;
 
   restoreState ();
   saveOrCheckPreCommandDocumentStateHash (document ());
@@ -72,8 +68,6 @@ void CmdSelectCoordSystem::cmdRedo ()
 
 void CmdSelectCoordSystem::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdSelectCoordSystem::cmdUndo"
-                              << " index=" << m_coordSystemIndexAfter << "->" << m_coordSystemIndexBefore;
 
   restoreState ();
   saveOrCheckPostCommandDocumentStateHash (document ());

@@ -23,9 +23,6 @@ GuidelineStateDeployedConstantYSelectLock::~GuidelineStateDeployedConstantYSelec
 
 void GuidelineStateDeployedConstantYSelectLock::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantYSelectLock::begin"
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (false,
                true);
 }
@@ -37,7 +34,6 @@ bool GuidelineStateDeployedConstantYSelectLock::doPaint () const
 
 void GuidelineStateDeployedConstantYSelectLock::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantYSelectLock::end";
 }
 
 void GuidelineStateDeployedConstantYSelectLock::handleActiveChange (bool active)

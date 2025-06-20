@@ -74,7 +74,6 @@ bool DocumentModelDigitizeCurve::cursorStandardCross () const
 
 void DocumentModelDigitizeCurve::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelDigitizeCurve::loadXml";
 
   bool success = true;
 
@@ -124,7 +123,6 @@ void DocumentModelDigitizeCurve::printStream(QString indentation,
 
 void DocumentModelDigitizeCurve::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DocumentModelDigitizeCurve::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_DIGITIZE_CURVE);
   writer.writeAttribute(DOCUMENT_SERIALIZE_DIGITIZE_CURVE_CURSOR_INNER_RADIUS, QString::number (m_cursorInnerRadius));

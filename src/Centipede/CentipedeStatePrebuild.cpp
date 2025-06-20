@@ -23,12 +23,10 @@ CentipedeStatePrebuild::~CentipedeStatePrebuild ()
 
 void CentipedeStatePrebuild::begin ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CentipedeStatePrebuild::begin";
 }
 
 void CentipedeStatePrebuild::end ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CentipedeStatePrebuild::end";
 }
 
 void CentipedeStatePrebuild::handleKeyPress (Qt::Key /* key */,

@@ -18,7 +18,6 @@ CreateScene::CreateScene()
 
 void CreateScene::create(MainWindow &mw)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CreateScene::create";
 
   const QString NO_TEXT (""); // Keep skinny by leaving out bulky text
   

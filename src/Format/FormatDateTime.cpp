@@ -22,7 +22,6 @@ bool FormatDateTime::ambiguityBetweenDateAndTime (CoordUnitsDate coordUnitsDate,
                                                   CoordUnitsTime coordUnitsTime,
                                                   const QString &string) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FormatDateTime::ambiguityBetweenDateAndTime";
 
   bool ambiguous = false;
 
@@ -53,7 +52,6 @@ void FormatDateTime::dateTimeLookup (const FormatsDate &formatsDateAll,
                                      double &value,
                                      bool &success) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FormatDateTime::dateTimeLookup";
 
   success = false;
 
@@ -98,12 +96,6 @@ void FormatDateTime::dateTimeLookup (const FormatsDate &formatsDateAll,
             value = toSecsSinceEpoch (dt.toLocalTime ());
             iterating = false; // Stop iterating
 
-            LOG4CPP_INFO_S ((*mainCat)) << "FormatDateTime::dateTimeLookup"
-                                        << " string=" << string.toLatin1().data()
-                                        << " qDateTimeFormatMatched=" << formatDateTime.toLatin1().data()
-                                        << " value=" << value
-                                        << " stringQDateTime=" << dt.toString().toLatin1().data();
-
           }
         } else {
 
@@ -112,10 +104,6 @@ void FormatDateTime::dateTimeLookup (const FormatsDate &formatsDateAll,
 
             success = true; // Note that value does not get set in QRegExp case
             iterating = false; // Stop iterating
-
-            LOG4CPP_INFO_S ((*mainCat)) << "FormatDateTime::dateTimeLookup"
-                                        << " string=" << string.toLatin1().data()
-                                        << " regExpMatched=" << formatDateTime.toLatin1().data();
 
           }
         }
@@ -128,8 +116,6 @@ QString FormatDateTime::formatOutput (CoordUnitsDate coordUnitsDate,
                                       CoordUnitsTime coordUnitsTime,
                                       double value) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FormatDateTime::formatOutput"
-                              << " value=" << value;
 
   ENGAUGE_ASSERT (m_formatsDateFormat.contains (coordUnitsDate));
   ENGAUGE_ASSERT (m_formatsTimeFormat.contains (coordUnitsTime));
@@ -168,7 +154,6 @@ void FormatDateTime::loadFormatsFormat()
 
 void FormatDateTime::loadFormatsParseAcceptable()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FormatDateTime::loadFormatsParseAcceptable";
 
   QStringList skip, dayMonth, dayMonthYear, monthDay, monthDayYear, yearMonth, yearMonthDay;
 
@@ -324,7 +309,6 @@ void FormatDateTime::loadFormatsParseAcceptable()
 
 void FormatDateTime::loadFormatsParseIncomplete()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FormatDateTime::loadFormatsParseIncomplete";
 
   QStringList skip, day, dayMonth, dayMonthYear, month, monthDay, monthDayYear, year, yearMonth, yearMonthDay;
 
@@ -441,11 +425,6 @@ QValidator::State FormatDateTime::parseInput (CoordUnitsDate coordUnitsDate,
                                               const QString &stringUntrimmed,
                                               double &value) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "FormatDateTime::parseInput"
-                              << " date=" << coordUnitsDateToString (coordUnitsDate).toLatin1().data()
-                              << " time=" << coordUnitsTimeToString (coordUnitsTime).toLatin1().data()
-                              << " string=" << stringUntrimmed.toLatin1().data();
-
   const bool USE_QREGEXP = true, DO_NOT_USE_QREGEXP = false;
 
   const QString string = stringUntrimmed.trimmed();

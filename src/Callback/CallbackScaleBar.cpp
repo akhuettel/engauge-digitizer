@@ -27,10 +27,6 @@ QStringList CallbackScaleBar::axisCurvePointIdentifiers () const
 CallbackSearchReturn CallbackScaleBar::callback (const QString &curveName,
                                                  const Point &point)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "CallbackScaleBar::callback"
-                               << " curveName=" << curveName.toLatin1().data()
-                               << " point=" << point.identifier().toLatin1().data();
-
   if (curveName == AXIS_CURVE_NAME) {
 
     bool isNonzeroX = (qAbs (point.posGraph ().x ()) > 0);
@@ -57,7 +53,6 @@ double CallbackScaleBar::scaleBarLength () const
 
 QString CallbackScaleBar::scaleBarPointIdentifier () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CallbackScaleBar::scaleBarPointIdentifier";
 
   return m_scaleBarPointIdentifier;
 }

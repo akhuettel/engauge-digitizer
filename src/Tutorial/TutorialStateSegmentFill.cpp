@@ -24,12 +24,10 @@ TutorialStateSegmentFill::TutorialStateSegmentFill (TutorialStateContext &contex
   m_previous (nullptr),
   m_next (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateSegmentFill::TutorialStateSegmentFill";
 }
 
 void TutorialStateSegmentFill::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateSegmentFill::begin ()";
 
   context().tutorialDlg().scene().clear ();
 
@@ -67,7 +65,6 @@ void TutorialStateSegmentFill::begin ()
 
 void TutorialStateSegmentFill::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateSegmentFill::end ()";
 
   // It is not safe to remove and deallocate items here since an active TutorialButton
   // may be on the stack. So we clear the scene as the first step in the next begin()
@@ -75,14 +72,12 @@ void TutorialStateSegmentFill::end ()
 
 void TutorialStateSegmentFill::slotNext ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateSegmentFill::slotNext";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_CHECKLIST_WIZARD_LINES);
 }
 
 void TutorialStateSegmentFill::slotPrevious ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialStateSegmentFill::slotPrevious";
 
   context().requestDelayedStateTransition (TUTORIAL_STATE_CURVE_TYPE);
 }

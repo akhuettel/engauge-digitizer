@@ -46,7 +46,6 @@ void ExportFileFunctions::exportAllPerLineXThetaValuesMerged (const DocumentMode
                                                               QTextStream &str,
                                                               unsigned int &numWritesSoFar) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileFunctions::exportAllPerLineXThetaValuesMerged";
 
   int curveCount = curvesIncluded.count();
   int xThetaCount = xThetaValues.count();
@@ -94,7 +93,6 @@ void ExportFileFunctions::exportOnePerLineXThetaValuesMerged (const DocumentMode
                                                               QTextStream &str,
                                                               unsigned int &numWritesSoFar) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileFunctions::exportOnePerLineXThetaValuesMerged";
 
   QStringList::const_iterator itr;
   for (itr = curvesIncluded.begin(); itr != curvesIncluded.end(); itr++) {
@@ -143,7 +141,6 @@ void ExportFileFunctions::exportToFile (const DocumentModelExportFormat &modelEx
                                         unsigned int &numWritesSoFar,
                                         bool &isOverrun) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileFunctions::exportToFile";
 
   isOverrun = false;
 
@@ -244,7 +241,6 @@ void ExportFileFunctions::initializeYRadiusValues (const QStringList &curvesIncl
                                                    const ExportValuesXOrY &xThetaValuesMerged,
                                                    QVector<QVector<QString*> > &yRadiusValues) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileFunctions::initializeYRadiusValues";
 
   // Initialize every entry with empty string
   int curveCount = curvesIncluded.count();
@@ -259,7 +255,6 @@ void ExportFileFunctions::initializeYRadiusValues (const QStringList &curvesIncl
 double ExportFileFunctions::linearlyInterpolate (const FittingPointsConvenient &positionsLinearized,
                                                  double xThetaLinearized) const
 {
-  //  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileFunctions::linearlyInterpolate";
 
   // If point is within the range of the function points then interpolation will be used, otherwise
   // extrapolation will be used
@@ -331,7 +326,6 @@ void ExportFileFunctions::loadYRadiusValues (const DocumentModelExportFormat &mo
                                              const CurveLimits &curveLimitsMax,
                                              QVector<QVector<QString*> > &yRadiusValues) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileFunctions::loadYRadiusValues";
 
   // Loop through curves
   int curveCount = curvesIncluded.count();
@@ -407,7 +401,6 @@ void ExportFileFunctions::loadYRadiusValuesForCurveInterpolatedSmooth (const Doc
                                                                        const CurveLimits &curveLimitsMax,
                                                                        QVector<QString*> &yRadiusValues) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileFunctions::loadYRadiusValuesForCurveInterpolatedSmooth";
 
   // Convert screen coordinates to graph coordinates, in vectors suitable for spline fitting
   vector<double> t;
@@ -552,7 +545,6 @@ void ExportFileFunctions::loadYRadiusValuesForCurveInterpolatedStraight (const D
                                                                          const CurveLimits &curveLimitsMax,
                                                                          QVector<QString*> &yRadiusValues) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileFunctions::loadYRadiusValuesForCurveInterpolatedStraight";
 
   FormatCoordsUnits format;
 
@@ -611,7 +603,6 @@ void ExportFileFunctions::loadYRadiusValuesForCurveRaw (const DocumentModelCoord
                                                         const CurveLimits &curveLimitsMax,
                                                         QVector<QString*> &yRadiusValues) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileFunctions::loadYRadiusValuesForCurveRaw";
 
   FormatCoordsUnits format;
 
@@ -676,7 +667,6 @@ void ExportFileFunctions::outputXThetaYRadiusValues (const DocumentModelExportFo
                                                      QTextStream &str,
                                                      unsigned int &numWritesSoFar) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ExportFileFunctions::outputXThetaYRadiusValues";
 
   // Header
   if (modelExportOverride.header() != EXPORT_HEADER_NONE) {

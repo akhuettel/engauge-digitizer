@@ -30,7 +30,6 @@ DlgImportCroppingNonPdf::DlgImportCroppingNonPdf(const QString &fileName) :
   m_pixmap (nullptr),
   m_nonPdfCropping (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingNonPdf::DlgImportCroppingNonPdf";
 
   setWindowTitle (tr ("Image File Import Cropping"));
   setModal (true);
@@ -54,7 +53,6 @@ DlgImportCroppingNonPdf::DlgImportCroppingNonPdf(const QString &fileName) :
 
 DlgImportCroppingNonPdf::~DlgImportCroppingNonPdf()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingNonPdf::~DlgImportCroppingNonPdf";
 
   delete m_nonPdfCropping;
 }
@@ -69,7 +67,6 @@ void DlgImportCroppingNonPdf::createNonPdfCropping ()
 void DlgImportCroppingNonPdf::createPreview (QGridLayout *layout,
                                              int &row)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingNonPdf::createPreview";
 
   QLabel *labelPreview = new QLabel (tr ("Preview"));
   layout->addWidget (labelPreview, row++, 0, 1, 1, Qt::AlignLeft);
@@ -181,7 +178,6 @@ void DlgImportCroppingNonPdf::showEvent (QShowEvent * /* event */)
 
 void DlgImportCroppingNonPdf::slotCancel ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingNonPdf::slotCancel";
 
   // Restore cursor in case updatePreview has not already completed and then restored it
   QApplication::restoreOverrideCursor ();
@@ -193,7 +189,6 @@ void DlgImportCroppingNonPdf::slotCancel ()
 
 void DlgImportCroppingNonPdf::slotOk ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingNonPdf::slotOk";
 
   // Restore cursor in case updatePreview has not already completed and then restored it
   QApplication::restoreOverrideCursor ();
@@ -205,7 +200,6 @@ void DlgImportCroppingNonPdf::slotOk ()
 
 void DlgImportCroppingNonPdf::updatePreview ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "DlgImportCroppingNonPdf::updatePreview";
 
   if (m_pixmap != nullptr) {
     m_scenePreview->removeItem (m_pixmap);

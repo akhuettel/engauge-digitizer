@@ -77,7 +77,6 @@ void ellipseFromParallelogram (double xTL,
                                double &aAligned,
                                double &bAligned)
 {
-  // LOG4CPP is below
 
   // Given input describing a parallelogram centered (for simplicity) on the origin,
   // with three successive corners at (xTL,yTL) and (xTR,yTR) and two other implicit corners
@@ -185,9 +184,6 @@ void ellipseFromParallelogram (double xTL,
     angleRadians = 0.5 * qAtan (2 * C / (A - B));
   }
 
-  LOG4CPP_DEBUG_S ((*mainCat)) << "ellipseFromParallelogram TL=(" << xTL << ", " << yTL << ") TR=(" << xTR << ", " << yTR
-                               << ") BR=(" << xBR << ", " << yBR << ") angleDegrees=" << qRadiansToDegrees (angleRadians)
-                               << " a=" << aAligned << " b=" << bAligned;
 }
 
 double magnitude (const QPointF &vec)

@@ -21,7 +21,6 @@ CmdRedoForTest::CmdRedoForTest(MainWindow &mainWindow,
                document,
                CMD_DESCRIPTION)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdRedoForTest::CmdRedoForTest";
 }
 
 CmdRedoForTest::CmdRedoForTest (MainWindow &mainWindow,
@@ -32,7 +31,6 @@ CmdRedoForTest::CmdRedoForTest (MainWindow &mainWindow,
                document,
                cmdDescription)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdRedoForTest::CmdRedoForTest";
 }
 
 CmdRedoForTest::~CmdRedoForTest ()
@@ -41,7 +39,6 @@ CmdRedoForTest::~CmdRedoForTest ()
 
 void CmdRedoForTest::cmdRedo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdRedoForTest::cmdRedo";
 
   // Noop. Real Redo processing is performed externally on the command stack
 
@@ -50,7 +47,6 @@ void CmdRedoForTest::cmdRedo ()
 
 void CmdRedoForTest::cmdUndo ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CmdRedoForTest::cmdUndo";
 
   // Noop. Undo of an undo does not even make sense
 

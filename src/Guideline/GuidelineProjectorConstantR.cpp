@@ -79,9 +79,6 @@ EllipseParameters GuidelineProjectorConstantR::fromPosScreen (const Transformati
   if ((transformation.modelCoords().coordScaleYRadius() == COORD_SCALE_LOG) &&
       (rGraph <= 0)) {
 
-      // Range enforcement on the range values with log scale should have prevented this branch
-      LOG4CPP_ERROR_S ((*mainCat)) << "GuidelineProjectorConstantR::fromPosScreen out of bounds range " << rGraph;
-
   }
 
   return fromCoordinateR (transformation,

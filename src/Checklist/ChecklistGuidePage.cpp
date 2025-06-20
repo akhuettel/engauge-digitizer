@@ -28,7 +28,6 @@ ChecklistGuidePage::ChecklistGuidePage(const QString &title) :
 
 void ChecklistGuidePage::addHtml (const QString &html)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuidePage::addHtml";
 
   QLabel *label = new QLabel (html);
   label->setWordWrap (true);
@@ -39,7 +38,6 @@ void ChecklistGuidePage::addHtml (const QString &html)
 QRadioButton *ChecklistGuidePage::addLabelAndRadioButton (const QString &label,
                                                           const QString &whatsThis)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuidePage::addLabelAndRadioButton";
 
   QRadioButton *button = new QRadioButton;
   button->setWhatsThis (whatsThis);
@@ -55,7 +53,6 @@ QRadioButton *ChecklistGuidePage::addLabelAndRadioButton (const QString &label,
 void ChecklistGuidePage::addLineEdit (ChecklistLineEdit *edit,
                                       const QString &whatsThis)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuidePage::addLineEdit";
 
   bool isFirst = false;
 

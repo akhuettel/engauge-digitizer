@@ -68,7 +68,6 @@ QSize TutorialButton::size () const
 
 void TutorialButton::handleTriggered()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "TutorialButton::handleTriggered";
 
   // Relay signal from internal widgets to outside world
   emit signalTriggered ();
