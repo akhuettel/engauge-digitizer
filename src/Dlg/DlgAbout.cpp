@@ -18,18 +18,10 @@ DlgAbout::DlgAbout (MainWindow &mainWindow) :
   setTextFormat (Qt::RichText);
 
   // Do not embed single quotes in the strings below since that will interfere with the translations
-  setText (QString ("<p>%1 %2 %3</p> <p>&copy; Mark Mitchell</p><p>%4</p><p>%5</p><p>%6</p><p>%7</p><p>%8:</p>"
+  setText (QString ("<p>%1 %2 %3</p> <p>&copy; Mark Mitchell and others</p><p>%4</p><p>%5</p><p>%6</p><p>%7</p><p>%8:</p>"
                     "<ul>"
-                     "<li><a href=\"https://github.com/markummitchell/engauge-digitizer\">%9</a></li>"
+                     "<li><a href=\"https://github.com/akhuettel/engauge-digitizer\">%9</a></li>"
                      "<li><a href=\"https://gitter.im/markummitchell/engauge-digitizer\">%10</a></li>"
-                     "</ul>"
-                     "<p>FFTW 3.X.X:</p>"
-                     "<ul>"
-                     "<li><a href=\"http://www.fftw.org\">%11</a></li>"
-                     "</ul>"
-                     "<p>OpenJPEG 2.X:</p>"
-                     "<ul>"
-                     "<li><a href=\"http://www.openjpeg.org\">%12</a></li>"
                     "</ul>")
            .arg (tr ("Engauge Digitizer"))
            .arg (tr ("Version"))
