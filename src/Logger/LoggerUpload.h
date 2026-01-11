@@ -9,7 +9,7 @@
 
 #include <QtGlobal>
 
-#if defined(WIN32) || defined(WIN64)
+#if defined(WIN32) || defined(WIN64) || defined(OSX_DEBUG) || defined(OSX_RELEASE)
 #define NO_RETURN_VALUE
 #else
 #define NO_RETURN_VALUE Q_NORETURN
