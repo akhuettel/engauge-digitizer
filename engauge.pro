@@ -78,9 +78,9 @@ CONFIG(debug,debug|release){
   }
 }
 
-OBJECTS_DIR = src/.objs
-MOC_DIR = src/.moc
-RCC_DIR = src/.rcc
+OBJECTS_DIR = objs_build
+MOC_DIR = moc_build
+RCC_DIR = rcc_build
 
 HEADERS  += \
     src/Background/BackgroundImage.h \
@@ -1018,6 +1018,11 @@ macx-* {
   DESTDIR = bin
 }
 
+FFTW_HOME_PATH = $$(FFTW_HOME)
+win32-*:exists(C:/vcpkg/installed/x64-windows/include/fftw3.h) {
+  FFTW_HOME_PATH = C:/vcpkg/installed/x64-windows
+}
+
 linux-* {
   QMAKE_CXXFLAGS += -Wunused-parameter
   QT += network
@@ -1037,7 +1042,11 @@ win32-msvc* {
   !log4cpp_null {
     LIBS += $$(LOG4CPP_HOME)/lib/log4cpp.lib
   }
-  LIBS += $$(FFTW_HOME)/lib/libfftw3-3.lib
+  exists($$FFTW_HOME_PATH/lib/fftw3.lib) {
+    LIBS += $$FFTW_HOME_PATH/lib/fftw3.lib
+  } else {
+    LIBS += $$FFTW_HOME_PATH/lib/libfftw3-3.lib
+  }
   contains(QT_ARCH,i386) {
     LIBS += shell32.lib
     QMAKE_LFLAGS += /MACHINE:i386
@@ -1047,7 +1056,7 @@ win32-msvc* {
     !log4cpp_null {
       LIBS += -L$$(LOG4CPP_HOME)/lib
     }
-    LIBS +=  -L$$(FFTW_HOME)/lib
+    LIBS +=  -L$$FFTW_HOME_PATH/lib
     QMAKE_LFLAGS += -Wl,--stack,32000000
   }
   LIBS += -lfftw3
@@ -1057,7 +1066,7 @@ win32-msvc* {
 }
 win32-* {
   CONFIG += windows
-  INCLUDEPATH += $$(FFTW_HOME)/include
+  INCLUDEPATH += $$FFTW_HOME_PATH/include
   !log4cpp_null {
     INCLUDEPATH += $$(LOG4CPP_HOME)/include
   }

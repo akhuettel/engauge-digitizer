@@ -960,6 +960,11 @@ void CoordSystem::setModelCurveStyles(const CurveStyles &modelCurveStyles)
     const CurveStyle &curveStyle = modelCurveStyles.curveStyle (curveName);
 
     Curve *curve = curveForCurveName (curveName);
+    if (curve == nullptr) {
+      LOG4CPP_ERROR_S ((*mainCat)) << "CoordSystem::setModelCurveStyles missing curve for curveName="
+                                   << curveName.toLatin1().data();
+      continue;
+    }
     curve->setCurveStyle (curveStyle);
   }
 }

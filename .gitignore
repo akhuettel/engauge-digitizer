@@ -15,6 +15,7 @@ object_script.engauge
 qrc_*
 make.exe.stackdump
 engauge_resource.rc
+dist/
 Engauge Digitizer
 Engauge Digitizer.app
 Engauge Digitizer.app.dSYM
@@ -34,4 +35,16 @@ snap
 snapcraft.yaml
 stage
 transifex_downloads
+help/engauge.qch
+help/engauge.qhc
+bin/Engauge.exe
+bin/*.dll
+bin/documentation/
+bin/imageformats/
+bin/platforms/
+bin/sqldrivers/
+moc_build/
+objs_build/
+rcc_build/
+translations/*.qm
 bin/engauge.ilk

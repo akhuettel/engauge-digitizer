@@ -39,14 +39,14 @@ public:
   virtual void setSmallDialogs (bool smallDialogs);
 
 private slots:
-  void slotCurveName(const QString &);
-  void slotLineColor(const QString &);
-  void slotLineType(const QString &);
+  void slotCurveName(int);
+  void slotLineColor(int);
+  void slotLineType(int);
   void slotLineWidth(int);
-  void slotPointColor(const QString &);
+  void slotPointColor(int);
   void slotPointLineWidth (int);
   void slotPointRadius(int);
-  void slotPointShape(const QString &);
+  void slotPointShape(int);
   void slotSaveDefault();
   void slotWhatsThis();
   

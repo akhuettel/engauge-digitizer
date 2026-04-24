@@ -95,6 +95,12 @@ void GraphicsLinesForCurves::lineMembershipPurge(const CurveStyles &curveStyles,
     const QString curveName = itr.key ();
     GraphicsLinesForCurve *graphicsLines = itr.value();
 
+    if (!curveStyles.containsCurve (curveName)) {
+      LOG4CPP_ERROR_S ((*mainCat)) << "GraphicsLinesForCurves::lineMembershipPurge missing curve style for curve="
+                                   << curveName.toLatin1().data();
+      continue;
+    }
+
     graphicsLines->lineMembershipPurge (curveStyles.lineStyle (curveName),
                                         splineDrawer,
                                         pathMultiValued,
@@ -188,6 +194,12 @@ void GraphicsLinesForCurves::updateAfterCommand (GraphicsScene &scene,
                                << " curveCount=" << m_graphicsLinesForCurve.count();
 
   ENGAUGE_ASSERT (m_graphicsLinesForCurve.contains (curveName));
+  if (!curveStyles.containsCurve (curveName)) {
+    LOG4CPP_ERROR_S ((*mainCat)) << "GraphicsLinesForCurves::updateAfterCommand missing curve style for curve="
+                                 << curveName.toLatin1().data();
+    return;
+  }
+
   m_graphicsLinesForCurve [curveName]->updateAfterCommand (scene,
                                                            curveStyles.pointStyle(curveName),
                                                            point,
@@ -202,6 +214,12 @@ void GraphicsLinesForCurves::updateCurveStyles (const CurveStyles &modelCurveSty
   for (itr = m_graphicsLinesForCurve.begin (); itr != m_graphicsLinesForCurve.end (); itr++) {
 
     QString curveName = itr.key();
+
+    if (!modelCurveStyles.containsCurve (curveName)) {
+      LOG4CPP_ERROR_S ((*mainCat)) << "GraphicsLinesForCurves::updateCurveStyles missing curve style for curve="
+                                   << curveName.toLatin1().data();
+      continue;
+    }
 
     m_graphicsLinesForCurve [curveName]->updateCurveStyle (modelCurveStyles.curveStyle (curveName));
   }
@@ -221,6 +239,11 @@ void GraphicsLinesForCurves::updateGraphicsLinesToMatchGraphicsPoints (const Cur
 
     // This is where we add lines for non-axes curves
     if (curveName != AXIS_CURVE_NAME) {
+      if (!curveStyles.containsCurve (curveName)) {
+        LOG4CPP_ERROR_S ((*mainCat)) << "GraphicsLinesForCurves::updateGraphicsLinesToMatchGraphicsPoints missing curve style for curve="
+                                     << curveName.toLatin1().data();
+        continue;
+      }
 
       m_graphicsLinesForCurve [curveName]->updateGraphicsLinesToMatchGraphicsPoints(curveStyles.lineStyle (curveName),
                                                                                     splineDrawer,
@@ -254,6 +277,12 @@ void GraphicsLinesForCurves::updatePointOrdinalsAfterDrag (const CurveStyles &cu
 
     QString curveName = itr.key();
     GraphicsLinesForCurve *graphicsLines = itr.value();
+
+    if (!curveStyles.containsCurve (curveName)) {
+      LOG4CPP_ERROR_S ((*mainCat)) << "GraphicsLinesForCurves::updatePointOrdinalsAfterDrag missing curve style for curve="
+                                   << curveName.toLatin1().data();
+      continue;
+    }
 
     graphicsLines->updatePointOrdinalsAfterDrag (curveStyles.lineStyle (curveName),
                                                  transformation);

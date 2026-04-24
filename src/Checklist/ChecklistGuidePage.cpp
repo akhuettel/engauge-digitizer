@@ -13,6 +13,21 @@
 #include <QRadioButton>
 #include <QVBoxLayout>
 
+namespace {
+void configureChecklistLabel(QLabel *label)
+{
+  label->setTextFormat(Qt::RichText);
+  label->setWordWrap(true);
+
+  QPalette palette = label->palette();
+  palette.setColor(QPalette::WindowText, Qt::black);
+  palette.setColor(QPalette::Text, Qt::black);
+  palette.setColor(QPalette::Link, QColor(0, 0, 192));
+  palette.setColor(QPalette::LinkVisited, QColor(96, 0, 160));
+  label->setPalette(palette);
+}
+}
+
 ChecklistGuidePage::ChecklistGuidePage(const QString &title) :
   m_row (0),
   m_checklineLineEditContainer (nullptr),
@@ -31,7 +46,7 @@ void ChecklistGuidePage::addHtml (const QString &html)
   LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuidePage::addHtml";
 
   QLabel *label = new QLabel (html);
-  label->setWordWrap (true);
+  configureChecklistLabel(label);
 
   m_layout->addWidget (label, m_row++, 0, 1, 2, Qt::AlignTop);
 }
@@ -46,7 +61,7 @@ QRadioButton *ChecklistGuidePage::addLabelAndRadioButton (const QString &label,
   m_layout->addWidget (button, m_row, 0, 1, 1, Qt::AlignTop);
 
   QLabel *lbl = new QLabel (label);
-  lbl->setWordWrap(true);
+  configureChecklistLabel(lbl);
   m_layout->addWidget (lbl, m_row++, 1, 1, 1, Qt::AlignTop);
 
   return button;

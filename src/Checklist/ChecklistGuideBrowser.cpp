@@ -83,14 +83,19 @@ void ChecklistGuideBrowser::divHide (QString &html,
                               << " anchor=" << anchor.toLatin1().data();
 
   // Remove everything between the start and end tags, inclusive
-  QString expression = QString("\\%1%2\\%3.*\\%4%5\\%6")
-                           .arg(TAG_DIV_DELIMITER_START,
-                                anchor,
-                                TAG_DIV_DELIMITER_END,
-                                TAG_DIV_DELIMITER_START_SLASH,
-                                anchor,
-                                TAG_DIV_DELIMITER_END);
-  QRegularExpression regExp(expression);
+  const QString startTag = QString("%1%2%3")
+                               .arg(TAG_DIV_DELIMITER_START,
+                                    anchor,
+                                    TAG_DIV_DELIMITER_END);
+  const QString endTag = QString("%1%2%3")
+                             .arg(TAG_DIV_DELIMITER_START_SLASH,
+                                  anchor,
+                                  TAG_DIV_DELIMITER_END);
+  const QString expression = QString("%1.*?%2")
+                                 .arg(QRegularExpression::escape(startTag),
+                                      QRegularExpression::escape(endTag));
+  QRegularExpression regExp(expression,
+                            QRegularExpression::DotMatchesEverythingOption);
   html.replace(regExp, "");
 }
 
@@ -102,10 +107,14 @@ void ChecklistGuideBrowser::divShow(QString &html, const QString &anchor) const
   if (!anchor.isEmpty ()) {
 
     // Remove the start and end tags, but leave the text in between
-    QString expressionStart = QString("\\%1%2\\%3")
-                                  .arg(TAG_DIV_DELIMITER_START, anchor, TAG_DIV_DELIMITER_END);
-    QString expressionEnd = QString("\\%1%2\\%3")
-                                .arg(TAG_DIV_DELIMITER_START_SLASH, anchor, TAG_DIV_DELIMITER_END);
+    const QString expressionStart = QRegularExpression::escape(QString("%1%2%3")
+                                                                   .arg(TAG_DIV_DELIMITER_START,
+                                                                        anchor,
+                                                                        TAG_DIV_DELIMITER_END));
+    const QString expressionEnd = QRegularExpression::escape(QString("%1%2%3")
+                                                                 .arg(TAG_DIV_DELIMITER_START_SLASH,
+                                                                      anchor,
+                                                                      TAG_DIV_DELIMITER_END));
     QRegularExpression regExpStart(expressionStart);
     QRegularExpression regExpEnd(expressionEnd);
     html.replace (regExpStart, "");

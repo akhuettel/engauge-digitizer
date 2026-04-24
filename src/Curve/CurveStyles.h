@@ -37,6 +37,9 @@ public:
   /// List of all curve names
   QStringList curveNames () const;
 
+  /// True if the specified curve exists in this model.
+  bool containsCurve (const QString &curveName) const;
+
   /// CurveStyle in specified curve.
   CurveStyle curveStyle (const QString &curveName) const;
 

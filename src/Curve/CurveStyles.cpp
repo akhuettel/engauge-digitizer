@@ -52,6 +52,8 @@ CurveStyles::CurveStyles (const CurveStyles &other)
 
 CurveStyles &CurveStyles::operator=(const CurveStyles &other)
 {
+  m_curveStyles.clear ();
+
   const QStringList curveNames = other.curveNames();
   QStringList::const_iterator itr;
   for (itr = curveNames.begin(); itr != curveNames.end(); itr++) {
@@ -74,6 +76,11 @@ QStringList CurveStyles::curveNames () const
   }
 
   return curveNames;
+}
+
+bool CurveStyles::containsCurve (const QString &curveName) const
+{
+  return m_curveStyles.contains (curveName);
 }
 
 CurveStyle CurveStyles::curveStyle (const QString &curveName) const
@@ -260,4 +267,3 @@ void CurveStyles::setPointShape (const QString &curveName,
   CurveStyle &curveStyle = m_curveStyles [curveName];
   curveStyle.setPointShape (shape);
 }
-
