@@ -9,12 +9,6 @@
 
 #include <QtGlobal>
 
-#if defined(WIN32) || defined(WIN64) || defined(OSX_DEBUG) || defined(OSX_RELEASE)
-#define NO_RETURN_VALUE
-#else
-#define NO_RETURN_VALUE Q_NORETURN
-#endif
-
 class MainWindow;
 
 /// Upload logging information to website for developer support
@@ -29,21 +23,21 @@ public:
 
   /// Smart equivalent to standard assert method and Q_ASSERT (in qglobal.h). Upon error, an upload is proposed.
   /// This is static for easy access from anywhere else in the application
-  static void loggerAssert(const char *condition,
+  [[noreturn]] static void loggerAssert(const char *condition,
                            const char* file,
-                           int line) NO_RETURN_VALUE;
+                           int line);
 
   /// Smart equivalent to Q_CHECK_PTR (in qglobal.h). Similar to loggerAssert but for checking newly-allocated pointers
-  static void loggerCheckPtr (const char *pointer,
+  [[noreturn]] static void loggerCheckPtr (const char *pointer,
                               const char* file,
-                              int line) NO_RETURN_VALUE;
+                              int line);
 
 private:
 
-  static void loggerOutput (const char* comment,
+  [[noreturn]] static void loggerOutput (const char* comment,
                             const char *file,
                             int line,
-                            const char* context) NO_RETURN_VALUE;
+                            const char* context);
 
   static MainWindow *m_mainWindow;
 };
