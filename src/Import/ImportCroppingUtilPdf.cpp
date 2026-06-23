@@ -17,10 +17,9 @@ ImportCroppingUtilPdf::ImportCroppingUtilPdf()
 bool ImportCroppingUtilPdf::applyImportCropping (bool isErrorReportRegressionTest,
                                                  const QString &fileName,
                                                  ImportCropping importCropping,
-                                                 Document *&document) const
+                                                 std::unique_ptr<Document> &document) const
 {
-  document = nullptr;
-
+  document.reset();
   bool cropping = false;
 
   if (!isErrorReportRegressionTest) {
@@ -30,7 +29,7 @@ bool ImportCroppingUtilPdf::applyImportCropping (bool isErrorReportRegressionTes
 
       // Try to read the file
       QApplication::setOverrideCursor (Qt::BusyCursor); // Since load could take a while
-      document = Document::load (fileName).get();
+      document = Document::load (fileName);
       QApplication::restoreOverrideCursor();
       if (document != nullptr) {
         if (!document->isLocked ()) {

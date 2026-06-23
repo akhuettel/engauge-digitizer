@@ -9,6 +9,7 @@
 
 #include "ImportCropping.h"
 #include "ImportCroppingUtilBase.h"
+#include <memory>
 #include <QString>
 
 namespace Poppler {
@@ -29,7 +30,7 @@ public:
   bool applyImportCropping (bool isRegression,
                             const QString &fileName,
                             ImportCropping importCropping,
-                            Poppler::Document *&document) const;
+                            std::unique_ptr<Poppler::Document> &document) const;
 
 };
 
