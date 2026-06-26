@@ -8,6 +8,7 @@
 #define PDF_H
 
 #include "ImportCropping.h"
+#include <memory>
 
 namespace Poppler {
   class Document;
@@ -40,7 +41,7 @@ public:
 
 private:
 
-  PdfReturn loadWithCropping (Poppler::Document *document,
+  PdfReturn loadWithCropping (std::unique_ptr<Poppler::Document> document,
                               QImage &image,
                               int resolution) const; // Dialog is used when not testing
   PdfReturn loadWithoutCropping (const QString &fileName,
