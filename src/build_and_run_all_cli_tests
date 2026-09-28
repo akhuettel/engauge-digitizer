@@ -83,6 +83,9 @@ else
     set -e 
 
     # Build and run each test
+    CLI_FAILURES=0
+    # Bound every test binary: a stuck test would otherwise consume the whole CI job
+    CLI_TEST_TIMEOUT=${ENGAUGE_CLI_TEST_TIMEOUT:-300}
     for t in "${testsSelected[@]}"
     do
         sed "s/TEST/$t/g" engauge_test_template.pro >engauge_test.pro
@@ -91,11 +94,34 @@ else
             echo "FAIL   : Compilation error, testing will be stopped"
             exit 1
         }
+        # The status of the test binary has to be read before the output is piped
+        # through sed for coloring: with "set -e" the status of a pipeline is the
+        # status of its last command, so a failing test binary was reported as a
+        # success as long as grep found a line to print. "timeout" also keeps a
+        # stuck test from consuming the whole CI job.
+        set +e
+        timeout --signal=TERM --kill-after=10 "$CLI_TEST_TIMEOUT" ../bin/$t >.cli_test_output 2>&1
+        TEST_STATUS=$?
+        set -e
         # sed is used to add color to PASS and FAIL. 'Using QtTest' lines are dropped
-        ../bin/$t | sed "s/PASS   :/$(tput setaf 2)PASS$(tput sgr0)   :/" | sed "s/FAIL   :/$(tput setaf 1)FAIL$(tput sgr0)   :/" | grep -v 'Using QtTest'
+        sed "s/PASS   :/$(tput setaf 2)PASS$(tput sgr0)   :/" .cli_test_output | sed "s/FAIL   :/$(tput setaf 1)FAIL$(tput sgr0)   :/" | grep -v 'Using QtTest' || true
+        rm -f .cli_test_output
+        if [ "$TEST_STATUS" == 124 ]; then
+            echo -e "$(tput setaf 1)TIMEOUT$(tput sgr0): $t (exceeded ${CLI_TEST_TIMEOUT}s)"
+            CLI_FAILURES=$((CLI_FAILURES+1))
+        elif [ "$TEST_STATUS" != 0 ]; then
+            echo -e "$(tput setaf 1)FAIL$(tput sgr0)   : $t (exit status $TEST_STATUS)"
+            CLI_FAILURES=$((CLI_FAILURES+1))
+        fi
         if [ $selectedCount -ne 1 ]
         then
             rm engauge_test.pro
         fi
     done
+
+    echo ""
+    echo "Command-line test summary: $CLI_FAILURES failed or timed out"
+    if [ $CLI_FAILURES -gt 0 ]; then
+        exit 1
+    fi
 fi

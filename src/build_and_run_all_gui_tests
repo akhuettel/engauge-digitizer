@@ -24,6 +24,11 @@ done
 
 SCRIPTS=`find ../test -name "*.test.commandline" | sort`
 
+# Counters so this script can report its own failures. Without them a failing or
+# hanging case was only visible in the log, and the script exited 0 in any case.
+FAILURES=0
+TIMEOUTS=0
+
 for script in $SCRIPTS
 do
 
@@ -38,18 +43,40 @@ do
 	# Less instrusive approach, used here, is to set TZ. Some may prefer using timedatectl
 	export TZ='America/Los_Angeles'
 	
-	# Run regression test. Standard error is redirected to standard out so we can strip out unimportant
-	# 'QXcbXSettings::QXcbXSettings(QXcbScreen*) Failed to get selection owner for XSETTINGS_S atom' errors
 	commandLineArgs=`cat $script`
+	scriptfile=`basename $script`
+	root=${scriptfile/.test.commandline/}
 	if [ $DEBUG == 1 ]; then
 	    echo " "
 	    echo "engauge $commandLineArgs"
 	fi
-	../bin/Engauge $commandLineArgs 2>&1 | grep -v 'Failed to get selection owner'
+
+	# Cases that download an image from a web site cannot be relied upon: they
+	# depend on an external site that may disappear (the URL used by
+	# drag_and_drop_http returns 404 at the time of writing) and they fail in a
+	# network without internet access. Set ENGAUGE_SKIP_NETWORK_TESTS=1 to skip
+	# them instead of reporting them as broken.
+	if [ "${ENGAUGE_SKIP_NETWORK_TESTS:-0}" == 1 ] && [[ "$commandLineArgs" == *http* ]]; then
+	    echo "SKIPPED (network): $root"
+	    continue
+	fi
+
+	# Run regression test. A hanging Engauge process, for example one showing a
+	# modal dialog because an image format plugin is missing, would otherwise
+	# consume the whole CI job until its timeout. Bound every case and report a
+	# hang as such.
+	# Standard error is redirected to standard out so we can strip out unimportant
+	# 'QXcbXSettings::QXcbXSettings(QXcbScreen*) Failed to get selection owner for XSETTINGS_S atom' errors
+	GUI_TEST_TIMEOUT=${ENGAUGE_GUI_TEST_TIMEOUT:-120}
+	timeout --signal=TERM --kill-after=10 "$GUI_TEST_TIMEOUT" \
+	    ../bin/Engauge $commandLineArgs 2>&1 | grep -v 'Failed to get selection owner'
+	GUI_TEST_STATUS=${PIPESTATUS[0]}
+	if [ "$GUI_TEST_STATUS" == 124 ]; then
+	    echo -e "$(tput setaf 1)TIMEOUT$(tput sgr0): $root (exceeded ${GUI_TEST_TIMEOUT}s)"
+	    TIMEOUTS=$((TIMEOUTS+1))
+	fi
 
 	# Compare actual and desired output files. There is one pair for each coordinate system
-	scriptfile=`basename $script`
-	root=${scriptfile/.test.commandline/}
 	EXPECTED_FILES=`find ../test -name "$root.csv_expected_*"`
 	COUNT=0
 	COUNTER=1
@@ -89,6 +116,7 @@ do
 		else
 		    echo -e "$(tput setaf 1)FAIL$(tput sgr0)   : $root $COUNTERSTRING"
 		    diff -C2 .expected .actual
+		    FAILURES=$((FAILURES+1))
 		fi
 	    else
 		# Branch for failed OSX testing
@@ -98,4 +126,10 @@ do
 	done
     fi
 done
+
+echo ""
+echo "GUI regression summary: $FAILURES failed, $TIMEOUTS timed out"
+if [ $((FAILURES + TIMEOUTS)) -gt 0 ]; then
+    exit 1
+fi
 

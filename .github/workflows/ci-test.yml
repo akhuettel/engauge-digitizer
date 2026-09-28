@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-node@v2
       - run: lsb_release -a
       - run: sudo apt-get update
-      - run: sudo apt-get install --yes --no-install-recommends qt6-base-dev qt6-tools-dev liblog4cpp5-dev libfftw3-dev xvfb python3 python3-pip python3-lxml python3-numpy python3-pandas gdb libpoppler-qt6-dev qt6-documentation-tools
+      - run: sudo apt-get install --yes --no-install-recommends qt6-base-dev qt6-tools-dev liblog4cpp5-dev libfftw3-dev xvfb qt6-image-formats-plugins python3 python3-pip python3-lxml python3-numpy python3-pandas gdb libpoppler-qt6-dev qt6-documentation-tools
       - run: Xvfb :99 &
       - run: sleep 5s
       - run: qmake6 engauge.pro
