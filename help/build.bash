@@ -53,12 +53,41 @@ fi
 # Outputs:
 #   engauge.qch 3MB binary file
 #   engauge.qhc 32K SQLite file
-qhelpgenerator engauge.qhp
+
+# qhelpgenerator is not always on PATH: Debian and Ubuntu install it into the Qt
+# libexec directory (qt6-documentation-tools provides
+# /usr/lib/qt6/libexec/qhelpgenerator). Without this the call below just printed
+# 'command not found', the following mv failed as well, and the script still
+# exited 0, so the help collection was reported as built while no .qch/.qhc file
+# existed at all. Resolve the tool explicitly and stop with an actionable
+# message when it is really missing.
+QHELPGENERATOR=`command -v qhelpgenerator`
+if [ -z "$QHELPGENERATOR" ]; then
+    QHELPGENERATOR=`command -v qhelpgenerator6`
+fi
+if [ -z "$QHELPGENERATOR" ]; then
+    QTLIBEXECS=`qmake6 -query QT_INSTALL_LIBEXECS 2>/dev/null`
+    for candidate in "$QTLIBEXECS/qhelpgenerator" \
+                     "$QTLIBEXECS/qhelpgenerator6" \
+                     "/usr/lib/qt6/libexec/qhelpgenerator" \
+                     "/usr/lib/x86_64-linux-gnu/qt6/libexec/qhelpgenerator"; do
+        if [ -x "$candidate" ]; then
+            QHELPGENERATOR=$candidate
+            break
+        fi
+    done
+fi
+if [ -z "$QHELPGENERATOR" ]; then
+    echo "qhelpgenerator was not found. Install the Qt documentation tools (Ubuntu: qt6-documentation-tools)"
+    exit 1
+fi
+
+"$QHELPGENERATOR" engauge.qhp || exit 1
 
 # Move to target directory which is relative to the help subdirectory. OSX does not use qhc file
 mkdir -p $DESTDIR
-mv engauge.qch $DESTDIR
+mv engauge.qch $DESTDIR || exit 1
 if [ -f engauge.qhc ]; then
-    mv engauge.qhc $DESTDIR
+    mv engauge.qhc $DESTDIR || exit 1
 fi
 
