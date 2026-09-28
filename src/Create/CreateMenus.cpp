@@ -137,6 +137,7 @@ void CreateMenus::create(MainWindow &mw)
   mw.m_menuSettings->addAction (mw.m_actionSettingsGridRemoval);
   mw.m_menuSettings->addAction (mw.m_actionSettingsGuideline);  
   mw.m_menuSettings->addAction (mw.m_actionSettingsPointMatch);
+  mw.m_menuSettings->addAction (mw.m_actionSettingsSegments);
   mw.m_menuSettings->insertSeparator (mw.m_actionSettingsGeneral);
   mw.m_menuSettings->addAction (mw.m_actionSettingsGeneral);
   mw.m_menuSettings->addAction (mw.m_actionSettingsMainWindow);
